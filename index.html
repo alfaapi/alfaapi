@@ -1,0 +1,2381 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Documentation</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
+
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#alfa-api" class="toc-h1 toc-link" data-title="Спецификация Alfa API">Спецификация Alfa API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#3394112aa9" class="toc-h2 toc-link" data-title="Введение">Введение</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api" class="toc-h1 toc-link" data-title="Методы API">Методы API</a>
+          </li>
+          <li>
+            <a href="#customer-info" class="toc-h1 toc-link" data-title="Метод «Информация о профиле организации. Customer-info».">Метод «Информация о профиле организации. Customer-info».</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get__customer-info-responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tocS_ClientInfo" class="toc-h2 toc-link" data-title="ClientInfo">ClientInfo</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_Address" class="toc-h2 toc-link" data-title="Address">Address</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_Account" class="toc-h2 toc-link" data-title="Account">Account</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_AccountBlockInfo" class="toc-h2 toc-link" data-title="AccountBlockInfo">AccountBlockInfo</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_SpecCondition" class="toc-h2 toc-link" data-title="SpecCondition">SpecCondition</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ErrorUnauthorized" class="toc-h2 toc-link" data-title="ErrorUnauthorized">ErrorUnauthorized</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ErrorInternal" class="toc-h2 toc-link" data-title="ErrorInternal">ErrorInternal</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ErrorBadRequest" class="toc-h2 toc-link" data-title="ErrorBadRequest">ErrorBadRequest</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ErrorScope" class="toc-h2 toc-link" data-title="ErrorScope">ErrorScope</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#96664dce87" class="toc-h1 toc-link" data-title="Метод «Операции по счетам».">Метод «Операции по счетам».</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get__customer-info-responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#schemas-2" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tocS_ClientInfo" class="toc-h2 toc-link" data-title="ClientInfo">ClientInfo</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_Address" class="toc-h2 toc-link" data-title="Address">Address</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_Account" class="toc-h2 toc-link" data-title="Account">Account</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_AccountBlockInfo" class="toc-h2 toc-link" data-title="AccountBlockInfo">AccountBlockInfo</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_SpecCondition" class="toc-h2 toc-link" data-title="SpecCondition">SpecCondition</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ErrorUnauthorized" class="toc-h2 toc-link" data-title="ErrorUnauthorized">ErrorUnauthorized</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ErrorInternal" class="toc-h2 toc-link" data-title="ErrorInternal">ErrorInternal</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ErrorBadRequest" class="toc-h2 toc-link" data-title="ErrorBadRequest">ErrorBadRequest</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_ErrorScope" class="toc-h2 toc-link" data-title="ErrorScope">ErrorScope</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='alfa-api'>Спецификация Alfa API</h1><h3 id='3394112aa9'>Введение</h3>
+<p>Это API использует <strong>протоколы oAuth 2.0, OIDC</strong>. Позволяет внешнему приложению обращаться к программным системам внутри самого Банка.</p>
+
+<p><strong>Alfa API</strong> - это сервис безопасной интеграции банковских продуктов и услуг в бизнес-процессы Партнеров API.</p>
+
+<p><strong>Alfa ID</strong> - универсальная учетная запись, обеспечивающая единый вход Клиентов на разные ресурсы Банка и Партнера API, в том числе, <em>предоставляющая подписание Клиентами юридически значимых согласий и двухсторонний обмен данными о Клиентах</em> (персональные данные, платежные данные) между Банком и Партнерами API.</p>
+
+<p><strong>Партнер API</strong> – Клиент, заключивший с Банком <em>договор на информационно-технологическое взаимодействие</em>, в целях использования  Сервиса Alfa API.BaaS, по утвержденной Банком форме.</p>
+<h1 id='api'>Методы API</h1>
+<p>Список методов для работы с данными Alfa API:</p>
+
+<ul>
+<li>Метод &quot;Информация о профиле организации.Customer-info&quot;</li>
+<li>Метод &quot;Операции по счетам&quot;</li>
+<li>Метод &quot;Рублевое платежное поручение&quot;</li>
+</ul>
+<h1 id='customer-info'>Метод «Информация о профиле организации. Customer-info».</h1>
+<p>Метод позволяет получить информацию о профиле организации и ее счетах.</p>
+
+<!-- Generator: Widdershins v4.0.1 -->
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /customer-info <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div>
+<p>REST-запрос GET &quot;Получение информации о профиле организации&quot; к новой конечной точке: GET {host}/api/v1/customer-info при условии пройденной авторизации, где scope = service.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/customer-info</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+
+Accept: application/json
+
+</code></pre></div>
+<p><code>GET /customer-info</code></p>
+
+<p><em>Получение профиля организации</em></p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bca96ae8b26184217fcf75f51347bd7bd5031ea6605c434c49f85378e9509732"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общество с ограниченной ответственностью </span><span class="se">\"</span><span class="s2">Ромашка</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО </span><span class="se">\"</span><span class="s2">Ромашка</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">665413230</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"organizationForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общество с ограниченной ответственностью"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">12300</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"kpps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">11206020</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ogrn"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020203094163</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"okpo"</span><span class="p">:</span><span class="w"> </span><span class="mi">41294456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"okved"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.12</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEGAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">79099876543</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Тахтамукайский район"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="mi">643</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея, г. Майкоп, улица Депутатская, д. 3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"г."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"улица Депутатская"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="mi">385600</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fiasCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3721a72-0544-4ce7-9636-0e681cc0fc16"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810002300000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"typeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Расчётный счёт"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">810</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"specConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AI17"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Счёт заблокирован"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Наименование"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">810000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountHolds"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOverdraftOwnFunds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOverdraftLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockedSums"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">112233</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"beginDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Неисполнение требования об уплате налога, сбора, пени, штрафа № 53228 от 05.11.2019 г"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Межрайонная ИФНС России № 51 по г. Москве"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">988800</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"blockType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIAL_BALANCE_BLOCK"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="get__customer-info-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Успешный результат</td>
+<td><a href="#schemaclientinfo">ClientInfo</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Authorization отсутствует в заголовках запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам.</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearerAuth ( Scopes: customer_info )
+</aside>
+<h1 id='schemas'>Schemas</h1>
+<h2 id="tocS_ClientInfo">ClientInfo</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaclientinfo"></a>
+<a id="schema_ClientInfo"></a>
+<a id="tocSclientinfo"></a>
+<a id="tocsclientinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bca96ae8b26184217fcf75f51347bd7bd5031ea6605c434c49f85378e9509732"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общество с ограниченной ответственностью </span><span class="se">\"</span><span class="s2">Ромашка</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО </span><span class="se">\"</span><span class="s2">Ромашка</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">665413230</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"organizationForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общество с ограниченной ответственностью"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">12300</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"kpps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">11206020</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ogrn"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020203094163</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"okpo"</span><span class="p">:</span><span class="w"> </span><span class="mi">41294456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"okved"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.12</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEGAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">79099876543</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Тахтамукайский район"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="mi">643</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея, г. Майкоп, улица Депутатская, д. 3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"г."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"улица Депутатская"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="mi">385600</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fiasCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3721a72-0544-4ce7-9636-0e681cc0fc16"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810002300000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"typeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Расчётный счёт"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">810</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"specConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AI17"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Счёт заблокирован"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Наименование"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">810000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountHolds"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOverdraftOwnFunds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOverdraftLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockedSums"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">112233</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"beginDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Неисполнение требования об уплате налога, сбора, пени, штрафа № 53228 от 05.11.2019 г"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Межрайонная ИФНС России № 51 по г. Москве"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">988800</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"blockType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIAL_BALANCE_BLOCK"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>organizationId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Хэш идентификатора клиента (ЮЛ)</td>
+</tr>
+<tr>
+<td>fullName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Полное наименование организации</td>
+</tr>
+<tr>
+<td>shortName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сокращённое наименование организации</td>
+</tr>
+<tr>
+<td>inn</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>ИНН</td>
+</tr>
+<tr>
+<td>organizationForm</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» fullName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Организационно-правовая форма организации клиента</td>
+</tr>
+<tr>
+<td>» shortName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Краткое наименование ОПФ</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Тип ОПФ</td>
+</tr>
+<tr>
+<td>» code</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Код ОПФ</td>
+</tr>
+<tr>
+<td>kpps</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>ogrn</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>ОГРН</td>
+</tr>
+<tr>
+<td>okpo</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>ОКПО</td>
+</tr>
+<tr>
+<td>okved</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>ОКВЭД</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Тип организации</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Контактный телефон клиента</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Электронная почта клиента</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Категория организации</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Статус организации</td>
+</tr>
+<tr>
+<td>registrationDate</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>Дата регистрации организации</td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#schemaaddress">Address</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>accounts</td>
+<td>[<a href="#schemaaccount">Account</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category</td>
+<td>BANK</td>
+</tr>
+<tr>
+<td>category</td>
+<td>FINANCIAL</td>
+</tr>
+<tr>
+<td>category</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>LIQUIDATING</td>
+</tr>
+<tr>
+<td>status</td>
+<td>LIQUIDATED</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Address">Address</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaddress"></a>
+<a id="schema_Address"></a>
+<a id="tocSaddress"></a>
+<a id="tocsaddress"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Тахтамукайский район"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="mi">643</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея, г. Майкоп, улица Депутатская, д. 3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"г."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"улица Депутатская"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="mi">385600</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fiasCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3721a72-0544-4ce7-9636-0e681cc0fc16"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>area</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Район</td>
+</tr>
+<tr>
+<td>building</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Строение, корпус</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Город</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Числовой код страны</td>
+</tr>
+<tr>
+<td>flat</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Квартира</td>
+</tr>
+<tr>
+<td>fullAddress</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Адрес</td>
+</tr>
+<tr>
+<td>house</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Дом</td>
+</tr>
+<tr>
+<td>region</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Полное наименование региона</td>
+</tr>
+<tr>
+<td>settlement</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Населенный пункт</td>
+</tr>
+<tr>
+<td>settlementType</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Тип населенного пункта</td>
+</tr>
+<tr>
+<td>street</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Улица</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Индекс</td>
+</tr>
+<tr>
+<td>fiasCode</td>
+<td>string(uuid)</td>
+<td>false</td>
+<td>none</td>
+<td>Код ФИАС</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Account">Account</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaccount"></a>
+<a id="schema_Account"></a>
+<a id="tocSaccount"></a>
+<a id="tocsaccount"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810002300000000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"typeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Расчётный счёт"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"openDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-07"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">810</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"specConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AI17"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Счёт заблокирован"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Наименование"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">810000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountHolds"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountOverdraftOwnFunds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountOverdraftLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"blockedSums"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">112233</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"beginDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Неисполнение требования об уплате налога, сбора, пени, штрафа № 53228 от 05.11.2019 г"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Межрайонная ИФНС России № 51 по г. Москве"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">988800</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIAL_BALANCE_BLOCK"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-3'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Наименование счета</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Тип счёта</td>
+</tr>
+<tr>
+<td>typeName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Наименование типа счёта</td>
+</tr>
+<tr>
+<td>openDate</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Дата открытия счёта</td>
+</tr>
+<tr>
+<td>currencyCode</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Цифровой код валюты</td>
+</tr>
+<tr>
+<td>specConditions</td>
+<td>[<a href="#schemaspeccondition">SpecCondition</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>[Спецусловия по счёту]</td>
+</tr>
+<tr>
+<td>clientName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Клиентское наименование счёта</td>
+</tr>
+<tr>
+<td>amountBalance</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Текущий остаток по счёту</td>
+</tr>
+<tr>
+<td>amountTotal</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Сумма доступных средств (без учёта овердрафта)</td>
+</tr>
+<tr>
+<td>amountHolds</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Сумма зарезервированных средств (холды)</td>
+</tr>
+<tr>
+<td>amountOverdraftOwnFunds</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Собственные средства</td>
+</tr>
+<tr>
+<td>amountOverdraftLimit</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Доступный лимит средств</td>
+</tr>
+<tr>
+<td>blockedSums</td>
+<td>[<a href="#schemaaccountblockinfo">AccountBlockInfo</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>Заблокированные (арестованные) суммы на счёте</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_AccountBlockInfo">AccountBlockInfo</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaccountblockinfo"></a>
+<a id="schema_AccountBlockInfo"></a>
+<a id="tocSaccountblockinfo"></a>
+<a id="tocsaccountblockinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">112233</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"beginDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Неисполнение требования об уплате налога, сбора, пени, штрафа № 53228 от 05.11.2019 г"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Межрайонная ИФНС России № 51 по г. Москве"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">988800</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"blockType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIAL_BALANCE_BLOCK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект массива с информацией о блокировках счета клиента</p>
+<h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>num</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Номер решения</td>
+</tr>
+<tr>
+<td>beginDate</td>
+<td>string(datetime)</td>
+<td>false</td>
+<td>none</td>
+<td>Дата начала действия ограничения</td>
+</tr>
+<tr>
+<td>cause</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Основание ареста</td>
+</tr>
+<tr>
+<td>initiator</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Наименование органа, наложившего арест</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Заблокированная (арестованная) сумма на счёте</td>
+</tr>
+<tr>
+<td>blockType</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Бухгалтерский режим, к которому относится данное решение</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>blockType</td>
+<td>OUTGOING_LIMITATION</td>
+</tr>
+<tr>
+<td>blockType</td>
+<td>PARTIAL_BALANCE_BLOCK</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_SpecCondition">SpecCondition</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaspeccondition"></a>
+<a id="schema_SpecCondition"></a>
+<a id="tocSspeccondition"></a>
+<a id="tocsspeccondition"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AI17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Счёт заблокирован"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Спецусловия по счёту</p>
+<h3 id='properties-5'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Код спецусловия</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Описание спецусловия</td>
+</tr>
+<tr>
+<td>value</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>Текущее значение</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorunauthorized"></a>
+<a id="schema_ErrorUnauthorized"></a>
+<a id="tocSerrorunauthorized"></a>
+<a id="tocserrorunauthorized"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-6'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ErrorInternal">ErrorInternal</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorinternal"></a>
+<a id="schema_ErrorInternal"></a>
+<a id="tocSerrorinternal"></a>
+<a id="tocserrorinternal"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal_error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-7'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ErrorBadRequest">ErrorBadRequest</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorbadrequest"></a>
+<a id="schema_ErrorBadRequest"></a>
+<a id="tocSerrorbadrequest"></a>
+<a id="tocserrorbadrequest"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-8'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ErrorScope">ErrorScope</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorscope"></a>
+<a id="schema_ErrorScope"></a>
+<a id="tocSerrorscope"></a>
+<a id="tocserrorscope"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insufficient_scope"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-9'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+<h1 id='96664dce87'>Метод «Операции по счетам».</h1>
+<p>Метод позволяет получить информацию об операциях по счету.</p>
+
+<!-- Generator: Widdershins v4.0.1 -->
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
+curl <span class="nt">-X</span> GET /customer-info <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div>
+<p>REST-запрос GET &quot;Получение информации о профиле организации&quot; к новой конечной точке: GET {host}/api/v1/customer-info при условии пройденной авторизации, где scope = service.</p>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">/customer-info</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+
+Accept: application/json
+
+</code></pre></div>
+<p><code>GET /customer-info</code></p>
+
+<p><em>Получение профиля организации</em></p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bca96ae8b26184217fcf75f51347bd7bd5031ea6605c434c49f85378e9509732"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общество с ограниченной ответственностью </span><span class="se">\"</span><span class="s2">Ромашка</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО </span><span class="se">\"</span><span class="s2">Ромашка</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">665413230</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"organizationForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общество с ограниченной ответственностью"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">12300</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"kpps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">11206020</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ogrn"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020203094163</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"okpo"</span><span class="p">:</span><span class="w"> </span><span class="mi">41294456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"okved"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.12</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEGAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">79099876543</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Тахтамукайский район"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="mi">643</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея, г. Майкоп, улица Депутатская, д. 3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"г."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"улица Депутатская"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="mi">385600</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fiasCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3721a72-0544-4ce7-9636-0e681cc0fc16"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810002300000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"typeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Расчётный счёт"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">810</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"specConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AI17"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Счёт заблокирован"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Наименование"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">810000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountHolds"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOverdraftOwnFunds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOverdraftLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockedSums"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">112233</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"beginDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Неисполнение требования об уплате налога, сбора, пени, штрафа № 53228 от 05.11.2019 г"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Межрайонная ИФНС России № 51 по г. Москве"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">988800</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"blockType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIAL_BALANCE_BLOCK"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="get__customer-info-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Успешный результат</td>
+<td><a href="#schemaclientinfo">ClientInfo</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Authorization отсутствует в заголовках запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам.</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearerAuth ( Scopes: customer_info )
+</aside>
+<h1 id='schemas-2'>Schemas</h1>
+<h2 id="tocS_ClientInfo">ClientInfo</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaclientinfo"></a>
+<a id="schema_ClientInfo"></a>
+<a id="tocSclientinfo"></a>
+<a id="tocsclientinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"organizationId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bca96ae8b26184217fcf75f51347bd7bd5031ea6605c434c49f85378e9509732"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общество с ограниченной ответственностью </span><span class="se">\"</span><span class="s2">Ромашка</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО </span><span class="se">\"</span><span class="s2">Ромашка</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">665413230</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"organizationForm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Общество с ограниченной ответственностью"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">12300</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"kpps"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">11206020</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ogrn"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020203094163</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"okpo"</span><span class="p">:</span><span class="w"> </span><span class="mi">41294456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"okved"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.12</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEGAL"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">79099876543</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"client@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BANK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"registrationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Тахтамукайский район"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="mi">643</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fullAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея, г. Майкоп, улица Депутатская, д. 3"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"г."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"улица Депутатская"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="mi">385600</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fiasCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3721a72-0544-4ce7-9636-0e681cc0fc16"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810002300000000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"typeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Расчётный счёт"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"openDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-07"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">810</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"specConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AI17"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Счёт заблокирован"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Наименование"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">810000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountHolds"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOverdraftOwnFunds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountOverdraftLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockedSums"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">112233</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"beginDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Неисполнение требования об уплате налога, сбора, пени, штрафа № 53228 от 05.11.2019 г"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Межрайонная ИФНС России № 51 по г. Москве"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">988800</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"blockType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIAL_BALANCE_BLOCK"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-10'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>organizationId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Хэш идентификатора клиента (ЮЛ)</td>
+</tr>
+<tr>
+<td>fullName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Полное наименование организации</td>
+</tr>
+<tr>
+<td>shortName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сокращённое наименование организации</td>
+</tr>
+<tr>
+<td>inn</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>ИНН</td>
+</tr>
+<tr>
+<td>organizationForm</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» fullName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Организационно-правовая форма организации клиента</td>
+</tr>
+<tr>
+<td>» shortName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Краткое наименование ОПФ</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Тип ОПФ</td>
+</tr>
+<tr>
+<td>» code</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Код ОПФ</td>
+</tr>
+<tr>
+<td>kpps</td>
+<td>[string]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>ogrn</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>ОГРН</td>
+</tr>
+<tr>
+<td>okpo</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>ОКПО</td>
+</tr>
+<tr>
+<td>okved</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>ОКВЭД</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Тип организации</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Контактный телефон клиента</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Электронная почта клиента</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Категория организации</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Статус организации</td>
+</tr>
+<tr>
+<td>registrationDate</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>Дата регистрации организации</td>
+</tr>
+<tr>
+<td>address</td>
+<td><a href="#schemaaddress">Address</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>accounts</td>
+<td>[<a href="#schemaaccount">Account</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>category</td>
+<td>BANK</td>
+</tr>
+<tr>
+<td>category</td>
+<td>FINANCIAL</td>
+</tr>
+<tr>
+<td>category</td>
+<td>OTHER</td>
+</tr>
+<tr>
+<td>status</td>
+<td>ACTIVE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>LIQUIDATING</td>
+</tr>
+<tr>
+<td>status</td>
+<td>LIQUIDATED</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Address">Address</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaddress"></a>
+<a id="schema_Address"></a>
+<a id="tocSaddress"></a>
+<a id="tocsaddress"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Тахтамукайский район"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="mi">643</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fullAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея, г. Майкоп, улица Депутатская, д. 3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Республика Адыгея"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Майкоп"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"г."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"улица Депутатская"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"zip"</span><span class="p">:</span><span class="w"> </span><span class="mi">385600</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fiasCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3721a72-0544-4ce7-9636-0e681cc0fc16"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-11'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>area</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Район</td>
+</tr>
+<tr>
+<td>building</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Строение, корпус</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Город</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Числовой код страны</td>
+</tr>
+<tr>
+<td>flat</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Квартира</td>
+</tr>
+<tr>
+<td>fullAddress</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Адрес</td>
+</tr>
+<tr>
+<td>house</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Дом</td>
+</tr>
+<tr>
+<td>region</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Полное наименование региона</td>
+</tr>
+<tr>
+<td>settlement</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Населенный пункт</td>
+</tr>
+<tr>
+<td>settlementType</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Тип населенного пункта</td>
+</tr>
+<tr>
+<td>street</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Улица</td>
+</tr>
+<tr>
+<td>zip</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Индекс</td>
+</tr>
+<tr>
+<td>fiasCode</td>
+<td>string(uuid)</td>
+<td>false</td>
+<td>none</td>
+<td>Код ФИАС</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Account">Account</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaccount"></a>
+<a id="schema_Account"></a>
+<a id="tocSaccount"></a>
+<a id="tocsaccount"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810002300000000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"typeName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Расчётный счёт"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"openDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-07"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">810</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"specConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AI17"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Счёт заблокирован"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"clientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Наименование"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">810000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountHolds"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountOverdraftOwnFunds"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amountOverdraftLimit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"blockedSums"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">112233</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"beginDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Неисполнение требования об уплате налога, сбора, пени, штрафа № 53228 от 05.11.2019 г"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Межрайонная ИФНС России № 51 по г. Москве"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">988800</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"blockType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIAL_BALANCE_BLOCK"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-12'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Наименование счета</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Тип счёта</td>
+</tr>
+<tr>
+<td>typeName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Наименование типа счёта</td>
+</tr>
+<tr>
+<td>openDate</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Дата открытия счёта</td>
+</tr>
+<tr>
+<td>currencyCode</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Цифровой код валюты</td>
+</tr>
+<tr>
+<td>specConditions</td>
+<td>[<a href="#schemaspeccondition">SpecCondition</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>[Спецусловия по счёту]</td>
+</tr>
+<tr>
+<td>clientName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Клиентское наименование счёта</td>
+</tr>
+<tr>
+<td>amountBalance</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Текущий остаток по счёту</td>
+</tr>
+<tr>
+<td>amountTotal</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Сумма доступных средств (без учёта овердрафта)</td>
+</tr>
+<tr>
+<td>amountHolds</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Сумма зарезервированных средств (холды)</td>
+</tr>
+<tr>
+<td>amountOverdraftOwnFunds</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Собственные средства</td>
+</tr>
+<tr>
+<td>amountOverdraftLimit</td>
+<td>number</td>
+<td>false</td>
+<td>none</td>
+<td>Доступный лимит средств</td>
+</tr>
+<tr>
+<td>blockedSums</td>
+<td>[<a href="#schemaaccountblockinfo">AccountBlockInfo</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>Заблокированные (арестованные) суммы на счёте</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_AccountBlockInfo">AccountBlockInfo</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaccountblockinfo"></a>
+<a id="schema_AccountBlockInfo"></a>
+<a id="tocSaccountblockinfo"></a>
+<a id="tocsaccountblockinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"num"</span><span class="p">:</span><span class="w"> </span><span class="mi">112233</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"beginDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-23"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cause"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Неисполнение требования об уплате налога, сбора, пени, штрафа № 53228 от 05.11.2019 г"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"initiator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Межрайонная ИФНС России № 51 по г. Москве"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">988800</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"blockType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PARTIAL_BALANCE_BLOCK"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект массива с информацией о блокировках счета клиента</p>
+<h3 id='properties-13'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>num</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Номер решения</td>
+</tr>
+<tr>
+<td>beginDate</td>
+<td>string(datetime)</td>
+<td>false</td>
+<td>none</td>
+<td>Дата начала действия ограничения</td>
+</tr>
+<tr>
+<td>cause</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Основание ареста</td>
+</tr>
+<tr>
+<td>initiator</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Наименование органа, наложившего арест</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Заблокированная (арестованная) сумма на счёте</td>
+</tr>
+<tr>
+<td>blockType</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Бухгалтерский режим, к которому относится данное решение</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>blockType</td>
+<td>OUTGOING_LIMITATION</td>
+</tr>
+<tr>
+<td>blockType</td>
+<td>PARTIAL_BALANCE_BLOCK</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_SpecCondition">SpecCondition</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaspeccondition"></a>
+<a id="schema_SpecCondition"></a>
+<a id="tocSspeccondition"></a>
+<a id="tocsspeccondition"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AI17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Счёт заблокирован"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Спецусловия по счёту</p>
+<h3 id='properties-14'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>code</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Код спецусловия</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Описание спецусловия</td>
+</tr>
+<tr>
+<td>value</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>Текущее значение</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorunauthorized"></a>
+<a id="schema_ErrorUnauthorized"></a>
+<a id="tocSerrorunauthorized"></a>
+<a id="tocserrorunauthorized"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-15'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ErrorInternal">ErrorInternal</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorinternal"></a>
+<a id="schema_ErrorInternal"></a>
+<a id="tocSerrorinternal"></a>
+<a id="tocserrorinternal"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal_error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-16'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ErrorBadRequest">ErrorBadRequest</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorbadrequest"></a>
+<a id="schema_ErrorBadRequest"></a>
+<a id="tocSerrorbadrequest"></a>
+<a id="tocserrorbadrequest"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-17'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_ErrorScope">ErrorScope</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorscope"></a>
+<a id="schema_ErrorScope"></a>
+<a id="tocSerrorscope"></a>
+<a id="tocserrorscope"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insufficient_scope"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-18'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+      </div>
+    </div>
+  </body>
+</html>
