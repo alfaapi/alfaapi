@@ -319,13 +319,7 @@
                     <a href="#customer-info" class="toc-h2 toc-link" data-title="Метод «Информация о профиле организации. Customer-info».">Метод «Информация о профиле организации. Customer-info».</a>
                   </li>
                   <li>
-                    <a href="#schemas" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
-                  </li>
-                  <li>
                     <a href="#96664dce87" class="toc-h2 toc-link" data-title="Метод «Операции по счетам».">Метод «Операции по счетам».</a>
-                  </li>
-                  <li>
-                    <a href="#schemas-2" class="toc-h2 toc-link" data-title="Schemas">Schemas</a>
                   </li>
               </ul>
           </li>
@@ -335,32 +329,84 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='alfa-api'>Спецификация Alfa API</h1><h2 id='3394112aa9'>Введение</h2>
-<p>Это API использует <strong><a href="https://datatracker.ietf.org/doc/html/rfc6749">протоколы oAuth 2.0</a>, <a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC</a></strong>. Позволяет внешнему приложению обращаться к программным системам внутри самого Банка.</p>
+<p>При создании Alfa API использовался следующий стек технологий: принципы <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">RESTful</a>, протоколы <strong>oAuth 2.0</strong> (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RCF 6749</a>, <a href="https://datatracker.ietf.org/doc/html/rfc6750">RCF 6750</a>,<a href="https://datatracker.ietf.org/doc/html/rfc6819">RCF 6819</a> и другие ), <strong><a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC 1.0</a></strong>, открытые стандарты <a href="JWS">JSON Web Signature</a>, <a href="JWE">JSON Web Encryption</a>, синхронный обмен данными.  API позволяет внешнему приложению обращаться к программным системам внутри самого Банка.</p>
 
-<p><strong>Alfa API</strong> - это сервис безопасной интеграции банковских продуктов и услуг в бизнес-процессы Партнеров API.</p>
+<p>Alfa API помогает всем сегментам бизнеса, финтех-организациям, разработчикам встраивать в свои продукты и процессы возможности банковских продуктов.</p>
 
-<p><strong>Alfa ID</strong> - универсальная учетная запись, обеспечивающая единый вход Клиентов на разные ресурсы Банка и Партнера API, в том числе, <em>предоставляющая подписание Клиентами юридически значимых согласий и двухсторонний обмен данными о Клиентах</em> (персональные данные, платежные данные) между Банком и Партнерами API.</p>
+<p>Преимущества Alfa API для бизнеса: </p>
 
-<p><strong>Партнер API</strong> – Клиент, заключивший с Банком <em>договор на информационно-технологическое взаимодействие</em>, в целях использования  Сервиса Alfa API.BaaS, по утвержденной Банком форме.</p>
+<ul>
+<li>экономия на разработке и доработке ПО (бесшовный переход между системами Банка и системами Партнера API, интеграция платежных методов для B2B и B2C); </li>
+<li>автоматизация бизнес-процессов (взаимодействие с CRM и ERP системами, обмен данными с банком по организации и организациям холдинга, исключение ошибок сотрудников);</li>
+<li>удобство использования (создание и подписание платежных документов непосредственно в учетной системе);</li>
+<li>управление финансами (использование инструментов Cash management, автоматизация взимания комиссии с клиентов); </li>
+<li>сокращение издержек на использование банковских сервисов (пакетные предложения от Банка).</li>
+</ul>
+
+<p>Преимущества для разработчиков и финтех-компаний: </p>
+
+<ul>
+<li>использование инновационных сервисов для B2B и B2C клиентов с применением технологий Альфа-Банка;</li>
+<li>сокращение времени на написание кода и внедрение платежных решений.</li>
+</ul>
+
+<p>В Alfa API представлены следующие типы интеграций: </p>
+
+<ul>
+<li><strong>партнерские сервисы</strong>. При данном типе интеграции данные из системы &quot;Альфа-Бизнес Онлайн&quot; подключаются к другим сервисам.</li>
+<li><strong>H2H-интеграции</strong> - это прямой канал взаимодействия систем Банка и клиента, при котором  данные организации передаются через API. </li>
+<li><strong>холдинги</strong> совмещают в себе возможности партнерских сервисов и H2H-интеграции. </li>
+</ul>
+<h3 id='5c6f13338e'>Терминология:</h3>
+<p><strong>Alfa API</strong> - это канал предоставления банковских продуктов и услуг, а также инструмент их безопасной интеграции в бизнес-процессы Партнеров API.</p>
+
+<p><strong>Alfa ID</strong> - единая учетная запись пользователя ЮЛ (юридического лица)/ ФЛ (физического лица), используемая для регистрации и входа пользователей в продукты и сервисы Банка и Партнеров API, а также инструмент привлечения не-клиентов Банка. Взаимодействие между Банком и клиентом осуществляется по спецификациям  oAuth 2.0 (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RCF 6749</a>, <a href="https://datatracker.ietf.org/doc/html/rfc6750">RCF 6750</a>,<a href="https://datatracker.ietf.org/doc/html/rfc6819">RCF 6819</a>) и <a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC 1.0</a>. Взаимодействие между Банком и Партнером API осуществляется на основании юридически значимого согласия клиента на передачу персональных данных. </p>
+
+<p><strong>Альфа-Бизнес Онлайн</strong> - интернет-банк для юридических лиц - организаций /физических лиц - индивидуальных предпринимателей.</p>
+
+<p><strong>Банк</strong>- АО &quot;Альфа-Банк&quot;.</p>
+
+<p><strong>Партнер API</strong> – клиент Банка, использующий канал Alfa API для проведения интеграции своей системы и системы/сервисов Банка.  Для Партнера API необходимо заключить <em>Договор  на информационно-технологическое взаимодействие</em> в целях использования канала Alfa API. </p>
+
+<p><span class="custom__cmd-command-text">
+ access_token
+</span> - токен, необходимый для вызова методов и направления запросов. Access_token необходимо получить в Alfa ID. Авторизация запроса проводится по access_token.  </p>
 <h2 id='alfa-api-2'>Подключение к Alfa API</h2>
 <p>Для подключения к Alfa API необходимо выполнить действия:</p>
 
 <p>Шаг 1. <strong><a href="https://alfabank.ru/sme/quick/docstariffs/">Стать клиентом «Альфа-Банка»</a></strong>, оформить <a href="https://alfabank.ru/sme/">расчетно-кассовое обслуживание</a> и <a href="https://alfabank.ru/corporate/rko/internet-bank/#form">подключить «Альфа-Бизнес Онлайн»</a>, подписав пакет документов. </p>
 
-<p>Шаг 2. <strong>Подписать электронные формы</strong>: </p>
+<p>Шаг 2. <strong>Подписать формы</strong>: </p>
 
 <ul>
-<li>согласия на подключение сервиса Alfa API (в интерфейсе системы &quot;Альфа-Бизнес Онлайн&quot;), </li>
-<li>согласия на передачу персональных данных посредством Alfa ID (в интерфейсе системы &quot;Альфа-Бизнес Онлайн&quot;),</li>
-<li>договора на информационно-технологическое обслуживание и приложений к нему (с помощью <a href="https://www.gosuslugi.ru/help/faq/login/2062">усиленной квалифицированной электронной подписи</a>). </li>
+<li>согласия на подключение сервиса Alfa API (в электронном виде в интерфейсе системы &quot;Альфа-Бизнес Онлайн&quot;), </li>
+<li>согласия на передачу персональных данных посредством Alfa ID (в электронном виде в интерфейсе системы &quot;Альфа-Бизнес Онлайн&quot;), </li>
+<li>договора на информационно-технологическое обслуживание и приложений к нему (заключается в индивидуальном порядке с персональным менеджером/в отделении банка). </li>
 </ul>
 
-<p><em>Комиссия за использование Alfa API составляет 2900 рублей за отчетный период (квартал).</em></p>
+<p><em>Комиссия за подключение и использование не взимается.</em></p>
 
-<p>Шаг 3. <strong>Ознакомиться с требованиями к <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS-сертификату</a></strong>. </p>
+<p>Шаг 3. <strong>Получить от банка credentials</strong> (для тестового и промышленного контура).</p>
+
+<p>После подписания форм клиент направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> запрос на получение credentials, указав в теме письма &quot;Получение <span class="custom__cmd-command-text">
+ client_id
+</span> , <span class="custom__cmd-command-text">
+ clent_secret 
+</span>&quot;. Сотрудники Банка отправляют необходимые credentials клиенту. </p>
+
+<p>Шаг 4. <strong>Реализовать и протестировать получение access_token в Альфа ID</strong>. 
+Подробнее в разделе &quot;Тестирование&quot; (раздел в подготовке).</p>
+
+<p>Шаг 5. <strong>Реализовать и протестировать  Альфа API, используя access_token</strong>.
+Подробнее в разделе &quot;Тестирование&quot; (раздел в подготовке).</p>
+
+<p>Шаг 6. <strong>Сообщить об успешном теститировании</strong>.
+После проведения успешного тестирования клиент направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> письмо о проведенном тестировании. Тема письма: &quot;Завершенное тестирование&quot;.</p>
+
+<p>Шаг 7. <strong>Выпустить <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS-сертификат</a></strong>. </p>
 
 <p>Для использования методов API нужен сертификат, выпущенный Альфа-Банком. 
-Для создания запроса на сертификат сертификата, необходимо пройти проверку системы Парнера API.</p>
+Для создания запроса на сертификат сертификата, необходимо пройти проверку системы Партнера API.</p>
 <h3 id='global-subject'>Global Subject</h3>
 <table><thead>
 <tr>
@@ -412,7 +458,7 @@
 </tr>
 </tbody></table>
 
-<p>Шаг 4. <strong>Подготовить файлы конфигурации</strong>.</p>
+<p><strong>Подготовить файлы конфигурации</strong>.</p>
 
 <ul>
 <li><p>если вы используйте Mac OS, пример заполненного файла: 
@@ -421,12 +467,12 @@
 <a download="openssl.cnf" href="https://alfaapi.github.io/alfaapi/config/openssl_win.config">Конфиг Windows openssl.cnf</a> </p></li>
 </ul>
 
-<p>Шаг 5. <strong>Создать и направить запрос на использование TLS-сертификата</strong>.</p>
+<p><strong>Создать и направить запрос на использование TLS-сертификата</strong>.</p>
 
 <p>Для использования методов API нужен сертификат, выпущенный Банком. Для направления запроса на использование сертификата: </p>
 
 <ul>
-<li><p>установите <a href="https://www.openssl.org">openssl</a> на вашу платформу;</p></li>
+<li><p>установите <a href="https://www.openssl.org">openssl</a> или другие инструменты <a href="https://kontur.ru/ca/spravka/20853-chto_takoe_skzi?ysclid=kzh4olzs8k">СКЗИ</a> на вашу платформу;</p></li>
 <li><p>сгенерируйте <strong>закрытый ключ</strong>, введя команду в терминале:</p></li>
 </ul>
 
@@ -451,23 +497,24 @@ openssl req -noout -text -in name.csr
 </span></p>
 
 <ul>
-<li><p>отправьте запрос на сертификат на почтовый адрес <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> с указанием темы письма &quot;Запрос на сертификат&quot;. Никому не передавайте закрытый ключ. При компрометации закрытого ключа Партнер API несет ответственность за его компрометацию.</p></li>
-<li><p>получите выпущенный сертификат, направленный с почтового адреса <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a>. Срок выпуска сертификата - 375 дней.</p></li>
+<li><p>отправьте запрос на сертификат на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> с указанием темы письма &quot;Запрос на сертификат&quot;. Никому не передавайте закрытый ключ. </p></li>
+<li><p>получите выпущенный сертификат, направленный с почтового адреса <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a>. Срок выпуска сертификата - 375 дней. По истечении срока действия сертификата выполнить его повторную генерацию. </p></li>
 </ul>
+
+<p>В случае компрометации закрытого ключа Партнер API направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> запрос на </p>
+
+<p>Шаг 8. <strong>Начать использовать Alfa API</strong>.</p>
+
+<p>Для вызова методов API все запросы передаются на <a href="https://baas.alfabank.ru/api">https://baas.alfabank.ru/api</a>.</p>
 <h2 id='alfa-id'>Аутенификация в Alfa ID</h2>
-<ul>
-<li>как пройти аутентификацию запроса;</li>
-<li>сообщения об ошибках, связанных с неверной аутентификацией;</li>
-<li>чувствительность информации аутентификации;</li>
-<li>период действия токена доступа (авторизации).</li>
-</ul>
+<p>Раздел в работе. </p>
 <h1 id='api'>Методы API</h1>
 <p>Список методов для работы с данными Alfa API:</p>
 
 <ul>
 <li><a href="#customer-info">Метод &quot;Информация о профиле организации.Customer-info&quot;.</a></li>
 <li><a href="#96664dce87">Метод &quot;Операции по счетам&quot;</a></li>
-<li>Метод &quot;Рублевое платежное поручение&quot;</li>
+<li>Метод &quot;Рублевое платежное поручение&quot; </li>
 </ul>
 <h2 id='customer-info'>Метод «Информация о профиле организации. Customer-info».</h2>
 <p>Метод позволяет получить информацию о профиле организации и ее счетах.</p>
@@ -492,6 +539,11 @@ curl <span class="nt">-X</span> GET /customer-info <span class="se">\</span>
 <th style="text-align: left">Предопределенное значение</th>
 </tr>
 </thead><tbody>
+<tr>
+<td style="text-align: left">Accept</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">application/json</td>
+</tr>
 <tr>
 <td style="text-align: left">Authorization</td>
 <td style="text-align: left">String</td>
@@ -630,7 +682,7 @@ Accept: application/json
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth ( Scopes: customer_info )
 </aside>
-<h2 id='schemas'>Schemas</h2>
+<h3 id='schemas'>Schemas</h3>
 <h3 id="tocS_ClientInfo">ClientInfo</h3>
 
 <!-- backwards compatibility -->
@@ -1473,11 +1525,30 @@ bearerAuth ( Scopes: customer_info )
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET https://wsinttest.alfabank.ru:2943/api/statement/transactions?accountNumber<span class="o">=</span>0&amp;statementDate<span class="o">=</span>string <span class="se">\</span>
+curl <span class="nt">-X</span> GET /statement/transactions <span class="se">\ </span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
 </code></pre></div>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Accept</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">application/json</td>
+</tr>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
 <p><code>GET /statement/transactions</code></p>
 
 <p><em>Получение выписки по операциям</em></p>
@@ -1747,7 +1818,7 @@ curl <span class="nt">-X</span> GET https://wsinttest.alfabank.ru:2943/api/state
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h2 id='schemas-2'>Schemas</h2>
+<h3 id='schemas-2'>Schemas</h3>
 <h3 id="tocS_ClientInfo">ClientInfo</h3>
 
 <!-- backwards compatibility -->
@@ -3717,7 +3788,7 @@ bearerAuth
 <td>Наименование плательщика</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-5'>Enumerated Values</h4>
+<h3 id='enumerated-values-5'>Enumerated Values</h3>
 <table><thead>
 <tr>
 <th>Property</th>
