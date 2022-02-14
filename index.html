@@ -282,7 +282,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-93259523.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-5a7e8d2d.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
 
@@ -310,16 +310,19 @@
                   <li>
                     <a href="#alfa-id" class="toc-h2 toc-link" data-title="Аутенификация в Alfa ID">Аутенификация в Alfa ID</a>
                   </li>
+                  <li>
+                    <a href="#sandbox" class="toc-h2 toc-link" data-title="Песочница (Sandbox)">Песочница (Sandbox)</a>
+                  </li>
               </ul>
           </li>
           <li>
             <a href="#api" class="toc-h1 toc-link" data-title="Методы API">Методы API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#customer-info" class="toc-h2 toc-link" data-title="Метод «Информация о профиле организации. Customer-info».">Метод «Информация о профиле организации. Customer-info».</a>
+                    <a href="#customer-info" class="toc-h2 toc-link" data-title="«Информация о профиле организации. Customer-info».">«Информация о профиле организации. Customer-info».</a>
                   </li>
                   <li>
-                    <a href="#96664dce87" class="toc-h2 toc-link" data-title="Метод «Операции по счетам».">Метод «Операции по счетам».</a>
+                    <a href="#deba1a5836" class="toc-h2 toc-link" data-title="«Операции по счетам».">«Операции по счетам».</a>
                   </li>
               </ul>
           </li>
@@ -329,42 +332,21 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='alfa-api'>Спецификация Alfa API</h1><h2 id='3394112aa9'>Введение</h2>
-<p>При создании Alfa API использовался следующий стек технологий: принципы <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">RESTful</a>, протоколы <strong>oAuth 2.0</strong> (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RCF 6749</a>, <a href="https://datatracker.ietf.org/doc/html/rfc6750">RCF 6750</a>,<a href="https://datatracker.ietf.org/doc/html/rfc6819">RCF 6819</a> и другие ), <strong><a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC 1.0</a></strong>, открытые стандарты <a href="JWS">JSON Web Signature</a>, <a href="JWE">JSON Web Encryption</a>, синхронный обмен данными.  API позволяет внешнему приложению обращаться к программным системам внутри самого Банка.</p>
-
-<p>Alfa API помогает всем сегментам бизнеса, финтех-организациям, разработчикам встраивать в свои продукты и процессы возможности банковских продуктов.</p>
-
-<p>Преимущества Alfa API для бизнеса: </p>
-
-<ul>
-<li>экономия на разработке и доработке ПО (бесшовный переход между системами Банка и системами Партнера API, интеграция платежных методов для B2B и B2C); </li>
-<li>автоматизация бизнес-процессов (взаимодействие с CRM и ERP системами, обмен данными с банком по организации и организациям холдинга, исключение ошибок сотрудников);</li>
-<li>удобство использования (создание и подписание платежных документов непосредственно в учетной системе);</li>
-<li>управление финансами (использование инструментов Cash management, автоматизация взимания комиссии с клиентов); </li>
-<li>сокращение издержек на использование банковских сервисов (пакетные предложения от Банка).</li>
-</ul>
-
-<p>Преимущества для разработчиков и финтех-компаний: </p>
-
-<ul>
-<li>использование инновационных сервисов для B2B и B2C клиентов с применением технологий Альфа-Банка;</li>
-<li>сокращение времени на написание кода и внедрение платежных решений.</li>
-</ul>
+<p>Alfa API помогает бизнесу обеспечить бесшовное взаимодействие с Банком и встроить банковские  услуги в свои продукты и процессы. </p>
 
 <p>В Alfa API представлены следующие типы интеграций: </p>
 
 <ul>
-<li><strong>партнерские сервисы</strong>. При данном типе интеграции данные из системы &quot;Альфа-Бизнес Онлайн&quot; подключаются к другим сервисам.</li>
-<li><strong>H2H-интеграции</strong> - это прямой канал взаимодействия систем Банка и клиента, при котором  данные организации передаются через API. </li>
-<li><strong>холдинги</strong> совмещают в себе возможности партнерских сервисов и H2H-интеграции. </li>
+<li><strong>партнерские сервисы</strong>. При данном типе интеграции предоставляется возможность использовать бесшовную аутентификацию и продукты Банка для оказания услуг клиентам.</li>
+<li><strong>H2H-интеграции</strong> - это прямой канал взаимодействия систем Банка и клиента, с помощью которого можно встроить банковские продукты и услуги в ERP-системы организации. </li>
+<li><strong>холдинги</strong> предоставляют возможность для головной организации выполнять казначейские функции по своим дочерним компаниям. </li>
 </ul>
+
+<p>При создании Alfa API использовались спецификации <strong>oAuth 2.0</strong> (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RCF 6749</a> ), <strong><a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC 1.0</a></strong>, формат <a href="https://www.json.org/json-en.html">JSON</a>, открытые стандарты <a href="JWS">JSON Web Signature</a>, <a href="JWE">JSON Web Encryption</a>, <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">RESTful</a> архитектура, синхронный обмен данными.  </p>
 <h3 id='5c6f13338e'>Терминология:</h3>
 <p><strong>Alfa API</strong> - это канал предоставления банковских продуктов и услуг, а также инструмент их безопасной интеграции в бизнес-процессы Партнеров API.</p>
 
-<p><strong>Alfa ID</strong> - единая учетная запись пользователя ЮЛ (юридического лица)/ ФЛ (физического лица), используемая для регистрации и входа пользователей в продукты и сервисы Банка и Партнеров API, а также инструмент привлечения не-клиентов Банка. Взаимодействие между Банком и клиентом осуществляется по спецификациям  oAuth 2.0 (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RCF 6749</a>, <a href="https://datatracker.ietf.org/doc/html/rfc6750">RCF 6750</a>,<a href="https://datatracker.ietf.org/doc/html/rfc6819">RCF 6819</a>) и <a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC 1.0</a>. Взаимодействие между Банком и Партнером API осуществляется на основании юридически значимого согласия клиента на передачу персональных данных. </p>
-
-<p><strong>Альфа-Бизнес Онлайн</strong> - интернет-банк для юридических лиц - организаций /физических лиц - индивидуальных предпринимателей.</p>
-
-<p><strong>Банк</strong>- АО &quot;Альфа-Банк&quot;.</p>
+<p><strong>Alfa ID</strong> - единая учетная запись пользователя ЮЛ (юридического лица)/ ФЛ (физического лица), используемая для регистрации и входа пользователей в продукты и сервисы Банка и Партнеров API, а также инструмент привлечения не-клиентов Банка. Взаимодействие между Банком и клиентом осуществляется по спецификациям  oAuth 2.0 (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RCF 6749</a>) и <a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC 1.0</a>. Взаимодействие между Банком и Партнером API осуществляется на основании юридически значимого согласия клиента на передачу персональных данных. </p>
 
 <p><strong>Партнер API</strong> – клиент Банка, использующий канал Alfa API для проведения интеграции своей системы и системы/сервисов Банка.  Для Партнера API необходимо заключить <em>Договор  на информационно-технологическое взаимодействие</em> в целях использования канала Alfa API. </p>
 
@@ -386,27 +368,32 @@
 
 <p><em>Комиссия за подключение и использование не взимается.</em></p>
 
-<p>Шаг 3. <strong>Получить от банка credentials</strong> (для тестового и промышленного контура).</p>
+<p>Шаг 3. <strong>Получить от банка client_id</strong>.</p>
 
-<p>После подписания форм клиент направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> запрос на получение credentials, указав в теме письма &quot;Получение <span class="custom__cmd-command-text">
- client_id
-</span> , <span class="custom__cmd-command-text">
- clent_secret 
-</span>&quot;. Сотрудники Банка отправляют необходимые credentials клиенту. </p>
+<p>Для получения <span class="custom__cmd-command-text">
+client_id
+</span> направьте письмо на почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> c электронной почты, указанной в Договоре. В ответном письме сотрудники Банка сообщат <span class="custom__cmd-command-text">
+redirect_uri
+</span>. </p>
 
-<p>Шаг 4. <strong>Реализовать и протестировать получение access_token в Альфа ID</strong>. 
-Подробнее в разделе &quot;Тестирование&quot; (раздел в подготовке).</p>
+<p><span class="custom__cmd-command-text">
+redirect_uri
+</span> - это URL страницы, на которую переадресуется пользователь после того, как пройдет аутентификацию в Alfa ID.  </p>
 
-<p>Шаг 5. <strong>Реализовать и протестировать  Альфа API, используя access_token</strong>.
-Подробнее в разделе &quot;Тестирование&quot; (раздел в подготовке).</p>
+<p>Шаг 4. <strong>Реализовать интеграцию</strong>. </p>
 
-<p>Шаг 6. <strong>Сообщить об успешном теститировании</strong>.
-После проведения успешного тестирования клиент направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> письмо о проведенном тестировании. Тема письма: &quot;Завершенное тестирование&quot;.</p>
+<p>Реализовать и протестировать сценарий аутентификации в Alfa ID. 
+Реализовать и протестировать сценарии вызовов методов Alfa API. Подробнее в разделе &quot;Песочница&quot; (раздел в подготовке).</p>
 
-<p>Шаг 7. <strong>Выпустить <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS-сертификат</a></strong>. </p>
+<p>Шаг 5. <strong>Сообщить об успешном тестировании</strong>.</p>
 
-<p>Для использования методов API нужен сертификат, выпущенный Альфа-Банком. 
-Для создания запроса на сертификат сертификата, необходимо пройти проверку системы Партнера API.</p>
+<p>После проведения успешного тестирования клиент направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> письмо о проведенном тестировании. Тема письма: &quot;Завершенное тестирование&quot;.</p>
+
+<p>Шаг 6. <strong>Выпустить <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS-сертификат</a></strong>. </p>
+
+<p>Взаимодействие между Банком и Партнером API реализовано с использованием двухстороннего TLS-соединения, для которого необходимо выпустить сертификат.</p>
+<h3 id='182b83d408'>Требования к сертификату</h3>
+<p>Чтобы обеспечить проверку системы Партнера API на основе сертификата, в subject сертификата предусмотрены обязательные поля:</p>
 <h3 id='global-subject'>Global Subject</h3>
 <table><thead>
 <tr>
@@ -436,7 +423,7 @@
 </tr>
 </tbody></table>
 
-<p>В зависимости от правовой формы указать одно из нижеперечисленных полей:</p>
+<p>В зависимости от правовой формы должно быть указано одно из нижеперечисленных полей:</p>
 <h3 id='variable-subject'>Variable Subject</h3>
 <table><thead>
 <tr>
@@ -457,8 +444,8 @@
 <td>FOREIGNID = 1.3.6.1.4.1.16745.100.1</td>
 </tr>
 </tbody></table>
-
-<p><strong>Подготовить файлы конфигурации</strong>.</p>
+<h3 id='openssl'>Инструкция генерации закрытого ключа и запроса на сертификат в <a href="https://www.openssl.org">openssl</a>/других инструментах <a href="https://kontur.ru/ca/spravka/20853-chto_takoe_skzi?ysclid=kzh4olzs8k">СКЗИ</a>:</h3>
+<p>Подготовьте файл конфигурации, в котором будут указаны все обязательные атрибуты в subject.</p>
 
 <ul>
 <li><p>если вы используйте Mac OS, пример заполненного файла: 
@@ -467,56 +454,53 @@
 <a download="openssl.cnf" href="https://alfaapi.github.io/alfaapi/config/openssl_win.config">Конфиг Windows openssl.cnf</a> </p></li>
 </ul>
 
-<p><strong>Создать и направить запрос на использование TLS-сертификата</strong>.</p>
-
-<p>Для использования методов API нужен сертификат, выпущенный Банком. Для направления запроса на использование сертификата: </p>
-
-<ul>
-<li><p>установите <a href="https://www.openssl.org">openssl</a> или другие инструменты <a href="https://kontur.ru/ca/spravka/20853-chto_takoe_skzi?ysclid=kzh4olzs8k">СКЗИ</a> на вашу платформу;</p></li>
-<li><p>сгенерируйте <strong>закрытый ключ</strong>, введя команду в терминале:</p></li>
-</ul>
+<p>Cгенерируйте <strong>закрытый ключ</strong>, введя команду в терминале:</p>
 
 <p><span class="custom__cmd-command-text">
  openssl genrsa -des3 -out name.key 2048
 </span></p>
 
-<ul>
-<li>на основе созданного ключа сгенерируйте <strong>запрос на сертификат (CSR)</strong> с приватным ключом RSA: </li>
-</ul>
+<p>На основе созданного ключа сгенерируйте <strong>запрос на сертификат (CSR)</strong> с приватным ключом RSA: </p>
 
 <p><span class="custom__cmd-command-text">
 openssl req -new -key name.key -out name.csr
 </span></p>
 
-<ul>
-<li>для <strong>проверки запроса на сертификат</strong> можно использовать команду в терминале:</li>
-</ul>
+<p>Проверьте <strong>наличие обязательных атрибутов в Subject</strong>  созданного запроса на сертификат:</p>
 
 <p><span class="custom__cmd-command-text">
 openssl req -noout -text -in name.csr
 </span></p>
 
-<ul>
-<li><p>отправьте запрос на сертификат на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> с указанием темы письма &quot;Запрос на сертификат&quot;. Никому не передавайте закрытый ключ. </p></li>
-<li><p>получите выпущенный сертификат, направленный с почтового адреса <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a>. Срок выпуска сертификата - 375 дней. По истечении срока действия сертификата выполнить его повторную генерацию. </p></li>
-</ul>
+<p><a download="openssl.cnf" href="https://github.com/alfaapi/alfaapi/blob/main/Images_main/picture1.png?raw=true"><strong>Пример запроса на сертификат</strong></a> с указанием INN = 1.2.643.3.131.1.1.</p>
 
-<p>В случае компрометации закрытого ключа Партнер API направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> запрос на </p>
+<p>Отправьте запрос на сертификат на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> с указанием темы письма &quot;Запрос на сертификат&quot;. Письмо должно быть направлено с электронной почты, указанной в Договоре. Никому не передавайте закрытый ключ. </p>
+
+<p>Получите выпущенный сертификат, направленный с почтового адреса <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a>. Срок выпуска сертификата - 375 дней. По истечении срока действия сертификата выполнить его повторную генерацию. </p>
+
+<p>В случае компрометации закрытого ключа Партнер API направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> запрос на повторный выпуск сертификата. </p>
+
+<p><strong>Порядок повторного выпуска сертификата</strong>:</p>
+
+<p>Партнер, не ранее чем за три месяца и не позднее, чем за один месяц до истечения действия сертификата, формирует и направляет запрос на сертификат в Банк. Контроль за сохранностью и сроками действия сертификатов возлагается на Партнера. В случае, если Партнер по каким-либо причинам, утратил сертификат, не предоставил запрос на сертификат или не выполнил установку нового сертификата на своей стороне, в том числе и в настройках приложения на портале, то вся ответственность по простою из-за утраты доступа к Альфа API возлагается на Партнера. В целях минимизации рисков просрочки сроков выпуска, предусмотрено автоматическое оповещение об истечении сроков действия сертификата.</p>
 
 <p>Шаг 8. <strong>Начать использовать Alfa API</strong>.</p>
 
-<p>Для вызова методов API все запросы передаются на <a href="https://baas.alfabank.ru/api">https://baas.alfabank.ru/api</a>.</p>
+<p>Для запросов в Alfa ID используйте адрес <a href="https://baas.alfabank.ru/sso">https://baas.alfabank.ru/sso</a>.
+Для  запросов Alfa API используйте адрес <a href="https://baas.alfabank.ru/api">https://baas.alfabank.ru/api</a>.</p>
 <h2 id='alfa-id'>Аутенификация в Alfa ID</h2>
 <p>Раздел в работе. </p>
+<h2 id='sandbox'>Песочница (Sandbox)</h2>
+<p>Раздел в работе</p>
 <h1 id='api'>Методы API</h1>
 <p>Список методов для работы с данными Alfa API:</p>
 
 <ul>
-<li><a href="#customer-info">Метод &quot;Информация о профиле организации.Customer-info&quot;.</a></li>
-<li><a href="#96664dce87">Метод &quot;Операции по счетам&quot;</a></li>
-<li>Метод &quot;Рублевое платежное поручение&quot; </li>
+<li><a href="#customer-info">&quot;Информация о профиле организации.Customer-info&quot;.</a></li>
+<li><a href="#deba1a5836">&quot;Операции по счетам&quot;</a></li>
+<li>&quot;Рублевое платежное поручение&quot; (будет реализован позже)</li>
 </ul>
-<h2 id='customer-info'>Метод «Информация о профиле организации. Customer-info».</h2>
+<h2 id='customer-info'>«Информация о профиле организации. Customer-info».</h2>
 <p>Метод позволяет получить информацию о профиле организации и ее счетах.</p>
 
 <!-- Generator: Widdershins v4.0.1 -->
@@ -1516,7 +1500,7 @@ bearerAuth ( Scopes: customer_info )
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
-<h2 id='96664dce87'>Метод «Операции по счетам».</h2>
+<h2 id='deba1a5836'>«Операции по счетам».</h2>
 <p>Метод позволяет получить список операций по одному счету за один день.</p>
 
 <!-- Generator: Widdershins v4.0.1 -->
@@ -1811,6 +1795,24 @@ curl <span class="nt">-X</span> GET /statement/transactions <span class="se">\ <
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-traceid</td>
+<td>string</td>
+<td></td>
+<td>Идентификатор трассировки запроса</td>
 </tr>
 </tbody></table>
 
