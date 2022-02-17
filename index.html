@@ -489,7 +489,1034 @@ openssl req -noout -text -in name.csr
 <p>Для запросов в Alfa ID используйте адрес <a href="https://baas.alfabank.ru/sso">https://baas.alfabank.ru/sso</a>.
 Для  запросов Alfa API используйте адрес <a href="https://baas.alfabank.ru/api">https://baas.alfabank.ru/api</a>.</p>
 <h2 id='alfa-id'>Аутенификация в Alfa ID</h2>
-<p>Раздел в работе. </p>
+<p>Для отправки запросов в Alfa API необходимо пройти  аутентификацию в Alfa ID пользователю, от имени которого будут направляться запросы в Alfa API. Получение Access token - необходимое условие для прохождения аутентификации пользователя. Аутентификация и авторизация происходит с использованием Authorization Code Flow.</p>
+
+<p>Аутентификация выполняется путем переадресации пользователя с запросом /authorize на страницу входа в Alfa ID и запроса /token для получения Access token.</p>
+
+<p>Пройдите следующие шаги аутентификации: </p>
+
+<p>Шаг 1. <strong>Получение кода авторизации</strong>  (получение Authentification Code) {GET /authorize}. 
+URL:  <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oidc/authorize</a></p>
+
+<p><strong>Откройте окно &quot;Вход через Alfa ID&quot;</strong>:</p>
+
+<p><img src="images/picture3-60e663a1.png" alt="enter image description here" /> </p>
+
+<p><strong>Введите логин и пароль</strong>:</p>
+
+<p><img src="images/picture4-e632798c.png" alt="enter image description here" /> </p>
+
+<p><strong>Подпишите форму согласия</strong>:</p>
+
+<p><img src="images/picture2-9d14a3ea.png" alt="enter image description here" /> </p>
+
+<p><strong>Произойдет переадресация на запрос</strong>:</p>
+
+<p><a href="https://id.alfabank.ru/oidc/authorize?response_type=code&client_id=0cee0683-85ae-49f2-a63d-29f97aad1911&redirect_uri=https%3A%2F%2Fwwww.partner.ru%2Fcode&scope=openid&state=abcdef">https://id.alfabank.ru/oidc/authorize?response_type=code&amp;client_id=0cee0683-85ae-49f2-a63d-29f97aad1911&amp;redirect_uri=https%3A%2F%2Fwwww.partner.ru%2Fcode&amp;scope=openid&amp;state=abcdef</a> со параметрами, указанными ниже.     </p>
+
+<!-- Generator: Widdershins v4.0.1 -->
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://id.alfabank.ru/oidc/authorize?response_type<span class="o">=</span>code&amp;client_id<span class="o">=</span>0cee0683-85ae-49f2-a63d-29f97aad1911&amp;redirect_uri<span class="o">=</span>https%3A%2F%2Fwwww.partner.ru%2Fcode&amp;scope<span class="o">=</span>openid&amp;state<span class="o">=</span>abcdef
+
+</code></pre></div>
+<p><code>GET /authorize</code></p>
+
+<p><em>Получение кода авторизации</em></p>
+
+<h3 id="get__authorize-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>response_type</td>
+<td>query</td>
+<td>string</td>
+<td>true</td>
+<td>Тип ответа (code)</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>query</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>Идентификатор партнерского сервиса</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>query</td>
+<td>string</td>
+<td>true</td>
+<td>URI перенаправления</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>query</td>
+<td>string</td>
+<td>true</td>
+<td>Область применения</td>
+</tr>
+<tr>
+<td>state</td>
+<td>query</td>
+<td>string</td>
+<td>true</td>
+<td>Параметр для предотвращения межсайтовой подделки запросов</td>
+</tr>
+<tr>
+<td>nonce</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Параметр для связывания клиентского сеанса с идентификатором токена и для смягчения атак повторного воспроизведения</td>
+</tr>
+<tr>
+<td>code_challenge</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Код вызова</td>
+</tr>
+<tr>
+<td>code_challenge_method</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Метод преобразования кода верификатора ({plain, S256})</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>query</td>
+<td>string</td>
+<td>false</td>
+<td>Параметр повторной аутентификации и согласия ({none, login, consent, select_account})</td>
+</tr>
+<tr>
+<td>max_age</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Максимальный период аутентификации</td>
+</tr>
+</tbody></table>
+<h3 id='enumerated-values'>Enumerated Values</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>response_type</td>
+<td>code</td>
+<td>Тип ответа указывает, что ваш сервер ожидает получения кода авторизации</td>
+</tr>
+<tr>
+<td>code_challenge_method</td>
+<td>plain</td>
+<td>Код верификатор</td>
+</tr>
+<tr>
+<td>code_challenge_method</td>
+<td>S256</td>
+<td>BASE64URL-ENCODE(SHA256(ASCII(Код верификатор)))</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>none</td>
+<td>Сервер авторизации НЕ ДОЛЖЕН отображать какие-либо страницы пользовательского интерфейса аутентификации или согласия.</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>login</td>
+<td>Сервер авторизации ДОЛЖЕН запросить у конечного пользователя повторную аутентификацию.</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>consent</td>
+<td>Сервер авторизации ДОЛЖЕН запросить у конечного пользователя согласие, прежде чем возвращать информацию Клиенту.</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>select_account</td>
+<td>Сервер авторизации ДОЛЖЕН предложить Конечному пользователю выбрать учетную запись пользователя</td>
+</tr>
+</tbody></table>
+
+<p>Пользователь возвращается в приложение Партнера API.  Происходит возврат ответ на redirect_uri, указанный в запросе. Пользователь с кодом приложения Партнера API меняет его на access_token. </p>
+
+<p>При получении ответа 302 (Found), код авторизации получен.</p>
+
+<h3 id="get__authorize-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>302</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.4.3">Found</a></td>
+<td>FOUND</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<h3 id='response-headers'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>302</td>
+<td>Location</td>
+<td>string</td>
+<td></td>
+<td>Содержит URI для перенаправления</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Set-Cookie</td>
+<td>string</td>
+<td></td>
+<td>Содержит идентификатор сессии</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<p>В случае направления ошибки параметр error принимает следующие значения: </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Значение</th>
+<th style="text-align: left">Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">unsupported_response_type</td>
+<td style="text-align: left">Сервер авторизации не поддерживает получение кода авторизации этим методом.</td>
+</tr>
+<tr>
+<td style="text-align: left">login_required</td>
+<td style="text-align: left">Сервер авторизации требует аутентификации конечного пользователя. Эта ошибка МОЖЕТ быть возвращена, если значение параметра подсказки в запросе аутентификации равно none, но запрос аутентификации не может быть выполнен без отображения пользовательского интерфейса для аутентификации конечного пользователя.</td>
+</tr>
+<tr>
+<td style="text-align: left">invalid_scope</td>
+<td style="text-align: left">Запрошенная область применения недопустима, неизвестна или имеет неправильный формат.</td>
+</tr>
+<tr>
+<td style="text-align: left">invalid_request</td>
+<td style="text-align: left">В запросе отсутствует обязательный параметр, он включает недопустимое значение параметра, включает параметр более одного раза или имеет другой неправильный формат.</td>
+</tr>
+<tr>
+<td style="text-align: left">consent_required</td>
+<td style="text-align: left">Сервер авторизации требует согласия конечного пользователя. Эта ошибка МОЖЕТ быть возвращена, если значение параметра prompt в запросе аутентификации равно none, но запрос аутентификации не может быть выполнен без отображения пользовательского интерфейса для согласия конечного пользователя.</td>
+</tr>
+<tr>
+<td style="text-align: left">access_denied</td>
+<td style="text-align: left">Владелец ресурса или сервер авторизации отклонил запрос.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Описание клэймов ID_TOKEN</strong>:</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>iss</td>
+<td>Идентификатор эмитента (Issuer) для эмитента ответа. Значение iss является чувствительным к регистру URL-адресом, использующим схему https, которая содержит схему, хост и, необязательно, номер порта и компоненты пути, а не компоненты запроса или фрагмента</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>Идентификатор субъекта. Локально уникальный и никогда не переназначаемый идентификатор в Эмитенте для конечного пользователя, который предназначен для использования Клиентом (client). Его длина НЕ ДОЛЖНА превышать 255 символов ASCII. sub - это строка с учетом регистра</td>
+</tr>
+<tr>
+<td>aud</td>
+<td>Аудитория, для которой предназначен этот идентификационный токен. Он ДОЛЖЕН содержать client_id OAuth 2.0 проверяющей стороны в качестве значения. Он также МОЖЕТ содержать идентификаторы для других аудиторий. В общем случае значение aud представляет собой массив строк с учетом регистра. В общем особом случае, когда есть одна аудитория, значение aud МОЖЕТ быть одной строкой, чувствительной к регистру</td>
+</tr>
+<tr>
+<td>exp</td>
+<td>Время истечения срока действия, по истечении которого идентификационный токен НЕ ДОЛЖЕН приниматься в обработку. Обработка этого параметра требует, чтобы текущая дата/время ДОЛЖНЫ быть до даты/времени истечения срока действия, указанных в значении. Значение представляет собой число JSON, представляющее количество секунд с 1970-01-01T0:0:0Z в формате UTC до даты/времени</td>
+</tr>
+<tr>
+<td>iat</td>
+<td>Время, когда был выпущен JWT. Его значение представляет собой число JSON, представляющее количество секунд с 1970-01-01T0:0:0Z в формате UTC до даты/времени</td>
+</tr>
+<tr>
+<td>auth_time</td>
+<td>Время, когда произошла аутентификация конечного пользователя. Его значение представляет собой число JSON, представляющее количество секунд с 1970-01-01T0:0:0Z в формате UTC до даты/времени</td>
+</tr>
+<tr>
+<td>nonce</td>
+<td>Строковое значение, используемое для связывания сессии клиента (Client) с идентификационным токеном и для смягчения атак повторного воспроизведения. Значение nonce - это строка с учетом регистра</td>
+</tr>
+<tr>
+<td>acr</td>
+<td>Ссылка на класс контекста аутентификации. Строка, указывающая значение ссылки на класс контекста аутентификации, которое идентифицирует класс контекста аутентификации, которым аутентификация выполнена. Значение acr - это строка с учетом регистра</td>
+</tr>
+<tr>
+<td>azp</td>
+<td>Авторизованная сторона - сторона, которой был выдан идентификационный токен. Если он присутствует, он ДОЛЖЕН содержать идентификатор (client_id) клиента OAuth 2.0 этой стороны. Значение azp - это чувствительная к регистру строка</td>
+</tr>
+</tbody></table>
+
+<p>Шаг 2. <strong>Получение токена доступа (получение access_token)</strong> {POST /token}. </p>
+
+<p>Для получения токена доступа необходимо <strong>вызвать метод</strong> <a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a> со следующими параметрами:</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+
+</code></pre></div>
+<p><code>POST /token</code></p>
+
+<p>Получение токена доступа</p>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"grant_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authorization_code"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8962c304-89b1-11ec-a8a3-0242ac120002"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0cee0683-85ae-49f2-a63d-29f97aad1911"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qwerty1234567890Qwerty1234567890!"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"redirect_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://wwww.partner.ru/code"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code_verifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="post__token-parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaaccesstokenrequest">AccessTokenRequest</a></td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjI4ZTY4ZS1jYzM0LTRiODItYjQzZC00OTExMmI1ZDlkM2UiLCJhdWQiOiIwY2VlMDY4My04NWFlLTQ5ZjItYTYzZC0yOWY5N2FhZDE5MTEiLCJpc3MiOiJodHRwczpcL1wvaWQuYWxmYWJhbmsucnUiLCJleHAiOjE2MzE2NjY2NjMsInNjb3BlX3NlcnZpY2VzIjpbInBheW1lbnQiLCJzdGF0ZW1lbnQiXSwiaWF0IjoxNjMxNjYzMDYzLCJzY29wZV9jbGFpbXMiOlsibmFtZSIsImdpdmVuX25hbWUiLCJmYW1pbHlfbmFtZSIsIm1pZGRsZV9uYW1lIiwiZW1haWwiLCJwaG9uZV9udW1iZXIiXX0.RZ98I-PT_HGMzc7IbwGvlZjLOYuInta6pczEc_h4yCvZKCafIqs4ZBbs7eSY3NpXGzTbSZkGQA9wfX2NFDXZelwyNTooFQMpXzytrEhLww05H8ZFCH0kEQ_IpnJk-KeYkBLD0Oa75Gi6Lqj-Dr8KoX4Zq93ZyT4sr7Hzb1H287UlkJWVlpz_E7slLIob8m3keGbDysNyEBKJzsPcW27HENZBnvYwdE1pzwB8ObEZkICO8kbEP7MupLbhFyjxJFlI6Bq2DNjqi_QgQzvjvpD4KILxDms-Upg8h6GptYyoOl1BMGfN7WhN2vOUFYNuivNKctwcfD_H73kHJGu5KIJmGA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13b8230b-b6bf-4bb9-b977-3bc0a988a5fd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjI4ZTY4ZS1jYzM0LTRiODItYjQzZC00OTExMmI1ZDlkM2UiLCJhdWQiOiIwY2VlMDY4My04NWFlLTQ5ZjItYTYzZC0yOWY5N2FhZDE5MTEiLCJhY3IiOiJMb0EzIiwiYXpwIjoiMGNlZTA2ODMtODVhZS00OWYyLWE2M2QtMjlmOTdhYWQxOTExIiwiYXV0aF90aW1lIjoxNjMxNjYzMDUzLCJpc3MiOiJodHRwczpcL1wvaWQuYWxmYWJhbmsucnUiLCJleHAiOjE2MzE2NjY2NjMsImlhdCI6MTYzMTY2MzA2Mywibm9uY2UiOiJuLTBTNl9XekEyTWoifQ.xBE6LEUxOKleHCZVQacldJfKr5KtyyvJKCCmInqapmRJ_aRF-cEoVfpJd_kxlNmJYT7AcjMMppovNkmhB49VL5DK8FhF0fvRgLskKR9Eohy4eiC8ued03Z1LyLz1H7EcKSkusaCIajzIvxxZfVtSHI4jmgLg6ItXPdZgIDUWINgESkl6I7IP5CbfONHweNnbkWEOEzxDgGGnxxtPxrWVoPVP-ijUeUSH_iESHfrhY_ePRMYi2If62IsKX_0GT5BHRYOhXVDZ9fyn5fRCvg8_QoCykDVIOZMtWQ3w4TadqS0dfMlsLBxkVbVftzH2fWRLTCX3SJ5AXiytHkpow8V45w"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="post__token-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td><a href="#schemaaccesstokenresponse">AccessTokenResponse</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>BAD REQUEST</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers-2'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Content-Type</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Cache-Control</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>200</td>
+<td>Pragma</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Content-Type</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Cache-Control</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Pragma</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h3 id='schemas'>Schemas</h3>
+<h3 id="tocS_AccessTokenRequest">AccessTokenRequest</h3>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaccesstokenrequest"></a>
+<a id="schema_AccessTokenRequest"></a>
+<a id="tocSaccesstokenrequest"></a>
+<a id="tocsaccesstokenrequest"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"grant_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authorization_code"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8962c304-89b1-11ec-a8a3-0242ac120002"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0cee0683-85ae-49f2-a63d-29f97aad1911"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qwerty1234567890Qwerty1234567890!"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"redirect_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://wwww.partner.ru/code"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code_verifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>grant_type</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Тип гранта (authorization_code)</td>
+</tr>
+<tr>
+<td>code</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>none</td>
+<td>Код авторизации</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>none</td>
+<td>Идентификатор партнерского сервиса</td>
+</tr>
+<tr>
+<td>client_secret</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Секретный ключ партнерского сервиса</td>
+</tr>
+<tr>
+<td>redirect_uri</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>URI перенаправления</td>
+</tr>
+<tr>
+<td>code_verifier</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Код верификатор</td>
+</tr>
+</tbody></table>
+<h3 id='enumerated-values-2'>Enumerated Values</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>grant_type</td>
+<td>authorization_code</td>
+<td>Сообщает конечной точке токена, что приложение использует тип предоставления кода авторизации</td>
+</tr>
+</tbody></table>
+
+<h3 id="tocS_AccessTokenResponse">AccessTokenResponse</h3>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaaccesstokenresponse"></a>
+<a id="schema_AccessTokenResponse"></a>
+<a id="tocSaccesstokenresponse"></a>
+<a id="tocsaccesstokenresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjI4ZTY4ZS1jYzM0LTRiODItYjQzZC00OTExMmI1ZDlkM2UiLCJhdWQiOiIwY2VlMDY4My04NWFlLTQ5ZjItYTYzZC0yOWY5N2FhZDE5MTEiLCJpc3MiOiJodHRwczpcL1wvaWQuYWxmYWJhbmsucnUiLCJleHAiOjE2MzE2NjY2NjMsInNjb3BlX3NlcnZpY2VzIjpbInBheW1lbnQiLCJzdGF0ZW1lbnQiXSwiaWF0IjoxNjMxNjYzMDYzLCJzY29wZV9jbGFpbXMiOlsibmFtZSIsImdpdmVuX25hbWUiLCJmYW1pbHlfbmFtZSIsIm1pZGRsZV9uYW1lIiwiZW1haWwiLCJwaG9uZV9udW1iZXIiXX0.RZ98I-PT_HGMzc7IbwGvlZjLOYuInta6pczEc_h4yCvZKCafIqs4ZBbs7eSY3NpXGzTbSZkGQA9wfX2NFDXZelwyNTooFQMpXzytrEhLww05H8ZFCH0kEQ_IpnJk-KeYkBLD0Oa75Gi6Lqj-Dr8KoX4Zq93ZyT4sr7Hzb1H287UlkJWVlpz_E7slLIob8m3keGbDysNyEBKJzsPcW27HENZBnvYwdE1pzwB8ObEZkICO8kbEP7MupLbhFyjxJFlI6Bq2DNjqi_QgQzvjvpD4KILxDms-Upg8h6GptYyoOl1BMGfN7WhN2vOUFYNuivNKctwcfD_H73kHJGu5KIJmGA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13b8230b-b6bf-4bb9-b977-3bc0a988a5fd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjI4ZTY4ZS1jYzM0LTRiODItYjQzZC00OTExMmI1ZDlkM2UiLCJhdWQiOiIwY2VlMDY4My04NWFlLTQ5ZjItYTYzZC0yOWY5N2FhZDE5MTEiLCJhY3IiOiJMb0EzIiwiYXpwIjoiMGNlZTA2ODMtODVhZS00OWYyLWE2M2QtMjlmOTdhYWQxOTExIiwiYXV0aF90aW1lIjoxNjMxNjYzMDUzLCJpc3MiOiJodHRwczpcL1wvaWQuYWxmYWJhbmsucnUiLCJleHAiOjE2MzE2NjY2NjMsImlhdCI6MTYzMTY2MzA2Mywibm9uY2UiOiJuLTBTNl9XekEyTWoifQ.xBE6LEUxOKleHCZVQacldJfKr5KtyyvJKCCmInqapmRJ_aRF-cEoVfpJd_kxlNmJYT7AcjMMppovNkmhB49VL5DK8FhF0fvRgLskKR9Eohy4eiC8ued03Z1LyLz1H7EcKSkusaCIajzIvxxZfVtSHI4jmgLg6ItXPdZgIDUWINgESkl6I7IP5CbfONHweNnbkWEOEzxDgGGnxxtPxrWVoPVP-ijUeUSH_iESHfrhY_ePRMYi2If62IsKX_0GT5BHRYOhXVDZ9fyn5fRCvg8_QoCykDVIOZMtWQ3w4TadqS0dfMlsLBxkVbVftzH2fWRLTCX3SJ5AXiytHkpow8V45w"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-2'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Токен доступа</td>
+</tr>
+<tr>
+<td>refresh_token</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>none</td>
+<td>Токен обновления</td>
+</tr>
+<tr>
+<td>token_type</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Тип токена</td>
+</tr>
+<tr>
+<td>expires_in</td>
+<td>integer</td>
+<td>false</td>
+<td>none</td>
+<td>Срок жизни токена в секундах</td>
+</tr>
+<tr>
+<td>id_token</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Идентификационный токен</td>
+</tr>
+</tbody></table>
+<h3 id='enumerated-values-3'>Enumerated Values</h3>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token_type</td>
+<td>Bearer</td>
+<td>Сообщает о генерации токена доступа и его направлении обратно</td>
+</tr>
+</tbody></table>
+
+<h3 id="tocS_Error">Error</h3>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerror"></a>
+<a id="schema_Error"></a>
+<a id="tocSerror"></a>
+<a id="tocserror"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-3'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Ошибка</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Описание ошибки</td>
+</tr>
+</tbody></table>
+
+<p><strong>Таблица возможных значение параметра error</strong>: </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Значение</th>
+<th style="text-align: left">Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">invalid_request</td>
+<td style="text-align: left">В запросе отсутствует обязательный параметр, запрос включает неподдерживаемое значение параметра (кроме grant_type), в запросе повторяется параметр, запрос включает несколько учетных данных, запрос использует более одного механизма для аутентификации клиента или имеет другой неправильный формат.</td>
+</tr>
+<tr>
+<td style="text-align: left">invalid_client</td>
+<td style="text-align: left">Ошибка аутентификации клиента (например, неизвестный клиент, аутентификация клиента не включена или неподдерживаемый метод аутентификации).</td>
+</tr>
+<tr>
+<td style="text-align: left">invalid_grant</td>
+<td style="text-align: left">Предоставленное разрешение авторизации (например, код авторизации, учетные данные владельца ресурса) или токен обновления недействителен, истек, аннулирован, не соответствует URI перенаправления, используемому в запросе авторизации, или был выдан другому клиенту.</td>
+</tr>
+<tr>
+<td style="text-align: left">unsupported_grant_type</td>
+<td style="text-align: left">Тип разрешения на авторизацию (grant_type) не поддерживается сервером авторизации.</td>
+</tr>
+<tr>
+<td style="text-align: left">internal_error</td>
+<td style="text-align: left">Произошла непредвиденная ошибка.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Описание клэймов access_token</strong> :</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">iss</td>
+<td style="text-align: left">Идентификатор эмитента (Issuer) для эмитента ответа. Значение iss является чувствительным к регистру URL-адресом, использующим схему https, которая содержит схему, хост и, необязательно, номер порта и компоненты пути, а не компоненты запроса или фрагмента</td>
+</tr>
+<tr>
+<td style="text-align: left">sub</td>
+<td style="text-align: left">Идентификатор субъекта. Локально уникальный и никогда не переназначаемый идентификатор в Эмитенте для конечного пользователя, который предназначен для использования Клиентом (client). Его длина НЕ ДОЛЖНА превышать 255 символов ASCII. sub - это строка с учетом регистра</td>
+</tr>
+<tr>
+<td style="text-align: left">aud</td>
+<td style="text-align: left">Аудитория, для которой предназначен этот идентификационный токен. Он ДОЛЖЕН содержать client_id OAuth 2.0 проверяющей стороны в качестве значения. Он также МОЖЕТ содержать идентификаторы для других аудиторий. В общем случае значение aud представляет собой массив строк с учетом регистра. В общем особом случае, когда есть одна аудитория, значение aud МОЖЕТ быть одной строкой, чувствительной к регистру</td>
+</tr>
+<tr>
+<td style="text-align: left">exp</td>
+<td style="text-align: left">Время истечения срока действия, по истечении которого идентификационный токен НЕ ДОЛЖЕН приниматься в обработку. Обработка этого параметра требует, чтобы текущая дата/время ДОЛЖНЫ быть до даты/времени истечения срока действия, указанных в значении. Значение представляет собой число JSON, представляющее количество секунд с 1970-01-01T0:0:0Z в формате UTC до даты/времени</td>
+</tr>
+<tr>
+<td style="text-align: left">iat</td>
+<td style="text-align: left">Время, когда был выпущен JWT. Его значение представляет собой число JSON, представляющее количество секунд с 1970-01-01T0:0:0Z в формате UTC до даты/времени</td>
+</tr>
+<tr>
+<td style="text-align: left">scope_claims</td>
+<td style="text-align: left">Массив клэймов области применения</td>
+</tr>
+<tr>
+<td style="text-align: left">scope_services</td>
+<td style="text-align: left">Массив операций области применения</td>
+</tr>
+</tbody></table>
+
+<p>Шаг 3. <strong>Получение информации о профиле представителя ЮЛ /userinfo</strong>{GET /userinfo}.</p>
+
+<p>Для получения информации о профиле представителя юридического лица необходимо <strong>вызвать метод</strong> <a href="https://baas.alfabank.ru/oidc/userinfo">https://baas.alfabank.ru/oidc/userinfo</a></p>
+
+<p>Для идентификации пользователя выполняется запрос на получение информации о профиле представителя ЮЛ.
+Входящие параметры: access_token 
+Исходящие параметры: данные пользователя, на передачу которых от пользователя есть разрешение
+Для каждого Партнера API перечень допустимых клэймов настраивается индивидуально.</p>
+
+<p>Вызов метода осуществляется с помощью следующих параметров:</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/userinfo <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/jwt'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div>
+<p><code>POST /userinfo</code></p>
+
+<p><em>Получение информации о пользователе</em></p>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+
+<p>400 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h3 id="post__userinfo-responses">Responses</h3>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td>string</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>BAD REQUEST</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody></table>
+<h3 id='response-headers-3'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Content-Type</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Content-Type</td>
+<td>string</td>
+<td></td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearerAuth
+</aside>
+<h3 id='schemas-2'>Schemas</h3>
+<h3 id="tocS_Error">Error</h3>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerror"></a>
+<a id="schema_Error"></a>
+<a id="tocSerror"></a>
+<a id="tocserror"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h3 id='properties-4'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Ошибка</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Описание ошибки</td>
+</tr>
+</tbody></table>
+
+<p><strong>Таблица возможных значение параметра error</strong>: </p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Значение</th>
+<th style="text-align: left">Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">invalid_request</td>
+<td style="text-align: left">В запросе отсутствует обязательный параметр, он включает неподдерживаемый параметр или значение параметра, повторяет один и тот же параметр, использует более одного метода для включения токена доступа или имеет другой неправильный формат. Сервер ресурсов ДОЛЖЕН ответить кодом состояния HTTP 400 (Bad Request).</td>
+</tr>
+<tr>
+<td style="text-align: left">access_denied</td>
+<td style="text-align: left">Владелец ресурса или сервер авторизации отклонил запрос.</td>
+</tr>
+<tr>
+<td style="text-align: left">invalid_token</td>
+<td style="text-align: left">Предоставленный токен доступа просрочен, отозван, имеет неправильный формат или недействителен по другим причинам. Ресурс ДОЛЖЕН ответить кодом состояния HTTP 401 (Unauthorized). Клиент МОЖЕТ запросить новый токен доступа и повторить запрос защищенного ресурса.</td>
+</tr>
+<tr>
+<td style="text-align: left">internal_error</td>
+<td style="text-align: left">Произошла непредвиденная ошибка</td>
+</tr>
+</tbody></table>
+
+<p><strong>Описание клэймов UserInfo</strong></p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">iss</td>
+<td style="text-align: left">Идентификатор эмитента (Issuer) для эмитента ответа. Значение iss является чувствительным к регистру URL-адресом, использующим схему https, которая содержит схему, хост и, необязательно, номер порта и компоненты пути, а не компоненты запроса или фрагмента</td>
+</tr>
+<tr>
+<td style="text-align: left">sub</td>
+<td style="text-align: left">Идентификатор субъекта. Локально уникальный и никогда не переназначаемый идентификатор в Эмитенте для конечного пользователя, который предназначен для использования Клиентом (client). Его длина НЕ ДОЛЖНА превышать 255 символов ASCII. sub - это строка с учетом регистра</td>
+</tr>
+<tr>
+<td style="text-align: left">aud</td>
+<td style="text-align: left">Аудитория, для которой предназначен этот идентификационный токен. Он ДОЛЖЕН содержать client_id OAuth 2.0 проверяющей стороны в качестве значения. Он также МОЖЕТ содержать идентификаторы для других аудиторий. В общем случае значение aud представляет собой массив строк с учетом регистра. В общем особом случае, когда есть одна аудитория, значение aud МОЖЕТ быть одной строкой, чувствительной к регистру</td>
+</tr>
+<tr>
+<td style="text-align: left">name</td>
+<td style="text-align: left">Полное имя конечного пользователя в отображаемой форме, включая все части имени, возможно, включая заголовки и суффиксы, упорядоченные в соответствии с локалью и предпочтениями конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">given_name</td>
+<td style="text-align: left">Имя конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">family_name</td>
+<td style="text-align: left">Фамилия конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">middle_name</td>
+<td style="text-align: left">Отчество конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">email</td>
+<td style="text-align: left">Предпочтительный адрес электронной почты конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">gender</td>
+<td style="text-align: left">Пол конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">birthdate</td>
+<td style="text-align: left">День рождения конечного пользователя, представленный в формате ISO 8601: 2004 [ISO8601‑2004] ГГГГ-ММ-ДД</td>
+</tr>
+<tr>
+<td style="text-align: left">phone_number</td>
+<td style="text-align: left">Предпочитаемый номер телефона конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">updated_at</td>
+<td style="text-align: left">Время последнего обновления информации о конечном пользователе. Его значение представляет собой число JSON, представляющее количество секунд с 1970-01-01T0:0:0Z в формате UTC до даты/времени</td>
+</tr>
+<tr>
+<td style="text-align: left">inn</td>
+<td style="text-align: left">ИНН конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">identity_document_name</td>
+<td style="text-align: left">Русское наименование типа документа, удостоверяющего личность конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">identity_document_series</td>
+<td style="text-align: left">Серия документа, удостоверяющего личность конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">identity_document_number</td>
+<td style="text-align: left">Номер документа, удостоверяющего личность конечного пользователя</td>
+</tr>
+<tr>
+<td style="text-align: left">eio</td>
+<td style="text-align: left">Истинно, если конечный пользователь является ЕИО; в противном случае - ложь</td>
+</tr>
+<tr>
+<td style="text-align: left">role</td>
+<td style="text-align: left">Роль конечного пользователя в организации</td>
+</tr>
+</tbody></table>
+
+<p>Шаг 4. <strong>Проверка подписи</strong>.</p>
+
+<p>Партнер API получает ответ в формате сформированного токена JWS, который состоит из:</p>
+
+<ul>
+<li>Заголовка (<strong>Header</strong>), содержащего алгоритм подписи, идентификатор ключа и тип токена;</li>
+<li>JSON-объекта (<strong>Payload</strong>), в котором перечислены клэймы полезной нагрузки;</li>
+<li>Электронной подписи (<strong>Signature</strong>), содержащей подпись данных секретным ключом, парным открытому ключу, выпущенному для Alfa ID.</li>
+</ul>
+<h3 id='jws'>Декодирование компактной сериализации JWS</h3>
+<p>JWS формируется из трех составляющих и представляет структуру вида: </p>
+
+<ul>
+<li>Base64URL(Header).</li>
+<li>Base64URL(Payload).</li>
+<li>Base64URL(Signature).</li>
+</ul>
+
+<p><strong>Пример JWS идентификационного токена id_token</strong>:</p>
+
+<p>eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjI4ZTY4ZS1jYzM0LTRiODItYjQzZC00OTExMmI1ZDlkM2UiLCJhdWQiOiIwY2VlMDY4My04NWFlLTQ5ZjItYTYzZC0yOWY5N2FhZDE5MTEiLCJhY3IiOiJMb0EzIiwiYXpwIjoiMGNlZTA2ODMtODVhZS00OWYyLWE2M2QtMjlmOTdhYWQxOTExIiwiYXV0aF90aW1lIjoxNjMxNjYzMDUzLCJpc3MiOiJodHRwczpcL1wvaWQuYWxmYWJhbmsucnUiLCJleHAiOjE2MzE2NjY2NjMsImlhdCI6MTYzMTY2MzA2Mywibm9uY2UiOiJuLTBTNl9XekEyTWoifQ.xBE6LEUxOKleHCZVQacldJfKr5KtyyvJKCCmInqapmRJ_aRF-cEoVfpJd_kxlNmJYT7AcjMMppovNkmhB49VL5DK8FhF0fvRgLskKR9Eohy4eiC8ued03Z1LyLz1H7EcKSkusaCIajzIvxxZfVtSHI4jmgLg6ItXPdZgIDUWINgESkl6I7IP5CbfONHweNnbkWEOEzxDgGGnxxtPxrWVoPVP-ijUeUSH_iESHfrhY_ePRMYi2If62IsKX_0GT5BHRYOhXVDZ9fyn5fRCvg8_QoCykDVIOZMtWQ3w4TadqS0dfMlsLBxkVbVftzH2fWRLTCX3SJ5AXiytHkpow8V45w</p>
+
+<p>Каждая часть, разделенная точкой должна декодироваться отдельно, с использованием алгоритма Base64URL Encoding.</p>
+
+<p>Пример декодированного Заголовка (Header):</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"kid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alfa-test-jwt"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"typ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JWT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RS256"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Пример декодированного JSON-объекта (Payload) идентификационного токена (id_token):</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3228e68e-cc34-4b82-b43d-49112b5d9d3e"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0cee0683-85ae-49f2-a63d-29f97aad1911"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"acr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LoA3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"azp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0cee0683-85ae-49f2-a63d-29f97aad1911"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"auth_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631663053</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://id.alfabank.ru"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631666663</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631663063</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n-0S6_WzA2Mj"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Пример <span class="custom__cmd-command-text">
+ access_token
+</span>: &quot;eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjI4ZTY4ZS1jYzM0LTRiODItYjQzZC00OTExMmI1ZDlkM2UiLCJhdWQiOiIwY2VlMDY4My04NWFlLTQ5ZjItYTYzZC0yOWY5N2FhZDE5MTEiLCJpc3MiOiJodHRwczpcL1wvaWQuYWxmYWJhbmsucnUiLCJleHAiOjE2MzE2NjY2NjMsInNjb3BlX3NlcnZpY2VzIjpbInBheW1lbnQiLCJzdGF0ZW1lbnQiXSwiaWF0IjoxNjMxNjYzMDYzLCJzY29wZV9jbGFpbXMiOlsibmFtZSIsImdpdmVuX25hbWUiLCJmYW1pbHlfbmFtZSIsIm1pZGRsZV9uYW1lIiwiZW1haWwiLCJwaG9uZV9udW1iZXIiXX0.RZ98I-PT_HGMzc7IbwGvlZjLOYuInta6pczEc_h4yCvZKCafIqs4ZBbs7eSY3NpXGzTbSZkGQA9wfX2NFDXZelwyNTooFQMpXzytrEhLww05H8ZFCH0kEQ_IpnJk-KeYkBLD0Oa75Gi6Lqj-Dr8KoX4Zq93ZyT4sr7Hzb1H287UlkJWVlpz_E7slLIob8m3keGbDysNyEBKJzsPcW27HENZBnvYwdE1pzwB8ObEZkICO8kbEP7MupLbhFyjxJFlI6Bq2DNjqi_QgQzvjvpD4KILxDms-Upg8h6GptYyoOl1BMGfN7WhN2vOUFYNuivNKctwcfD_H73kHJGu5KIJmGA&quot;. Access_token получен.</p>
+
+<p>Пример декодированного Заголовка (Header):
+<code>json
+{
+  &quot;kid&quot;: &quot;alfa-test-jwt&quot;,
+  &quot;typ&quot;: &quot;JWT&quot;,
+  &quot;alg&quot;: &quot;RS256&quot;
+}
+</code></p>
+
+<p>Пример декодированного JSON-объекта (Payload) токена доступа (access_token):</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3228e68e-cc34-4b82-b43d-49112b5d9d3e"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0cee0683-85ae-49f2-a63d-29f97aad1911"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"iss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://id.alfabank.ru"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631666663</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scope_services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"payment"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"statement"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"iat"</span><span class="p">:</span><span class="w"> </span><span class="mi">1631663063</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scope_claims"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"given_name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"family_name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"middle_name"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone_number"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='9385ea9db2'>Проверка подписи:</h3>
+<p>1) Вычисляем хэш-функцию SHA256 от данных Base64URL(Header).Base64URL(Payload).</p>
+
+<p>2) Дешифруем данные Base64URL(Signature), используя алгоритм RS256 и открытый ключ с идентификатором, переданным в Заголовке (Header) в клэйме kid (в приведенном выше примере это alfa-test-jwt).</p>
+
+<p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
+
+<p>Пример сертификата для проверки электронной подписи
+ <a download="example.crs.cer" href="https://alfaapi.github.io/alfaapi/certificates/example.crs.cer">example.crs.cer</a></p>
 <h2 id='sandbox'>Песочница (Sandbox)</h2>
 <p>Раздел в работе</p>
 <h1 id='api'>Методы API</h1>
@@ -508,8 +1535,7 @@ openssl req -noout -text -in name.csr
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET /customer-info <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET /customer-info <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -666,7 +1692,7 @@ Accept: application/json
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth ( Scopes: customer_info )
 </aside>
-<h3 id='schemas'>Schemas</h3>
+<h3 id='schemas-3'>Schemas</h3>
 <h3 id="tocS_ClientInfo">ClientInfo</h3>
 
 <!-- backwards compatibility -->
@@ -747,7 +1773,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div><h3 id='properties-5'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -905,7 +1931,7 @@ bearerAuth ( Scopes: customer_info )
 <td>none</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values'>Enumerated Values</h3>
+<h3 id='enumerated-values-4'>Enumerated Values</h3>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -962,7 +1988,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="nl">"fiasCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3721a72-0544-4ce7-9636-0e681cc0fc16"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-2'>Properties</h3>
+</span></code></pre></div><h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1104,7 +2130,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-3'>Properties</h3>
+</span></code></pre></div><h3 id='properties-7'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1226,7 +2252,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Объект массива с информацией о блокировках счета клиента</p>
-<h3 id='properties-4'>Properties</h3>
+<h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1279,7 +2305,7 @@ bearerAuth ( Scopes: customer_info )
 <td>Бухгалтерский режим, к которому относится данное решение</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-2'>Enumerated Values</h3>
+<h3 id='enumerated-values-5'>Enumerated Values</h3>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -1312,7 +2338,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Спецусловия по счёту</p>
-<h3 id='properties-5'>Properties</h3>
+<h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1358,7 +2384,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-6'>Properties</h3>
+</span></code></pre></div><h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1397,7 +2423,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-7'>Properties</h3>
+</span></code></pre></div><h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1436,7 +2462,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-8'>Properties</h3>
+</span></code></pre></div><h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1475,7 +2501,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-9'>Properties</h3>
+</span></code></pre></div><h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1508,8 +2534,7 @@ bearerAuth ( Scopes: customer_info )
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET /statement/transactions <span class="se">\ </span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET /statement/transactions <span class="se">\ </span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -1797,7 +2822,7 @@ curl <span class="nt">-X</span> GET /statement/transactions <span class="se">\ <
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
+<h3 id='response-headers-4'>Response Headers</h3>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1820,7 +2845,7 @@ curl <span class="nt">-X</span> GET /statement/transactions <span class="se">\ <
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='schemas-2'>Schemas</h3>
+<h3 id='schemas-4'>Schemas</h3>
 <h3 id="tocS_ClientInfo">ClientInfo</h3>
 
 <!-- backwards compatibility -->
@@ -1901,7 +2926,7 @@ bearerAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-10'>Properties</h3>
+</span></code></pre></div><h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2059,7 +3084,7 @@ bearerAuth
 <td>none</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-3'>Enumerated Values</h3>
+<h3 id='enumerated-values-6'>Enumerated Values</h3>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2116,7 +3141,7 @@ bearerAuth
   </span><span class="nl">"fiasCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d3721a72-0544-4ce7-9636-0e681cc0fc16"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-11'>Properties</h3>
+</span></code></pre></div><h3 id='properties-15'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2258,7 +3283,7 @@ bearerAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-12'>Properties</h3>
+</span></code></pre></div><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2380,7 +3405,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Объект массива с информацией о блокировках счета клиента</p>
-<h3 id='properties-13'>Properties</h3>
+<h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2433,7 +3458,7 @@ bearerAuth
 <td>Бухгалтерский режим, к которому относится данное решение</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-4'>Enumerated Values</h4>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2466,7 +3491,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Спецусловия по счёту</p>
-<h3 id='properties-14'>Properties</h3>
+<h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2680,7 +3705,7 @@ bearerAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-15'>Properties</h3>
+</span></code></pre></div><h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3790,7 +4815,7 @@ bearerAuth
 <td>Наименование плательщика</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-5'>Enumerated Values</h3>
+<h3 id='enumerated-values-8'>Enumerated Values</h3>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3940,7 +4965,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-16'>Properties</h3>
+</span></code></pre></div><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3979,7 +5004,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-17'>Properties</h3>
+</span></code></pre></div><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4018,7 +5043,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-18'>Properties</h3>
+</span></code></pre></div><h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4057,7 +5082,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-19'>Properties</h3>
+</span></code></pre></div><h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
