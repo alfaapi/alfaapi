@@ -342,11 +342,11 @@
 <li><strong>холдинги</strong> предоставляют возможность для головной организации выполнять казначейские функции по своим дочерним компаниям. </li>
 </ul>
 
-<p>При создании Alfa API использовались спецификации <strong>oAuth 2.0</strong> (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RCF 6749</a> ), <strong><a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC 1.0</a></strong>, формат <a href="https://www.json.org/json-en.html">JSON</a>, <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm">RESTful</a> архитектура, синхронный обмен данными.  </p>
+<p>При создании Alfa API использовались спецификации <a href="https://datatracker.ietf.org/doc/html/rfc6749" target="_blank" ><strong>oAuth 2.0</strong></a>, <a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" ><strong>OIDC 1.0</strong></a>, <a href="https://www.json.org/json-en.html" target="_blank" >формат <strong>JSON</strong></a>, <a href="https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm" target="_blank" ><strong>RESTful</strong></a> архитектура, синхронный обмен данными.  </p>
 <h3 id='5c6f13338e'>Терминология:</h3>
 <p><strong>Alfa API</strong> - это канал предоставления банковских продуктов и услуг, а также инструмент их безопасной интеграции в бизнес-процессы Партнеров API.</p>
 
-<p><strong>Alfa ID</strong> - единая учетная запись пользователя ЮЛ (юридического лица)/ ФЛ (физического лица), используемая для регистрации и входа пользователей в продукты и сервисы Банка и Партнеров API, а также инструмент привлечения не-клиентов Банка. Взаимодействие между Банком и клиентом осуществляется по спецификациям  oAuth 2.0 (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RCF 6749</a>) и <a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC 1.0</a>. Взаимодействие между Банком и Партнером API осуществляется на основании юридически значимого согласия клиента на передачу персональных данных. </p>
+<p><strong>Alfa ID</strong> - единая учетная запись пользователя ЮЛ (юридического лица)/ ФЛ (физического лица), используемая для регистрации и входа пользователей в продукты и сервисы Банка и Партнеров API, а также инструмент привлечения не-клиентов Банка. Взаимодействие между Банком и клиентом осуществляется по спецификациям <a href="https://datatracker.ietf.org/doc/html/rfc6749" target="_blank" >oAuth 2.0 (RFC 6749)</a> и <a href="https://openid.net/specs/openid-connect-core-1_0.html" target="_blank" >OIDC 1.0</a>. Взаимодействие между Банком и Партнером API осуществляется на основании юридически значимого согласия клиента на передачу персональных данных. </p>
 
 <p><strong>Партнер API</strong> – клиент Банка, использующий канал Alfa API для проведения интеграции своей системы и системы/сервисов Банка.  Для Партнера API необходимо заключить <em>Договор  на информационно-технологическое взаимодействие</em> в целях использования канала Alfa API. </p>
 
@@ -355,7 +355,7 @@
 <h2 id='alfa-api-2'>Подключение к Alfa API</h2>
 <p>Для подключения к Alfa API необходимо выполнить действия:</p>
 
-<p>Шаг 1. <strong><a href="https://alfabank.ru/sme/quick/docstariffs/">Стать клиентом «Альфа-Банка»</a></strong>, оформить <a href="https://alfabank.ru/sme/">расчетно-кассовое обслуживание</a> и <a href="https://alfabank.ru/corporate/rko/internet-bank/#form">подключить «Альфа-Бизнес Онлайн»</a>, подписав пакет документов. </p>
+<p>Шаг 1. <a href="https://alfabank.ru/sme/quick/docstariffs/" target="_blank" ><strong>Стать клиентом &quot;Альфа-Банка&quot;</strong></a>, оформить <a href="https://alfabank.ru/sme/" target="_blank" >расчетно-кассовое обслуживание </a> и оформить <a href="https://alfabank.ru/corporate/rko/internet-bank/#form" target="_blank" >подключить &quot;Альфа-Бизнес Онлайн&quot; </a>, подписав пакет документов.</p>
 
 <p>Шаг 2. <strong>Заключить договор с Банком</strong>.</p>
 
@@ -382,7 +382,7 @@ client_id</span> и scope, который разрешен для использ
 
 <p>После проведения успешного тестирования клиент направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> письмо о проведенном тестировании. Тема письма: &quot;Завершенное тестирование&quot;.</p>
 
-<p>Шаг 6. <strong>Выпустить <a href="https://habr.com/ru/post/258285/">TLS-сертификат</a></strong>. </p>
+<p>Шаг 6. <strong>Выпустить TLS-сертификат</strong>. </p>
 
 <p>Взаимодействие между Банком и Партнером API реализовано с использованием двухстороннего TLS-соединения, для которого необходимо выпустить сертификат.</p>
 <h3 id='182b83d408'>Требования к сертификату</h3>
@@ -442,9 +442,9 @@ client_id</span> и scope, который разрешен для использ
 
 <ul>
 <li><p>если вы используйте Mac OS, пример заполненного файла: 
-<a download="openssl.cnf" href="https://alfaapi.github.io/alfaapi/config/openssl.cnf">Конфиг Mac openssl.cnf</a> </p></li>
+<a download="openssl.cnf" href="https://alfaapi.github.io/specification/config/openssl.cnf">Конфиг Mac openssl.cnf</a> </p></li>
 <li><p>если вы используете Windows, пример заполненного файла: 
-<a download="openssl.cnf" href="https://alfaapi.github.io/alfaapi/config/openssl_win.config">Конфиг Windows openssl.cnf</a> </p></li>
+<a download="openssl.cnf" href="https://alfaapi.github.io/specification/config/openssl_win.config">Конфиг Windows openssl.cnf</a> </p></li>
 </ul>
 
 <p>Cгенерируйте <strong>закрытый ключ</strong>, введя команду в терминале:</p>
@@ -462,7 +462,7 @@ openssl req -new -key name.key -out name.csr</span></p>
 <p><span class="custom__cmd-command-text">
 openssl req -noout -text -in name.csr</span></p>
 
-<p><a download="openssl.cnf" href="https://github.com/alfaapi/alfaapi/blob/main/Images_main/picture1.png?raw=true"><strong>Пример запроса на сертификат</strong></a> с указанием INN = 1.2.643.3.131.1.1.</p>
+<p><a download="openssl.cnf" href="https://github.com/alfaapi/specification/blob/main/Images_main/picture1.png?raw=true"><strong>Пример запроса на сертификат</strong></a> с указанием INN = 1.2.643.3.131.1.1.</p>
 
 <p>Отправьте запрос на сертификат на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> с указанием темы письма &quot;Запрос на сертификат&quot;. Письмо должно быть направлено с электронной почты, указанной в Договоре. Никому не передавайте закрытый ключ. </p>
 
@@ -1761,7 +1761,7 @@ your-256-bit-secret
 <p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
 
 <p>Сертификат для проверки электронной подписи
- <a download="example.crs.cer" href="https://alfaapi.github.io/alfaapi/certificates/example.crs.cer">example.crs.cer</a></p>
+ <a download="example.crs.cer" href="https://alfaapi.github.io/specification/certificates/example.crs.cer">example.crs.cer</a></p>
 
 <p>Опционально: </p>
 
@@ -2061,9 +2061,9 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 <h2 id='sandbox'>Песочница (Sandbox)</h2>
-<p>Песочница дает возможность пройти аутентификацию в Alfa ID и вызвать методы Alfa API в тестовом режиме, не воздействуя на реальные данные.</p>
+<p><strong>Песочница API</strong> - это среда, которую  Партнеры API могут использовать для имитации производственной среды и получения смоделированных ответов по всем API.</p>
 
-<p><strong>Песочница API</strong> - это среда, которую Клиенты могут использовать для имитации производственной среды и получения смоделированных ответов по всем API.</p>
+<p>Песочница позволяет пройти аутентификацию в Alfa ID и вызвать методы Alfa API в тестовом режиме, не воздействуя на реальные данные.</p>
 
 <p>Для использования песочницы необходимо: </p>
 
@@ -2072,40 +2072,61 @@ This operation does not require authentication
 <li>получить тестовые client_id, client_secret от сотрудников Банка (смотреть <a href="#alfa-api-2">здесь</a>). </li>
 </ul>
 
-<p>Тестовый Swagger UI <a href="https://sandbox.alfabank.ru/swagger-ui/">https://sandbox.alfabank.ru/swagger-ui/</a>.</p>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://sandbox.alfabank.ru/api/customer-info <span class="se">\</span>
+  <span class="nt">-v--cert</span> test_certificate.cer <span class="se">\</span>
+  <span class="nt">--key</span> test_key.key <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'content-type: application/json'</span> <span class="se">\</span>
 
-<p>Тестовые TLS-сертификаты:  <a download="test_certificates.zip" href="https://alfaapi.github.io/alfaapi/certificates/test_certificates.zip">test_certificates.zip</a></p>
+</code></pre></div>
+<p>Тестовый Swagger UI <a href="https://sandbox.alfabank.ru/swagger-ui/">https://sandbox.alfabank.ru/swagger-ui/</a>. </p>
+
+<p>Для доступа установите тестовый TLS-сертификат:  <a download="test_certificates.zip" href="https://alfaapi.github.io/specification/certificates/test_certificates.zip">test_certificates.zip</a> (пароль для архива уточняйте у персонального менеджера).</p>
+
+<p>Все вызовы API должны осуществляться с использованием закрытого ключа и сертификата. </p>
 
 <p><strong>Адреса для тестирования</strong>:</p>
 
-<p>Для аутентификация в Alfa ID используйте URI <a href="https://sandbox.alfabank.ru/oidc">https://sandbox.alfabank.ru/oidc</a> </p>
+<p>Для аутентификация в Alfa ID используйте следующие hosts:</p>
 
-<p><strong>Тестовый логин и пароль</strong>:
-login: SomeDiffucultLogin
-password: 1qaz!QAZ</p>
+<ul>
+<li>получение кода авторизации: <a href="https://id-sandbox.alfabank.ru/oidc/">https://id-sandbox.alfabank.ru/oidc/</a></li>
+<li>остальные endpoints:  <a href="https://sandbox.alfabank.ru/oidc/">https://sandbox.alfabank.ru/oidc/</a>
+Для методов Alfa API используйте URI <a href="https://sandbox.alfabank.ru/api">https://sandbox.alfabank.ru/api</a>.</li>
+</ul>
+
+<p><strong>Рекомендации по тестированию Alfa ID</strong>:</p>
+
+<p>Для прохождения процедуры аутентификации используйте тестовые логин и пароль, OTP.</p>
+
+<p>Login: SomeDifficultLogin;</p>
+
+<p>Password: 1qaz!QAZ;</p>
+
+<p>One-Time Password:1111</p>
 
 <p>Подробнее в разделе <a href="#alfa-id">&quot;Аутентификация в Alfa ID&quot;.</a></p>
-
-<p>URI для вызова методов Alfa API <a href="https://sandbox.alfabank.ru/api">https://sandbox.alfabank.ru/api</a>. </p>
 
 <p><strong>Рекомендации по тестированию методов API</strong>:</p>
 
 <p>Операции по счетам.</p>
 
-<p>Для получения операций по счетам использовать счета, полученные в <a href="#customer-info">&quot;Информации о профиле организации. Customer-info&quot;.</a></p>
+<p>Для получения операций по счетам использовать расчетные счета, полученные в <a href="#customer-info">&quot;Информации о профиле организации. Customer-info&quot;.</a></p>
 <h1 id='api'>Методы API</h1>
 <p>Список методов для работы с данными Alfa API:</p>
 
 <ul>
 <li><a href="#customer-info">&quot;Информация о профиле организации.Customer-info&quot;.</a></li>
-<li><a href="#deba1a5836">&quot;Операции по счетам&quot;</a></li>
+<li><a href="#c7e2ed55b1">&quot;Операции по счетам&quot;</a></li>
 </ul>
 <h2 id='customer-info'>Информация о профиле организации. Customer-info.</h2>
 <p>Метод позволяет получить информацию об организации и ее счетах.</p>
 
 <p>Для получения профиля организации необходимо отправить запрос GET/customer_info с access_token, полученным в  Alfa ID. Для успешного выполнения запроса у access_token в поле scope_services должен присутствовать customer_info.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET customer-info <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET customer-info <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
