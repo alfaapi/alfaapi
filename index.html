@@ -319,10 +319,10 @@
             <a href="#api" class="toc-h1 toc-link" data-title="Методы API">Методы API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#customer-info" class="toc-h2 toc-link" data-title="Информация о профиле организации. Customer-info.">Информация о профиле организации. Customer-info.</a>
+                    <a href="#7669f02eaa" class="toc-h2 toc-link" data-title="Информация о профиле организации">Информация о профиле организации</a>
                   </li>
                   <li>
-                    <a href="#c7e2ed55b1" class="toc-h2 toc-link" data-title="Операции по счетам.">Операции по счетам.</a>
+                    <a href="#bd90cedb51" class="toc-h2 toc-link" data-title="Операции по счетам">Операции по счетам</a>
                   </li>
               </ul>
           </li>
@@ -2121,10 +2121,10 @@ This operation does not require authentication
 <p>Список методов для работы с данными Alfa API:</p>
 
 <ul>
-<li><a href="#customer-info">&quot;Информация о профиле организации.Customer-info&quot;.</a></li>
+<li><a href="#customer-info">&quot;Информация о профиле организации&quot;</a></li>
 <li><a href="#c7e2ed55b1">&quot;Операции по счетам&quot;</a></li>
 </ul>
-<h2 id='customer-info'>Информация о профиле организации. Customer-info.</h2>
+<h2 id='7669f02eaa'>Информация о профиле организации</h2>
 <p>Метод позволяет получить информацию об организации и ее счетах.</p>
 
 <p>Для получения профиля организации необходимо отправить запрос GET/customer_info с access_token, полученным в  Alfa ID. Для успешного выполнения запроса у access_token в поле scope_services должен присутствовать customer_info.</p>
@@ -3204,7 +3204,7 @@ bearerAuth ( Scopes: customer_info )
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
-<h2 id='c7e2ed55b1'>Операции по счетам.</h2>
+<h2 id='bd90cedb51'>Операции по счетам</h2>
 <p>Метод позволяет получить список операций по одному счету за один день.</p>
 
 <p>Для получения операций по счету необходимо отправить запрос GET/statement/transactions с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса у access_token в поле scope_service должен присутствовать transactions.</p>
@@ -5572,11 +5572,25 @@ bearerAuth
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET /accounts/<span class="o">{</span>accountNumber<span class="o">}</span>statement/transactions <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET /accounts/<span class="o">{</span>accountNumber<span class="o">}</span>statement/transactions <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/xml'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
-</code></pre></div>
+
+</code></pre></div><h3 id='header-parameters-2'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
 <h3 id="get__accounts_{accountnumber}_transactions_1c-parameters">Parameters</h3>
 
 <table><thead>
@@ -5853,6 +5867,7 @@ curl <span class="nt">-X</span> GET /accounts/<span class="o">{</span>accountNum
     <span class="nt">&lt;/Stamp&gt;</span>
   <span class="nt">&lt;/Data&gt;</span>
 <span class="nt">&lt;/Statement&gt;</span>
+
 </code></pre></div>
 <h3 id="get__accounts_{accountnumber}_transactions_1c-responses">Responses</h3>
 
@@ -5914,7 +5929,7 @@ curl <span class="nt">-X</span> GET /accounts/<span class="o">{</span>accountNum
 <td>200</td>
 <td>x-traceid</td>
 <td>string</td>
-<td></td>
+<td>Идентификатор трассировки запроса</td>
 </tr>
 </tbody></table>
 
@@ -5931,239 +5946,7 @@ bearerAuth
 <a id="schema_Statement1C"></a>
 <a id="tocSstatement1c"></a>
 <a id="tocsstatement1c"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f7cbc6af-33dd-4c37-b67d-7400e1c327ad"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"formatVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3.2"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"creationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-21T11:25:22.522Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"Recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"statementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"dateFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-20T00:00:00Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"dateTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-20T00:00:00Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"OpeningBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99527.00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"TotalDebits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"853.00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"TotalCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ClosingBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99407.20"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"OperationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"PayDoc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1220120MOPYTMD0000031_artificially_created"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"docKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"PayDocRu"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"PayRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"paymentCondition"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"acceptTerm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docDispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"CollectionOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"PaymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"transitionContent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"partialPaymentNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"partialTransitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sumResidualPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"partialDocNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"partialDocDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"BankOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"MemOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"DC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-20"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"ExtID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"Stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\\\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\\\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Исполнен"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"moreInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"Stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\\\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\\\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"extIdStatementRequest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Выписка операций по счетам в формате 1С</p>
 <h3 id='properties-34'>Properties</h3>
 <table><thead>
@@ -6220,224 +6003,7 @@ bearerAuth
 <a id="schema_StatementData"></a>
 <a id="tocSstatementdata"></a>
 <a id="tocsstatementdata"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"statementType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"dateFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-20T00:00:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"dateTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-20T00:00:00Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"OpeningBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99527.00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"TotalDebits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"853.00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"TotalCredits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000.00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ClosingBalance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99407.20"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"OperationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"PayDoc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1220120MOPYTMD0000031_artificially_created"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"docKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"PayDocRu"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"PayRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"paymentCondition"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"acceptTerm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"docDispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"CollectionOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"PaymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"transitionContent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"partialPaymentNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"partialTransitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sumResidualPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"partialDocNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"partialDocDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"BankOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"MemOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"DC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-20"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ExtID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\\\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\\\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Исполнен"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"moreInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"Stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\\\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\\\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"extIdStatementRequest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные выписки по лицевому счету</p>
 <h3 id='properties-35'>Properties</h3>
 <table><thead>
@@ -6452,7 +6018,7 @@ bearerAuth
 <td>statementType</td>
 <td>string</td>
 <td>false</td>
-<td>Тип выписки. <code>0</code> - Окончательная выписка</td>
+<td>Тип выписки <code>0</code> - Окончательная выписка</td>
 </tr>
 <tr>
 <td>dateFrom</td>
@@ -6538,14 +6104,7 @@ bearerAuth
 <a id="schema_StatementDataStamp"></a>
 <a id="tocSstatementdatastamp"></a>
 <a id="tocsstatementdatastamp"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\\\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\\\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"extIdStatementRequest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные штампа банка по выписке в целом</p>
 <h3 id='properties-36'>Properties</h3>
 <table><thead>
@@ -6590,19 +6149,7 @@ bearerAuth
 <a id="schema_Accounts"></a>
 <a id="tocSaccounts"></a>
 <a id="tocsaccounts"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные налогоплательщика</p>
 <h3 id='properties-37'>Properties</h3>
 <table><thead>
@@ -6653,13 +6200,7 @@ bearerAuth
 <a id="schema_Bank"></a>
 <a id="tocSbank"></a>
 <a id="tocsbank"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные банка</p>
 <h3 id='properties-38'>Properties</h3>
 <table><thead>
@@ -6698,40 +6239,7 @@ bearerAuth
 <a id="schema_BankOrder"></a>
 <a id="tocSbankorder"></a>
 <a id="tocsbankorder"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные банковского ордера</p>
 <h3 id='properties-39'>Properties</h3>
 <table><thead>
@@ -6746,19 +6254,19 @@ bearerAuth
 <td>docNo</td>
 <td>string</td>
 <td>false</td>
-<td>Номер документа (поле 3).</td>
+<td>Номер документа (поле 3)</td>
 </tr>
 <tr>
 <td>docDate</td>
 <td>string</td>
 <td>false</td>
-<td>Дата составления (поле 4).</td>
+<td>Дата составления (поле 4)</td>
 </tr>
 <tr>
 <td>sum</td>
 <td>number</td>
 <td>false</td>
-<td>Сумма документа (поле 7).</td>
+<td>Сумма документа (поле 7)</td>
 </tr>
 <tr>
 <td>Payer</td>
@@ -6841,18 +6349,7 @@ bearerAuth
 <a id="schema_BudgetPaymentInfo"></a>
 <a id="tocSbudgetpaymentinfo"></a>
 <a id="tocsbudgetpaymentinfo"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div><h3 id='properties-40'>Properties</h3>
+<h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6919,201 +6416,7 @@ bearerAuth
 <a id="schema_OperationInfo"></a>
 <a id="tocSoperationinfo"></a>
 <a id="tocsoperationinfo"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"PayDoc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1220120MOPYTMD0000031_artificially_created"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"PayDocRu"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"PayRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"paymentCondition"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"acceptTerm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docDispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"CollectionOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"PaymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"transitionContent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"partialPaymentNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"partialTransitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sumResidualPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"partialDocNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"partialDocDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"BankOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"MemOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"DC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-20"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ExtID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\\\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\\\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Исполнен"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"moreInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Информация об одной операции по лицевому счету в выписке</p>
 <h3 id='properties-41'>Properties</h3>
 <table><thead>
@@ -7128,7 +6431,7 @@ bearerAuth
 <td>PayDoc</td>
 <td><a href="#schemapaydoc">PayDoc</a></td>
 <td>false</td>
-<td>Данные платежного документа</td>
+<td>none</td>
 </tr>
 </tbody></table>
 
@@ -7140,199 +6443,7 @@ bearerAuth
 <a id="schema_PayDoc"></a>
 <a id="tocSpaydoc"></a>
 <a id="tocspaydoc"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1220120MOPYTMD0000031_artificially_created"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"docKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"PayDocRu"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"PayRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"paymentCondition"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"acceptTerm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docDispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"CollectionOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"PaymentOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"transitionContent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partialPaymentNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partialTransitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sumResidualPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partialDocNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partialDocDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"BankOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"MemOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-22"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"За транспортные услуги"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"DC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-20"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ExtID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Stamp"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\\\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\\\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Исполнен"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"moreInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div><h3 id='properties-42'>Properties</h3>
+<h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7351,7 +6462,7 @@ bearerAuth
 <td>docKind</td>
 <td>string</td>
 <td>false</td>
-<td>none</td>
+<td>Код вида электронного документа: <code>10</code> - Платежное поручение;  <code>11</code> - Платежное требование;  <code>16</code> - Мемориальный ордер; <code>17</code> - Платежный ордер; <code>18</code> - Банковский ордер</td>
 </tr>
 <tr>
 <td>PayDocRu</td>
@@ -7393,13 +6504,13 @@ bearerAuth
 <td>DC</td>
 <td>string</td>
 <td>false</td>
-<td>none</td>
+<td>Признак дебета/кредита: <code>1</code> - Операция по дебету (списание со счета); <code>2</code> - Операция по кредиту (поступление на счет)</td>
 </tr>
 <tr>
 <td>Date</td>
 <td>string</td>
 <td>false</td>
-<td>Дата проводки документа по лиц. счету</td>
+<td>Дата проводки документа по лицевому счету</td>
 </tr>
 <tr>
 <td>ExtID</td>
@@ -7467,51 +6578,7 @@ bearerAuth
 <a id="schema_PayDocRu"></a>
 <a id="tocSpaydocru"></a>
 <a id="tocspaydocru"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">768</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-05-04"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36.00"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Payer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"Payee"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"Bank"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"paymentKind"</span><span class="p">:</span><span class="w"> </span><span class="s2">"электронно"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"transitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"incomeTypeCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"purpose"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Комиссия за переводы в валюте РФ за 2022-01-20."</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные платежного поручения</p>
 <h3 id='properties-43'>Properties</h3>
 <table><thead>
@@ -7633,19 +6700,7 @@ bearerAuth
 <a id="schema_PayDocStamp"></a>
 <a id="tocSpaydocstamp"></a>
 <a id="tocspaydocstamp"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\\\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\\\"</span><span class="s2">"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"correspAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">30101810200000000000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Исполнен"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"moreInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные штампа банка по каждому платежному документу</p>
 <h3 id='properties-44'>Properties</h3>
 <table><thead>
@@ -7684,7 +6739,7 @@ bearerAuth
 <td>Status</td>
 <td><a href="#schemapaydocstampstatus">PayDocStampStatus</a></td>
 <td>false</td>
-<td>none</td>
+<td>Статус платежного документа в банке</td>
 </tr>
 </tbody></table>
 
@@ -7696,13 +6751,7 @@ bearerAuth
 <a id="schema_PayDocStampStatus"></a>
 <a id="tocSpaydocstampstatus"></a>
 <a id="tocspaydocstampstatus"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Исполнен"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"moreInfo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Статус платежного документа в банке</p>
 <h3 id='properties-45'>Properties</h3>
 <table><thead>
@@ -7741,13 +6790,7 @@ bearerAuth
 <a id="schema_PayRequest"></a>
 <a id="tocSpayrequest"></a>
 <a id="tocspayrequest"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"paymentCondition"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"acceptTerm"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"docDispatchDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные платежного требования</p>
 <h3 id='properties-46'>Properties</h3>
 <table><thead>
@@ -7786,26 +6829,7 @@ bearerAuth
 <a id="schema_PaymentOrder"></a>
 <a id="tocSpaymentorder"></a>
 <a id="tocspaymentorder"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"transitionContent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partialPaymentNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partialTransitionKind"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sumResidualPayment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partialDocNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partialDocDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.01.2022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"BudgetPaymentInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"drawerStatus"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cbc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"oktmo"</span><span class="p">:</span><span class="w"> </span><span class="mi">54701000</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТП"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"taxPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МС.03.2016"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docNo"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"docDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22.01.2022"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"payType"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Данные платежного ордера</p>
 <h3 id='properties-47'>Properties</h3>
 <table><thead>
@@ -7868,14 +6892,7 @@ bearerAuth
 <a id="schema_Recipient"></a>
 <a id="tocSrecipient"></a>
 <a id="tocsrecipient"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40702810701300000000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Полное наименование Орг № 11329"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">140237176</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"kpp"</span><span class="p">:</span><span class="w"> </span><span class="mi">37186025</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Получаетель</p>
 <h3 id='properties-48'>Properties</h3>
 <table><thead>
@@ -7920,12 +6937,7 @@ bearerAuth
 <a id="schema_Sender"></a>
 <a id="tocSsender"></a>
 <a id="tocssender"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"bic"</span><span class="p">:</span><span class="w"> </span><span class="mi">44525593</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АО </span><span class="se">\"</span><span class="s2">АЛЬФА-БАНК</span><span class="se">\"</span><span class="s2">"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
 <p>Отправитель</p>
 <h3 id='properties-49'>Properties</h3>
 <table><thead>
@@ -7958,12 +6970,16 @@ bearerAuth
 <a id="schema_ErrorUnauthorizedXML"></a>
 <a id="tocSerrorunauthorizedxml"></a>
 <a id="tocserrorunauthorizedxml"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_token"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
+<blockquote>
+<p>ErrorUnauthorizedXML</p>
+</blockquote>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+
+  <span class="nt">&lt;Error&gt;</span>invalid_token<span class="nt">&lt;/Error&gt;</span>
+  <span class="nt">&lt;ErrorDescription&gt;</span>The access token provided is expired, revoked, malformed, or invalid for other reasons<span class="nt">&lt;/ErrorDescription&gt;</span>
+
+</code></pre></div>
 <p>Ошибка авторизации</p>
 <h3 id='properties-50'>Properties</h3>
 <table><thead>
@@ -7975,13 +6991,13 @@ bearerAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>error</td>
+<td>Error</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>Код ошибки</td>
 </tr>
 <tr>
-<td>error_description</td>
+<td>ErrorDescription</td>
 <td>string</td>
 <td>false</td>
 <td>Сообщение об ошибке</td>
@@ -7996,12 +7012,16 @@ bearerAuth
 <a id="schema_ErrorInternalXML"></a>
 <a id="tocSerrorinternalxml"></a>
 <a id="tocserrorinternalxml"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal_error"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
+<blockquote>
+<p>ErrorInternalXML</p>
+</blockquote>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+
+  <span class="nt">&lt;Error&gt;</span>internal_error<span class="nt">&lt;/Error&gt;</span>
+  <span class="nt">&lt;ErrorDescription&gt;</span>Internal server error<span class="nt">&lt;/ErrorDescription&gt;</span>
+
+</code></pre></div>
 <p>Ошибка сервера</p>
 <h3 id='properties-51'>Properties</h3>
 <table><thead>
@@ -8013,13 +7033,13 @@ bearerAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>error</td>
+<td>Error</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>Код ошибки</td>
 </tr>
 <tr>
-<td>error_description</td>
+<td>ErrorDescription</td>
 <td>string</td>
 <td>false</td>
 <td>Сообщение об ошибке</td>
@@ -8034,12 +7054,16 @@ bearerAuth
 <a id="schema_ErrorBadRequestXML"></a>
 <a id="tocSerrorbadrequestxml"></a>
 <a id="tocserrorbadrequestxml"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
+<blockquote>
+<p>ErrorBadRequestXML</p>
+</blockquote>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+
+  <span class="nt">&lt;Error&gt;</span>invalid_request<span class="nt">&lt;/Error&gt;</span>
+  <span class="nt">&lt;ErrorDescription&gt;</span>Authorization header is not present in request headers<span class="nt">&lt;/ErrorDescription&gt;</span>
+
+</code></pre></div>
 <p>Ошибка запроса</p>
 <h3 id='properties-52'>Properties</h3>
 <table><thead>
@@ -8051,13 +7075,13 @@ bearerAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>error</td>
+<td>Error</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>Код ошибки</td>
 </tr>
 <tr>
-<td>error_description</td>
+<td>ErrorDescription</td>
 <td>string</td>
 <td>false</td>
 <td>Сообщение об ошибке</td>
@@ -8072,12 +7096,16 @@ bearerAuth
 <a id="schema_ErrorScopeXML"></a>
 <a id="tocSerrorscopexml"></a>
 <a id="tocserrorscopexml"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insufficient_scope"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
-</span><span class="p">}</span><span class="w">
 
-</span></code></pre></div>
+<blockquote>
+<p>ErrorScopeXML</p>
+</blockquote>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
+
+  <span class="nt">&lt;Error&gt;</span>insufficient_scope<span class="nt">&lt;/Error&gt;</span>
+  <span class="nt">&lt;ErrorDescription&gt;</span>The request requires higher privileges than provided by the access token<span class="nt">&lt;/ErrorDescription&gt;</span>
+
+</code></pre></div>
 <p>Ошибка прав доступа</p>
 <h3 id='properties-53'>Properties</h3>
 <table><thead>
@@ -8089,13 +7117,13 @@ bearerAuth
 </tr>
 </thead><tbody>
 <tr>
-<td>error</td>
+<td>Error</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>Код ошибки</td>
 </tr>
 <tr>
-<td>error_description</td>
+<td>ErrorDescription</td>
 <td>string</td>
 <td>false</td>
 <td>Сообщение об ошибке</td>
