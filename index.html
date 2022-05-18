@@ -458,7 +458,7 @@ client_id</span> и scope, который разрешен для использ
 <p>На основе созданного ключа сгенерируйте <strong>запрос на сертификат (CSR)</strong> с приватным ключом RSA: </p>
 
 <p><span class="custom__cmd-command-text">
-openssl req -new -key name.key -out name.csr</span></p>
+openssl req -config openssl.cnf -key name.key -new -sha256 -out name.csr</span></p>
 
 <p>Проверьте <strong>наличие обязательных атрибутов в Subject</strong>  созданного запроса на сертификат:</p>
 
@@ -2052,7 +2052,7 @@ This operation does not require authentication
 
 <ul>
 <li>заключить договор о техническо-информационном взаимодействии (подробнее в разделе <a href="#alfa-api-2">&quot;Подключение к API&quot;</a>);</li>
-<li>получить тестовые client_id, client_secret от сотрудников Банка (смотреть <a href="#alfa-api-2">здесь</a>). </li>
+<li>получить тестовый client_id от сотрудников Банка (смотреть <a href="#alfa-api-2">здесь</a>). </li>
 </ul>
 
 <blockquote>
@@ -5624,7 +5624,7 @@ bearerAuth
 </tr>
 </tbody></table>
 <h3 id='1'><strong>Получение выписки в формате 1С</strong></h3>
-<p>Для получения операций по счету в формате 1С необходимо отправить запрос GET/accounts/{accountNumber}/transactions/1C с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать transactions 1C.</p>
+<p>Для получения операций по счету в формате 1С необходимо отправить запрос GET/accounts/{accountNumber}/transactions/1C с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать transactions.</p>
 
 <!-- Generator: Widdershins v4.0.1 -->
 
@@ -5697,12 +5697,6 @@ bearerAuth
 <p>200 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span>
-<span class="nt">&lt;Response&gt;</span>
-  <span class="nt">&lt;Pagination&gt;</span>
-    <span class="nt">&lt;limit&gt;</span>1000<span class="nt">&lt;/limit&gt;</span>
-    <span class="nt">&lt;offset&gt;</span>0<span class="nt">&lt;/offset&gt;</span>
-    <span class="nt">&lt;totalCount&gt;</span>10000<span class="nt">&lt;/totalCount&gt;</span>
-  <span class="nt">&lt;/Pagination&gt;</span>
 <span class="nt">&lt;Statement&gt;</span>
   <span class="nt">&lt;id&gt;</span>f7cbc6af-33dd-4c37-b67d-7400e1c327ad<span class="nt">&lt;/id&gt;</span>
   <span class="nt">&lt;formatVersion&gt;</span>2.3.2<span class="nt">&lt;/formatVersion&gt;</span>
@@ -6009,78 +6003,6 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 <h3 id='schemas-7'>Schemas</h3>
-<h3 id="tocS_Response">Response</h3>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemaresponse"></a>
-<a id="schema_Response"></a>
-<a id="tocSresponse"></a>
-<a id="tocsresponse"></a></p>
-
-<p>Ответ для выписки в формате  1С</p>
-<h3 id='properties-35'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Pagination</td>
-<td><a href="#schemapagination">Pagination</a></td>
-<td>false</td>
-<td>Данные пагинации</td>
-</tr>
-<tr>
-<td>Statement</td>
-<td><a href="#schemastatement1c">Statement1C</a></td>
-<td>false</td>
-<td>Выписка операций по счетам в формате 1С</td>
-</tr>
-</tbody></table>
-
-<h3 id="tocS_Pagination">Pagination</h3>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemapagination"></a>
-<a id="schema_Pagination"></a>
-<a id="tocSpagination"></a>
-<a id="tocspagination"></a></p>
-
-<p>Данные пагинации</p>
-<h3 id='properties-36'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>limit</td>
-<td>number</td>
-<td>false</td>
-<td>Количество записей на одной странице</td>
-</tr>
-<tr>
-<td>offset</td>
-<td>number</td>
-<td>false</td>
-<td>Количество записей в списке, которые были пропущены</td>
-</tr>
-<tr>
-<td>totalCount</td>
-<td>number</td>
-<td>false</td>
-<td>Общее количество записей</td>
-</tr>
-</tbody></table>
-
 <h3 id="tocS_Statement1C">Statement1C</h3>
 
 <!-- backwards compatibility -->
@@ -6091,7 +6013,7 @@ bearerAuth
 <a id="tocsstatement1c"></a></p>
 
 <p>Выписка операций по счетам в формате 1С</p>
-<h3 id='properties-37'>Properties</h3>
+<h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6148,7 +6070,7 @@ bearerAuth
 <a id="tocsstatementdata"></a></p>
 
 <p>Данные выписки по лицевому счету</p>
-<h3 id='properties-38'>Properties</h3>
+<h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6249,7 +6171,7 @@ bearerAuth
 <a id="tocsstatementdatastamp"></a></p>
 
 <p>Данные штампа банка по выписке в целом</p>
-<h3 id='properties-39'>Properties</h3>
+<h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6294,7 +6216,7 @@ bearerAuth
 <a id="tocsaccounts"></a></p>
 
 <p>Данные налогоплательщика</p>
-<h3 id='properties-40'>Properties</h3>
+<h3 id='properties-38'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6345,7 +6267,7 @@ bearerAuth
 <a id="tocsbank"></a></p>
 
 <p>Данные банка</p>
-<h3 id='properties-41'>Properties</h3>
+<h3 id='properties-39'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6384,7 +6306,7 @@ bearerAuth
 <a id="tocsbankorder"></a></p>
 
 <p>Данные банковского ордера</p>
-<h3 id='properties-42'>Properties</h3>
+<h3 id='properties-40'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6494,7 +6416,7 @@ bearerAuth
 <a id="tocsbudgetpaymentinfo"></a></p>
 
 <p>Реквизиты бюджетного документа</p>
-<h3 id='properties-43'>Properties</h3>
+<h3 id='properties-41'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6563,7 +6485,7 @@ bearerAuth
 <a id="tocsoperationinfo"></a></p>
 
 <p>Информация об одной операции по лицевому счету в выписке</p>
-<h3 id='properties-44'>Properties</h3>
+<h3 id='properties-42'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6588,7 +6510,7 @@ bearerAuth
 <a id="schema_PayDoc"></a>
 <a id="tocSpaydoc"></a>
 <a id="tocspaydoc"></a></p>
-<h3 id='properties-45'>Properties</h3>
+<h3 id='properties-43'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6725,7 +6647,7 @@ bearerAuth
 <a id="tocspaydocru"></a></p>
 
 <p>Данные платежного поручения</p>
-<h3 id='properties-46'>Properties</h3>
+<h3 id='properties-44'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6847,7 +6769,7 @@ bearerAuth
 <a id="tocspaydocstamp"></a></p>
 
 <p>Данные штампа банка по каждому платежному документу</p>
-<h3 id='properties-47'>Properties</h3>
+<h3 id='properties-45'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6898,7 +6820,7 @@ bearerAuth
 <a id="tocspaydocstampstatus"></a></p>
 
 <p>Статус платежного документа в банке</p>
-<h3 id='properties-48'>Properties</h3>
+<h3 id='properties-46'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6937,7 +6859,7 @@ bearerAuth
 <a id="tocspayrequest"></a></p>
 
 <p>Данные платежного требования</p>
-<h3 id='properties-49'>Properties</h3>
+<h3 id='properties-47'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6976,7 +6898,7 @@ bearerAuth
 <a id="tocspaymentorder"></a></p>
 
 <p>Данные платежного ордера</p>
-<h3 id='properties-50'>Properties</h3>
+<h3 id='properties-48'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7039,7 +6961,7 @@ bearerAuth
 <a id="tocsrecipient"></a></p>
 
 <p>Получаетель</p>
-<h3 id='properties-51'>Properties</h3>
+<h3 id='properties-49'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7084,7 +7006,7 @@ bearerAuth
 <a id="tocssender"></a></p>
 
 <p>Отправитель</p>
-<h3 id='properties-52'>Properties</h3>
+<h3 id='properties-50'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7126,7 +7048,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка авторизации</p>
-<h3 id='properties-53'>Properties</h3>
+<h3 id='properties-51'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7168,7 +7090,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка сервера</p>
-<h3 id='properties-54'>Properties</h3>
+<h3 id='properties-52'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7210,7 +7132,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка запроса</p>
-<h3 id='properties-55'>Properties</h3>
+<h3 id='properties-53'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7252,7 +7174,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка прав доступа</p>
-<h3 id='properties-56'>Properties</h3>
+<h3 id='properties-54'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7275,7 +7197,7 @@ bearerAuth
 </tr>
 </tbody></table>
 <h2 id='42fc51aa44'>Пагинация</h2>
-<p>Пагинация - разделение результата ответа с большим массивом данных на несколько страниц.</p>
+<p>Пагинация - разделение ответа на несколько страниц. Механизм пагинации может быть использован в REST-запросах GET. </p>
 
 <p><strong>Параметры и пример запроса</strong></p>
 
@@ -7300,7 +7222,7 @@ bearerAuth
 </tr>
 <tr>
 <td>offset</td>
-<td>Количество объектов в списке, которые необходимо пропустить. Нумерация начинается с нуля. Значение по умолчанию: 0</td>
+<td>Количество объектов в списке, которые необходимо пропустить. Значение по умолчанию: 0</td>
 </tr>
 <tr>
 <td>totalCount</td>
@@ -7353,14 +7275,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<p><strong>Примеры работы с пагинацией</strong></p>
-
-<ol>
-<li><p>Для запроса первой страницы клиент делает запрос с параметрами limit (не превышает максимально допустимого значения) и offset = 0 и получает ответ с параметрами limit, offset, totalСount и результатами в виде массива. </p></li>
-<li><p>Если сумма offset + limit превышает количество элементов в результатах поиска, то сервер вернет меньше элементов. 
-Если offset больше, либо равен количеству элементов, то вернется пустая страница. 
-Если значение limit превышает значение по умолчанию, то возвращается страница с ошибкой. </p></li>
-</ol>
+<p><strong>Алгоритм работы пагинации</strong></p>
 
 <p>Пример 1:
 Если клиент запрашивает limit = 100, offset = 0, то клиенту вернется с 1-ой по 100-ую запись.</p>
