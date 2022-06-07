@@ -906,8 +906,8 @@ This operation does not require authentication
 <p>Code samples</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/token <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/x-www-form-urlencoded'</span>
 
 </code></pre></div>
 <blockquote>
@@ -991,7 +991,7 @@ This operation does not require authentication
 <td>200</td>
 <td>Content-Type</td>
 <td>string</td>
-<td>application/json</td>
+<td>application/x-www-form-urlencoded</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1009,7 +1009,7 @@ This operation does not require authentication
 <td>400</td>
 <td>Content-Type</td>
 <td>string</td>
-<td>application/json</td>
+<td>application/x-www-form-urlencoded</td>
 </tr>
 <tr>
 <td>400</td>
@@ -1805,10 +1805,9 @@ your-256-bit-secret
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/token <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/token <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/x-www-form-urlencoded'</span>
 
 </code></pre></div>
 <blockquote>
@@ -1889,7 +1888,7 @@ curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/token <span c
 <td>200</td>
 <td>Content-Type</td>
 <td>string</td>
-<td>application/json</td>
+<td>application/x-www-form-urlencoded</td>
 </tr>
 <tr>
 <td>200</td>
@@ -1907,7 +1906,7 @@ curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/token <span c
 <td>400</td>
 <td>Content-Type</td>
 <td>string</td>
-<td>application/json</td>
+<td>application/x-www-form-urlencoded</td>
 </tr>
 <tr>
 <td>400</td>
@@ -2110,7 +2109,7 @@ This operation does not require authentication
 </code></pre></div>
 <p>Тестовый Swagger UI <a href="https://sandbox.alfabank.ru/swagger-ui/">https://sandbox.alfabank.ru/swagger-ui/</a>. </p>
 
-<p>Для доступа установите тестовый TLS-сертификат:  <a download="test_certificates.zip" href="https://alfaapi.github.io/specification/certificates/test_certificates.zip">test_certificates.zip</a> (пароль для архива уточняйте у персонального менеджера).</p>
+<p>Для доступа установите тестовый TLS-сертификат:  <a download="test_cert.zip" href="https://alfaapi.github.io/specification/certificates/test_cert.zip">test_cert.zip</a> (пароль для архива уточняйте у персонального менеджера).</p>
 
 <p>Все вызовы API должны осуществляться с использованием закрытого ключа и сертификата. </p>
 
