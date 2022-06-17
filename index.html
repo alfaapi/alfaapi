@@ -282,7 +282,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c23846d9.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-50311d57.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
 
@@ -305,6 +305,9 @@
                     <a href="#3394112aa9" class="toc-h2 toc-link" data-title="Введение">Введение</a>
                   </li>
                   <li>
+                    <a href="#api" class="toc-h2 toc-link" data-title="Чек-лист для Партнеров API">Чек-лист для Партнеров API</a>
+                  </li>
+                  <li>
                     <a href="#alfa-api-2" class="toc-h2 toc-link" data-title="Подключение к Alfa API">Подключение к Alfa API</a>
                   </li>
                   <li>
@@ -316,7 +319,7 @@
               </ul>
           </li>
           <li>
-            <a href="#api" class="toc-h1 toc-link" data-title="Методы API">Методы API</a>
+            <a href="#api-2" class="toc-h1 toc-link" data-title="Методы API">Методы API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#bd90cedb51" class="toc-h2 toc-link" data-title="Операции по счетам">Операции по счетам</a>
@@ -329,6 +332,9 @@
                   </li>
                   <li>
                     <a href="#42fc51aa44" class="toc-h2 toc-link" data-title="Пагинация">Пагинация</a>
+                  </li>
+                  <li>
+                    <a href="#scopes" class="toc-h2 toc-link" data-title="Scopes (области применения)">Scopes (области применения)</a>
                   </li>
               </ul>
           </li>
@@ -361,6 +367,35 @@
 
 <p><span class="custom__cmd-command-text">
  access_token</span> - токен доступа, который формируется при аутентификации пользователя в Alfa ID и необходим для вызова методов в Alfa API. </p>
+<h2 id='api'>Чек-лист для Партнеров API</h2>
+<p><strong>Проверьте готовность к тестовому доступу</strong></p>
+
+<p><a href="https://sandbox.alfabank.ru/oidc/">https://sandbox.alfabank.ru/oidc/</a> - получение кода авторизации и остальных endponts.</p>
+
+<p><a href="https://sandbox.alfabank.ru/api">https://sandbox.alfabank.ru/api</a> - получение методов Alfa API.</p>
+
+<ol>
+<li><p>Заключите договор на информационно-технологическое взаимодействие с Банком и подпишите приложения к нему (шаг 1-2 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
+<li><p>Получите тестовый client_id и тестовый scope (шаг 3 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
+<li><p>Установите тестовый TLS-сертификат  и проверьте доступ до Swagger UI (подробнее в разделе <a href="#sandbox">Песочница</a>). </p></li>
+<li><p>Получите client_secret (шаг 7 в разделе <a href="#alfa-api-2">Подключение к API</a>).</p></li>
+<li><p>Реализуйте и протестируйте интеграцию  <a href="#alfa-id">Alfa ID</a> и <a href="#api">Alfa API</a>. </p></li>
+</ol>
+
+<p><strong>Проверьте готовность к промышленному доступу</strong></p>
+
+<p><a href="https://id.alfabank.ru/oidc">https://id.alfabank.ru/oidc</a> - получение запросов в Alfa ID.  </p>
+
+<p><a href="https://baas.alfabank.ru/api">https://baas.alfabank.ru/api</a> - получение запросов в Alfa API.</p>
+
+<ol>
+<li><p>Выполните все пункты из подраздела &quot;Проверьте готовность к тестовому доступу&quot; Чек-листа.</p></li>
+<li><p>Сообщите об успешном тестировании (шаг 5 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
+<li><p>Выпустите TLS-сертификат (шаг 6 в разделе <a href="#alfa-api-2">Подключение к API</a>).</p></li>
+<li><p>Получите промышленный client_id и scope (шаг 3 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
+<li><p>Получите промышленный client_secret (шаг 7 в разделе <a href="#alfa-api-2">Подключение к API</a>).</p></li>
+<li><p>Начните использовать <a href="#alfa-id">Alfa ID</a> и <a href="#api">Alfa API</a>. </p></li>
+</ol>
 <h2 id='alfa-api-2'>Подключение к Alfa API</h2>
 <p>Для подключения к Alfa API необходимо выполнить действия:</p>
 
@@ -659,7 +694,7 @@ This operation does not require authentication
 
 <p>Пройдите следующие шаги аутентификации: </p>
 
-<p>Шаг 1. <strong>Получение кода авторизации</strong>  (получение Authentification Code) {GET /authorize}. 
+<p>Шаг 1. <strong>Получение кода авторизации</strong>  (получение Authorization Code) {GET /authorize}. 
 URL:  <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oidc/authorize</a></p>
 
 <p><strong>Откройте окно &quot;Вход через Alfa ID&quot;</strong>:</p>
@@ -1529,12 +1564,12 @@ bearerAuth
 <tr>
 <td style="text-align: left">email</td>
 <td style="text-align: left">Предпочтительный адрес электронной почты конечного пользователя</td>
-<td style="text-align: left"></td>
+<td style="text-align: left">email</td>
 </tr>
 <tr>
 <td style="text-align: left">gender</td>
 <td style="text-align: left">Пол конечного пользователя</td>
-<td style="text-align: left">email</td>
+<td style="text-align: left">profile</td>
 </tr>
 <tr>
 <td style="text-align: left">birthdate</td>
@@ -2124,6 +2159,8 @@ This operation does not require authentication
 <p><em>Операции по счетам</em></p>
 
 <p>Для получения операций по счетам использовать расчетные счета, полученные в <a href="#d2568efd70">&quot;Профиле организации&quot;.</a></p>
+
+<p>Значение uuid не является уникальным во всех запросах в песочнице. </p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="err">&gt;</span><span class="w"> </span><span class="err">Code</span><span class="w"> </span><span class="err">samples</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="nl">"pkcs10Content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN CERTIFICATE REQUEST-----</span><span class="se">\n</span><span class="s2">MIIDGzCCAgMCAQAwgZ0xCzAJBgNVBAYTAlJVMRUwEwYDVQQEDAzQn9C10YLRgNC+</span><span class="se">\n</span><span class="s2">0LIxFzAVBgNVBCoMDtCd0LjQutC+0LvQsNC5MTcwNQYDVQQDDC7Qn9C10YLRgNC+</span><span class="se">\n</span><span class="s2">0LIg0J3QuNC60L7Qu9Cw0Lkg0JXRgNC+0YTQtdC10LLQuNGHMSUwIwYJKoZIhvcN</span><span class="se">\n</span><span class="s2">AQkBFhZVc2VyNzQ0QHBvY2h0b2Noa2EuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOC</span><span class="se">\n</span><span class="s2">AQ8AMIIBCgKCAQEAyLZrKEHtFYPSjPFTWGYAW/wsvRsI7ly0SPzN+hNgTrttctnI</span><span class="se">\n</span><span class="s2">sCTbq5rjGClHjaFr/vCanvPoj0BGwc+QztmdntdrLtfbScdaTY5Q1H1WBtcDkQhf</span><span class="se">\n</span><span class="s2">443BjhdBZwAP6U6tTkLtJbFr0yjZPaUYMAGUlzQ0ASYFEt48V+0ZNmRMwOG267yn</span><span class="se">\n</span><span class="s2">QHVPwNrWGHn2hih9TqzOtivxf+HevSQSiuLowTeQ5pCeQPkEn5nHzwXNZGPcmHFF</span><span class="se">\n</span><span class="s2">HoekyhP7ItIi7PdamEGytBhdYkScbtdaQ9DscKy49GYYNrOYrdx4gpKbaCOQJsFO</span><span class="se">\n</span><span class="s2">/hQFg8gVGYjsLzhCmhtydY19WmzPPoFmourSwQIDAQABoDgwNgYJKoZIhvcNAQkO</span><span class="se">\n</span><span class="s2">MSkwJzAlBgNVHREEHjAcggtleGFtcGxlLmNvbYINKi5leGFtcGxlLmNvbTANBgkq</span><span class="se">\n</span><span class="s2">hkiG9w0BAQsFAAOCAQEAMXpgE3CoBiHTLCyRzzy9YMMml520BKceXCwcZ7R5AbDl</span><span class="se">\n</span><span class="s2">hgC1Vd1TMU4816Nu2qj8ilYQw1OJ9QmN2+5V+WmgMHsqYSeqJ0rZvXdJty8KLHow</span><span class="se">\n</span><span class="s2">IMhgCo3WmXgVrWs0tWnWyya05Sh+M5zEhxPFubeaOuSUTPKW2Q87Sxp1dKIu9nES</span><span class="se">\n</span><span class="s2">4vFlK5Bl3lxzrk0Hrj/vyEXU51V+lbtAkKyEs129uwU/vIReBWw7xd2pXTeOR/ri</span><span class="se">\n</span><span class="s2">IYzFHvmWXSTyZKpP0NJlyKc/mH1ilO74kmBZu32ggOUnw1cCu/vfRZ85KAh0eLZ7</span><span class="se">\n</span><span class="s2">mSaWwi4XGgA8MSkXAbj4SLeUr4mViP+Ad1e/IYojDg==</span><span class="se">\n</span><span class="s2">-----END CERTIFICATE REQUEST-----"</span><span class="p">,</span><span class="w">
@@ -2136,7 +2173,7 @@ This operation does not require authentication
 <p>Пример запроса для заявки на выпуск RSA-сертификата </p>
 
 <p>One-Time Password: 11111111</p>
-<h1 id='api'>Методы API</h1>
+<h1 id='api-2'>Методы API</h1>
 <p>Список методов для работы с данными Alfa API:</p>
 
 <ul>
@@ -2155,7 +2192,7 @@ This operation does not require authentication
 <li>Получение информации об оборотах</li>
 </ul>
 <h3 id='12079a3e3c'>Получение выписки</h3>
-<p>Для получения операций по счету необходимо отправить запрос GET/statement/transactions с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса у access_token в поле scope_service должен присутствовать transactions.</p>
+<p>Для получения операций по счету необходимо отправить запрос GET statement/transactions с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
 
 <!-- Generator: Widdershins v4.0.1 -->
 
@@ -2988,7 +3025,7 @@ bearerAuth
 <td>direction</td>
 <td>string</td>
 <td>false</td>
-<td>Направление транзакции * <code>DEBIT</code> - Поступление на счет * <code>CREDIT</code> - Списание со счета</td>
+<td>Направление транзакции * <code>CREDIT</code> - Поступление на счет * <code>DEBIT</code> - Списание со счета</td>
 </tr>
 <tr>
 <td>documentDate</td>
@@ -3079,12 +3116,12 @@ bearerAuth
 </thead><tbody>
 <tr>
 <td>direction</td>
-<td>DEBIT</td>
+<td>CREDIT</td>
 <td>Направление транзакции - Поступление на счет</td>
 </tr>
 <tr>
 <td>direction</td>
-<td>CREDIT</td>
+<td>DEBIT</td>
 <td>Направление транзакции - Списание со счета</td>
 </tr>
 <tr>
@@ -4537,7 +4574,7 @@ bearerAuth
 </tr>
 </tbody></table>
 <h3 id='1'><strong>Получение выписки в формате 1С</strong></h3>
-<p>Для получения операций по счету в формате 1С необходимо отправить запрос GET/accounts/{accountNumber}/transactions/1C с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать transactions.</p>
+<p>Для получения операций по счету в формате 1С необходимо отправить запрос GET accounts/{accountNumber}/transactions/1C с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
 
 <!-- Generator: Widdershins v4.0.1 -->
 
@@ -6110,7 +6147,7 @@ bearerAuth
 </tr>
 </tbody></table>
 <h3 id='54ab5b1f46'><strong>Получение информации об оборотах</strong></h3>
-<p>Для получения информации об оборотах необходимо отправить запрос GET/statement/summary с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать transactions.</p>
+<p>Для получения информации об оборотах необходимо отправить запрос GET statement/summary с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
 
 <!-- Generator: Widdershins v4.0.1 -->
 
@@ -6854,7 +6891,7 @@ bearerAuth
 <h2 id='d2568efd70'>Профиль организации</h2>
 <p>Метод позволяет получить информацию об организации и ее счетах.</p>
 
-<p>Для получения профиля организации необходимо отправить запрос GET/customer_info с access_token, полученным в  Alfa ID. Для успешного выполнения запроса у access_token в поле scope_services должен присутствовать customer_info.</p>
+<p>Для получения информации о профиле организации необходимо отправить запрос GET customer_info с access_token, полученным в Alfa ID со scope = customer, и параметрами запроса.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET customer-info <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
@@ -7984,7 +8021,7 @@ bearerAuth ( Scopes: customer_info )
 
 <ul>
 <li>Заявка на RSA-выпуск сертификата</li>
-<li>Отправка заявки на выпуск RSA-сертификата на подпись</li>
+<li>Отправка заявки на подпись</li>
 <li>Подписание заявки с помощью кода из СМС </li>
 <li>Получение данных заявки</li>
 <li>Получение RSA-сертификата</li>
@@ -7992,14 +8029,61 @@ bearerAuth ( Scopes: customer_info )
 <li>Изменение основного способа подписи</li>
 </ul>
 
-<p>Для получения RSA-сертификата необходимо отправить заявку на выпуск RSA-сертификата на подпись, подписать заявку с помощью СМС-кода и получить данные заявки. Далее произвести активацию RSA-сертификата.</p>
+<p>Для получения RSA-сертификата необходимо отправить заявку на подпись, подписать заявку с помощью СМС-кода и получить данные заявки. Далее произвести активацию RSA-сертификата.</p>
+<h3 id='ec70afa7e7'><strong>Инструкция пользователя</strong></h3>
+<p>Шаг 1. Для получения сертификата необходимо создать <em>запрос на сертификат</em>.</p>
+
+<p>Создание запроса на сертификат: </p>
+
+<ul>
+<li><p>Скачать файл <a download="example.cnf" href="https://alfaapi.github.io/specification/config/example.cnf">example.cnf</a></p></li>
+<li><p>Открыть файл <a download="example.cnf" href="https://alfaapi.github.io/specification/config/example.cnf">example.cnf</a> с помощью текстового редактора и поменять параметры DN на свои данные</p></li>
+<li><p>Создать закрытый ключ, введя в терминале команду:  </p></li>
+</ul>
+
+<p><span class="custom__cmd-command-text">
+ openssl genrsa -des3 -out name.key 2048</span></p>
+
+<ul>
+<li>Сформировать запрос на сертификат с помощью команды в терминале:</li>
+</ul>
+
+<p><span class="custom__cmd-command-text">
+  openssl req -new -utf8 -nameopt multiline,utf8 -config example.cnf -key name.key -out nameTest.csr</span></p>
+
+<ul>
+<li><p>После этого будет создан запрос на сертификат nameTest.csr, который можно отрыть в текстовом редакторе.</p></li>
+<li><p>Далее заменить переносы строк на \n для получения следующей строки: 
+<span class="custom__cmd-command-text">-----BEGIN CERTIFICATE REQUEST-----\nMIIDFzCCAf8CAQAwgZkxCzAJBgNVBAYTAlJVMRcwFQYDVQQEDA7QodCw0YTQvtC9\n0L7QsjETMBEGA1UEKgwK0KLQuNGF0L7QvTE1MDMGA1UEAwws0KHQsNGE0L7QvdC+\n0LIg0KLQuNGF0L7QvSDQldGA0L7RhNC10LXQstC40YcxJTAjBgkqhkiG9w0BCQEW\nFlVzZXI4MzdAcG9jaHRvY2hrYS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw\nggEKAoIBAQDticUMw9slOsSU8sGtXjFndVudvwLjq/+FgX5C52p4qkPAXOYVUE1k\nruAqvkTWEhzGaprWRK5LAyEWSCludDBKGThiyipr1ewj+IQQngRGJ2oD++vJht5S\nPGQRNJtoHzAVgGq2Di1nehweR0uA3sdNFiD60QDEtsPombBAE7+FBqe78vvfsrZF\nfeITpboiqIaw+7DqI9yO9eGptsdWlY1GbOvESic5a1mXU9KFLJPD/OBAJ6Vkmf54\n+ra49hKu3tSZvPVR1KAT2yZKI26H3Ye4v6Mazr2NGH9mC+bPUf6JD+6U1kr5tCJb\nn8Tu/d3gSH+ZkaykxFneZAflhoudhc4NAgMBAAGgODA2BgkqhkiG9w0BCQ4xKTAn\nMCUGA1UdEQQeMByCC2V4YW1wbGUuY29tgg0qLmV4YW1wbGUuY29tMA0GCSqGSIb3\nDQEBCwUAA4IBAQBW8Kk2PoTlO/jLdFSHv31Dw4HrshS4mv5G7mIkULyX+NoW1+6n\n7VHVcqa5OBizKjIxE55ASRoqpVs7IakMfGVLmkUHCO9HL1Vav8Tpj5H9BeZ4FEbx\n0HqHAF7Rs89neNGEDqp8HQqsa1ojiDBppeQ44q1zzYyDkTGgfO87GtNG/mIyZZQ6\ni3WtnECVuSFWuf+hpeDGMJYo3jUyRZEhziPDm2YqqYf2vQF5iJLg7mXvWwvv/OGN\nnsD9JWu7DaP8aswQGpVgCkxlfQNyiEQgIDJBAmMbbh+34Hu5bzo8Yr5khty8EtO8\n2PpiRH1ez7adpV87Bj7xq00gpInldFiWQM19\n-----END CERTIFICATE REQUEST-----</span></p></li>
+<li><p>Полученную выше строку передать в pkcs10Content при вызове метода <strong>Заявка на RSA-выпуск сертификата</strong>.</p></li>
+</ul>
+
+<p>Шаг 2. Первый метод, который необходимо вызывать для создания RSA-сертификата, - это метод <strong>Заявка на RSA-выпуск сертификата</strong>.</p>
+
+<p>Шаг 3. Далее вызывается метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 2. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
+
+<p>Шаг 4. Затем клиент вызывает метод <strong>Подписание заявки с помощью кода из СМС</strong>, передав в него идентификатор операции, полученный в ответе на шаге 3, тип заявки = issueRsaCertificate и полученный по СМС OTP.</p>
+
+<p>Шаг 5. После необходимо дождаться выполнения заявки. Для этого нужно вызвать метод <strong>Получение данных заявки</strong>, передав в него идентификатор заявки, полученный в ответе на шаге 2, и проверить статус заявки, пока он не перейдет в статус FINISHED.</p>
+
+<p>Шаг 6. После выполнения заявки необходимо активировать RSA-сертификат, вызвав метод <strong>Заявка на активацию RSA-сертификата</strong> и передав в него идентификатор сертификата, полученный на шаге 5.</p>
+
+<p>Шаг 7. Далее повторно отправить заявку на подпись, вызвав метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 6. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
+
+<p>Шаг 8. Затем снова подписать заявку, вызвав метод <strong>Подписание заявки с помощью кода из СМС</strong>, передав в него идентификатор операции, полученный в ответе на шаге 7, тип заявки = activationRsaCertificate и полученный по СМС OTP.</p>
+
+<p>Шаг 9. Дождаться выполнения заявки: вызвать метод <strong>Получение данных заявки</strong>, передав в него идентификатор заявки, полученный в ответе на шаге 6 и проверить статус заявки, пока он не перейдет в статус FINISHED.</p>
+
+<p>Шаг 10. После выполнения заявки изменить основной способ подписи на RSA. Для этого необходимо вызвать метод <strong>Изменение основного способа подписи</strong>, передав currentSignType = rsa-certificates.</p>
+
+<p>Шаг 11. После успешного ответа на шаге 10 выпущенным RSA-сертифкатом можно подписывать документы.</p>
 <h3 id='rsa'><strong>Заявка на выпуск RSA-сертификата</strong></h3>
-<p>Для создания заявки на выпуск RSA-сертификата необходимо вызвать запрос POST signature/rsa-certificates/requests/issue с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать signature.</p>
+<p>Для создания заявки на выпуск RSA-сертификата необходимо отправить запрос POST signature/users/{sub}/rsa-certificates/requests/issue с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса. </p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST signature/rsa-certificates/requests/issue
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST signature/users/<span class="o">{</span>sub<span class="o">}</span>/rsa-certificates/requests/issue
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -8142,12 +8226,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 <h3 id='3d5915f398'><strong>Отправка заявки на подпись</strong></h3>
-<p>Для отправки заявки на подпись необходимо вызвать запрос POST signature/rsa-certificates/requests/{id}/operations с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать signature.</p>
+<p>Для отправки заявки на подпись необходимо отправить запрос POST signature/users/{sub}/rsa-certificates/requests/{id}/operations с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST signature/rsa-certificates/requests/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/operations
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST signature/users/<span class="o">{</span>sub<span class="o">}</span>/rsa-certificates/requests/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/operations
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -8196,7 +8280,7 @@ bearerAuth
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Идентификатор заявки</td>
+<td>Идентификатор заявки. Получен в ответе в методе Заявка на выпуск RSA-сертификата</td>
 </tr>
 <tr>
 <td>body</td>
@@ -8293,12 +8377,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 <h3 id='c'><strong>Подписание заявки c помощью кода из СМС</strong></h3>
-<p>Для проверки кода из СМС необходимо вызвать запрос PUT /signature/rsa-certificates/requests/operations/{id} с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать signature. </p>
+<p>Для проверки кода из СМС необходимо вызвать запрос PUT signature/users/{sub}/rsa-certificates/requests/operations/{id} с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT /signature/rsa-certificates/requests/operations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT signature/users/<span class="o">{</span>sub<span class="o">}</span>/rsa-certificates/requests/operations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -8347,7 +8431,7 @@ bearerAuth
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Идентификатор заявки</td>
+<td>Идентификатор операции. Получен в ответе в ответе в методе Отправка заявки на подпись</td>
 </tr>
 <tr>
 <td>body</td>
@@ -8445,12 +8529,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 <h3 id='c51ccf258e'><strong>Получение данных заявки</strong></h3>
-<p>Для получение информации по заявке необходимо отправить GET  signature/rsa-certificates/requests/{id}  с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать signature. </p>
+<p>Для получения информации по заявке необходимо отправить GET  signature/users/{sub}/rsa-certificates/requests/{id} с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET  signature/rsa-certificates/requests/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> 
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET signature/users/<span class="o">{</span>sub<span class="o">}</span>/rsa-certificates/requests/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -8492,7 +8576,7 @@ bearerAuth
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Идентификатор заявки</td>
+<td>Идентификатор заявки. Получен в ответе в методах Заявка на выпуск RSA-сертификата или Заявка на активацию RSA-сертификата</td>
 </tr>
 </tbody></table>
 
@@ -8621,9 +8705,8 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 <h3 id='rsa-2'><strong>Получение RSA-сертификата</strong></h3>
-<p>Для получения RSA-сертификата  необходимо отправить GET  signature/rsa-certificates/{id}  с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать signature.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> GET signature/rsa-certificates/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
+<p>Для получения RSA-сертификата необходимо отправить GET  signature/users/{sub}/rsa-certificates/{id} с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET signature/users/<span class="o">{</span>sub<span class="o">}</span>/rsa-certificates/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -8771,12 +8854,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 <h3 id='rsa-3'><strong>Заявка на активацию RSA-сертификата</strong></h3>
-<p>Для создания заявки на активацию RSA-сертификата  необходимо вызвать POST signature/rsa-certificates/{id}/requests/activation  с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать signature.</p>
+<p>Для создания заявки на активацию необходимо отправить POST signature/users/{sub}/rsa-certificates/{id}/requests/activation с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST signature/rsa-certificates/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/requests/activation
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST signature/users/<span class="o">{</span>sub<span class="o">}</span>/rsa-certificates/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/requests/activation
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -8818,7 +8901,7 @@ bearerAuth
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Идентификатор сертификата</td>
+<td>Идентификатор сертификата. Получен в ответе в методе Получение данных заявки</td>
 </tr>
 </tbody></table>
 
@@ -8910,12 +8993,12 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 <h3 id='06b5538225'><strong>Изменение основного способа подписи</strong></h3>
-<p>Для изменения основного способа подписи необходимо вызвать PUT signature/users/{sub}/sign-settings с access_token, полученным в Alfa ID и параметрами запроса. Для успешного выполнения запроса в access_token в поле scope_services должен присутствовать signature.</p>
+<p>Для изменения основного способ необходимо вызвать PUT signature/users/{sub}/sign-settings с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT signature/users/<span class="o">{</span>sub<span class="o">}</span>/sign-settings 
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT signature/users/<span class="o">{</span>sub<span class="o">}</span>/sign-settings
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -9065,7 +9148,7 @@ bearerAuth
 <tr>
 <td>tokenKeyId</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Идентификатор закрытого ключа</td>
 </tr>
 <tr>
@@ -9077,8 +9160,8 @@ bearerAuth
 <tr>
 <td>pkcs10Content</td>
 <td>string</td>
-<td>false</td>
-<td>Контект PKCS10</td>
+<td>true</td>
+<td>Контент PKCS10</td>
 </tr>
 </tbody></table>
 
@@ -9186,7 +9269,7 @@ bearerAuth
 <tr>
 <td>requestType</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Тип заявки</td>
 </tr>
 </tbody></table>
@@ -9300,7 +9383,7 @@ bearerAuth
 <tr>
 <td>code</td>
 <td>number</td>
-<td>false</td>
+<td>true</td>
 <td>Одноразовый код</td>
 </tr>
 </tbody></table>
@@ -9335,7 +9418,7 @@ bearerAuth
 <td>id</td>
 <td>string</td>
 <td>false</td>
-<td>Идентификатор заявки</td>
+<td>Идентификатор операции</td>
 </tr>
 <tr>
 <td>isSigned</td>
@@ -9448,7 +9531,7 @@ bearerAuth
 </tr>
 <tr>
 <td>requestActivateRsaCertificate</td>
-<td>array</td>
+<td>[<a href="#schemadatarequestactivatersacertificate">DataRequestActivateRsaCertificate</a>]</td>
 <td>false</td>
 <td>Заявка на активацию RSA-сертификата</td>
 </tr>
@@ -10072,7 +10155,7 @@ bearerAuth
 <tr>
 <td>currentSignType</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Тип основной подписи</td>
 </tr>
 </tbody></table>
@@ -10307,24 +10390,48 @@ bearerAuth
 <p>Пример 2:
 Если клиент запрашивает limit = 100, offset = 1000, то клиенту вернется с 1001-ой по 1100-ую запись. </p>
 
-<p>Сортировка в пагинации происходит следующим образом: вверху списка возвращаются новые записи, внизу - старые записи. </p>
+<p>Сортировка в пагинации происходит следующим образом: вверху списка возвращаются новые записи, внизу - старые записи.</p>
+<h2 id='scopes'>Scopes (области применения)</h2>
+<table><thead>
+<tr>
+<th>Scope</th>
+<th>Description</th>
+<th>Resourses</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>customer</td>
+<td>Все данные об организации и её счетах</td>
+<td><span class="custom__cmd-command-text">GET customer-info</span></td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>Все данные о счетах организации</td>
+<td><ol class="table-cell__list"><li><span class="custom__cmd-command-text">GET statement/transactions</span></li> <br> <li><span class="custom__cmd-command-text">GET accounts/{accountNumber}statement/transactions</span></li> <br> <li><span class="custom__cmd-command-text">GET statement/summary</span></li></ol></td>
+</tr>
+<tr>
+<td>signature</td>
+<td>Электронная подпись</td>
+<td><ol class="table-cell__list"><li><span class="custom__cmd-command-text">POST signature/users/{sub}/rsa-certificates/requests/issue</span></li> <br> <li><span class="custom__cmd-command-text">POST signature/users/{sub}/rsa-certificates/requests/{id}/operations</span></li> <br> <li><span class="custom__cmd-command-text">PUT signature/users/{sub}/rsa-certificates/requests/operations/{id}</span></li> <br> <li><span class="custom__cmd-command-text">GET signature/users/{sub}/rsa-certificates/requests/{id}</span></li> <br> <li><span class="custom__cmd-command-text">GET signature/users/{sub}/rsa-certificates/{id}</span></li> <br> <li><span class="custom__cmd-command-text">POST signature/users/{sub}/rsa-certificates/{id}/requests/activation</span></li> <br> <li><span class="custom__cmd-command-text">PUT signature/users/{sub}/sign-settings</span></li></ol></td>
+</tr>
+</tbody></table>
 <h1 id='release-notes'>Release Notes</h1>
 <p><strong>3 июня 2022</strong> </p>
 
 <p>Добавлены методы API по сервису &quot;Электронная подпись&quot;:</p>
 
 <ul>
-<li><p><strong>POST/signature/rsa-certificates/requests/issue</strong> 
-Заявка на RSA-выпуск сертификата</p></li>
-<li><p><strong>POST/signature/rsa-certificates/requests/{id}/operations</strong> 
-Отправка заявки на выпуск RSA-сертификата на подпись</p></li>
-<li><p><strong>PUT /signature/rsa-certificates/requests/operations/{id}</strong> Подписание заявки с помощью кода из СМС </p></li>
-<li><p><strong>GET/signature/rsa-certificates/requests/{id}</strong> Получение данных заявки</p></li>
-<li><p><strong>GET/signature/rsa-certificates/{id}</strong> 
+<li><p><strong>POST signature/users/{sub}/rsa-certificates/requests/issue</strong>
+Заявка на выпуск RSA-сертификата</p></li>
+<li><p><strong>POST signature/users/{sub}/rsa-certificates/requests/{id}/operations</strong> 
+Отправка заявки а на подпись</p></li>
+<li><p><strong>PUT signature/users/{sub}/rsa-certificates/requests/operations/{id}</strong> Подписание заявки с помощью кода из СМС </p></li>
+<li><p><strong>GET signature/users/{sub}/rsa-certificates/requests/{id}</strong> Получение данных заявки</p></li>
+<li><p><strong>GET signature/users/{sub}/rsa-certificates/{id}</strong>
 Получение RSA-сертификата</p></li>
-<li><p><strong>POST/signature/rsa-certificates/{id}/requests/activation</strong> 
+<li><p><strong>POST signature/users/{sub}/rsa-certificates/{id}/requests/activation</strong>
 Заявка на активацию RSA-сертификата</p></li>
-<li><p><strong>POST/signature/users/{sub}/sign-settings</strong> 
+<li><p><strong>PUT signature/users/{sub}/sign-settings</strong> 
 Изменение основного способа подписи </p></li>
 </ul>
 
