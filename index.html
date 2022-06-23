@@ -371,7 +371,7 @@
 <p><strong>Проверьте готовность к тестовой интеграции</strong></p>
 
 <ol>
-<li><p>Заключите договор на информационно-технологическое взаимодействие с Банком и подпишите приложения к нему (шаг 1-2 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
+<li><p>Заключите соглашение о конфиденциальности и неразглашении информации, договор на информационно-технологическое взаимодействие с Банком и подпишите приложения к нему (шаг 1-2 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
 <li><p>Получите тестовый client_id и тестовый scope (шаг 3 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
 <li><p>Установите тестовый TLS-сертификат  и проверьте доступ до Swagger UI (подробнее в разделе <a href="#sandbox">Песочница</a>). </p></li>
 <li><p>Получите client_secret (шаг 7 в разделе <a href="#alfa-api-2">Подключение к API</a>).</p></li>
@@ -395,14 +395,14 @@
 
 <p>Шаг 2. <strong>Заключить договор с Банком</strong>.</p>
 
-<p>Подпишите типовую форму договора на информационно-технологическое обслуживание и приложений к нему (вопросы по заключению договора направляйте  на <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a>). </p>
+<p>Подпишите типовые формы соглашения о конфиденциальности и неразглашении информации, а также договора на информационно-технологическое обслуживание и приложений к нему (вопросы по заключению договора направляйте на  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a>. </p>
 
 <p><em>Комиссия за подключение и использование не взимается.</em></p>
 
 <p>Шаг 3. <strong>Получить от банка client_id</strong>.</p>
 
 <p>Для получения <span class="custom__cmd-command-text">
-client_id</span> направьте ваш <span class="custom__cmd-command-text">redirect_uri</span>   на почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> c электронной почты, указанной в Договоре.</p>
+client_id</span> направьте ваш <span class="custom__cmd-command-text">redirect_uri</span>   на почту  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a> c электронной почты, указанной в Договоре.</p>
 
 <p><span class="custom__cmd-command-text">redirect_uri</span> - URL, на который сервер авторизации будет отправлять пользователя после успешной авторизации приложения и которому будет предоставляться код авторизации.</p>
 
@@ -416,7 +416,7 @@ client_id</span> и scope, который разрешен для использ
 
 <p>Шаг 5. <strong>Сообщить об успешном тестировании</strong>.</p>
 
-<p>После проведения успешного тестирования клиент направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> письмо о проведенном тестировании. Тема письма: &quot;Завершенное тестирование&quot;.</p>
+<p>После проведения успешного тестирования клиент направляет на электронную почту   <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a> письмо о проведенном тестировании. Тема письма: &quot;Завершенное тестирование&quot;.</p>
 
 <p>Шаг 6. <strong>Выпустить TLS-сертификат</strong>. </p>
 
@@ -500,11 +500,11 @@ openssl req -noout -text -in name.csr</span></p>
 
 <p><a download="openssl.cnf" href="https://github.com/alfaapi/specification/blob/main/Images_main/picture1.png?raw=true"><strong>Пример запроса на сертификат</strong></a> с указанием INN = 1.2.643.3.131.1.1.</p>
 
-<p>Отправьте запрос на сертификат на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> с указанием темы письма &quot;Запрос на сертификат&quot;. Письмо должно быть направлено с электронной почты, указанной в Договоре. Никому не передавайте закрытый ключ. </p>
+<p>Отправьте запрос на сертификат на электронную почту  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a> с указанием темы письма &quot;Запрос на сертификат&quot;. Письмо должно быть направлено с электронной почты, указанной в Договоре. Никому не передавайте закрытый ключ. </p>
 
-<p>Получите выпущенный сертификат, направленный с почтового адреса <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a>. Срок действия сертификата - 375 дней. По истечении срока действия сертификата выполнить его повторную генерацию. </p>
+<p>Получите выпущенный сертификат, направленный с почтового адреса  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a>. Срок действия сертификата - 375 дней. По истечении срока действия сертификата выполнить его повторную генерацию. </p>
 
-<p>В случае компрометации закрытого ключа Партнер API направляет на электронную почту <a href="mailto:baas@alfabank.ru">baas@alfabank.ru</a> запрос на повторный выпуск сертификата. </p>
+<p>В случае компрометации закрытого ключа Партнер API направляет на электронную почту  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a> запрос на повторный выпуск сертификата. </p>
 
 <p><strong>Порядок повторного выпуска сертификата</strong>:</p>
 
@@ -688,6 +688,8 @@ This operation does not require authentication
 
 <p>Шаг 1. <strong>Получение кода авторизации</strong>  (получение Authorization Code) {GET /authorize}. 
 URL:  <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oidc/authorize</a></p>
+
+<p><em>Код авторизации действует 2 минуты</em>.</p>
 
 <p><strong>Откройте окно &quot;Вход через Alfa ID&quot;</strong>:</p>
 
@@ -926,6 +928,8 @@ This operation does not require authentication
 </tbody></table>
 
 <p>Шаг 2. <strong>Получение токена доступа (получение access_token)</strong> {POST /token}. </p>
+
+<p><em>Токен доступа действует 1 час</em>.</p>
 
 <p>Для получения токена доступа необходимо <strong>вызвать метод</strong> <a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a> со следующими параметрами:</p>
 
@@ -1816,6 +1820,8 @@ your-256-bit-secret
 
 <p><strong>Обновление токена</strong> {POST /token}.</p>
 
+<p><em>Токен обновления действует 180 дней</em>.</p>
+
 <p>Запрос используется для обновления access_token. Для обновления токена доступа необходимо <strong>вызвать метод</strong> <a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a> со следующими параметрами:</p>
 
 <blockquote>
@@ -2162,9 +2168,9 @@ This operation does not require authentication
 </span></code></pre></div>
 <p><em>Электронная подпись</em></p>
 
-<p>Пример запроса для заявки на выпуск RSA-сертификата </p>
+<p>При запросе на создание заявки на выпуск RSA-сертификата в песочнице поля &quot;pkcs10Content&quot;, &quot;tokenKeyId&quot; статичны и должны быть равны. Пример заполнения полей &quot;pkcs10Content&quot; и &quot;tokenKeyId&quot; указан справа (code sample). </p>
 
-<p>One-Time Password: 11111111</p>
+<p>One-Time Password для заявки на выпуск/ активацию RSA-сертификата: 11111111</p>
 <h1 id='api-2'>Методы API</h1>
 <p>Список методов для работы с данными Alfa API:</p>
 
