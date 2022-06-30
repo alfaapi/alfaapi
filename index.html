@@ -282,7 +282,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-50311d57.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-f04895a6.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
 
@@ -319,16 +319,16 @@
               </ul>
           </li>
           <li>
-            <a href="#api-2" class="toc-h1 toc-link" data-title="Методы API">Методы API</a>
+            <a href="#api-3" class="toc-h1 toc-link" data-title="Методы API">Методы API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#bd90cedb51" class="toc-h2 toc-link" data-title="Операции по счетам">Операции по счетам</a>
+                    <a href="#bd90cedb51-2" class="toc-h2 toc-link" data-title="Операции по счетам">Операции по счетам</a>
                   </li>
                   <li>
                     <a href="#d2568efd70" class="toc-h2 toc-link" data-title="Профиль организации">Профиль организации</a>
                   </li>
                   <li>
-                    <a href="#968778f49f" class="toc-h2 toc-link" data-title="Электронная подпись">Электронная подпись</a>
+                    <a href="#968778f49f-2" class="toc-h2 toc-link" data-title="Электронная подпись">Электронная подпись</a>
                   </li>
                   <li>
                     <a href="#42fc51aa44" class="toc-h2 toc-link" data-title="Пагинация">Пагинация</a>
@@ -367,9 +367,7 @@
 
 <p><span class="custom__cmd-command-text">
  access_token</span> - токен доступа, который формируется при аутентификации пользователя в Alfa ID и необходим для вызова методов в Alfa API. </p>
-<h2 id='api'>Чек-лист для Партнеров API</h2>
-<p><strong>Проверьте готовность к тестовой интеграции</strong></p>
-
+<h2 id='api'>Чек-лист для Партнеров API</h2><h4 id='19be7d1b3b'>Проверьте готовность к тестовой интеграции</h4>
 <ol>
 <li><p>Заключите соглашение о конфиденциальности и неразглашении информации, договор на информационно-технологическое взаимодействие с Банком и подпишите приложения к нему (шаг 1-2 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
 <li><p>Получите тестовый client_id и тестовый scope (шаг 3 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
@@ -377,9 +375,7 @@
 <li><p>Получите client_secret (шаг 7 в разделе <a href="#alfa-api-2">Подключение к API</a>).</p></li>
 <li><p>Реализуйте и протестируйте интеграцию  <a href="#alfa-id">Alfa ID</a> и <a href="#api">Alfa API</a>. </p></li>
 </ol>
-
-<p><strong>Проверьте готовность к промышленной интеграции</strong></p>
-
+<h4 id='d14f7f3783'>Проверьте готовность к промышленной интеграции</h4>
 <ol>
 <li><p>Выполните все пункты из подраздела &quot;Проверьте готовность к тестовому доступу&quot; Чек-листа.</p></li>
 <li><p>Сообщите об успешном тестировании (шаг 5 из раздела <a href="#alfa-api-2">Подключение к API</a>).</p></li>
@@ -395,14 +391,14 @@
 
 <p>Шаг 2. <strong>Заключить договор с Банком</strong>.</p>
 
-<p>Подпишите типовые формы соглашения о конфиденциальности и неразглашении информации, а также договора на информационно-технологическое обслуживание и приложений к нему (вопросы по заключению договора направляйте на  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a>. </p>
+<p>Подпишите типовые формы соглашения о конфиденциальности и неразглашении информации, а также договора на информационно-технологическое обслуживание и приложений к нему (вопросы по заключению договора направляйте на </a> <a href="mailto:alfa_api@alfabank.ru?subject=Вопрос%20по%20заключению%20договора">alfa_api@alfabank.ru</a>.</p>
 
 <p><em>Комиссия за подключение и использование не взимается.</em></p>
 
 <p>Шаг 3. <strong>Получить от банка client_id</strong>.</p>
 
 <p>Для получения <span class="custom__cmd-command-text">
-client_id</span> направьте ваш <span class="custom__cmd-command-text">redirect_uri</span>   на почту  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a> c электронной почты, указанной в Договоре.</p>
+client_id</span> направьте ваш <span class="custom__cmd-command-text">redirect_uri</span>   на почту </a> <a href="mailto:alfa_api@alfabank.ru?subject=Получение%20client_id">alfa_api@alfabank.ru</a>. c электронной почты, указанной в Договоре.</p>
 
 <p><span class="custom__cmd-command-text">redirect_uri</span> - URL, на который сервер авторизации будет отправлять пользователя после успешной авторизации приложения и которому будет предоставляться код авторизации.</p>
 
@@ -416,14 +412,14 @@ client_id</span> и scope, который разрешен для использ
 
 <p>Шаг 5. <strong>Сообщить об успешном тестировании</strong>.</p>
 
-<p>После проведения успешного тестирования клиент направляет на электронную почту   <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a> письмо о проведенном тестировании. Тема письма: &quot;Завершенное тестирование&quot;.</p>
+<p>После проведения успешного тестирования клиент направляет на электронную почту </a> <a href="mailto:alfa_api@alfabank.ru?subject=Завершенное%20тестирование">alfa_api@alfabank.ru</a>. письмо о проведенном тестировании. Тема письма: &quot;Завершенное тестирование&quot;.</p>
 
 <p>Шаг 6. <strong>Выпустить TLS-сертификат</strong>. </p>
 
 <p>Взаимодействие между Банком и Партнером API реализовано с использованием двухстороннего TLS-соединения, для которого необходимо выпустить сертификат.</p>
-<h3 id='182b83d408'>Требования к сертификату</h3>
+<h4 id='182b83d408'>Требования к сертификату</h4>
 <p>Чтобы обеспечить проверку системы Партнера API на основе сертификата, в subject сертификата предусмотрены обязательные поля:</p>
-<h3 id='global-subject'>Global Subject</h3>
+<h4 id='global-subject'>Global Subject</h4>
 <table><thead>
 <tr>
 <th>Атрибут</th>
@@ -453,7 +449,7 @@ client_id</span> и scope, который разрешен для использ
 </tbody></table>
 
 <p>В зависимости от правовой формы должно быть указано одно из нижеперечисленных полей:</p>
-<h3 id='variable-subject'>Variable Subject</h3>
+<h4 id='variable-subject'>Variable Subject</h4>
 <table><thead>
 <tr>
 <th>Атрибут</th>
@@ -473,7 +469,7 @@ client_id</span> и scope, который разрешен для использ
 <td>FOREIGNID = 1.3.6.1.4.1.16745.100.1</td>
 </tr>
 </tbody></table>
-<h3 id='openssl'>Инструкция генерации закрытого ключа и запроса на сертификат в <a href="https://www.openssl.org" target="_blank" >openssl</a>:</h3>
+<h4 id='openssl'>Инструкция генерации закрытого ключа и запроса на сертификат в <a href="https://www.openssl.org" target="_blank" >openssl</a>:</h4>
 <p>Подготовьте файл конфигурации, в котором будут указаны все обязательные атрибуты в subject.</p>
 
 <ul>
@@ -500,14 +496,12 @@ openssl req -noout -text -in name.csr</span></p>
 
 <p><a download="openssl.cnf" href="https://github.com/alfaapi/specification/blob/main/Images_main/picture1.png?raw=true"><strong>Пример запроса на сертификат</strong></a> с указанием INN = 1.2.643.3.131.1.1.</p>
 
-<p>Отправьте запрос на сертификат на электронную почту  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a> с указанием темы письма &quot;Запрос на сертификат&quot;. Письмо должно быть направлено с электронной почты, указанной в Договоре. Никому не передавайте закрытый ключ. </p>
+<p>Отправьте запрос на сертификат на электронную почту  </a> <a href="mailto:alfa_api@alfabank.ru?subject=Запрос%20на%20сертификат">alfa_api@alfabank.ru</a>. с указанием темы письма &quot;Запрос на сертификат&quot;. Письмо должно быть направлено с электронной почты, указанной в Договоре. Никому не передавайте закрытый ключ. </p>
 
 <p>Получите выпущенный сертификат, направленный с почтового адреса  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a>. Срок действия сертификата - 375 дней. По истечении срока действия сертификата выполнить его повторную генерацию. </p>
 
-<p>В случае компрометации закрытого ключа Партнер API направляет на электронную почту  <a href="mailto:alfa_api@alfabank.ru">alfa_api@alfabank.ru</a> запрос на повторный выпуск сертификата. </p>
-
-<p><strong>Порядок повторного выпуска сертификата</strong>:</p>
-
+<p>В случае компрометации закрытого ключа Партнер API направляет на электронную почту </a> <a href="mailto:alfa_api@alfabank.ru?subject=Запрос%20на%20повторный%20выпуск%20сертификата">alfa_api@alfabank.ru</a>. запрос на повторный выпуск сертификата. </p>
+<h4 id='b4d477419d'>Порядок повторного выпуска сертификата:</h4>
 <p>Партнер, не ранее чем за три месяца и не позднее, чем за один месяц до истечения действия сертификата, формирует и направляет запрос на сертификат в Банк. Контроль за сохранностью и сроками действия сертификатов возлагается на Партнера API. В случае, если Партнер API по каким-либо причинам, утратил сертификат, не предоставил запрос на сертификат или не выполнил установку нового сертификата на своей стороне, в том числе и в настройках приложения на портале, то вся ответственность по простою из-за утраты доступа к Альфа API возлагается на Партнера. В целях минимизации рисков просрочки сроков выпуска, предусмотрено автоматическое оповещение об истечении сроков действия сертификата.</p>
 
 <p>Шаг 7. <strong>Получить client_secret</strong>.</p>
@@ -522,12 +516,11 @@ openssl req -noout -text -in name.csr</span></p>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
-curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/clients/<span class="o">{</span>clientId<span class="o">}</span>/client-secret <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/clients/<span class="o">{</span>clientId<span class="o">}</span>/client-secret <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
 
 </code></pre></div>
-<h3 id="post__clients_{clientid}_client-secret-parameters">Parameters</h3>
+<h4 id="post__clients_{clientid}_client-secret-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -557,7 +550,7 @@ curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/clients/<span
   </span><span class="nl">"clientSecret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qwerty1234567890Qwerty1234567890!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__clients_{clientid}_client-secret-responses">Responses</h3>
+<h4 id="post__clients_{clientid}_client-secret-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -602,8 +595,8 @@ curl <span class="nt">-X</span> POST https://baas.alfabank.ru/oidc/clients/<span
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h3 id='schemas'>Schemas</h3>
-<h3 id="tocS_ClientSecretResponse">ClientSecretResponse</h3>
+<h4 id='schemas'>Schemas</h4>
+<h4 id="tocS_ClientSecretResponse">ClientSecretResponse</h4>
 
 <!-- backwards compatibility -->
 
@@ -616,7 +609,7 @@ This operation does not require authentication
   </span><span class="nl">"clientSecret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qwerty1234567890Qwerty1234567890!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties'>Properties</h3>
+</span></code></pre></div><h4 id='properties'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -639,7 +632,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Error">Error</h3>
+<h4 id="tocS_Error">Error</h4>
 
 <!-- backwards compatibility -->
 
@@ -652,7 +645,7 @@ This operation does not require authentication
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-2'>Properties</h3>
+</span></code></pre></div><h4 id='properties-2'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -680,7 +673,7 @@ This operation does not require authentication
 <p>Для запросов в Alfa ID используйте адрес <a href="https://id.alfabank.ru/oidc">https://id.alfabank.ru/oidc</a>.
 Для  запросов Alfa API используйте адрес <a href="https://baas.alfabank.ru/api">https://baas.alfabank.ru/api</a>.</p>
 <h2 id='alfa-id'>Аутентификация в Alfa ID</h2>
-<p>Для отправки запросов в Alfa API необходимо пройти  аутентификацию в Alfa ID пользователю, от имени которого будут направляться запросы в Alfa API. Получение Access token - необходимое условие для прохождения аутентификации пользователя. Аутентификация и авторизация происходит с использованием Authorization Code Flow.</p>
+<p>Для отправки запросов в Alfa API необходимо пройти  аутентификацию в Alfa ID пользователю, от имени которого будут направляться запросы в Alfa API. Получение Access_token - необходимое условие для прохождения аутентификации пользователя. Аутентификация и авторизация происходит с использованием Authorization Code Flow.</p>
 
 <p>Аутентификация выполняется путем переадресации пользователя с запросом /authorize на страницу входа в Alfa ID и запроса /token для получения Access token.</p>
 
@@ -717,7 +710,7 @@ URL:  <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oid
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://id.alfabank.ru/oidc/authorize?response_type<span class="o">=</span>code&amp;client_id<span class="o">=</span>0cee0683-85ae-49f2-a63d-29f97aad1911&amp;redirect_uri<span class="o">=</span>https%3A%2F%2Fwwww.partner.ru%2Fcode&amp;scope<span class="o">=</span>openid&amp;state<span class="o">=</span>abcdef
 
 </code></pre></div>
-<h3 id="get__authorize-parameters">Parameters</h3>
+<h4 id="get__authorize-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -799,7 +792,7 @@ URL:  <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oid
 <td>Максимальный период аутентификации (дополнительный параметр)</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values'>Enumerated Values</h3>
+<h4 id='enumerated-values'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -843,7 +836,7 @@ URL:  <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oid
 
 <p>При получении ответа 302 (Found), код авторизации получен.</p>
 
-<h3 id="get__authorize-responses">Responses</h3>
+<h4 id="get__authorize-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -860,7 +853,7 @@ URL:  <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oid
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
+<h4 id='response-headers'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -942,7 +935,7 @@ This operation does not require authentication
   <span class="nt">-d</span> <span class="s1">'grant_type=authorization_code&amp;code=8962c304-89b1-11ec-a8a3-0242ac120002&amp;client_id=0cee0683-85ae-49f2-a63d-29f97aad1911&amp;client_secret=Qwerty1234567890Qwerty1234567890!&amp;redirect_uri=https%3A%2F%2Fwwww.partner.ru%2Fcode&amp;code_verifier='</span>
 
 </code></pre></div>
-<h3 id="post__token-parameters">Parameters</h3>
+<h4 id="post__token-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -975,7 +968,7 @@ This operation does not require authentication
   </span><span class="nl">"id_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjI4ZTY4ZS1jYzM0LTRiODItYjQzZC00OTExMmI1ZDlkM2UiLCJhdWQiOiIwY2VlMDY4My04NWFlLTQ5ZjItYTYzZC0yOWY5N2FhZDE5MTEiLCJhY3IiOiJMb0EzIiwiYXpwIjoiMGNlZTA2ODMtODVhZS00OWYyLWE2M2QtMjlmOTdhYWQxOTExIiwiYXV0aF90aW1lIjoxNjMxNjYzMDUzLCJpc3MiOiJodHRwczpcL1wvaWQuYWxmYWJhbmsucnUiLCJleHAiOjE2MzE2NjY2NjMsImlhdCI6MTYzMTY2MzA2Mywibm9uY2UiOiJuLTBTNl9XekEyTWoifQ.xBE6LEUxOKleHCZVQacldJfKr5KtyyvJKCCmInqapmRJ_aRF-cEoVfpJd_kxlNmJYT7AcjMMppovNkmhB49VL5DK8FhF0fvRgLskKR9Eohy4eiC8ued03Z1LyLz1H7EcKSkusaCIajzIvxxZfVtSHI4jmgLg6ItXPdZgIDUWINgESkl6I7IP5CbfONHweNnbkWEOEzxDgGGnxxtPxrWVoPVP-ijUeUSH_iESHfrhY_ePRMYi2If62IsKX_0GT5BHRYOhXVDZ9fyn5fRCvg8_QoCykDVIOZMtWQ3w4TadqS0dfMlsLBxkVbVftzH2fWRLTCX3SJ5AXiytHkpow8V45w"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__token-responses">Responses</h3>
+<h4 id="post__token-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -998,7 +991,7 @@ This operation does not require authentication
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-2'>Response Headers</h3>
+<h4 id='response-headers-2'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1048,8 +1041,8 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h3 id='schemas-2'>Schemas</h3>
-<h3 id="tocS_AccessTokenRequest">AccessTokenRequest</h3>
+<h4 id='schemas-2'>Schemas</h4>
+<h4 id="tocS_AccessTokenRequest">AccessTokenRequest</h4>
 
 <!-- backwards compatibility -->
 
@@ -1066,7 +1059,7 @@ This operation does not require authentication
   </span><span class="nl">"code_verifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-3'>Properties</h3>
+</span></code></pre></div><h4 id='properties-3'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1112,7 +1105,7 @@ This operation does not require authentication
 <td>Код верификатор</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-2'>Enumerated Values</h3>
+<h4 id='enumerated-values-2'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -1127,7 +1120,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="tocS_AccessTokenResponse">AccessTokenResponse</h3>
+<h4 id="tocS_AccessTokenResponse">AccessTokenResponse</h4>
 
 <!-- backwards compatibility -->
 
@@ -1143,7 +1136,7 @@ This operation does not require authentication
   </span><span class="nl">"id_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIzMjI4ZTY4ZS1jYzM0LTRiODItYjQzZC00OTExMmI1ZDlkM2UiLCJhdWQiOiIwY2VlMDY4My04NWFlLTQ5ZjItYTYzZC0yOWY5N2FhZDE5MTEiLCJhY3IiOiJMb0EzIiwiYXpwIjoiMGNlZTA2ODMtODVhZS00OWYyLWE2M2QtMjlmOTdhYWQxOTExIiwiYXV0aF90aW1lIjoxNjMxNjYzMDUzLCJpc3MiOiJodHRwczpcL1wvaWQuYWxmYWJhbmsucnUiLCJleHAiOjE2MzE2NjY2NjMsImlhdCI6MTYzMTY2MzA2Mywibm9uY2UiOiJuLTBTNl9XekEyTWoifQ.xBE6LEUxOKleHCZVQacldJfKr5KtyyvJKCCmInqapmRJ_aRF-cEoVfpJd_kxlNmJYT7AcjMMppovNkmhB49VL5DK8FhF0fvRgLskKR9Eohy4eiC8ued03Z1LyLz1H7EcKSkusaCIajzIvxxZfVtSHI4jmgLg6ItXPdZgIDUWINgESkl6I7IP5CbfONHweNnbkWEOEzxDgGGnxxtPxrWVoPVP-ijUeUSH_iESHfrhY_ePRMYi2If62IsKX_0GT5BHRYOhXVDZ9fyn5fRCvg8_QoCykDVIOZMtWQ3w4TadqS0dfMlsLBxkVbVftzH2fWRLTCX3SJ5AXiytHkpow8V45w"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-4'>Properties</h3>
+</span></code></pre></div><h4 id='properties-4'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1183,7 +1176,7 @@ This operation does not require authentication
 <td>Идентификационный токен</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-3'>Enumerated Values</h3>
+<h4 id='enumerated-values-3'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -1198,7 +1191,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Error">Error</h3>
+<h4 id="tocS_Error">Error</h4>
 
 <!-- backwards compatibility -->
 
@@ -1211,7 +1204,7 @@ This operation does not require authentication
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-5'>Properties</h3>
+</span></code></pre></div><h4 id='properties-5'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1233,9 +1226,7 @@ This operation does not require authentication
 <td>Описание ошибки</td>
 </tr>
 </tbody></table>
-
-<p><strong>Таблица возможных значение параметра error</strong>: </p>
-
+<h4 id='error'>Таблица возможных значений параметра error:</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Значение</th>
@@ -1263,9 +1254,7 @@ This operation does not require authentication
 <td style="text-align: left">Произошла непредвиденная ошибка.</td>
 </tr>
 </tbody></table>
-
-<p><strong>Описание клэймов access_token</strong> :</p>
-
+<h4 id='access_token'>Описание клэймов access_token:</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -1309,9 +1298,7 @@ This operation does not require authentication
 <td style="text-align: left">none</td>
 </tr>
 </tbody></table>
-
-<p><strong>Описание клэймов ID_TOKEN</strong>:</p>
-
+<h4 id='id_token'>Описание клэймов ID_TOKEN:</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -1400,7 +1387,7 @@ curl <span class="nt">-X</span> GET https://baas.alfabank.ru/oidc/userinfo <span
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__userinfo-responses">Responses</h3>
+<h4 id="get__userinfo-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -1423,7 +1410,7 @@ curl <span class="nt">-X</span> GET https://baas.alfabank.ru/oidc/userinfo <span
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-3'>Response Headers</h3>
+<h4 id='response-headers-3'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1450,8 +1437,8 @@ curl <span class="nt">-X</span> GET https://baas.alfabank.ru/oidc/userinfo <span
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='schemas-3'>Schemas</h3>
-<h3 id="tocS_Error">Error</h3>
+<h4 id='schemas-3'>Schemas</h4>
+<h4 id="tocS_Error">Error</h4>
 
 <!-- backwards compatibility -->
 
@@ -1464,7 +1451,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-6'>Properties</h3>
+</span></code></pre></div><h4 id='properties-6'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1486,9 +1473,7 @@ bearerAuth
 <td>Описание ошибки</td>
 </tr>
 </tbody></table>
-
-<p><strong>Таблица возможных значение параметра error</strong>: </p>
-
+<h4 id='error-2'>Таблица возможных значений параметра error:</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Значение</th>
@@ -1512,9 +1497,7 @@ bearerAuth
 <td style="text-align: left">Произошла непредвиденная ошибка</td>
 </tr>
 </tbody></table>
-
-<p><strong>Описание клэймов UserInfo</strong></p>
-
+<h4 id='userinfo'>Описание клэймов UserInfo:</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Name</th>
@@ -1639,9 +1622,7 @@ bearerAuth
 <li>Base64URL(Payload).</li>
 <li>Base64URL(Signature).</li>
 </ul>
-
-<p><strong>Пример JWS идентификационного токена id_token</strong>:</p>
-
+<h4 id='jws-id_token'>Пример JWS идентификационного токена id_token:</h4>
 <p>Каждая часть, разделенная точкой, должна декодироваться отдельно, с использованием алгоритма Base64URL Encoding.</p>
 
 <div class="custom__jwt-container">
@@ -1689,9 +1670,7 @@ your-256-bit-secret
     </pre>
   </div>
 </div>
-
-<p><strong>Пример access_token</strong>:</p>
-
+<h4 id='access_token-2'>Пример access_token:</h4>
 <div class="custom__jwt-container">
     <div class="custom__jwt-column token">
     <h3>Закодированный</h3>
@@ -1745,9 +1724,7 @@ your-256-bit-secret
     </pre>
   </div>
 </div>
-
-<p><strong>Пример userinfo</strong>:</p>
-
+<h4 id='userinfo-2'>Пример userinfo:</h4>
 <div class="custom__jwt-container">
     <div class="custom__jwt-column token">
     <h3>Закодированный</h3>
@@ -1806,7 +1783,7 @@ your-256-bit-secret
     </pre>
   </div>
 </div>
-<h3 id='9385ea9db2'>Проверка подписи:</h3>
+<h4 id='9385ea9db2'>Проверка подписи:</h4>
 <p>1) Вычисляем хэш-функцию SHA256 от данных Base64URL(Header).Base64URL(Payload).</p>
 
 <p>2) Дешифруем данные Base64URL(Signature), используя алгоритм RS256 и открытый ключ с идентификатором, переданным в Заголовке (Header) в клэйме kid (в приведенном выше примере это alfa-test-jwt).</p>
@@ -1815,9 +1792,7 @@ your-256-bit-secret
 
 <p>Сертификат для проверки электронной подписи
  <a download="example.crs.cer" href="https://alfaapi.github.io/specification/certificates/example.crs.cer">example.crs.cer</a></p>
-
-<p>Опционально: </p>
-
+<h4 id='6d2a6c5279'>Опционально:</h4>
 <p><strong>Обновление токена</strong> {POST /token}.</p>
 
 <p><em>Токен обновления действует 180 дней</em>.</p>
@@ -1833,7 +1808,7 @@ your-256-bit-secret
   <span class="nt">-d</span> <span class="s1">'grant_type=refresh_token&amp;refresh_token=13b8230b-b6bf-4bb9-b977-3bc0a988a5fd&amp;client_id=0cee0683-85ae-49f2-a63d-29f97aad1911&amp;client_secret=Qwerty1234567890Qwerty1234567890!'</span>
 
 </code></pre></div>
-<h3 id="post__token-parameters">Parameters</h3>
+<h4 id="post__token-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -1865,7 +1840,7 @@ your-256-bit-secret
   </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__token-responses">Responses</h3>
+<h4 id="post__token-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -1888,7 +1863,7 @@ your-256-bit-secret
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-4'>Response Headers</h3>
+<h4 id='response-headers-4'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -1938,8 +1913,8 @@ your-256-bit-secret
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h3 id='schemas-4'>Schemas</h3>
-<h3 id="tocS_RefreshTokenRequest">RefreshTokenRequest</h3>
+<h4 id='schemas-4'>Schemas</h4>
+<h4 id="tocS_RefreshTokenRequest">RefreshTokenRequest</h4>
 
 <!-- backwards compatibility -->
 
@@ -1954,7 +1929,7 @@ This operation does not require authentication
   </span><span class="nl">"client_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qwerty1234567890Qwerty1234567890!"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-7'>Properties</h3>
+</span></code></pre></div><h4 id='properties-7'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1988,7 +1963,7 @@ This operation does not require authentication
 <td>Секретный ключ партнерского сервиса</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-4'>Enumerated Values</h3>
+<h4 id='enumerated-values-4'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2001,7 +1976,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="tocS_RefreshTokenResponse">RefreshTokenResponse</h3>
+<h4 id="tocS_RefreshTokenResponse">RefreshTokenResponse</h4>
 
 <!-- backwards compatibility -->
 
@@ -2016,7 +1991,7 @@ This operation does not require authentication
   </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-8'>Properties</h3>
+</span></code></pre></div><h4 id='properties-8'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2050,7 +2025,7 @@ This operation does not require authentication
 <td>Срок жизни токена в секундах</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-5'>Enumerated Values</h3>
+<h4 id='enumerated-values-5'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2063,7 +2038,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Error">Error</h3>
+<h4 id="tocS_Error">Error</h4>
 
 <!-- backwards compatibility -->
 
@@ -2076,7 +2051,7 @@ This operation does not require authentication
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-9'>Properties</h3>
+</span></code></pre></div><h4 id='properties-9'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2125,9 +2100,7 @@ This operation does not require authentication
 <p>Для доступа установите тестовый TLS-сертификат:  <a download="test_cert.zip" href="https://alfaapi.github.io/specification/certificates/test_cert.zip">test_cert.zip</a> (пароль для архива уточняйте у персонального менеджера).</p>
 
 <p>Все вызовы API должны осуществляться с использованием закрытого ключа и сертификата. </p>
-
-<p><strong>Адреса для тестирования</strong>:</p>
-
+<h3 id='60d3592c02'>Адреса для тестирования:</h3>
 <p>Для аутентификация в Alfa ID используйте следующие hosts:</p>
 
 <ul>
@@ -2135,9 +2108,7 @@ This operation does not require authentication
 <li>остальные endpoints:  <a href="https://sandbox.alfabank.ru/oidc/">https://sandbox.alfabank.ru/oidc/</a>
 Для методов Alfa API используйте URI <a href="https://sandbox.alfabank.ru/api">https://sandbox.alfabank.ru/api</a>.</li>
 </ul>
-
-<p><strong>Рекомендации по тестированию Alfa ID</strong>:</p>
-
+<h3 id='alfa-id-2'>Рекомендации по тестированию Alfa ID:</h3>
 <p>1) Для <em>прохождения процедуры аутентификации</em> используйте тестовые логин и пароль, OTP.</p>
 
 <p>Login: SomeDifficultLogin;</p>
@@ -2151,11 +2122,7 @@ This operation does not require authentication
 <p>One-Time Password: 111111</p>
 
 <p>Подробнее в разделе <a href="#alfa-id">&quot;Аутентификация в Alfa ID&quot;.</a></p>
-
-<p><strong>Рекомендации по тестированию методов API</strong>:</p>
-
-<p><em>Операции по счетам</em></p>
-
+<h3 id='api-2'>Рекомендации по тестированию методов API:</h3><h4 id='bd90cedb51'>Операции по счетам</h4>
 <p>Для получения операций по счетам использовать расчетные счета, полученные в <a href="#d2568efd70">&quot;Профиле организации&quot;.</a></p>
 
 <p>Значение uuid не является уникальным во всех запросах в песочнице. </p>
@@ -2165,13 +2132,11 @@ This operation does not require authentication
   </span><span class="nl">"tokenSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00a81050"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tokenKeyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlboKey_{BBB5EB5D-2B38-488B-B9E2-5E336DDE3DE9}"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><em>Электронная подпись</em></p>
-
+</span></code></pre></div><h4 id='968778f49f'>Электронная подпись</h4>
 <p>При запросе на создание заявки на выпуск RSA-сертификата в песочнице поля &quot;pkcs10Content&quot;, &quot;tokenKeyId&quot; статичны и должны быть равны. Пример заполнения полей &quot;pkcs10Content&quot; и &quot;tokenKeyId&quot; указан справа (code sample). </p>
 
 <p>One-Time Password для заявки на выпуск/ активацию RSA-сертификата: 11111111</p>
-<h1 id='api-2'>Методы API</h1>
+<h1 id='api-3'>Методы API</h1>
 <p>Список методов для работы с данными Alfa API:</p>
 
 <ul>
@@ -2179,7 +2144,7 @@ This operation does not require authentication
 <li><a href="#d2568efd70">&quot;Профиль организации&quot;</a></li>
 <li><a href="#968778f49f">&quot;Электронная подпись&quot;</a></li>
 </ul>
-<h2 id='bd90cedb51'>Операции по счетам</h2>
+<h2 id='bd90cedb51-2'>Операции по счетам</h2>
 <p>Методы позволяют получить список операций по одному счету за один день.</p>
 
 <p>Операции по счетам: </p>
@@ -2187,6 +2152,7 @@ This operation does not require authentication
 <ul>
 <li>Получение выписки</li>
 <li>Получение выписки в формате 1С</li>
+<li>Получение выписки в формате МТ940</li>
 <li>Получение информации об оборотах</li>
 </ul>
 <h3 id='12079a3e3c'>Получение выписки</h3>
@@ -2201,7 +2167,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -2215,7 +2181,7 @@ This operation does not require authentication
 <td style="text-align: left">Bearer {access_token}</td>
 </tr>
 </tbody></table>
-<h3 id='request-body'>Request Body</h3>
+<h4 id='request-body'>Request Body</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -2236,7 +2202,7 @@ This operation does not require authentication
 </tbody></table>
 
 <p>Получение выписки по операциям
-<h3 id="get__statement_transactions-parameters">Parameters</h3></p>
+<h4 id="get__statement_transactions-parameters">Parameters</h4></p>
 
 <table><thead>
 <tr>
@@ -2276,9 +2242,7 @@ This operation does not require authentication
 <td>Формат операции по валютному счету</td>
 </tr>
 </tbody></table>
-
-<p><strong>Примечание. Заполнение поля curFormat</strong>:</p>
-
+<h4 id='curformat'>Примечание. Заполнение поля curFormat:</h4>
 <table><thead>
 <tr>
 <th>Parameters</th>
@@ -2477,7 +2441,7 @@ This operation does not require authentication
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__statement_transactions-responses">Responses</h3>
+<h4 id="get__statement_transactions-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -2530,7 +2494,7 @@ This operation does not require authentication
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-5'>Response Headers</h3>
+<h4 id='response-headers-5'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -2551,8 +2515,8 @@ This operation does not require authentication
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='schemas-5'>Schemas</h3>
-<h3 id="tocS_Statement">Statement</h3>
+<h4 id='schemas-5'>Schemas</h4>
+<h4 id="tocS_Statement">Statement</h4>
 
 <!-- backwards compatibility -->
 
@@ -2735,7 +2699,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Выписка операций по счетам</p>
-<h3 id='properties-10'>Properties</h3>
+<h4 id='properties-10'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2758,7 +2722,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Links">Links</h3>
+<h4 id="tocS_Links">Links</h4>
 
 <!-- backwards compatibility -->
 
@@ -2775,7 +2739,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ссылки на предыдущую и следующую страницу, если они есть</p>
-<h3 id='properties-11'>Properties</h3>
+<h4 id='properties-11'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2797,7 +2761,7 @@ bearerAuth
 <td>Признак страницы. <code>prev</code> - Предыдущая страница; <code>next</code> - Следующая страница</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-6'>Enumerated Values</h3>
+<h4 id='enumerated-values-6'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -2817,7 +2781,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Transactions">Transactions</h3>
+<h4 id="tocS_Transactions">Transactions</h4>
 
 <!-- backwards compatibility -->
 
@@ -2992,7 +2956,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Массив транзакций</p>
-<h3 id='properties-12'>Properties</h3>
+<h4 id='properties-12'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3104,7 +3068,7 @@ bearerAuth
 <td>Блок для описания валютных счетов</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-7'>Enumerated Values</h3>
+<h4 id='enumerated-values-7'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3179,7 +3143,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Amount">Amount</h3>
+<h4 id="tocS_Amount">Amount</h4>
 
 <!-- backwards compatibility -->
 
@@ -3194,7 +3158,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Сумма в валюте счета</p>
-<h3 id='properties-13'>Properties</h3>
+<h4 id='properties-13'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3217,7 +3181,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_AmountRub">AmountRub</h3>
+<h4 id="tocS_AmountRub">AmountRub</h4>
 
 <!-- backwards compatibility -->
 
@@ -3232,7 +3196,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Сумма в валюте счета</p>
-<h3 id='properties-14'>Properties</h3>
+<h4 id='properties-14'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3255,7 +3219,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_RurTransfer">RurTransfer</h3>
+<h4 id="tocS_RurTransfer">RurTransfer</h4>
 
 <!-- backwards compatibility -->
 
@@ -3306,7 +3270,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Блок для описания рублевых счетов</p>
-<h3 id='properties-15'>Properties</h3>
+<h4 id='properties-15'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3442,7 +3406,7 @@ bearerAuth
 <td>Дата валютирования</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-8'>Enumerated Values</h3>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3487,7 +3451,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_CartInfo">CartInfo</h3>
+<h4 id="tocS_CartInfo">CartInfo</h4>
 
 <!-- backwards compatibility -->
 
@@ -3506,7 +3470,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Дополнительная информация о документе (картотека)</p>
-<h3 id='properties-16'>Properties</h3>
+<h4 id='properties-16'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3553,7 +3517,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_DepartmentalInfo">DepartmentalInfo</h3>
+<h4 id="tocS_DepartmentalInfo">DepartmentalInfo</h4>
 
 <!-- backwards compatibility -->
 
@@ -3575,7 +3539,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Реквизиты налогового, таможенного или иного бюджетного платежа</p>
-<h3 id='properties-17'>Properties</h3>
+<h4 id='properties-17'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3640,7 +3604,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_SwiftTransfer">SwiftTransfer</h3>
+<h4 id="tocS_SwiftTransfer">SwiftTransfer</h4>
 
 <!-- backwards compatibility -->
 
@@ -3694,7 +3658,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Блок для описания валютных счетов</p>
-<h3 id='properties-18'>Properties</h3>
+<h4 id='properties-18'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3950,7 +3914,7 @@ bearerAuth
 <td>Дата валютирования, код валюты, сумма межбанковского расчета (формат MT103)</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-9'>Enumerated Values</h3>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -3985,7 +3949,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_CurTransfer">CurTransfer</h3>
+<h4 id="tocS_CurTransfer">CurTransfer</h4>
 
 <!-- backwards compatibility -->
 
@@ -4053,7 +4017,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Блок для описания валютных счетов</p>
-<h3 id='properties-19'>Properties</h3>
+<h4 id='properties-19'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4393,7 +4357,7 @@ bearerAuth
 <td>Наименование плательщика</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-10'>Enumerated Values</h3>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4428,7 +4392,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h3>
+<h4 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h4>
 
 <!-- backwards compatibility -->
 
@@ -4441,7 +4405,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-20'>Properties</h3>
+</span></code></pre></div><h4 id='properties-20'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4464,7 +4428,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorInternal">ErrorInternal</h3>
+<h4 id="tocS_ErrorInternal">ErrorInternal</h4>
 
 <!-- backwards compatibility -->
 
@@ -4477,7 +4441,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-21'>Properties</h3>
+</span></code></pre></div><h4 id='properties-21'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4500,7 +4464,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorBadRequest">ErrorBadRequest</h3>
+<h4 id="tocS_ErrorBadRequest">ErrorBadRequest</h4>
 
 <!-- backwards compatibility -->
 
@@ -4513,7 +4477,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-22'>Properties</h3>
+</span></code></pre></div><h4 id='properties-22'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4536,7 +4500,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorScope">ErrorScope</h3>
+<h4 id="tocS_ErrorScope">ErrorScope</h4>
 
 <!-- backwards compatibility -->
 
@@ -4549,7 +4513,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-23'>Properties</h3>
+</span></code></pre></div><h4 id='properties-23'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4583,7 +4547,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/xml'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-2'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-2'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -4598,7 +4562,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="get__accounts_{accountnumber}_transactions_1c-parameters">Parameters</h3>
+<h4 id="get__accounts_{accountnumber}_transactions_1c-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -4876,7 +4840,7 @@ bearerAuth
 <span class="nt">&lt;/Statement&gt;</span>
 
 </code></pre></div>
-<h3 id="get__accounts_{accountnumber}_transactions_1c-responses">Responses</h3>
+<h4 id="get__accounts_{accountnumber}_transactions_1c-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -4929,7 +4893,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-6'>Response Headers</h3>
+<h4 id='response-headers-6'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -4950,8 +4914,8 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='schemas-6'>Schemas</h3>
-<h3 id="tocS_Statement1C">Statement1C</h3>
+<h4 id='schemas-6'>Schemas</h4>
+<h4 id="tocS_Statement1C">Statement1C</h4>
 
 <!-- backwards compatibility -->
 
@@ -4961,7 +4925,7 @@ bearerAuth
 <a id="tocsstatement1c"></a></p>
 
 <p>Выписка операций по счетам в формате 1С</p>
-<h3 id='properties-24'>Properties</h3>
+<h4 id='properties-24'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5008,7 +4972,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_StatementData">StatementData</h3>
+<h4 id="tocS_StatementData">StatementData</h4>
 
 <!-- backwards compatibility -->
 
@@ -5018,7 +4982,7 @@ bearerAuth
 <a id="tocsstatementdata"></a></p>
 
 <p>Данные выписки по лицевому счету</p>
-<h3 id='properties-25'>Properties</h3>
+<h4 id='properties-25'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5094,7 +5058,7 @@ bearerAuth
 <td>Данные штампа банка по выписке в целом</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-11'>Enumerated Values</h3>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5109,7 +5073,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_StatementDataStamp">StatementDataStamp</h3>
+<h4 id="tocS_StatementDataStamp">StatementDataStamp</h4>
 
 <!-- backwards compatibility -->
 
@@ -5119,7 +5083,7 @@ bearerAuth
 <a id="tocsstatementdatastamp"></a></p>
 
 <p>Данные штампа банка по выписке в целом</p>
-<h3 id='properties-26'>Properties</h3>
+<h4 id='properties-26'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5154,7 +5118,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Accounts">Accounts</h3>
+<h4 id="tocS_Accounts">Accounts</h4>
 
 <!-- backwards compatibility -->
 
@@ -5164,7 +5128,7 @@ bearerAuth
 <a id="tocsaccounts"></a></p>
 
 <p>Данные налогоплательщика</p>
-<h3 id='properties-27'>Properties</h3>
+<h4 id='properties-27'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5205,7 +5169,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Bank">Bank</h3>
+<h4 id="tocS_Bank">Bank</h4>
 
 <!-- backwards compatibility -->
 
@@ -5215,7 +5179,7 @@ bearerAuth
 <a id="tocsbank"></a></p>
 
 <p>Данные банка</p>
-<h3 id='properties-28'>Properties</h3>
+<h4 id='properties-28'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5244,7 +5208,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_BankOrder">BankOrder</h3>
+<h4 id="tocS_BankOrder">BankOrder</h4>
 
 <!-- backwards compatibility -->
 
@@ -5254,7 +5218,7 @@ bearerAuth
 <a id="tocsbankorder"></a></p>
 
 <p>Данные банковского ордера</p>
-<h3 id='properties-29'>Properties</h3>
+<h4 id='properties-29'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5324,7 +5288,7 @@ bearerAuth
 <td>Назначение платежа (поле 24)</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-12'>Enumerated Values</h3>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5354,7 +5318,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_BudgetPaymentInfo">BudgetPaymentInfo</h3>
+<h4 id="tocS_BudgetPaymentInfo">BudgetPaymentInfo</h4>
 
 <!-- backwards compatibility -->
 
@@ -5364,7 +5328,7 @@ bearerAuth
 <a id="tocsbudgetpaymentinfo"></a></p>
 
 <p>Реквизиты бюджетного документа</p>
-<h3 id='properties-30'>Properties</h3>
+<h4 id='properties-30'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5423,7 +5387,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_OperationInfo">OperationInfo</h3>
+<h4 id="tocS_OperationInfo">OperationInfo</h4>
 
 <!-- backwards compatibility -->
 
@@ -5433,7 +5397,7 @@ bearerAuth
 <a id="tocsoperationinfo"></a></p>
 
 <p>Информация об одной операции по лицевому счету в выписке</p>
-<h3 id='properties-31'>Properties</h3>
+<h4 id='properties-31'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5450,7 +5414,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_PayDoc">PayDoc</h3>
+<h4 id="tocS_PayDoc">PayDoc</h4>
 
 <!-- backwards compatibility -->
 
@@ -5458,7 +5422,7 @@ bearerAuth
 <a id="schema_PayDoc"></a>
 <a id="tocSpaydoc"></a>
 <a id="tocspaydoc"></a></p>
-<h3 id='properties-32'>Properties</h3>
+<h4 id='properties-32'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5540,7 +5504,7 @@ bearerAuth
 <td>Данные штампа банка по каждому платежному документу</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-13'>Enumerated Values</h3>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5585,7 +5549,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_PayDocRu">PayDocRu</h3>
+<h4 id="tocS_PayDocRu">PayDocRu</h4>
 
 <!-- backwards compatibility -->
 
@@ -5595,7 +5559,7 @@ bearerAuth
 <a id="tocspaydocru"></a></p>
 
 <p>Данные платежного поручения</p>
-<h3 id='properties-33'>Properties</h3>
+<h4 id='properties-33'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5677,7 +5641,7 @@ bearerAuth
 <td>Реквизиты бюджетного документа</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-14'>Enumerated Values</h3>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5707,7 +5671,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_PayDocStamp">PayDocStamp</h3>
+<h4 id="tocS_PayDocStamp">PayDocStamp</h4>
 
 <!-- backwards compatibility -->
 
@@ -5717,7 +5681,7 @@ bearerAuth
 <a id="tocspaydocstamp"></a></p>
 
 <p>Данные штампа банка по каждому платежному документу</p>
-<h3 id='properties-34'>Properties</h3>
+<h4 id='properties-34'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5758,7 +5722,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_PayDocStampStatus">PayDocStampStatus</h3>
+<h4 id="tocS_PayDocStampStatus">PayDocStampStatus</h4>
 
 <!-- backwards compatibility -->
 
@@ -5768,7 +5732,7 @@ bearerAuth
 <a id="tocspaydocstampstatus"></a></p>
 
 <p>Статус платежного документа в банке</p>
-<h3 id='properties-35'>Properties</h3>
+<h4 id='properties-35'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5797,7 +5761,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_PayRequest">PayRequest</h3>
+<h4 id="tocS_PayRequest">PayRequest</h4>
 
 <!-- backwards compatibility -->
 
@@ -5807,7 +5771,7 @@ bearerAuth
 <a id="tocspayrequest"></a></p>
 
 <p>Данные платежного требования</p>
-<h3 id='properties-36'>Properties</h3>
+<h4 id='properties-36'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5836,7 +5800,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_PaymentOrder">PaymentOrder</h3>
+<h4 id="tocS_PaymentOrder">PaymentOrder</h4>
 
 <!-- backwards compatibility -->
 
@@ -5846,7 +5810,7 @@ bearerAuth
 <a id="tocspaymentorder"></a></p>
 
 <p>Данные платежного ордера</p>
-<h3 id='properties-37'>Properties</h3>
+<h4 id='properties-37'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5899,7 +5863,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Recipient">Recipient</h3>
+<h4 id="tocS_Recipient">Recipient</h4>
 
 <!-- backwards compatibility -->
 
@@ -5909,7 +5873,7 @@ bearerAuth
 <a id="tocsrecipient"></a></p>
 
 <p>Получаетель</p>
-<h3 id='properties-38'>Properties</h3>
+<h4 id='properties-38'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5944,7 +5908,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Sender">Sender</h3>
+<h4 id="tocS_Sender">Sender</h4>
 
 <!-- backwards compatibility -->
 
@@ -5954,7 +5918,7 @@ bearerAuth
 <a id="tocssender"></a></p>
 
 <p>Отправитель</p>
-<h3 id='properties-39'>Properties</h3>
+<h4 id='properties-39'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5977,7 +5941,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorUnauthorizedXML">ErrorUnauthorizedXML</h3>
+<h4 id="tocS_ErrorUnauthorizedXML">ErrorUnauthorizedXML</h4>
 
 <!-- backwards compatibility -->
 
@@ -5996,7 +5960,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка авторизации</p>
-<h3 id='properties-40'>Properties</h3>
+<h4 id='properties-40'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6019,7 +5983,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorInternalXML">ErrorInternalXML</h3>
+<h4 id="tocS_ErrorInternalXML">ErrorInternalXML</h4>
 
 <!-- backwards compatibility -->
 
@@ -6038,7 +6002,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка сервера</p>
-<h3 id='properties-41'>Properties</h3>
+<h4 id='properties-41'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6061,7 +6025,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorBadRequestXML">ErrorBadRequestXML</h3>
+<h4 id="tocS_ErrorBadRequestXML">ErrorBadRequestXML</h4>
 
 <!-- backwards compatibility -->
 
@@ -6080,7 +6044,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка запроса</p>
-<h3 id='properties-42'>Properties</h3>
+<h4 id='properties-42'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6103,7 +6067,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorScopeXML">ErrorScopeXML</h3>
+<h4 id="tocS_ErrorScopeXML">ErrorScopeXML</h4>
 
 <!-- backwards compatibility -->
 
@@ -6122,7 +6086,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка прав доступа</p>
-<h3 id='properties-43'>Properties</h3>
+<h4 id='properties-43'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6144,19 +6108,19 @@ bearerAuth
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
-<h3 id='54ab5b1f46'><strong>Получение информации об оборотах</strong></h3>
-<p>Для получения информации об оборотах необходимо отправить запрос GET statement/summary с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
+<h3 id='mt940'><strong>Получение выписки в формате MT940</strong></h3>
+<p>Для получения операций по счету в формате MT940 необходимо отправить запрос GET/accounts/{accountNumber}/transactions/MT940 с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса.</p>
 
 <!-- Generator: Widdershins v4.0.1 -->
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET statement/summary
-  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET/accounts/<span class="o">{</span>accountNumber<span class="o">}</span>/transactions/MT940
+  <span class="nt">-H</span> <span class="s1">'Accept: text/plain'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-3'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-3'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -6171,7 +6135,430 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="get__statement_summary-parameters">Parameters</h3>
+<h4 id="get__accounts_{accountnumber}_transactions_mt940-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountNumber</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Номер расчетного счета</td>
+</tr>
+<tr>
+<td>executeDate</td>
+<td>query</td>
+<td>string</td>
+<td>true</td>
+<td>Дата исполнения</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Количество элементов</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>query</td>
+<td>integer</td>
+<td>false</td>
+<td>Смещение в результатах поиска</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">":20:+57610880b621435
+:25:40702810701300000761
+:28C:1
+:60a:C220112RUR99527,00 20
+:86:/BENM//03271643540000095400 INN5752006960.KPP575301001 GAVRILOV DOBRYNa TROFIMOVIc /NZP/'(VO21100)' OPLATA PO DOGOVORU
+:62a:C220113RUR99407,00"</span><span class="w">
+</span></code></pre></div>
+<p>Параметры успешного ответа передаются в соответствии с <a href="https://www.rosswift.ru/doc/2014121103%20SWIFT-RUR%202014_3%20SRG%20Nov%202014%20RUS.pdf" target="_blank" ><strong>Правилами SWIFT</strong></a></p>
+<h4 id='parameters'>Parameters</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>:20:</td>
+<td>true</td>
+<td>Референс операции</td>
+</tr>
+<tr>
+<td>:25:</td>
+<td>true</td>
+<td>Номер счета. Заполняется номером счета, по которому предоставляется выписка</td>
+</tr>
+<tr>
+<td>:28С:</td>
+<td>true</td>
+<td>Номер выписки</td>
+</tr>
+<tr>
+<td>:60а:</td>
+<td>true</td>
+<td>Входящий остаток. Составное поле состоит из 4 полей: 1-ый символ -  Знак дебета (отрицательный остаток)/кредита(положительный остаток); 2-ой символ - Дата; 3-ий символ - Валюта; 4-ый символ - Сумма</td>
+</tr>
+<tr>
+<td>:61:</td>
+<td>false</td>
+<td>Строка движения по счету (см. таблицу ниже). Заполнение в отдельной схеме ниже</td>
+</tr>
+<tr>
+<td>:86:</td>
+<td>false</td>
+<td>Информация для владельца счета. В этом поле содержится дополнительная информация по операции. Для кредитовых операций после кодового слова ORDP указывается значение поле Плательщик (поле 50а из SWIFT MT103), а именно: номер счета плательщика, ИНН и КПП (если он есть) плательщика и его наименование. Для дебетовых операций после кодового слова BENM указывается значение поле Бенефициар (поле 59 из SWIFT MT103), а именно: номер счета бенефициара, ИНН и КПП (если он есть) бенефициара и его наименование. Для всех операций после кодового слова NZP указывается информация о платеже из поля 70 платежных инструкций. Поля разделены между собой пробелами. <br><br> Алгоритм заполнения для кредитовых операций: <br><br> <code>/ORDP/</code> + &quot;<code>/</code>&quot; + <code>Номер счета плательщика</code> +&quot;<code>знак пробела</code>&quot; + <code>INN</code> + <code>Номер ИНН плательщика</code>+&quot;<code>.</code>&quot; + <code>KPP</code> + <code>Номер КПП плательщика (необязательное)</code>+ &quot;<code>знак пробела</code>&quot; + <code>Наименование плательщика</code> + &quot;<code>знак пробела</code>&quot; + <code>/NZP/</code> + <code>информация о платеже из поля 70 платежных инструкций после транслитерации</code> <br><br> <code>/BENM/</code> + &quot;<code>/</code>&quot; + <code>Номер счета бенефициара(получателя)</code> +&quot;<code>знак пробела</code>&quot; + <code>INN</code> + <code>Номер ИНН бенефициара</code> + &quot;<code>.</code>&quot; + <code>KPP</code> + <code>Номер КПП бенефициара(необязательное)</code> + &quot;<code>знак пробела</code>&quot; + <code>Наименование бенефициара</code> + &quot;<code>знак пробела</code>&quot; + <code>/NZP/</code> + <code>информация о платеже из поля 70 платежных инструкций после транслитерации</code></td>
+</tr>
+<tr>
+<td>:62а:</td>
+<td>true</td>
+<td>Исходящий остаток (учтенные средства). Составное поле состоит из 4 полей: 1-ый символ -  Знак дебета (отрицательный остаток)/кредита (положительный остаток); 2-ой символ - Дата; 3-ий символ - Валюта; 4-ый символ - Сумма</td>
+</tr>
+</tbody></table>
+<h4 id='96f7d4bacf'>Строка движения по счету</h4>
+<table><thead>
+<tr>
+<th>String&#39;s order</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>true</td>
+<td>Дата валютирования (в формате ISO -ГГMMДД)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>false</td>
+<td>Дата проводки (поле не заполняется)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>true</td>
+<td>Знак дебета (списание со счета)/кредита (поступление на счет)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>false</td>
+<td>Код средств (представляет собой третью букву кода валюты)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>true</td>
+<td>Сумма</td>
+</tr>
+<tr>
+<td>6</td>
+<td>true</td>
+<td>Код типа операции. Заполняется всегда = NTRF</td>
+</tr>
+<tr>
+<td>7</td>
+<td>true</td>
+<td>Референс для владельца счета. Заполняется всегда = NONREF</td>
+</tr>
+<tr>
+<td>8</td>
+<td>true</td>
+<td>Референс обслуживающей счет финансовой организации (поле не заполняется)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>false</td>
+<td>Дополнительная информация. В этом поле указывается номер платежа. Заполняется числовым значением с новой строки</td>
+</tr>
+</tbody></table>
+
+<h4 id="get__accounts_{accountnumber}_transactions_mt940-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td><a href="#schemastatementmt940">StatementMT940</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Неверные входные параметры запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам.</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>Сервер временно недотступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<h4 id='response-headers-7'>Response Headers</h4>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-traceid</td>
+<td>string</td>
+<td>text/plain</td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearerAuth
+</aside>
+<h4 id='schemas-7'>Schemas</h4>
+<h4 id="tocS_StatementMT940">StatementMT940</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemastatementmt940"></a>
+<a id="schema_StatementMT940"></a>
+<a id="tocSstatementmt940"></a>
+<a id="tocsstatementmt940"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">":20:+57610880b621435
+:25:40702810701300000761
+:28C:1
+:60a:C220112RUR99527,00 20
+:86:/BENM//03271643540000095400 INN5752006960.KPP575301001 GAVRILOV DOBRYNa TROFIMOVIc /NZP/'(VO21100)' OPLATA PO DOGOVORU
+:62a:C220113RUR99407,00"</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-44'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorScope">ErrorScope</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorscope"></a>
+<a id="schema_ErrorScope"></a>
+<a id="tocSerrorscope"></a>
+<a id="tocserrorscope"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: insufficient_scope error_description: The request requires higher privileges than provided by the access token"</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-45'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorunauthorized"></a>
+<a id="schema_ErrorUnauthorized"></a>
+<a id="tocSerrorunauthorized"></a>
+<a id="tocserrorunauthorized"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: invalid_token
+error_description: The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-46'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorInternal">ErrorInternal</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorinternal"></a>
+<a id="schema_ErrorInternal"></a>
+<a id="tocSerrorinternal"></a>
+<a id="tocserrorinternal"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: internal_error
+error_description: Internal server error"</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-47'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorBadRequest">ErrorBadRequest</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorbadrequest"></a>
+<a id="schema_ErrorBadRequest"></a>
+<a id="tocSerrorbadrequest"></a>
+<a id="tocserrorbadrequest"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: invalid_request
+error_description: Authorization header is not present in request headers"</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-48'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+<h3 id='54ab5b1f46'><strong>Получение информации об оборотах</strong></h3>
+<p>Для получения информации об оборотах необходимо отправить запрос GET statement/summary с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
+
+<!-- Generator: Widdershins v4.0.1 -->
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET statement/summary
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div><h4 id='header-parameters-4'>Header Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<h4 id="get__statement_summary-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -6240,7 +6627,7 @@ bearerAuth
   </span><span class="nl">"creditTransactionsNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__statement_summary-responses">Responses</h3>
+<h4 id="get__statement_summary-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -6293,7 +6680,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-7'>Response Headers</h3>
+<h4 id='response-headers-8'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -6316,8 +6703,8 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='schemas-7'>Schemas</h3>
-<h3 id="tocS_StatementSummary">StatementSummary</h3>
+<h4 id='schemas-8'>Schemas</h4>
+<h4 id="tocS_StatementSummary">StatementSummary</h4>
 
 <!-- backwards compatibility -->
 
@@ -6367,7 +6754,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Информация об оборотах</p>
-<h3 id='properties-44'>Properties</h3>
+<h4 id='properties-49'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6442,7 +6829,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_OpeningBalance">OpeningBalance</h3>
+<h4 id="tocS_OpeningBalance">OpeningBalance</h4>
 
 <!-- backwards compatibility -->
 
@@ -6457,7 +6844,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Входящий остаток в валюте счёта</p>
-<h3 id='properties-45'>Properties</h3>
+<h4 id='properties-50'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6480,7 +6867,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_OpeningBalanceRub">OpeningBalanceRub</h3>
+<h4 id="tocS_OpeningBalanceRub">OpeningBalanceRub</h4>
 
 <!-- backwards compatibility -->
 
@@ -6495,7 +6882,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Входящий остаток в рублях</p>
-<h3 id='properties-46'>Properties</h3>
+<h4 id='properties-51'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6518,7 +6905,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ClosingBalance">ClosingBalance</h3>
+<h4 id="tocS_ClosingBalance">ClosingBalance</h4>
 
 <!-- backwards compatibility -->
 
@@ -6533,7 +6920,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Исходящий остаток в валюте счёта</p>
-<h3 id='properties-47'>Properties</h3>
+<h4 id='properties-52'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6556,7 +6943,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ClosingBalanceRub">ClosingBalanceRub</h3>
+<h4 id="tocS_ClosingBalanceRub">ClosingBalanceRub</h4>
 
 <!-- backwards compatibility -->
 
@@ -6571,7 +6958,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Исходящий остаток в рублях</p>
-<h3 id='properties-48'>Properties</h3>
+<h4 id='properties-53'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6594,7 +6981,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_DebitTurnover">DebitTurnover</h3>
+<h4 id="tocS_DebitTurnover">DebitTurnover</h4>
 
 <!-- backwards compatibility -->
 
@@ -6609,7 +6996,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Дебетовый оборот в валюте счёта</p>
-<h3 id='properties-49'>Properties</h3>
+<h4 id='properties-54'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6632,7 +7019,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_DebitTurnoverRub">DebitTurnoverRub</h3>
+<h4 id="tocS_DebitTurnoverRub">DebitTurnoverRub</h4>
 
 <!-- backwards compatibility -->
 
@@ -6647,7 +7034,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Дебетовый оборот в рублях</p>
-<h3 id='properties-50'>Properties</h3>
+<h4 id='properties-55'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6670,7 +7057,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_CreditTurnover">CreditTurnover</h3>
+<h4 id="tocS_CreditTurnover">CreditTurnover</h4>
 
 <!-- backwards compatibility -->
 
@@ -6685,7 +7072,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Кредитовый оборот в валюте счёта</p>
-<h3 id='properties-51'>Properties</h3>
+<h4 id='properties-56'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6708,7 +7095,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_CreditTurnoverRub">CreditTurnoverRub</h3>
+<h4 id="tocS_CreditTurnoverRub">CreditTurnoverRub</h4>
 
 <!-- backwards compatibility -->
 
@@ -6723,7 +7110,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Кредитовый оборот в рублях</p>
-<h3 id='properties-52'>Properties</h3>
+<h4 id='properties-57'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6746,7 +7133,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h3>
+<h4 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h4>
 
 <!-- backwards compatibility -->
 
@@ -6759,7 +7146,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-53'>Properties</h3>
+</span></code></pre></div><h4 id='properties-58'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6782,7 +7169,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorInternal">ErrorInternal</h3>
+<h4 id="tocS_ErrorInternal">ErrorInternal</h4>
 
 <!-- backwards compatibility -->
 
@@ -6795,7 +7182,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-54'>Properties</h3>
+</span></code></pre></div><h4 id='properties-59'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6818,7 +7205,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorBadRequest">ErrorBadRequest</h3>
+<h4 id="tocS_ErrorBadRequest">ErrorBadRequest</h4>
 
 <!-- backwards compatibility -->
 
@@ -6831,7 +7218,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-55'>Properties</h3>
+</span></code></pre></div><h4 id='properties-60'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6851,7 +7238,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorScope">ErrorScope</h3>
+<h4 id="tocS_ErrorScope">ErrorScope</h4>
 
 <!-- backwards compatibility -->
 
@@ -6864,7 +7251,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-56'>Properties</h3>
+</span></code></pre></div><h4 id='properties-61'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6894,9 +7281,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div>
-<p><strong>Header parameters</strong></p>
-
+</code></pre></div><h4 id='header-parameters-5'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -7047,7 +7432,7 @@ bearerAuth
 </blockquote>
 <div class="highlight"><pre class="highlight html"><code>"<span class="nt">&lt;html&gt;&lt;body&gt;&lt;h1&gt;</span>503 Service Unavailable<span class="nt">&lt;/h1&gt;</span>No server is available to handle this request<span class="nt">&lt;/body&gt;&lt;/html&gt;</span>"
 </code></pre></div>
-<h3 id="get__customer-info-responses">Responses</h3>
+<h4 id="get__customer-info-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -7101,8 +7486,8 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="get__customer-info-responseschema">Response Schema</h3>
-<h3 id='response-headers-8'>Response Headers</h3>
+<h4 id="get__customer-info-responseschema">Response Schema</h4>
+<h4 id='response-headers-9'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -7141,8 +7526,8 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth ( Scopes: customer_info )
 </aside>
-<h3 id='schemas-8'>Schemas</h3>
-<h3 id="tocS_CustomerInfo">CustomerInfo</h3>
+<h4 id='schemas-9'>Schemas</h4>
+<h4 id="tocS_CustomerInfo">CustomerInfo</h4>
 
 <!-- backwards compatibility -->
 
@@ -7222,7 +7607,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-57'>Properties</h3>
+</span></code></pre></div><h4 id='properties-62'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7334,7 +7719,7 @@ bearerAuth ( Scopes: customer_info )
 <td>[Расчетные счета]</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-15'>Enumerated Values</h3>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -7374,7 +7759,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_OrganizationForm">OrganizationForm</h3>
+<h4 id="tocS_OrganizationForm">OrganizationForm</h4>
 
 <!-- backwards compatibility -->
 
@@ -7391,7 +7776,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Организационно-правовая форма</p>
-<h3 id='properties-58'>Properties</h3>
+<h4 id='properties-63'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7426,7 +7811,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Address">Address</h3>
+<h4 id="tocS_Address">Address</h4>
 
 <!-- backwards compatibility -->
 
@@ -7452,7 +7837,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Адрес клиента</p>
-<h3 id='properties-59'>Properties</h3>
+<h4 id='properties-64'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7541,7 +7926,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Account">Account</h3>
+<h4 id="tocS_Account">Account</h4>
 
 <!-- backwards compatibility -->
 
@@ -7582,7 +7967,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Расчетные счета</p>
-<h3 id='properties-60'>Properties</h3>
+<h4 id='properties-65'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7671,7 +8056,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_AccountBlockInfo">AccountBlockInfo</h3>
+<h4 id="tocS_AccountBlockInfo">AccountBlockInfo</h4>
 
 <!-- backwards compatibility -->
 
@@ -7690,7 +8075,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Объект массива с информацией о блокировках счета клиента</p>
-<h3 id='properties-61'>Properties</h3>
+<h4 id='properties-66'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7736,7 +8121,7 @@ bearerAuth ( Scopes: customer_info )
 <td>Бухгалтерский режим, к которому относится данное решение. <code>OUTGOING_LIMITATION</code> - Полная блокировка; <code>PARTIAL_BALANCE_BLOCK</code> - Блокировка части баланса</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-16'>Enumerated Values</h3>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -7756,7 +8141,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_SpecCondition">SpecCondition</h3>
+<h4 id="tocS_SpecCondition">SpecCondition</h4>
 
 <!-- backwards compatibility -->
 
@@ -7792,7 +8177,7 @@ bearerAuth ( Scopes: customer_info )
 <p>AI83 - Электронная картотека. </p>
 
 <p>AI87 - Бумажная разновалютная картотека.</p>
-<h3 id='properties-62'>Properties</h3>
+<h4 id='properties-67'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7821,7 +8206,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h3>
+<h4 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h4>
 
 <!-- backwards compatibility -->
 
@@ -7836,7 +8221,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Предоставленный токен доступа просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</p>
-<h3 id='properties-63'>Properties</h3>
+<h4 id='properties-68'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7859,7 +8244,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorInternal">ErrorInternal</h3>
+<h4 id="tocS_ErrorInternal">ErrorInternal</h4>
 
 <!-- backwards compatibility -->
 
@@ -7874,7 +8259,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Внутренняя проблема сервера. Невозможно обработать запрос</p>
-<h3 id='properties-64'>Properties</h3>
+<h4 id='properties-69'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7897,7 +8282,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorBadRequest">ErrorBadRequest</h3>
+<h4 id="tocS_ErrorBadRequest">ErrorBadRequest</h4>
 
 <!-- backwards compatibility -->
 
@@ -7912,7 +8297,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Authorization отсутствует в заголовках запроса</p>
-<h3 id='properties-65'>Properties</h3>
+<h4 id='properties-70'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7935,7 +8320,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorScope">ErrorScope</h3>
+<h4 id="tocS_ErrorScope">ErrorScope</h4>
 
 <!-- backwards compatibility -->
 
@@ -7950,7 +8335,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Доступ к запрашиваемому ресурсу запрещен</p>
-<h3 id='properties-66'>Properties</h3>
+<h4 id='properties-71'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7973,7 +8358,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorRateLimit">ErrorRateLimit</h3>
+<h4 id="tocS_ErrorRateLimit">ErrorRateLimit</h4>
 
 <!-- backwards compatibility -->
 
@@ -7988,7 +8373,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Превышено ограничение частоты запросов</p>
-<h3 id='properties-67'>Properties</h3>
+<h4 id='properties-72'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8010,7 +8395,7 @@ bearerAuth ( Scopes: customer_info )
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
-<h2 id='968778f49f'>Электронная подпись</h2>
+<h2 id='968778f49f-2'>Электронная подпись</h2>
 <!-- Generator: Widdershins v4.0.1 -->
 
 <p>Методы позволяют клиенту выпустить и активировать RSA-сертификат и в дальнейшем использовать его для подписания документов.</p>
@@ -8018,7 +8403,7 @@ bearerAuth ( Scopes: customer_info )
 <p>Список методов:</p>
 
 <ul>
-<li>Заявка на RSA-выпуск сертификата</li>
+<li>Заявка на выпуск RSA-сертификата</li>
 <li>Отправка заявки на подпись</li>
 <li>Подписание заявки с помощью кода из СМС </li>
 <li>Получение данных заявки</li>
@@ -8028,7 +8413,7 @@ bearerAuth ( Scopes: customer_info )
 </ul>
 
 <p>Для получения RSA-сертификата необходимо отправить заявку на подпись, подписать заявку с помощью СМС-кода и получить данные заявки. Далее произвести активацию RSA-сертификата.</p>
-<h3 id='ec70afa7e7'><strong>Инструкция пользователя</strong></h3>
+<h4 id='ec70afa7e7'><strong>Инструкция пользователя</strong></h4>
 <p>Шаг 1. Для получения сертификата необходимо создать <em>запрос на сертификат</em>.</p>
 
 <p>Создание запроса на сертификат: </p>
@@ -8085,7 +8470,7 @@ bearerAuth ( Scopes: customer_info )
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-4'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-6'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -8109,7 +8494,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="nl">"pkcs10Content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN CERTIFICATE REQUEST-----</span><span class="se">\\</span><span class="s2">nMIIC3zCCAccCAQAwgZkxCzAJBgNVBAYTAlJVMRUwEwYDVQQEDAzQldGE0LjQvNC+</span><span class="se">\\</span><span class="s2">n0LIxFTATBgNVBCoMDNCk0LjQu9C40L/QvzE1MDMGA1UEAwws0JXRhNC40LzQvtCy</span><span class="se">\\</span><span class="s2">nINCk0LjQu9C40L/QvyDQkNGA0YXQuNC/0L7QstC40YcxJTAjBgkqhkiG9w0BCQEW</span><span class="se">\\</span><span class="s2">nFlVzZXIxNzZAcG9jaHRvY2hrYS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw</span><span class="se">\\</span><span class="s2">nggEKAoIBAQCibtSH2YP4oxFVgiAvLdtAZpnVDWNZNgAnCEQwNbPIQpavY3OeoI/a</span><span class="se">\\</span><span class="s2">nNchXgwTn2u9yejOCEu8Q+x++RQDXVeSvPciVIzfDJ5Ex2MPzJySro3iPjT+HCITu</span><span class="se">\\</span><span class="s2">n/sddVv3Lnz5koNzOA5RihTQ+toHsvNgI2/aLITBXVM4JtkQ0ezqNsXDFqVr0Xws/</span><span class="se">\\</span><span class="s2">n3xj33BhhDXDrC24ivnDspYwbjevbrc5/L/mFhkHYX5pCJoxcNd5T8JrVUC1qkBIm</span><span class="se">\\</span><span class="s2">nnFA0C5dMAC6qWlglIG7BAkqc4Z/bu0WxEqsi0353BlnD9A/3k4euY5vmVRn2m/6E</span><span class="se">\\</span><span class="s2">ns89K5XrnqRYap5/o6zkQs64n7HLDQ8F3AgMBAAGgADANBgkqhkiG9w0BAQsFAAOC</span><span class="se">\\</span><span class="s2">nAQEASXlft+61y8TeYhXZQbuLdORjXk4yiI4OAecItHg1GcBiscA2OWObXRalLHlP</span><span class="se">\\</span><span class="s2">nsGc/fp5y82wZ24YxgHbyyRGf1DU374Iz5YqEl9IJ6WPsx9j/BpUo8cNPLaBOID2P</span><span class="se">\\</span><span class="s2">nKUHOMNbmy2bpPAi9AiaRXef9Tz3lIlzjW+oBWDoKtLkVmGDY+aTmwm0ASdqzuc/Q</span><span class="se">\\</span><span class="s2">ndFEgJ1JrZtwjDxwDrtAt+FXbwvadWMo9uhKW9DAaPm9XOte8z/ACoNlQ6G6KGPT3</span><span class="se">\\</span><span class="s2">nYQtk+dIjzeB3po9wZklg19xV17H9WCo+p3K85ANyFjkeePB49DIfwv+04a8kOsaY</span><span class="se">\\</span><span class="s2">nG0ocUXmTIgNeVKyDFtFoUF+qeg==</span><span class="se">\\</span><span class="s2">n</span><span class="se">\\</span><span class="s2">n-----END CERTIFICATE REQUEST-----"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__signature_users_{sub}_rsa-certificates_requests_issue-parameters">Parameters</h3>
+<h4 id="post__signature_users_{sub}_rsa-certificates_requests_issue-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -8149,7 +8534,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__signature_users_{sub}_rsa-certificates_requests_issue-responses">Responses</h3>
+<h4 id="post__signature_users_{sub}_rsa-certificates_requests_issue-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -8202,7 +8587,7 @@ bearerAuth ( Scopes: customer_info )
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-9'>Response Headers</h3>
+<h4 id='response-headers-10'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -8233,7 +8618,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-5'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-7'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -8255,7 +8640,7 @@ bearerAuth
   </span><span class="nl">"requestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issueRsaCertificate"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__signature_users_{sub}_rsa-certificates_requests_{id}_operations-parameters">Parameters</h3>
+<h4 id="post__signature_users_{sub}_rsa-certificates_requests_{id}_operations-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -8300,7 +8685,7 @@ bearerAuth
   </span><span class="nl">"requestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issueRsaCertificate"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__signature_users_{sub}_rsa-certificates_requests_{id}_operations-responses">Responses</h3>
+<h4 id="post__signature_users_{sub}_rsa-certificates_requests_{id}_operations-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -8353,7 +8738,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-10'>Response Headers</h3>
+<h4 id='response-headers-11'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -8384,7 +8769,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-6'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-8'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -8406,7 +8791,7 @@ bearerAuth
   </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">11111111</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="put__signature_users_{sub}_rsa-certificates_requests_operations_{id}-parameters">Parameters</h3>
+<h4 id="put__signature_users_{sub}_rsa-certificates_requests_operations_{id}-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -8452,7 +8837,7 @@ bearerAuth
   </span><span class="nl">"requestType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issueRsaCertificate"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="put__signature_users_{sub}_rsa-certificates_requests_operations_{id}-responses">Responses</h3>
+<h4 id="put__signature_users_{sub}_rsa-certificates_requests_operations_{id}-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -8505,7 +8890,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-11'>Response Headers</h3>
+<h4 id='response-headers-12'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -8536,7 +8921,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-7'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-9'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -8551,7 +8936,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="get__signature_users_{sub}_rsa-certificates_requests_{id}-parameters">Parameters</h3>
+<h4 id="get__signature_users_{sub}_rsa-certificates_requests_{id}-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -8628,7 +9013,7 @@ bearerAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__signature_users_{sub}_rsa-certificates_requests_{id}-responses">Responses</h3>
+<h4 id="get__signature_users_{sub}_rsa-certificates_requests_{id}-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -8681,7 +9066,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-12'>Response Headers</h3>
+<h4 id='response-headers-13'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -8708,7 +9093,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-8'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-10'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -8723,7 +9108,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="get__signature_users_{sub}_rsa-certificates_{id}-parameters">Parameters</h3>
+<h4 id="get__signature_users_{sub}_rsa-certificates_{id}-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -8777,7 +9162,7 @@ bearerAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="get__signature_users_{sub}_rsa-certificates_{id}-responses">Responses</h3>
+<h4 id="get__signature_users_{sub}_rsa-certificates_{id}-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -8830,7 +9215,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-13'>Response Headers</h3>
+<h4 id='response-headers-14'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -8861,7 +9246,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-9'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-11'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -8876,7 +9261,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="post__signature_users_{sub}_rsa-certificates_{id}_requests_activation-parameters">Parameters</h3>
+<h4 id="post__signature_users_{sub}_rsa-certificates_{id}_requests_activation-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -8916,7 +9301,7 @@ bearerAuth
   </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="post__signature_users_{sub}_rsa-certificates_{id}_requests_activation-responses">Responses</h3>
+<h4 id="post__signature_users_{sub}_rsa-certificates_{id}_requests_activation-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -8969,7 +9354,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-14'>Response Headers</h3>
+<h4 id='response-headers-15'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -8990,7 +9375,7 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='06b5538225'><strong>Изменение основного способа подписи</strong></h3>
+<h3 id='046cfebb45'>Изменение основного способа подписи</h3>
 <p>Для изменения основного способ необходимо вызвать PUT signature/users/{sub}/sign-settings с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
@@ -9000,7 +9385,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h3 id='header-parameters-10'>Header Parameters</h3>
+</code></pre></div><h4 id='header-parameters-12'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9022,7 +9407,7 @@ bearerAuth
   </span><span class="nl">"currentSignType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsa-certificates"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="put__signature_users_{sub}_sign-settings-parameters">Parameters</h3>
+<h4 id="put__signature_users_{sub}_sign-settings-parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -9059,7 +9444,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<h3 id="put__signature_users_{sub}_sign-settings-responses">Responses</h3>
+<h4 id="put__signature_users_{sub}_sign-settings-responses">Responses</h4>
 
 <table><thead>
 <tr>
@@ -9117,8 +9502,8 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='schemas-9'>Schemas</h3>
-<h3 id="tocS_RequestIssueRSACertificate">RequestIssueRSACertificate</h3>
+<h4 id='schemas-10'>Schemas</h4>
+<h4 id="tocS_RequestIssueRSACertificate">RequestIssueRSACertificate</h4>
 
 <!-- backwards compatibility -->
 
@@ -9134,7 +9519,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос на создание заявки на выпуск RSA-сертификата</p>
-<h3 id='properties-68'>Properties</h3>
+<h4 id='properties-73'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9163,7 +9548,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ResponesIssueRSACertificate">ResponesIssueRSACertificate</h3>
+<h4 id="tocS_ResponesIssueRSACertificate">ResponesIssueRSACertificate</h4>
 
 <!-- backwards compatibility -->
 
@@ -9181,7 +9566,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ на создание заявки на выпуск RSA-сертификата</p>
-<h3 id='properties-69'>Properties</h3>
+<h4 id='properties-74'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9221,7 +9606,7 @@ bearerAuth
 <td>Дата создания заявки</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-17'>Enumerated Values</h3>
+<h4 id='enumerated-values-17'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9241,7 +9626,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_RequestPostOperations">RequestPostOperations</h3>
+<h4 id="tocS_RequestPostOperations">RequestPostOperations</h4>
 
 <!-- backwards compatibility -->
 
@@ -9255,7 +9640,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос отправки на подпись</p>
-<h3 id='properties-70'>Properties</h3>
+<h4 id='properties-75'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9271,7 +9656,7 @@ bearerAuth
 <td>Тип заявки</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-18'>Enumerated Values</h3>
+<h4 id='enumerated-values-18'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9291,7 +9676,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ResponsePostOperations">ResponsePostOperations</h3>
+<h4 id="tocS_ResponsePostOperations">ResponsePostOperations</h4>
 
 <!-- backwards compatibility -->
 
@@ -9307,7 +9692,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ отправки заявки на подпись</p>
-<h3 id='properties-71'>Properties</h3>
+<h4 id='properties-76'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9335,7 +9720,7 @@ bearerAuth
 <td>Тип заявки</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-19'>Enumerated Values</h3>
+<h4 id='enumerated-values-19'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9355,7 +9740,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_RequestPutOperations">RequestPutOperations</h3>
+<h4 id="tocS_RequestPutOperations">RequestPutOperations</h4>
 
 <!-- backwards compatibility -->
 
@@ -9369,7 +9754,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос на подписание заявки</p>
-<h3 id='properties-72'>Properties</h3>
+<h4 id='properties-77'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9386,7 +9771,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ResponsePutOperations">ResponsePutOperations</h3>
+<h4 id="tocS_ResponsePutOperations">ResponsePutOperations</h4>
 
 <!-- backwards compatibility -->
 
@@ -9403,7 +9788,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ на подписание заявки</p>
-<h3 id='properties-73'>Properties</h3>
+<h4 id='properties-78'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9437,7 +9822,7 @@ bearerAuth
 <td>Тип заявки</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-20'>Enumerated Values</h3>
+<h4 id='enumerated-values-20'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9457,7 +9842,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_RequestData">RequestData</h3>
+<h4 id="tocS_RequestData">RequestData</h4>
 
 <!-- backwards compatibility -->
 
@@ -9512,7 +9897,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки</p>
-<h3 id='properties-74'>Properties</h3>
+<h4 id='properties-79'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9535,7 +9920,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_DataRequestIssueRsaCertificate">DataRequestIssueRsaCertificate</h3>
+<h4 id="tocS_DataRequestIssueRsaCertificate">DataRequestIssueRsaCertificate</h4>
 
 <!-- backwards compatibility -->
 
@@ -9572,7 +9957,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки на выпуск RSA-сертификата</p>
-<h3 id='properties-75'>Properties</h3>
+<h4 id='properties-80'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9624,7 +10009,7 @@ bearerAuth
 <td>Результат выполнения заявки на выпуск RSA-сертификата</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-21'>Enumerated Values</h3>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9639,7 +10024,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_DataRequestActivateRsaCertificate">DataRequestActivateRsaCertificate</h3>
+<h4 id="tocS_DataRequestActivateRsaCertificate">DataRequestActivateRsaCertificate</h4>
 
 <!-- backwards compatibility -->
 
@@ -9662,7 +10047,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки на активацию RSA-сертификата</p>
-<h3 id='properties-76'>Properties</h3>
+<h4 id='properties-81'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9714,7 +10099,7 @@ bearerAuth
 <td>Результат выполнения заявки на активацию RSA-сертификата</td>
 </tr>
 </tbody></table>
-<h3 id='enumerated-values-22'>Enumerated Values</h3>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -9729,7 +10114,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ResultsRequestIssueRsaCertificat">ResultsRequestIssueRsaCertificat</h3>
+<h4 id="tocS_ResultsRequestIssueRsaCertificat">ResultsRequestIssueRsaCertificat</h4>
 
 <!-- backwards compatibility -->
 
@@ -9758,7 +10143,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Результат выполнения заявки на выпуск RSA-сертификата</p>
-<h3 id='properties-77'>Properties</h3>
+<h4 id='properties-82'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9829,7 +10214,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ResultsRequestActivateRsaCertificat">ResultsRequestActivateRsaCertificat</h3>
+<h4 id="tocS_ResultsRequestActivateRsaCertificat">ResultsRequestActivateRsaCertificat</h4>
 
 <!-- backwards compatibility -->
 
@@ -9844,7 +10229,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Результат выполнения заявки на активацию RSA-сертификата</p>
-<h3 id='properties-78'>Properties</h3>
+<h4 id='properties-83'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9867,7 +10252,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_Dn">Dn</h3>
+<h4 id="tocS_Dn">Dn</h4>
 
 <!-- backwards compatibility -->
 
@@ -9885,7 +10270,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные о владельце сертификата</p>
-<h3 id='properties-79'>Properties</h3>
+<h4 id='properties-84'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9926,7 +10311,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_RSACertificate">RSACertificate</h3>
+<h4 id="tocS_RSACertificate">RSACertificate</h4>
 
 <!-- backwards compatibility -->
 
@@ -9958,7 +10343,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>RSA-сертификат</p>
-<h3 id='properties-80'>Properties</h3>
+<h4 id='properties-85'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9981,7 +10366,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_DataRSACertificate">DataRSACertificate</h3>
+<h4 id="tocS_DataRSACertificate">DataRSACertificate</h4>
 
 <!-- backwards compatibility -->
 
@@ -10010,7 +10395,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные сертификата</p>
-<h3 id='properties-81'>Properties</h3>
+<h4 id='properties-86'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10087,7 +10472,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ActionsRSACertificate">ActionsRSACertificate</h3>
+<h4 id="tocS_ActionsRSACertificate">ActionsRSACertificate</h4>
 
 <!-- backwards compatibility -->
 
@@ -10104,7 +10489,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Список всех возможных действий над сертификатом</p>
-<h3 id='properties-82'>Properties</h3>
+<h4 id='properties-87'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10127,7 +10512,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_SignSettings">SignSettings</h3>
+<h4 id="tocS_SignSettings">SignSettings</h4>
 
 <!-- backwards compatibility -->
 
@@ -10141,7 +10526,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Тип основной подписи</p>
-<h3 id='properties-83'>Properties</h3>
+<h4 id='properties-88'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10158,7 +10543,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h3>
+<h4 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h4>
 
 <!-- backwards compatibility -->
 
@@ -10171,7 +10556,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-84'>Properties</h3>
+</span></code></pre></div><h4 id='properties-89'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10194,7 +10579,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorInternal">ErrorInternal</h3>
+<h4 id="tocS_ErrorInternal">ErrorInternal</h4>
 
 <!-- backwards compatibility -->
 
@@ -10207,7 +10592,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-85'>Properties</h3>
+</span></code></pre></div><h4 id='properties-90'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10230,7 +10615,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorBadRequest">ErrorBadRequest</h3>
+<h4 id="tocS_ErrorBadRequest">ErrorBadRequest</h4>
 
 <!-- backwards compatibility -->
 
@@ -10243,7 +10628,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-86'>Properties</h3>
+</span></code></pre></div><h4 id='properties-91'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10266,7 +10651,7 @@ bearerAuth
 </tr>
 </tbody></table>
 
-<h3 id="tocS_ErrorScope">ErrorScope</h3>
+<h4 id="tocS_ErrorScope">ErrorScope</h4>
 
 <!-- backwards compatibility -->
 
@@ -10279,7 +10664,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h3 id='properties-87'>Properties</h3>
+</span></code></pre></div><h4 id='properties-92'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10303,9 +10688,7 @@ bearerAuth
 </tbody></table>
 <h2 id='42fc51aa44'>Пагинация</h2>
 <p>Пагинация - разделение ответа на несколько страниц. Механизм пагинации может быть использован в REST-запросах GET. </p>
-
-<p><strong>Параметры и пример запроса</strong></p>
-
+<h4 id='a035a415f2'>Параметры и пример запроса</h4>
 <p>Пагинация настраивается с помощью следующих параметров:</p>
 
 <blockquote>
@@ -10336,9 +10719,7 @@ bearerAuth
 </tbody></table>
 
 <!-- Generator: Widdershins v4.0.1 -->
-
-<p><strong>Формат и пример ответа</strong></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+<h4 id='6e8de702aa'>Формат и пример ответа</h4><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
       </span><span class="nl">"offset"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
@@ -10348,9 +10729,7 @@ bearerAuth
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Ответ на запрос содержит тело ответа и результат выполнения запроса в случае успеха. Справа представлен пример ответа (успех).</p>
-
-<p><strong>Request Body</strong></p>
-
+<h4 id='request-body-2'>Request Body</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10379,9 +10758,7 @@ bearerAuth
 <td>Массив объектов результата</td>
 </tr>
 </tbody></table>
-
-<p><strong>Алгоритм работы пагинации</strong></p>
-
+<h4 id='7c7c8adb6c'>Алгоритм работы пагинации</h4>
 <p>Пример 1:
 Если клиент запрашивает limit = 100, offset = 0, то клиенту вернется с 1-ой по 100-ую запись.</p>
 
