@@ -2129,11 +2129,10 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="err">&gt;</span><span class="w"> </span><span class="err">Code</span><span class="w"> </span><span class="err">samples</span><span class="w">
 </span><span class="p">{</span><span class="w">
   </span><span class="nl">"pkcs10Content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN CERTIFICATE REQUEST-----</span><span class="se">\n</span><span class="s2">MIIDGzCCAgMCAQAwgZ0xCzAJBgNVBAYTAlJVMRUwEwYDVQQEDAzQn9C10YLRgNC+</span><span class="se">\n</span><span class="s2">0LIxFzAVBgNVBCoMDtCd0LjQutC+0LvQsNC5MTcwNQYDVQQDDC7Qn9C10YLRgNC+</span><span class="se">\n</span><span class="s2">0LIg0J3QuNC60L7Qu9Cw0Lkg0JXRgNC+0YTQtdC10LLQuNGHMSUwIwYJKoZIhvcN</span><span class="se">\n</span><span class="s2">AQkBFhZVc2VyNzQ0QHBvY2h0b2Noa2EuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOC</span><span class="se">\n</span><span class="s2">AQ8AMIIBCgKCAQEAyLZrKEHtFYPSjPFTWGYAW/wsvRsI7ly0SPzN+hNgTrttctnI</span><span class="se">\n</span><span class="s2">sCTbq5rjGClHjaFr/vCanvPoj0BGwc+QztmdntdrLtfbScdaTY5Q1H1WBtcDkQhf</span><span class="se">\n</span><span class="s2">443BjhdBZwAP6U6tTkLtJbFr0yjZPaUYMAGUlzQ0ASYFEt48V+0ZNmRMwOG267yn</span><span class="se">\n</span><span class="s2">QHVPwNrWGHn2hih9TqzOtivxf+HevSQSiuLowTeQ5pCeQPkEn5nHzwXNZGPcmHFF</span><span class="se">\n</span><span class="s2">HoekyhP7ItIi7PdamEGytBhdYkScbtdaQ9DscKy49GYYNrOYrdx4gpKbaCOQJsFO</span><span class="se">\n</span><span class="s2">/hQFg8gVGYjsLzhCmhtydY19WmzPPoFmourSwQIDAQABoDgwNgYJKoZIhvcNAQkO</span><span class="se">\n</span><span class="s2">MSkwJzAlBgNVHREEHjAcggtleGFtcGxlLmNvbYINKi5leGFtcGxlLmNvbTANBgkq</span><span class="se">\n</span><span class="s2">hkiG9w0BAQsFAAOCAQEAMXpgE3CoBiHTLCyRzzy9YMMml520BKceXCwcZ7R5AbDl</span><span class="se">\n</span><span class="s2">hgC1Vd1TMU4816Nu2qj8ilYQw1OJ9QmN2+5V+WmgMHsqYSeqJ0rZvXdJty8KLHow</span><span class="se">\n</span><span class="s2">IMhgCo3WmXgVrWs0tWnWyya05Sh+M5zEhxPFubeaOuSUTPKW2Q87Sxp1dKIu9nES</span><span class="se">\n</span><span class="s2">4vFlK5Bl3lxzrk0Hrj/vyEXU51V+lbtAkKyEs129uwU/vIReBWw7xd2pXTeOR/ri</span><span class="se">\n</span><span class="s2">IYzFHvmWXSTyZKpP0NJlyKc/mH1ilO74kmBZu32ggOUnw1cCu/vfRZ85KAh0eLZ7</span><span class="se">\n</span><span class="s2">mSaWwi4XGgA8MSkXAbj4SLeUr4mViP+Ad1e/IYojDg==</span><span class="se">\n</span><span class="s2">-----END CERTIFICATE REQUEST-----"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tokenSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00a81050"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tokenKeyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlboKey_{BBB5EB5D-2B38-488B-B9E2-5E336DDE3DE9}"</span><span class="w">
+  </span><span class="nl">"tokenSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00a81050"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h4 id='968778f49f'>Электронная подпись</h4>
-<p>При запросе на создание заявки на выпуск RSA-сертификата в песочнице поля &quot;pkcs10Content&quot;, &quot;tokenKeyId&quot; статичны и должны быть равны. Пример заполнения полей &quot;pkcs10Content&quot; и &quot;tokenKeyId&quot; указан справа (code sample). </p>
+<p>При запросе на создание заявки на выпуск RSA-сертификата в песочнице поле &quot;pkcs10Content&quot; статично и должно быть равно. Пример заполнения поля &quot;pkcs10Content&quot; указан справа (code sample). </p>
 
 <p>One-Time Password для заявки на выпуск/ активацию RSA-сертификата: 11111111</p>
 <h1 id='api-3'>Методы API</h1>
@@ -2142,20 +2141,20 @@ This operation does not require authentication
 <ul>
 <li><a href="#bd90cedb51">&quot;Операции по счетам&quot;</a></li>
 <li><a href="#d2568efd70">&quot;Профиль организации&quot;</a></li>
-<li><a href="#968778f49f">&quot;Электронная подпись&quot;</a></li>
+<li><a href="#968778f49f-2">&quot;Электронная подпись&quot;</a></li>
 </ul>
 <h2 id='bd90cedb51-2'>Операции по счетам</h2>
-<p>Методы позволяют получить список операций по одному счету за один день.</p>
+<p>Методы позволяют получить список операций по одному счету за один день. Операции по счетам: </p>
 
-<p>Операции по счетам: </p>
+<p><ul>
+  <li><a href="#statement">Получение выписки</a></li>
+  <li><a href="#statement1C">Получение выписки в формате 1С</a></li>
+<li><a href="#statementMT940">Получение выписки в формате МТ940</a></li>
+<li><a href="#turnover">Получение информации об оборотах</a></li>
+  </ul></p>
 
-<ul>
-<li>Получение выписки</li>
-<li>Получение выписки в формате 1С</li>
-<li>Получение выписки в формате МТ940</li>
-<li>Получение информации об оборотах</li>
-</ul>
-<h3 id='12079a3e3c'>Получение выписки</h3>
+<h3 id="statement">Получение выписки</h3>
+
 <p>Для получения операций по счету необходимо отправить запрос GET statement/transactions с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
 
 <!-- Generator: Widdershins v4.0.1 -->
@@ -4535,7 +4534,9 @@ bearerAuth
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
-<h3 id='1'><strong>Получение выписки в формате 1С</strong></h3>
+
+<h3 id="statement1C">Получение выписки в формате 1С</h3>
+
 <p>Для получения операций по счету в формате 1С необходимо отправить запрос GET accounts/{accountNumber}/transactions/1C с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
 
 <!-- Generator: Widdershins v4.0.1 -->
@@ -6108,7 +6109,9 @@ bearerAuth
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
-<h3 id='mt940'><strong>Получение выписки в формате MT940</strong></h3>
+
+<h3 id="statementMT940">Получение выписки в формате МТ940</h3>
+
 <p>Для получения операций по счету в формате MT940 необходимо отправить запрос GET/accounts/{accountNumber}/transactions/MT940 с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса.</p>
 
 <!-- Generator: Widdershins v4.0.1 -->
@@ -6531,7 +6534,9 @@ error_description: Authorization header is not present in request headers"</span
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
-<h3 id='54ab5b1f46'><strong>Получение информации об оборотах</strong></h3>
+
+<h3 id="turnover">Получение информации об оборотах</h3>
+
 <p>Для получения информации об оборотах необходимо отправить запрос GET statement/summary с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
 
 <!-- Generator: Widdershins v4.0.1 -->
@@ -8402,15 +8407,15 @@ bearerAuth ( Scopes: customer_info )
 
 <p>Список методов:</p>
 
-<ul>
-<li>Заявка на выпуск RSA-сертификата</li>
-<li>Отправка заявки на подпись</li>
-<li>Подписание заявки с помощью кода из СМС </li>
-<li>Получение данных заявки</li>
-<li>Получение RSA-сертификата</li>
-<li>Заявка на активацию RSA-сертификата</li>
-<li>Изменение основного способа подписи</li>
-</ul>
+<p><ul>
+  <li><a href="#issue-rsa">Заявка на выпуск RSA-сертификата</a></li>
+  <li><a href="#send-request">Отправка заявки на подпись</a></li>
+<li><a href="#sign-with-sms">Подписание заявки с помощью кода из СМС</a></li>
+<li><a href="#get-request">Получение данных заявки</a></li>
+<li><a href="#get-rsa">Получение RSA-сертификата</a></li>
+<li><a href="#activation-rsa">Заявка на активацию RSA-сертификата</a></li>
+<li><a href="#change-sign-method">Изменение основного способа подписи</a></li>
+  </ul></p>
 
 <p>Для получения RSA-сертификата необходимо отправить заявку на подпись, подписать заявку с помощью СМС-кода и получить данные заявки. Далее произвести активацию RSA-сертификата.</p>
 <h4 id='ec70afa7e7'><strong>Инструкция пользователя</strong></h4>
@@ -8460,7 +8465,9 @@ bearerAuth ( Scopes: customer_info )
 <p>Шаг 10. После выполнения заявки изменить основной способ подписи на RSA. Для этого необходимо вызвать метод <strong>Изменение основного способа подписи</strong>, передав currentSignType = rsa-certificates.</p>
 
 <p>Шаг 11. После успешного ответа на шаге 10 выпущенным RSA-сертифкатом можно подписывать документы.</p>
-<h3 id='rsa'><strong>Заявка на выпуск RSA-сертификата</strong></h3>
+
+<h3 id="issue-rsa">Заявка на выпуск RSA-сертификата</h3>
+
 <p>Для создания заявки на выпуск RSA-сертификата необходимо отправить запрос POST signature/users/{sub}/rsa-certificates/requests/issue с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса. </p>
 
 <blockquote>
@@ -8489,7 +8496,6 @@ bearerAuth ( Scopes: customer_info )
 <p>Body parameter</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"tokenKeyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00a81050"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tokenSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlboKey_{BBB5EB5D-2B38-488B-B9E2-5E336DDE3DE9}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"pkcs10Content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN CERTIFICATE REQUEST-----</span><span class="se">\\</span><span class="s2">nMIIC3zCCAccCAQAwgZkxCzAJBgNVBAYTAlJVMRUwEwYDVQQEDAzQldGE0LjQvNC+</span><span class="se">\\</span><span class="s2">n0LIxFTATBgNVBCoMDNCk0LjQu9C40L/QvzE1MDMGA1UEAwws0JXRhNC40LzQvtCy</span><span class="se">\\</span><span class="s2">nINCk0LjQu9C40L/QvyDQkNGA0YXQuNC/0L7QstC40YcxJTAjBgkqhkiG9w0BCQEW</span><span class="se">\\</span><span class="s2">nFlVzZXIxNzZAcG9jaHRvY2hrYS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw</span><span class="se">\\</span><span class="s2">nggEKAoIBAQCibtSH2YP4oxFVgiAvLdtAZpnVDWNZNgAnCEQwNbPIQpavY3OeoI/a</span><span class="se">\\</span><span class="s2">nNchXgwTn2u9yejOCEu8Q+x++RQDXVeSvPciVIzfDJ5Ex2MPzJySro3iPjT+HCITu</span><span class="se">\\</span><span class="s2">n/sddVv3Lnz5koNzOA5RihTQ+toHsvNgI2/aLITBXVM4JtkQ0ezqNsXDFqVr0Xws/</span><span class="se">\\</span><span class="s2">n3xj33BhhDXDrC24ivnDspYwbjevbrc5/L/mFhkHYX5pCJoxcNd5T8JrVUC1qkBIm</span><span class="se">\\</span><span class="s2">nnFA0C5dMAC6qWlglIG7BAkqc4Z/bu0WxEqsi0353BlnD9A/3k4euY5vmVRn2m/6E</span><span class="se">\\</span><span class="s2">ns89K5XrnqRYap5/o6zkQs64n7HLDQ8F3AgMBAAGgADANBgkqhkiG9w0BAQsFAAOC</span><span class="se">\\</span><span class="s2">nAQEASXlft+61y8TeYhXZQbuLdORjXk4yiI4OAecItHg1GcBiscA2OWObXRalLHlP</span><span class="se">\\</span><span class="s2">nsGc/fp5y82wZ24YxgHbyyRGf1DU374Iz5YqEl9IJ6WPsx9j/BpUo8cNPLaBOID2P</span><span class="se">\\</span><span class="s2">nKUHOMNbmy2bpPAi9AiaRXef9Tz3lIlzjW+oBWDoKtLkVmGDY+aTmwm0ASdqzuc/Q</span><span class="se">\\</span><span class="s2">ndFEgJ1JrZtwjDxwDrtAt+FXbwvadWMo9uhKW9DAaPm9XOte8z/ACoNlQ6G6KGPT3</span><span class="se">\\</span><span class="s2">nYQtk+dIjzeB3po9wZklg19xV17H9WCo+p3K85ANyFjkeePB49DIfwv+04a8kOsaY</span><span class="se">\\</span><span class="s2">nG0ocUXmTIgNeVKyDFtFoUF+qeg==</span><span class="se">\\</span><span class="s2">n</span><span class="se">\\</span><span class="s2">n-----END CERTIFICATE REQUEST-----"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -8608,7 +8614,9 @@ bearerAuth ( Scopes: customer_info )
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='3d5915f398'><strong>Отправка заявки на подпись</strong></h3>
+
+<h3 id="send-request">Отправка заявки на подпись</h3>
+
 <p>Для отправки заявки на подпись необходимо отправить запрос POST signature/users/{sub}/rsa-certificates/requests/{id}/operations с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
@@ -8759,7 +8767,9 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='c'><strong>Подписание заявки c помощью кода из СМС</strong></h3>
+
+<h3 id="sign-with-sms">Подписание заявки с помощью кода из СМС</h3>
+
 <p>Для проверки кода из СМС необходимо вызвать запрос PUT signature/users/{sub}/rsa-certificates/requests/operations/{id} с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
@@ -8911,7 +8921,9 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='c51ccf258e'><strong>Получение данных заявки</strong></h3>
+
+<h3 id="get-request">Получение данных заявки</h3>
+
 <p>Для получения информации по заявке необходимо отправить GET  signature/users/{sub}/rsa-certificates/requests/{id} с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
@@ -9087,7 +9099,9 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='rsa-2'><strong>Получение RSA-сертификата</strong></h3>
+
+<h3 id="get-rsa">Получение RSA-сертификата</h3> 
+
 <p>Для получения RSA-сертификата необходимо отправить GET  signature/users/{sub}/rsa-certificates/{id} с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET signature/users/<span class="o">{</span>sub<span class="o">}</span>/rsa-certificates/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
@@ -9145,7 +9159,6 @@ bearerAuth
   </span><span class="nl">"certificate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62552f2457595f1652c4b179"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6100035c3cff88cd00f01d734a000100035c3c"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tokenKeyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlboKey_{BBB5EB5D-2B38-488B-B9E2-5E336DDE3DE9}"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tokenSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00a81050"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CERT_VALID"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notBefore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
@@ -9236,7 +9249,9 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='rsa-3'><strong>Заявка на активацию RSA-сертификата</strong></h3>
+
+<h3 id="activation-rsa">Заявка на активацию RSA-сертификата</h3>
+
 <p>Для создания заявки на активацию необходимо отправить POST signature/users/{sub}/rsa-certificates/{id}/requests/activation с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
@@ -9375,7 +9390,9 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h3 id='046cfebb45'>Изменение основного способа подписи</h3>
+
+<h3 id="change-sign-method">Изменение основного способа подписи</h3>
+
 <p>Для изменения основного способ необходимо вызвать PUT signature/users/{sub}/sign-settings с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
 <blockquote>
@@ -9512,7 +9529,6 @@ bearerAuth
 <a id="tocSrequestissuersacertificate"></a>
 <a id="tocsrequestissuersacertificate"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"tokenKeyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00a81050"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tokenSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlboKey_{BBB5EB5D-2B38-488B-B9E2-5E336DDE3DE9}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"pkcs10Content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-----BEGIN CERTIFICATE REQUEST-----</span><span class="se">\\</span><span class="s2">nMIIC3zCCAccCAQAwgZkxCzAJBgNVBAYTAlJVMRUwEwYDVQQEDAzQldGE0LjQvNC+</span><span class="se">\\</span><span class="s2">n0LIxFTATBgNVBCoMDNCk0LjQu9C40L/QvzE1MDMGA1UEAwws0JXRhNC40LzQvtCy</span><span class="se">\\</span><span class="s2">nINCk0LjQu9C40L/QvyDQkNGA0YXQuNC/0L7QstC40YcxJTAjBgkqhkiG9w0BCQEW</span><span class="se">\\</span><span class="s2">nFlVzZXIxNzZAcG9jaHRvY2hrYS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw</span><span class="se">\\</span><span class="s2">nggEKAoIBAQCibtSH2YP4oxFVgiAvLdtAZpnVDWNZNgAnCEQwNbPIQpavY3OeoI/a</span><span class="se">\\</span><span class="s2">nNchXgwTn2u9yejOCEu8Q+x++RQDXVeSvPciVIzfDJ5Ex2MPzJySro3iPjT+HCITu</span><span class="se">\\</span><span class="s2">n/sddVv3Lnz5koNzOA5RihTQ+toHsvNgI2/aLITBXVM4JtkQ0ezqNsXDFqVr0Xws/</span><span class="se">\\</span><span class="s2">n3xj33BhhDXDrC24ivnDspYwbjevbrc5/L/mFhkHYX5pCJoxcNd5T8JrVUC1qkBIm</span><span class="se">\\</span><span class="s2">nnFA0C5dMAC6qWlglIG7BAkqc4Z/bu0WxEqsi0353BlnD9A/3k4euY5vmVRn2m/6E</span><span class="se">\\</span><span class="s2">ns89K5XrnqRYap5/o6zkQs64n7HLDQ8F3AgMBAAGgADANBgkqhkiG9w0BAQsFAAOC</span><span class="se">\\</span><span class="s2">nAQEASXlft+61y8TeYhXZQbuLdORjXk4yiI4OAecItHg1GcBiscA2OWObXRalLHlP</span><span class="se">\\</span><span class="s2">nsGc/fp5y82wZ24YxgHbyyRGf1DU374Iz5YqEl9IJ6WPsx9j/BpUo8cNPLaBOID2P</span><span class="se">\\</span><span class="s2">nKUHOMNbmy2bpPAi9AiaRXef9Tz3lIlzjW+oBWDoKtLkVmGDY+aTmwm0ASdqzuc/Q</span><span class="se">\\</span><span class="s2">ndFEgJ1JrZtwjDxwDrtAt+FXbwvadWMo9uhKW9DAaPm9XOte8z/ACoNlQ6G6KGPT3</span><span class="se">\\</span><span class="s2">nYQtk+dIjzeB3po9wZklg19xV17H9WCo+p3K85ANyFjkeePB49DIfwv+04a8kOsaY</span><span class="se">\\</span><span class="s2">nG0ocUXmTIgNeVKyDFtFoUF+qeg==</span><span class="se">\\</span><span class="s2">n</span><span class="se">\\</span><span class="s2">n-----END CERTIFICATE REQUEST-----"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -9528,12 +9544,6 @@ bearerAuth
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>tokenKeyId</td>
-<td>string</td>
-<td>true</td>
-<td>Идентификатор закрытого ключа</td>
-</tr>
 <tr>
 <td>tokenSerialNumber</td>
 <td>string</td>
@@ -10324,7 +10334,6 @@ bearerAuth
   </span><span class="nl">"certificate"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62552f2457595f1652c4b179"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6100035c3cff88cd00f01d734a000100035c3c"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tokenKeyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlboKey_{BBB5EB5D-2B38-488B-B9E2-5E336DDE3DE9}"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"tokenSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00a81050"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CERT_VALID"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"notBefore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
@@ -10377,7 +10386,6 @@ bearerAuth
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62552f2457595f1652c4b179"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"serialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6100035c3cff88cd00f01d734a000100035c3c"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tokenKeyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AlboKey_{BBB5EB5D-2B38-488B-B9E2-5E336DDE3DE9}"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"tokenSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00a81050"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CERT_VALID"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"notBefore"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
@@ -10415,12 +10423,6 @@ bearerAuth
 <td>string</td>
 <td>false</td>
 <td>Серийный номер сертификата</td>
-</tr>
-<tr>
-<td>tokenKeyId</td>
-<td>string</td>
-<td>false</td>
-<td>Идентификатор закрытого ключа на токене</td>
 </tr>
 <tr>
 <td>tokenSerialNumber</td>
