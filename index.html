@@ -690,7 +690,7 @@ This operation does not require authentication
 
 <p><ul>
   <li><a href="#auth-code-flow">Authorization Code Flow</a></li>
-  <li><a href="#client-cred-flow">Client Credentials Flow</a></li>
+  <li><a href="#client-cred-flow">Client Credentials Flow (в разработке)</a></li>
   </ul></p>
 
 <h3 id="auth-code-flow">Authorization Code Flow</h3>
@@ -2091,7 +2091,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="client-cred-flow">Client Credentials Flow</h3>
+<h3 id="client-cred-flow">Client Credentials Flow (в разработке)</h3>
 
 <p>Данный тип гранта используется, когда система Партнера API хочет получать информацию и выполнять действия в ALfa API без участия пользователя. Аутентификация и авторизация происходит с использованием Client Credentials Flow.</p>
 
@@ -2833,50 +2833,62 @@ your-256-bit-secret
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>ОК</td>
 <td>Успешный результат</td>
 <td><a href="#schemastatement">Statement</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам.</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -4923,6 +4935,43 @@ bearerAuth
 </tr>
 </tbody></table>
 
+<h4 id="tocS_ErrorScope">ErrorEndpoint</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorendpoint"></a>
+<a id="schema_ErrorEndpoint"></a>
+<a id="tocSerrorendpoint"></a>
+<a id="tocserrorendpoint"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown_endpoint"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Endpoint is not found or not active"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-27'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
 <h3 id="statement1C">Получение выписки в формате 1С</h3>
 
 <p>Для получения операций по счету в формате 1С необходимо отправить запрос GET accounts/{accountNumber}/transactions/1C с access_token, полученным в Alfa ID со scope = transactions, и параметрами запроса. </p>
@@ -5231,54 +5280,68 @@ bearerAuth
 </code></pre></div>
 <h4 id="get__accounts_{accountnumber}_transactions_1c-responses">Responses</h4>
 
+<p>Коды ошибок представлены из спецификации 1С</p>
+
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>OK</td>
+<td>200 (OK)</td>
+<td>ОК</td>
+<td>01 (Успешный результат)</td>
 <td><a href="#schemastatement1c">Statement1C</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>1010 (invalid_request)</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequestxml">ErrorBadRequestXML</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>1201 (invalid_token)</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам.</td>
 <td><a href="#schemaerrorunauthorizedxml">ErrorUnauthorizedXML</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>1202    (insufficient_scope)</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscopexml">ErrorScopeXML</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>403 (Forbidden)</td>
+<td>1202 (access_denied)</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscopexml">ErrorScopeXML</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>1003 (unknown_endpoint)</td>
+<td>1003 (Эндпоинт не найден или неактивен)</td>
+<td><a href="#schemaerrorendpointxml">ErrorEndpointXML</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>1001 (internal_error)</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternalxml">ErrorInternalXML</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
-<td>Сервер временно недотступен</td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
 </tbody></table>
@@ -5314,7 +5377,7 @@ bearerAuth
 <a id="tocsstatement1c"></a></p>
 
 <p>Выписка операций по счетам в формате 1С</p>
-<h4 id='properties-27'>Properties</h4>
+<h4 id='properties-28'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5371,7 +5434,7 @@ bearerAuth
 <a id="tocsstatementdata"></a></p>
 
 <p>Данные выписки по лицевому счету</p>
-<h4 id='properties-28'>Properties</h4>
+<h4 id='properties-29'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5472,7 +5535,7 @@ bearerAuth
 <a id="tocsstatementdatastamp"></a></p>
 
 <p>Данные штампа банка по выписке в целом</p>
-<h4 id='properties-29'>Properties</h4>
+<h4 id='properties-30'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5517,7 +5580,7 @@ bearerAuth
 <a id="tocsaccounts"></a></p>
 
 <p>Данные налогоплательщика</p>
-<h4 id='properties-30'>Properties</h4>
+<h4 id='properties-31'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5568,7 +5631,7 @@ bearerAuth
 <a id="tocsbank"></a></p>
 
 <p>Данные банка</p>
-<h4 id='properties-31'>Properties</h4>
+<h4 id='properties-32'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5607,7 +5670,7 @@ bearerAuth
 <a id="tocsbankorder"></a></p>
 
 <p>Данные банковского ордера</p>
-<h4 id='properties-32'>Properties</h4>
+<h4 id='properties-33'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5717,7 +5780,7 @@ bearerAuth
 <a id="tocsbudgetpaymentinfo"></a></p>
 
 <p>Реквизиты бюджетного документа</p>
-<h4 id='properties-33'>Properties</h4>
+<h4 id='properties-34'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5786,7 +5849,7 @@ bearerAuth
 <a id="tocsoperationinfo"></a></p>
 
 <p>Информация об одной операции по лицевому счету в выписке</p>
-<h4 id='properties-34'>Properties</h4>
+<h4 id='properties-35'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5811,7 +5874,7 @@ bearerAuth
 <a id="schema_PayDoc"></a>
 <a id="tocSpaydoc"></a>
 <a id="tocspaydoc"></a></p>
-<h4 id='properties-35'>Properties</h4>
+<h4 id='properties-36'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5948,7 +6011,7 @@ bearerAuth
 <a id="tocspaydocru"></a></p>
 
 <p>Данные платежного поручения</p>
-<h4 id='properties-36'>Properties</h4>
+<h4 id='properties-37'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6070,7 +6133,7 @@ bearerAuth
 <a id="tocspaydocstamp"></a></p>
 
 <p>Данные штампа банка по каждому платежному документу</p>
-<h4 id='properties-37'>Properties</h4>
+<h4 id='properties-38'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6121,7 +6184,7 @@ bearerAuth
 <a id="tocspaydocstampstatus"></a></p>
 
 <p>Статус платежного документа в банке</p>
-<h4 id='properties-38'>Properties</h4>
+<h4 id='properties-39'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6160,7 +6223,7 @@ bearerAuth
 <a id="tocspayrequest"></a></p>
 
 <p>Данные платежного требования</p>
-<h4 id='properties-39'>Properties</h4>
+<h4 id='properties-40'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6199,7 +6262,7 @@ bearerAuth
 <a id="tocspaymentorder"></a></p>
 
 <p>Данные платежного ордера</p>
-<h4 id='properties-40'>Properties</h4>
+<h4 id='properties-41'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6262,7 +6325,7 @@ bearerAuth
 <a id="tocsrecipient"></a></p>
 
 <p>Получаетель</p>
-<h4 id='properties-41'>Properties</h4>
+<h4 id='properties-42'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6307,7 +6370,7 @@ bearerAuth
 <a id="tocssender"></a></p>
 
 <p>Отправитель</p>
-<h4 id='properties-42'>Properties</h4>
+<h4 id='properties-43'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6349,7 +6412,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка авторизации</p>
-<h4 id='properties-43'>Properties</h4>
+<h4 id='properties-44'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6391,7 +6454,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка сервера</p>
-<h4 id='properties-44'>Properties</h4>
+<h4 id='properties-45'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6433,7 +6496,7 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка запроса</p>
-<h4 id='properties-45'>Properties</h4>
+<h4 id='properties-46'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6475,7 +6538,50 @@ bearerAuth
 
 </code></pre></div>
 <p>Ошибка прав доступа</p>
-<h4 id='properties-46'>Properties</h4>
+<h4 id='properties-47'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Error</td>
+<td>string</td>
+<td>false</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>ErrorDescription</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorEndpointXML">ErrorEndpointXML</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorendpointxml"></a>
+<a id="schema_ErrorEndpointXML"></a>
+<a id="tocSerrorendpointxml"></a>
+<a id="tocserrorendpointxml"></a></p>
+
+<blockquote>
+<p>ErrorEndpointXML</p>
+</blockquote>
+<div class="highlight"><pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;root&gt;</span>
+   <span class="nt">&lt;error&gt;</span>unknown_endpoint<span class="nt">&lt;/error&gt;</span>
+   <span class="nt">&lt;error_description&gt;</span>Endpoint is not found or not active<span class="nt">&lt;/error_description&gt;</span>
+<span class="nt">&lt;/root&gt;</span>
+
+</code></pre></div>
+<p>Ошибка прав доступа</p>
+<h4 id='properties-48'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6684,44 +6790,62 @@ bearerAuth
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>OK</td>
+<td>200 (OK)</td>
+<td>ОК</td>
+<td>Успешный результат</td>
 <td><a href="#schemastatementmt940">StatementMT940</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам.</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
+<td>403 (Forbidden)</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpointmt940">ErrorEndpointMT940</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недотступен</td>
 <td>None</td>
 </tr>
@@ -6765,7 +6889,7 @@ bearerAuth
 :86:/BENM//03271643540000095400 INN5752006960.KPP575301001 GAVRILOV DOBRYNa TROFIMOVIc /NZP/'(VO21100)' OPLATA PO DOGOVORU
 :62a:C220113RUR99407,00"</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-47'>Properties</h4>
+</span></code></pre></div><h4 id='properties-49'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6798,7 +6922,7 @@ bearerAuth
 <a id="tocserrorscope"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: insufficient_scope error_description: The request requires higher privileges than provided by the access token"</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-48'>Properties</h4>
+</span></code></pre></div><h4 id='properties-50'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6832,7 +6956,7 @@ bearerAuth
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: invalid_token
 error_description: The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-49'>Properties</h4>
+</span></code></pre></div><h4 id='properties-51'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6866,7 +6990,7 @@ error_description: The access token provided is expired, revoked, malformed, or 
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: internal_error
 error_description: Internal server error"</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-50'>Properties</h4>
+</span></code></pre></div><h4 id='properties-52'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6900,7 +7024,41 @@ error_description: Internal server error"</span><span class="w">
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: invalid_request
 error_description: Authorization header is not present in request headers"</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-51'>Properties</h4>
+</span></code></pre></div><h4 id='properties-53'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorEndpointMT940">ErrorEndpoint</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorendpointmt940"></a>
+<a id="schema_ErrorEndpointmt940"></a>
+<a id="tocSerrorendpointmt940"></a>
+<a id="tocserrorendpointmt940"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: unknown_endpoint
+error_description: Endpoint is not found or not active"</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-54'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7025,50 +7183,62 @@ error_description: Authorization header is not present in request headers"</span
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>ОК</td>
 <td>Успешный результат</td>
 <td><a href="#schemastatementsummary">StatementSummary</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам.</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -7147,7 +7317,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Информация об оборотах</p>
-<h4 id='properties-52'>Properties</h4>
+<h4 id='properties-55'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7237,7 +7407,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Входящий остаток в валюте счёта</p>
-<h4 id='properties-53'>Properties</h4>
+<h4 id='properties-56'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7275,7 +7445,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Входящий остаток в рублях</p>
-<h4 id='properties-54'>Properties</h4>
+<h4 id='properties-57'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7313,7 +7483,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Исходящий остаток в валюте счёта</p>
-<h4 id='properties-55'>Properties</h4>
+<h4 id='properties-58'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7351,7 +7521,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Исходящий остаток в рублях</p>
-<h4 id='properties-56'>Properties</h4>
+<h4 id='properties-59'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7389,7 +7559,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Дебетовый оборот в валюте счёта</p>
-<h4 id='properties-57'>Properties</h4>
+<h4 id='properties-60'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7427,7 +7597,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Дебетовый оборот в рублях</p>
-<h4 id='properties-58'>Properties</h4>
+<h4 id='properties-61'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7465,7 +7635,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Кредитовый оборот в валюте счёта</p>
-<h4 id='properties-59'>Properties</h4>
+<h4 id='properties-62'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7503,7 +7673,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Кредитовый оборот в рублях</p>
-<h4 id='properties-60'>Properties</h4>
+<h4 id='properties-63'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7539,7 +7709,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-61'>Properties</h4>
+</span></code></pre></div><h4 id='properties-64'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7575,7 +7745,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-62'>Properties</h4>
+</span></code></pre></div><h4 id='properties-65'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7611,7 +7781,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-63'>Properties</h4>
+</span></code></pre></div><h4 id='properties-66'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7644,7 +7814,44 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-64'>Properties</h4>
+</span></code></pre></div><h4 id='properties-67'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorScope">ErrorEndpoint</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorendpoint"></a>
+<a id="schema_ErrorEndpoint"></a>
+<a id="tocSerrorendpoint"></a>
+<a id="tocserrorendpoint"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown_endpoint"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Endpoint is not found or not active"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -7830,50 +8037,62 @@ bearerAuth
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>ОК</td>
 <td>Успешный результат</td>
 <td><a href="#schemacustomerinfo">CustomerInfo</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Authorization отсутствует в заголовках запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам.</td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
-<td>Превышено ограничение частоты запросов</td>
-<td><a href="#schemaerrorratelimit">ErrorRateLimit</a></td>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -8000,7 +8219,7 @@ bearerAuth ( Scopes: customer_info )
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-65'>Properties</h4>
+</span></code></pre></div><h4 id='properties-68'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8169,7 +8388,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Организационно-правовая форма</p>
-<h4 id='properties-66'>Properties</h4>
+<h4 id='properties-69'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8230,7 +8449,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Адрес клиента</p>
-<h4 id='properties-67'>Properties</h4>
+<h4 id='properties-70'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8360,7 +8579,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Расчетные счета</p>
-<h4 id='properties-68'>Properties</h4>
+<h4 id='properties-71'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8468,7 +8687,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Объект массива с информацией о блокировках счета клиента</p>
-<h4 id='properties-69'>Properties</h4>
+<h4 id='properties-72'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8570,7 +8789,7 @@ bearerAuth ( Scopes: customer_info )
 <p>AI83 - Электронная картотека. </p>
 
 <p>AI87 - Бумажная разновалютная картотека.</p>
-<h4 id='properties-70'>Properties</h4>
+<h4 id='properties-73'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8614,7 +8833,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Предоставленный токен доступа просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</p>
-<h4 id='properties-71'>Properties</h4>
+<h4 id='properties-74'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8652,7 +8871,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Внутренняя проблема сервера. Невозможно обработать запрос</p>
-<h4 id='properties-72'>Properties</h4>
+<h4 id='properties-75'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8690,7 +8909,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Authorization отсутствует в заголовках запроса</p>
-<h4 id='properties-73'>Properties</h4>
+<h4 id='properties-76'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8728,7 +8947,7 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Доступ к запрашиваемому ресурсу запрещен</p>
-<h4 id='properties-74'>Properties</h4>
+<h4 id='properties-77'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8766,7 +8985,44 @@ bearerAuth ( Scopes: customer_info )
 
 </span></code></pre></div>
 <p>Превышено ограничение частоты запросов</p>
-<h4 id='properties-75'>Properties</h4>
+<h4 id='properties-78'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorScope">ErrorEndpoint</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorendpoint"></a>
+<a id="schema_ErrorEndpoint"></a>
+<a id="tocSerrorendpoint"></a>
+<a id="tocserrorendpoint"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown_endpoint"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Endpoint is not found or not active"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-79'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -8933,50 +9189,56 @@ bearerAuth ( Scopes: customer_info )
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Успешный результат</td>
+<td>200 (OK)</td>
+<td>OK</td>
 <td><a href="#schemaresponesissuersacertificate">ResponesIssueRSACertificate</a></td>
+<td></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>422 (Unprocessable Entity))</td>
+<td>Not valid pkcs10 DN</td>
+<td>Невалидный DN</td>
+<td><a href="#schemaerrorunprocessable">ErrorUnprocessable</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -9086,50 +9348,56 @@ bearerAuth
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>ОК</td>
 <td>Успешный результат</td>
 <td><a href="#schemaresponsepostoperations">ResponsePostOperations</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>422 (Unprocessable Entity))</td>
+<td>Not valid pkcs10 DN</td>
+<td>Невалидный DN</td>
+<td><a href="#schemaerrorunprocessable">ErrorUnprocessable</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -9240,50 +9508,56 @@ bearerAuth
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>OK(</td>
 <td>Успешный результат</td>
 <td><a href="#schemaresponseputoperations">ResponsePutOperations</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>422 (Unprocessable Entity))</td>
+<td>Not valid pkcs10 DN</td>
+<td>Невалидный DN</td>
+<td><a href="#schemaerrorunprocessable">ErrorUnprocessable</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -9418,50 +9692,56 @@ bearerAuth
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>ОК</td>
 <td>Успешный результат</td>
 <td><a href="#schemarequestdata">RequestData</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>422 (Unprocessable Entity))</td>
+<td>Not valid pkcs10 DN</td>
+<td>Невалидный DN</td>
+<td><a href="#schemaerrorunprocessable">ErrorUnprocessable</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -9568,50 +9848,56 @@ bearerAuth
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>ОК</td>
 <td>Успешный результат</td>
 <td><a href="#schemarsacertificate">RSACertificate</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>422 (Unprocessable Entity))</td>
+<td>Not valid pkcs10 DN</td>
+<td>Невалидный DN</td>
+<td><a href="#schemaerrorunprocessable">ErrorUnprocessable</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -9709,50 +9995,56 @@ bearerAuth
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>ОК</td>
 <td>Успешный результат</td>
 <td><a href="#schemaresponesissuersacertificate">ResponesIssueRSACertificate</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>422 (Unprocessable Entity))</td>
+<td>Not valid pkcs10 DN</td>
+<td>Невалидный DN</td>
+<td><a href="#schemaerrorunprocessable">ErrorUnprocessable</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -9854,50 +10146,56 @@ bearerAuth
 <table><thead>
 <tr>
 <th>Status</th>
-<th>Meaning</th>
+<th>Code responses</th>
 <th>Description</th>
 <th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>200</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>200 (OK)</td>
+<td>ОК</td>
 <td>Успешный результат</td>
 <td>None</td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
 <td>Неверные входные параметры запроса</td>
 <td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
 <td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
 <td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
 <td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>429</td>
-<td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
+<td>422 (Unprocessable Entity))</td>
+<td>Not valid pkcs10 DN</td>
+<td>Невалидный DN</td>
+<td><a href="#schemaerrorunprocessable">ErrorUnprocessable</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
 <td>Cлишком много запросов в заданный период времени</td>
 <td>None</td>
 </tr>
 <tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
 <td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
 <td><a href="#schemaerrorinternal">ErrorInternal</a></td>
 </tr>
 <tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
 <td>Сервер временно недоступен</td>
 <td>None</td>
 </tr>
@@ -9923,7 +10221,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос на создание заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-76'>Properties</h4>
+<h4 id='properties-80'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -9964,7 +10262,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ на создание заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-77'>Properties</h4>
+<h4 id='properties-81'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10038,7 +10336,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос отправки на подпись</p>
-<h4 id='properties-78'>Properties</h4>
+<h4 id='properties-82'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10090,7 +10388,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ отправки заявки на подпись</p>
-<h4 id='properties-79'>Properties</h4>
+<h4 id='properties-83'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10152,7 +10450,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос на подписание заявки</p>
-<h4 id='properties-80'>Properties</h4>
+<h4 id='properties-84'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10186,7 +10484,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ на подписание заявки</p>
-<h4 id='properties-81'>Properties</h4>
+<h4 id='properties-85'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10295,7 +10593,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки</p>
-<h4 id='properties-82'>Properties</h4>
+<h4 id='properties-86'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10355,7 +10653,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-83'>Properties</h4>
+<h4 id='properties-87'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10445,7 +10743,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки на активацию RSA-сертификата</p>
-<h4 id='properties-84'>Properties</h4>
+<h4 id='properties-88'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10541,7 +10839,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Результат выполнения заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-85'>Properties</h4>
+<h4 id='properties-89'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10627,7 +10925,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Результат выполнения заявки на активацию RSA-сертификата</p>
-<h4 id='properties-86'>Properties</h4>
+<h4 id='properties-90'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10668,7 +10966,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные о владельце сертификата</p>
-<h4 id='properties-87'>Properties</h4>
+<h4 id='properties-91'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10740,7 +11038,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>RSA-сертификат</p>
-<h4 id='properties-88'>Properties</h4>
+<h4 id='properties-92'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10791,7 +11089,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные сертификата</p>
-<h4 id='properties-89'>Properties</h4>
+<h4 id='properties-93'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10879,7 +11177,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Список всех возможных действий над сертификатом</p>
-<h4 id='properties-90'>Properties</h4>
+<h4 id='properties-94'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10916,7 +11214,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Тип основной подписи</p>
-<h4 id='properties-91'>Properties</h4>
+<h4 id='properties-95'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10946,7 +11244,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-92'>Properties</h4>
+</span></code></pre></div><h4 id='properties-96'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10982,7 +11280,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-93'>Properties</h4>
+</span></code></pre></div><h4 id='properties-97'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11018,7 +11316,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-94'>Properties</h4>
+</span></code></pre></div><h4 id='properties-98'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11054,7 +11352,43 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-95'>Properties</h4>
+</span></code></pre></div><h4 id='properties-99'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorUnprocessable">ErrorUnprocessable</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorunprocessable"></a>
+<a id="schema_ErrorUnprocessable"></a>
+<a id="tocSerrorunprocessable"></a>
+<a id="tocserrorUnprocessable"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not valid pkcs10 DN"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="err">Wrong</span><span class="w"> </span><span class="err">dn</span><span class="w"> </span><span class="p">[</span><span class="err">DN(firstName=Евстафий</span><span class="p">,</span><span class="w"> </span><span class="err">lastName=Жданов</span><span class="p">,</span><span class="w"> </span><span class="err">fullName=Жданов</span><span class="w"> </span><span class="err">Евстафий</span><span class="w"> </span><span class="err">Юльевич</span><span class="p">,</span><span class="w"> </span><span class="err">country=RU</span><span class="p">,</span><span class="w"> </span><span class="err">area=Ленинградская</span><span class="w"> </span><span class="err">обл.</span><span class="p">,</span><span class="w"> </span><span class="err">city=</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">address=</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">email=User</span><span class="mi">513</span><span class="err">@pochtochka.com)</span><span class="p">]</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">pkcs</span><span class="mi">10</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="p">[</span><span class="err">XBOXWG</span><span class="p">]</span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-100'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
