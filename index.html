@@ -400,7 +400,9 @@
 <p>Для получения <span class="custom__cmd-command-text">
 client_id</span> направьте ваш <span class="custom__cmd-command-text">redirect_uri</span>   на почту </a> <a href="mailto:alfa_api@alfabank.ru?subject=Получение%20client_id">alfa_api@alfabank.ru</a>. c электронной почты, указанной в Договоре.</p>
 
-<p><span class="custom__cmd-command-text">redirect_uri</span> - URL, на который сервер авторизации будет отправлять пользователя после успешной авторизации приложения и которому будет предоставляться код авторизации.</p>
+<p>При использовании типа гранта Client Credentials Flow шаг с направлением <span class="custom__cmd-command-text">redirect_uri</span> пропускается.</p>
+
+<p><span class="custom__cmd-command-text">redirect_uri</span> - URL, на который сервер авторизации будет отправлять пользователя после успешной авторизации приложения и которому будет предоставляться код авторизации. Необходим при использовании типа гранта Authorization Code Flow. </p>
 
 <p>В ответном письме сотрудники Банка сообщат <span class="custom__cmd-command-text">
 client_id</span> и scope, который разрешен для использования. </p>
@@ -714,15 +716,15 @@ URL:  <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oid
 
 <p><a href="https://id.alfabank.ru/oidc/authorize?response_type=code&client_id=%7Bclient_id%7D&redirect_uri=%7Bredirect_uri%7D&scope=%7Bscope%7D&state=%7Bstate%7D">https://id.alfabank.ru/oidc/authorize?response_type=code&amp;client_id={client_id}&amp;redirect_uri={redirect_uri}&amp;scope={scope}&amp;state={state}</a> с обязательными параметрами, указанными ниже в таблице. Также опционально могут быть использованы необязательные параметры, указанные ниже в таблице. </p>
 
-<p>1) После переадресации представитель юридического лица проходит процедуру аутентификации, <strong>осуществляет введение логина и пароля</strong>:</p>
+<p>1) После переадресации представитель юридического лица/физическое лицо проходит процедуру аутентификации, <strong>осуществляет введение логина и пароля</strong>:</p>
 
 <p><img src="images/picture4-8d09f062.png" alt="enter image description here" /> </p>
 
-<p>2) Представитель юридического лица выбирает необходимую организацию (при работе с несколькими юридическими лицами):</p>
+<p>2) Представитель юридического лица выбирает необходимую организацию (при работе с несколькими юридическими лицами; для физических лиц, шаг пропускается):</p>
 
 <p><img src="images/picture6-63711dc1.png" alt="enter image description here" /> </p>
 
-<p>3) Представитель юридического лица проходит процедуру авторизации, <strong>подписывая форму согласия</strong>:</p>
+<p>3) Представитель юридического лица/физическое лицо проходит процедуру авторизации, <strong>подписывая форму согласия</strong>:</p>
 
 <p><img src="images/picture2-9d14a3ea.png" alt="enter image description here" /> </p>
 
@@ -1371,11 +1373,11 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<p>Шаг 3. <strong>Получение информации о профиле представителя ЮЛ</strong> {GET /userinfo}.</p>
+<p>Шаг 3. <strong>Получение информации о профиле представителя ЮЛ/физического лица</strong> {GET /userinfo}.</p>
 
-<p>Для получения информации о профиле представителя юридического лица необходимо <strong>вызвать метод</strong> <a href="https://baas.alfabank.ru/oidc/userinfo">https://baas.alfabank.ru/oidc/userinfo</a></p>
+<p>Для получения информации о профиле представителя юридического лица/физического лица необходимо <strong>вызвать метод</strong> <a href="https://baas.alfabank.ru/oidc/userinfo">https://baas.alfabank.ru/oidc/userinfo</a></p>
 
-<p>Для идентификации пользователя выполняется запрос на получение информации о профиле представителя ЮЛ.</p>
+<p>Для идентификации пользователя выполняется запрос на получение информации о профиле представителя ЮЛ/ФЛ.</p>
 
 <p>Входящие параметры: access_token. 
 Исходящие параметры: данные пользователя, на передачу которых от пользователя есть разрешение.</p>
@@ -1604,12 +1606,12 @@ bearerAuth
 </tr>
 <tr>
 <td style="text-align: left">eio</td>
-<td style="text-align: left">Истинно, если конечный пользователь является ЕИО; в противном случае - ложь</td>
+<td style="text-align: left">Истинно, если конечный пользователь является ЕИО; в противном случае - ложь (для физических лиц не заполняется)</td>
 <td style="text-align: left">eio</td>
 </tr>
 <tr>
 <td style="text-align: left">role</td>
-<td style="text-align: left">Роль конечного пользователя в организации</td>
+<td style="text-align: left">Роль конечного пользователя в организации (для физических лиц не заполняется)</td>
 <td style="text-align: left">role</td>
 </tr>
 </tbody></table>
