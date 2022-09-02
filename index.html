@@ -341,6 +341,9 @@
           <li>
             <a href="#release-notes" class="toc-h1 toc-link" data-title="Release Notes">Release Notes</a>
           </li>
+          <li>
+            <a href="#faq" class="toc-h1 toc-link" data-title="FAQ. Часто задаваемые вопросы">FAQ. Часто задаваемые вопросы</a>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -951,6 +954,10 @@ This operation does not require authentication
 <tr>
 <td style="text-align: left">access_denied</td>
 <td style="text-align: left">Владелец ресурса или сервер авторизации отклонил запрос.</td>
+</tr>
+<tr>
+<td style="text-align: left">invalid_operation_response</td>
+<td style="text-align: left">Используйте только данные из Спецификации.</td>
 </tr>
 </tbody></table>
 
@@ -9060,6 +9067,7 @@ bearerAuth ( Scopes: customer_info )
 <p>Список методов:</p>
 
 <p><ul>
+  <li><a href="#get-dn">Получение DN</a></li>
   <li><a href="#issue-rsa">Заявка на выпуск RSA-сертификата</a></li>
   <li><a href="#send-request">Отправка заявки на подпись</a></li>
 <li><a href="#sign-with-sms">Подписание заявки с помощью кода из СМС</a></li>
@@ -9076,6 +9084,8 @@ bearerAuth ( Scopes: customer_info )
 <p>Создание запроса на сертификат: </p>
 
 <ul>
+<li><p>Получить DN пользователя, вызвав метод API <li><a href="#get-dn">Получение DN</a></li> </p></li>
+<li><p>Далее полученный ответ необходимо <a href="https://tools.icoder.uz/json-escape-unescape.php" target="_blank" ><strong>разэкранировать</strong></a> </p></li>
 <li><p>Скачать файл <a download="example.cnf" href="https://alfaapi.github.io/specification/config/example.cnf">example.cnf</a></p></li>
 <li><p>Открыть файл <a download="example.cnf" href="https://alfaapi.github.io/specification/config/example.cnf">example.cnf</a> с помощью текстового редактора и поменять параметры DN на свои данные</p></li>
 <li><p>Создать закрытый ключ, введя в терминале команду:  </p></li>
@@ -9118,6 +9128,145 @@ bearerAuth ( Scopes: customer_info )
 
 <p>Шаг 11. После успешного ответа на шаге 10 выпущенным RSA-сертифкатом можно подписывать документы.</p>
 
+<h3 id="get-dn">Получение DN</h3>
+
+<p>Для изменения основного способ необходимо вызвать GET signature/users/{sub}/dn с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET signature/users/<span class="o">{</span>sub<span class="o">}</span>/dn 
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div><h4 id='header-parameters-6'>Header Parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<h4 id="get__signature_users_{sub}_dn-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sub</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор субъекта</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emailAddress=teterkina.natalya@gmail.com, CN=Тетеркина Наталья Геннадьевна, L=пос.Мурино Ленинградская обл., C=RU, street=</span><span class="se">\"</span><span class="s2">пос.Мурино Ленинградская обл., ул.Новая,д.7,корп.4,кв.288</span><span class="se">\"</span><span class="s2">, SN=Тетеркина, GN=Наталья"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="get__signature_users_{sub}_dn-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Code responses</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 (OK)</td>
+<td>OK</td>
+<td>Успешный результат</td>
+<td><a href="#schemadn">DN</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Неверные входные параметры запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>422 (Unprocessable Entity))</td>
+<td>Not valid pkcs10 DN</td>
+<td>Невалидный DN</td>
+<td><a href="#schemaerrorunprocessable">ErrorUnprocessable</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<h4 id='response-headers-11'>Response Headers</h4>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-traceid</td>
+<td>string</td>
+<td></td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+</tbody></table>
+
 <h3 id="issue-rsa">Заявка на выпуск RSA-сертификата</h3>
 
 <p>Для создания заявки на выпуск RSA-сертификата необходимо отправить запрос POST signature/users/{sub}/rsa-certificates/requests/issue с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса. </p>
@@ -9129,7 +9278,7 @@ bearerAuth ( Scopes: customer_info )
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-6'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-7'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9227,6 +9376,12 @@ bearerAuth ( Scopes: customer_info )
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
 <td>422 (Unprocessable Entity))</td>
 <td>Not valid pkcs10 DN</td>
 <td>Невалидный DN</td>
@@ -9251,7 +9406,7 @@ bearerAuth ( Scopes: customer_info )
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-11'>Response Headers</h4>
+<h4 id='response-headers-12'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -9284,7 +9439,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-7'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-8'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9386,6 +9541,12 @@ bearerAuth
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
 <td>422 (Unprocessable Entity))</td>
 <td>Not valid pkcs10 DN</td>
 <td>Невалидный DN</td>
@@ -9410,7 +9571,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-12'>Response Headers</h4>
+<h4 id='response-headers-13'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -9443,7 +9604,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-8'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-9'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9546,6 +9707,12 @@ bearerAuth
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
 <td>422 (Unprocessable Entity))</td>
 <td>Not valid pkcs10 DN</td>
 <td>Невалидный DN</td>
@@ -9570,7 +9737,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-13'>Response Headers</h4>
+<h4 id='response-headers-14'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -9603,7 +9770,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-9'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-10'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9730,6 +9897,12 @@ bearerAuth
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
 <td>422 (Unprocessable Entity))</td>
 <td>Not valid pkcs10 DN</td>
 <td>Невалидный DN</td>
@@ -9754,7 +9927,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-14'>Response Headers</h4>
+<h4 id='response-headers-15'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -9783,7 +9956,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-10'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-11'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9886,6 +10059,12 @@ bearerAuth
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
 <td>422 (Unprocessable Entity))</td>
 <td>Not valid pkcs10 DN</td>
 <td>Невалидный DN</td>
@@ -9910,7 +10089,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-15'>Response Headers</h4>
+<h4 id='response-headers-16'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -9943,7 +10122,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-11'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-12'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -10033,6 +10212,12 @@ bearerAuth
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
 <td>422 (Unprocessable Entity))</td>
 <td>Not valid pkcs10 DN</td>
 <td>Невалидный DN</td>
@@ -10057,7 +10242,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-16'>Response Headers</h4>
+<h4 id='response-headers-17'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -10090,7 +10275,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-12'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-13'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -10184,6 +10369,12 @@ bearerAuth
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
 <td>422 (Unprocessable Entity))</td>
 <td>Not valid pkcs10 DN</td>
 <td>Невалидный DN</td>
@@ -10214,6 +10405,37 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 <h4 id='schemas-11'>Schemas</h4>
+<h4 id="tocS_DN">DN</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemadn"></a>
+<a id="schema_DN"></a>
+<a id="tocSdn"></a>
+<a id="tocsdn"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"emailAddress=teterkina.natalya@gmail.com, CN=Тетеркина Наталья Геннадьевна, L=пос.Мурино Ленинградская обл., C=RU, street=</span><span class="se">\"</span><span class="s2">пос.Мурино Ленинградская обл., ул.Новая,д.7,корп.4,кв.288</span><span class="se">\"</span><span class="s2">, SN=Тетеркина, GN=Наталья"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Данные DN</p>
+<h4 id='properties-80'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dn</td>
+<td>string</td>
+<td>false</td>
+<td>Данные DN</td>
+</tr>
+</tbody></table>
+
 <h4 id="tocS_RequestIssueRSACertificate">RequestIssueRSACertificate</h4>
 
 <!-- backwards compatibility -->
@@ -10229,7 +10451,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос на создание заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-80'>Properties</h4>
+<h4 id='properties-81'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10270,7 +10492,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ на создание заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-81'>Properties</h4>
+<h4 id='properties-82'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10344,7 +10566,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос отправки на подпись</p>
-<h4 id='properties-82'>Properties</h4>
+<h4 id='properties-83'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10396,7 +10618,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ отправки заявки на подпись</p>
-<h4 id='properties-83'>Properties</h4>
+<h4 id='properties-84'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10458,7 +10680,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос на подписание заявки</p>
-<h4 id='properties-84'>Properties</h4>
+<h4 id='properties-85'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10492,7 +10714,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ на подписание заявки</p>
-<h4 id='properties-85'>Properties</h4>
+<h4 id='properties-86'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10601,7 +10823,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки</p>
-<h4 id='properties-86'>Properties</h4>
+<h4 id='properties-87'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10661,7 +10883,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-87'>Properties</h4>
+<h4 id='properties-88'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10751,7 +10973,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки на активацию RSA-сертификата</p>
-<h4 id='properties-88'>Properties</h4>
+<h4 id='properties-89'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10847,7 +11069,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Результат выполнения заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-89'>Properties</h4>
+<h4 id='properties-90'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10933,7 +11155,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Результат выполнения заявки на активацию RSA-сертификата</p>
-<h4 id='properties-90'>Properties</h4>
+<h4 id='properties-91'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10974,7 +11196,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные о владельце сертификата</p>
-<h4 id='properties-91'>Properties</h4>
+<h4 id='properties-92'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11046,7 +11268,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>RSA-сертификат</p>
-<h4 id='properties-92'>Properties</h4>
+<h4 id='properties-93'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11097,7 +11319,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные сертификата</p>
-<h4 id='properties-93'>Properties</h4>
+<h4 id='properties-94'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11185,7 +11407,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Список всех возможных действий над сертификатом</p>
-<h4 id='properties-94'>Properties</h4>
+<h4 id='properties-95'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11222,7 +11444,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Тип основной подписи</p>
-<h4 id='properties-95'>Properties</h4>
+<h4 id='properties-96'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11252,7 +11474,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-96'>Properties</h4>
+</span></code></pre></div><h4 id='properties-97'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11288,7 +11510,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-97'>Properties</h4>
+</span></code></pre></div><h4 id='properties-98'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11324,7 +11546,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-98'>Properties</h4>
+</span></code></pre></div><h4 id='properties-99'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11360,7 +11582,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-99'>Properties</h4>
+</span></code></pre></div><h4 id='properties-100'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11396,7 +11618,41 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="err">Wrong</span><span class="w"> </span><span class="err">dn</span><span class="w"> </span><span class="p">[</span><span class="err">DN(firstName=Евстафий</span><span class="p">,</span><span class="w"> </span><span class="err">lastName=Жданов</span><span class="p">,</span><span class="w"> </span><span class="err">fullName=Жданов</span><span class="w"> </span><span class="err">Евстафий</span><span class="w"> </span><span class="err">Юльевич</span><span class="p">,</span><span class="w"> </span><span class="err">country=RU</span><span class="p">,</span><span class="w"> </span><span class="err">area=Ленинградская</span><span class="w"> </span><span class="err">обл.</span><span class="p">,</span><span class="w"> </span><span class="err">city=</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">address=</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">email=User</span><span class="mi">513</span><span class="err">@pochtochka.com)</span><span class="p">]</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">pkcs</span><span class="mi">10</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="p">[</span><span class="err">XBOXWG</span><span class="p">]</span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-100'>Properties</h4>
+</span></code></pre></div><h4 id='properties-101'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorEndpointMT940">ErrorEndpoint</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorendpointmt940"></a>
+<a id="schema_ErrorEndpointmt940"></a>
+<a id="tocSerrorendpointmt940"></a>
+<a id="tocserrorendpointmt940"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: unknown_endpoint
+error_description: Endpoint is not found or not active"</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-102'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11550,6 +11806,72 @@ bearerAuth
 <p><strong>22 августа 2022</strong></p>
 
 <p>Добавлен тип гранта Client Credentials Flow.</p>
+
+<p><strong>2 сентярбря 2022</strong></p>
+
+<p>Добавлен новый метод &quot;Получение DN&quot; сервиса &quot;Электронная подпись&quot;.</p>
+<h1 id='faq'>FAQ. Часто задаваемые вопросы</h1><h4 id='quot-error_description-quot-quot-client-was-not-found-quot'>Что означает &quot;error_description&quot;: &quot;Client was not found&quot;?</h4>
+<p>В запросе клиента на получение токена авторизации (api/token) указан неверный client_id/client_secret. </p>
+<h4 id='quot-error_description-quot-quot-the-request-requires-higher-privileges-than-provided-by-the-access-token-quot'>Почему возникает &quot;error_description&quot;: &quot;The request requires higher privileges than provided by the access token&quot;?</h4>
+<p>• При запросе кода авторизации переданы не все scopes. Минимально необходимый scope для получения токена - openid.
+<br>
+• Не подписан договор согласия, необходимо указать в запросе на код авторизации параметр prompt=consent. Важно помнить, что этот параметр необходимо указывать при первичном подписании согласия или при переподписании согласия.</p>
+<h4 id='quot-error_description-quot-quot-unexpected-redirect-uri-quot'>Что делать при возникновении &quot;error_description&quot;: &quot;Unexpected redirect uri&quot;?</h4>
+<p>Необходимо указать redirect_uri аналогично тому, который Вы указывали при получении кода авторизации.</p>
+<h4 id='quot-error_description-quot-quot-access-denied-quot'>Какие причины возникновения &quot;error_description&quot;: &quot;access denied&quot;?</h4>
+<p>• Такого client_id нет/client_id заблокирован.
+<br>
+• Переданный в запросе redirect_url не соответсвует тому, который был указан в заявке на подключение.
+<br>
+• При прямой интеграции происходит попытка аутентификации через пользователя не своей организации.
+<br>
+• При внешней интеграции происходит попытка аутентификации через пользователя своей организации.</p>
+<h4 id='b3f31b6b8b'>Какой срок жизни токена?</h4>
+<p>Значения по умолчанию: 
+<br>
+• access_token: 1 час (60 минут); 
+<br>
+• refresh_token: 180 дней (259200 минут).</p>
+
+<p>Значения могут быть изменены. 
+Срок жизни токенов можно посмотреть в запросе POST token.</p>
+<h4 id='9224ebc941'>Какой срок жизни кода авторизации?</h4>
+<p>Значение по умолчанию: 120 секунд. Срок жизни кода авторизации может быть настроен индивидуально.</p>
+<h4 id='22ba85c398'>Какие адреса для запросов использовать?</h4>
+<p><strong>Sandbox</strong>:</p>
+
+<p>Получение кода авторизации - <a href="https://id-sandbox.alfabank.ru/oidc/authorize">https://id-sandbox.alfabank.ru/oidc/authorize</a></p>
+
+<p>Получение и обновление токена доступа - <a href="https://sandbox.alfabank.ru/oidc/token">https://sandbox.alfabank.ru/oidc/token</a></p>
+
+<p>Получение информации о профиле представителя ЮЛ/физического лица -  <a href="https://sandbox.alfabank.ru/oidc/userinfo">https://sandbox.alfabank.ru/oidc/userinfo</a></p>
+
+<p>Получение client_secret  - <a href="https://sandbox.alfabank.ru/oidc/clients/%7BclientId%7D/client-secret">https://sandbox.alfabank.ru/oidc/clients/{clientId}/client-secret</a></p>
+
+<p>Получение системного токена -
+<a href="https://sandbox.alfabank.ru/oidc/token">https://sandbox.alfabank.ru/oidc/token</a></p>
+
+<p>Методы Alfa API - <a href="https://sandbox.alfabank.ru/api">https://sandbox.alfabank.ru/api</a></p>
+
+<p><strong>Prom</strong>:</p>
+
+<p>Получение кода авторизации - <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oidc/authorize</a></p>
+
+<p>Получение токена доступа - 
+<a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a></p>
+
+<p>Получение информации о профиле представителя ЮЛ/физического лица - 
+<a href="https://baas.alfabank.ru/oidc/userinfo">https://baas.alfabank.ru/oidc/userinfo</a></p>
+
+<p>Обновление токена -
+<a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a></p>
+
+<p>Получение client_secret - 
+<a href="https://baas.alfabank.ru/oidc/clients/%7BclientId%7D/client-secret">https://baas.alfabank.ru/oidc/clients/{clientId}/client-secret</a></p>
+
+<p>Получение системного токена доступа - <a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a></p>
+
+<p>Методы Alfa API - <a href="https://baas.alfabank.ru/api">https://baas.alfabank.ru/api</a></p>
 
       </div>
       <div class="dark-box">
