@@ -8310,7 +8310,9 @@ bearerAuth
 <h2 id='d2568efd70'>Профиль организации</h2>
 <p>Метод позволяет получить информацию об организации и ее счетах. Все суммы указаны в рублях.</p>
 
-<p>Для получения информации о профиле организации необходимо отправить запрос GET customer-info с access_token, полученным в Alfa ID со scope = customer, и параметрами запроса.</p>
+<p>Для получения информации о профиле организации необходимо отправить запрос GET v1/customer-info с access_token, полученным в Alfa ID со scope = customer, и параметрами запроса.</p>
+
+<p>Адрес <a href="https://baas.alfabank.ru/api/v1/customer-info">https://baas.alfabank.ru/api/v1/customer-info</a></p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET v1/customer-info <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
