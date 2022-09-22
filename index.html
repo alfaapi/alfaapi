@@ -2929,7 +2929,7 @@ This operation does not require authentication
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://sandbox.alfabank.ru/api/customer-info <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://sandbox.alfabank.ru/api/v1/customer-info <span class="se">\</span>
   <span class="nt">-v--cert</span> test_certificate.cer <span class="se">\</span>
   <span class="nt">--key</span> test_key.key <span class="se">\</span>
   <span class="nt">--header</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
@@ -8308,10 +8308,10 @@ bearerAuth
 </tr>
 </tbody></table>
 <h2 id='d2568efd70'>Профиль организации</h2>
-<p>Метод позволяет получить информацию об организации и ее счетах.</p>
+<p>Метод позволяет получить информацию об организации и ее счетах. Все суммы указаны в рублях.</p>
 
 <p>Для получения информации о профиле организации необходимо отправить запрос GET customer-info с access_token, полученным в Alfa ID со scope = customer, и параметрами запроса.</p>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET customer-info <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET v1/customer-info <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -9156,7 +9156,7 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 <tr>
 <td>sum</td>
-<td>string</td>
+<td>integer</td>
 <td>false</td>
 <td>Заблокированная (арестованная) сумма на счёте</td>
 </tr>
