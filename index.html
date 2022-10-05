@@ -2197,7 +2197,6 @@ This operation does not require authentication
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2205,7 +2204,6 @@ This operation does not require authentication
 <td>400</td>
 <td>Content-Type</td>
 <td>string</td>
-<td></td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -2796,7 +2794,6 @@ your-256-bit-secret
 <th>Status</th>
 <th>Header</th>
 <th>Type</th>
-<th>Format</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -2804,7 +2801,6 @@ your-256-bit-secret
 <td>400</td>
 <td>Content-Type</td>
 <td>string</td>
-<td></td>
 <td>none</td>
 </tr>
 </tbody></table>
@@ -12109,7 +12105,6 @@ error_description: Endpoint is not found or not active"</span><span class="w">
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET cards/<span class="o">{</span>cardId<span class="o">}</span>/tariffs <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Client-IP: string'</span>
 
 </code></pre></div>
 <h4 id="gettariffs-parameters">Parameters</h4>
@@ -12136,13 +12131,6 @@ error_description: Endpoint is not found or not active"</span><span class="w">
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-<tr>
-<td>X-Client-IP</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>ip-адрес клиента</td>
 </tr>
 </tbody></table>
 <h4 id='header-parameters-14'>Header parameters</h4>
@@ -13577,7 +13565,7 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET cards/<span class="o">{</span>cardId<span class="o">}</span>/subscriptions <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Client-IP: string'</span>
+
 
 </code></pre></div>
 <h4 id="getsubscriptions-parameters">Parameters</h4>
@@ -13604,13 +13592,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-<tr>
-<td>X-Client-IP</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>ip-адрес клиента</td>
 </tr>
 </tbody></table>
 <h4 id='header-parameters-15'>Header parameters</h4>
@@ -15039,7 +15020,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET cards <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Client-IP: string'</span>
 
 </code></pre></div>
 <h4 id="getcards-parameters">Parameters</h4>
@@ -15059,13 +15039,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-<tr>
-<td>X-Client-IP</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>ip-адрес клиента</td>
 </tr>
 <tr>
 <td>cardFilter</td>
@@ -16511,7 +16484,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET accounts/<span class="o">{</span>accountNumber<span class="o">}</span>/requisites <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Client-IP: string'</span>
 
 </code></pre></div>
 <h4 id="getaccountrequisites-parameters">Parameters</h4>
@@ -16538,13 +16510,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-<tr>
-<td>X-Client-IP</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>ip-адрес клиента</td>
 </tr>
 </tbody></table>
 <h4 id='header-parameters-17'>Header parameters</h4>
@@ -17986,7 +17951,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET accounts <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Client-IP: string'</span>
 
 </code></pre></div>
 <h4 id="getaccounts-parameters">Parameters</h4>
@@ -18006,13 +17970,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-<tr>
-<td>X-Client-IP</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>ip-адрес клиента</td>
 </tr>
 </tbody></table>
 <h4 id='header-parameters-18'>Header parameters</h4>
@@ -18332,7 +18289,7 @@ This operation does not require authentication
 <td>accounts</td>
 <td>[<a href="#schemaaccount">Account</a>]</td>
 <td>true</td>
-<td>none</td>
+<td>Счета</td>
 </tr>
 </tbody></table>
 
@@ -19444,7 +19401,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET prepaid-cards <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Client-IP: string'</span>
 
 </code></pre></div>
 <h4 id="getprepaids-parameters">Parameters</h4>
@@ -19464,13 +19420,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-<tr>
-<td>X-Client-IP</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>ip-адрес клиента</td>
 </tr>
 </tbody></table>
 <h4 id='header-parameters-19'>Header parameters</h4>
@@ -20640,7 +20589,7 @@ This operation does not require authentication
 <td>cardServiceFee</td>
 <td>number</td>
 <td>true</td>
-<td>none</td>
+<td>Комиссия за обслуживание</td>
 </tr>
 <tr>
 <td>turnoverRange</td>
@@ -20896,7 +20845,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET accounts/<span class="o">{</span>accountNumber<span class="o">}</span>/status <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Client-IP: string'</span>
 
 </code></pre></div>
 <h4 id="getaccountstatus-parameters">Parameters</h4>
@@ -20923,13 +20871,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-<tr>
-<td>X-Client-IP</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>ip-адрес клиента</td>
 </tr>
 </tbody></table>
 <h4 id='header-parameters-20'>Header parameters</h4>
@@ -22089,7 +22030,7 @@ This operation does not require authentication
 <td>cardServiceFee</td>
 <td>number</td>
 <td>true</td>
-<td>none</td>
+<td>Комиссия за обслуживание</td>
 </tr>
 <tr>
 <td>turnoverRange</td>
@@ -22341,7 +22282,6 @@ This operation does not require authentication
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET accounts/<span class="o">{</span>accountNumber<span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Client-IP: string'</span>
 
 </code></pre></div>
 <h4 id="getaccountbynumber-parameters">Parameters</h4>
@@ -22368,13 +22308,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-<tr>
-<td>X-Client-IP</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>ip-адрес клиента</td>
 </tr>
 </tbody></table>
 <h4 id='header-parameters-21'>Header parameters</h4>
@@ -23542,7 +23475,7 @@ This operation does not require authentication
 <td>cardServiceFee</td>
 <td>number</td>
 <td>true</td>
-<td>none</td>
+<td>Комиссия за обслуживание</td>
 </tr>
 <tr>
 <td>turnoverRange</td>
@@ -23785,6 +23718,2178 @@ This operation does not require authentication
 <td><a href="#schemasubscriptiontariffs">SubscriptionTariffs</a></td>
 <td>true</td>
 <td>Пакет обслуживания</td>
+</tr>
+</tbody></table>
+<h3 id='44b14afbab'>Получение списка истории операций по набору критериев</h3>
+<p>Метод позволяет получить историю операций по набору критериев.</p>
+
+<p>Для получения истории операций по набору критериев необходимо отправить запрос POST operations с access_token, полученным в Alfa ID со scope = history, и параметрами запроса.</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST operations <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+
+</code></pre></div><h4 id='header-parameters-22'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dateFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"operationDirection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pageNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="getoperationshistory-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Access token</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaoperationshistorycriteria">OperationsHistoryCriteria</a></td>
+<td>true</td>
+<td>Набор критериев для выборки истории операций</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1220117MOCOIBSR 04461"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-17T14:47:49.65Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МТС 9166666666"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Перевод за услуги IPTV"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mcc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4899"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00012"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Телефон, интернет, ТВ"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Компенсация за аплату услуг Альфа картой"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"terminal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МТС online"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moscow"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RU"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Сидоров Сидор Сидорович"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40817810810210032401"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"044525593"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Альфа Банк"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+79201112222"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maskedCardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111XXXXXXXX2222"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МТС"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"044525500"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО МТС Банк"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+12223334455"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"isAnotherClient"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cashout"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="getoperationshistory-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Code responses</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 (ОК)</td>
+<td>ОК</td>
+<td>Успешный результат</td>
+<td><a href="#schemaoperationshistory">OperationsHistory</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Authorization отсутствует в заголовках запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h4 id='schemas-22'>Schemas</h4>
+<h4 id="tocS_Amount">Amount</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaamount"></a>
+<a id="schema_Amount"></a>
+<a id="tocSamount"></a>
+<a id="tocsamount"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект с суммой</p>
+<h4 id='properties-307'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>Сумма (значение)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>true</td>
+<td>Валюта</td>
+</tr>
+<tr>
+<td>minorUnits</td>
+<td>integer</td>
+<td>true</td>
+<td>Минорные единицы</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationDirection">OperationDirection</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdirection"></a>
+<a id="schema_OperationDirection"></a>
+<a id="tocSoperationdirection"></a>
+<a id="tocsoperationdirection"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"EXPENSE"</span><span class="w">
+
+</span></code></pre></div>
+<p>Направление движения денежных средств</p>
+<h4 id='properties-308'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Направление движения денежных средств</td>
+<td>string</td>
+<td>false</td>
+<td>Направление движения денежных средств: <code>INCOME</code> - приход/пополнение, <code>EXPENSE</code> - расход/списание</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-35'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Направление движения денежных средств</td>
+<td>EXPENSE</td>
+<td>Расход/списание</td>
+</tr>
+<tr>
+<td>Направление движения денежных средств</td>
+<td>INCOME</td>
+<td>Приход/пополнение</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationsHistoryCriteria">OperationsHistoryCriteria</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationshistorycriteria"></a>
+<a id="schema_OperationsHistoryCriteria"></a>
+<a id="tocSoperationshistorycriteria"></a>
+<a id="tocsoperationshistorycriteria"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dateFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"operationDirection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pageNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект с критериями для выборки истории операций</p>
+<h4 id='properties-309'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dateFrom</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата начала запроса истории операций (включительно)</td>
+</tr>
+<tr>
+<td>dateTo</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата окончания запроса истории операций (включительно)</td>
+</tr>
+<tr>
+<td>accounts</td>
+<td>[string]</td>
+<td>false</td>
+<td>Фильтрация по счетам</td>
+</tr>
+<tr>
+<td>cards</td>
+<td>[string]</td>
+<td>false</td>
+<td>Фильтрация по номерам карт</td>
+</tr>
+<tr>
+<td>operationDirection</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>false</td>
+<td>Направление движения денежных средств: <code>INCOME</code> - приход/пополнение, <code>EXPENSE</code> - расход/списание</td>
+</tr>
+<tr>
+<td>pageNumber</td>
+<td>integer</td>
+<td>false</td>
+<td>Пагинация (номер страницы)</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>integer</td>
+<td>false</td>
+<td>Пагинация (размер)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationCategory">OperationCategory</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationcategory"></a>
+<a id="schema_OperationCategory"></a>
+<a id="tocSoperationcategory"></a>
+<a id="tocsoperationcategory"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект программы лояльности</p>
+<h4 id='properties-310'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор категории</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Наименование категории</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationLoyalty">OperationLoyalty</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationloyalty"></a>
+<a id="schema_OperationLoyalty"></a>
+<a id="tocSoperationloyalty"></a>
+<a id="tocsoperationloyalty"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект программы лояльности</p>
+<h4 id='properties-311'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>false</td>
+<td>Заголовок бонусной программы / программы лояльности</td>
+</tr>
+<tr>
+<td>percent</td>
+<td>number</td>
+<td>false</td>
+<td>Процент от суммы</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>any</td>
+<td>false</td>
+<td>Сумма начисленного кэшбека (бонуса)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationStatus">OperationStatus</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationstatus"></a>
+<a id="schema_OperationStatus"></a>
+<a id="tocSoperationstatus"></a>
+<a id="tocsoperationstatus"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"HOLD"</span><span class="w">
+
+</span></code></pre></div>
+<p>Статус операции</p>
+<h4 id='properties-312'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Статус операции</td>
+<td>string</td>
+<td>false</td>
+<td>Статус операции: <code>null</code> - входящая операция или статус не определен; <code>SUCCESS</code> - операция выполнена успешна; <code>HOLD</code> - операция в обработке; <code>FAILED</code> - операция не выполнена</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-36'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Статус операции</td>
+<td>HOLD</td>
+<td>Операция в обработке</td>
+</tr>
+<tr>
+<td>Статус операции</td>
+<td>SUCCESS</td>
+<td>Операция выполнена успешна</td>
+</tr>
+<tr>
+<td>Статус операции</td>
+<td>FAILED</td>
+<td>Операция не выполнена</td>
+</tr>
+<tr>
+<td>Статус операции</td>
+<td>null</td>
+<td>Входящая операция или статус не определен</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_SellingPointTerminal">SellingPointTerminal</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasellingpointterminal"></a>
+<a id="schema_SellingPointTerminal"></a>
+<a id="tocSsellingpointterminal"></a>
+<a id="tocssellingpointterminal"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект терминал точки продаж</p>
+<h4 id='properties-313'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>false</td>
+<td>Номер терминала точки продаж</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>Имя точки продаж</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>false</td>
+<td>Город точки продаж (код)</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>string</td>
+<td>false</td>
+<td>Страна точки продаж (код)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationSender">OperationSender</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationsender"></a>
+<a id="schema_OperationSender"></a>
+<a id="tocSoperationsender"></a>
+<a id="tocsoperationsender"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maskedCardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект отправитель перевода</p>
+<h4 id='properties-314'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>Отправитель перевода</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер счёта отправителя перевода / клиента</td>
+</tr>
+<tr>
+<td>bankBik</td>
+<td>string</td>
+<td>false</td>
+<td>БИК банка отправителя</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>false</td>
+<td>Название банка отправителя</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер телефона отправителя</td>
+</tr>
+<tr>
+<td>maskedCardNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер карты (маскированный) отправителя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationRecipient">OperationRecipient</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationrecipient"></a>
+<a id="schema_OperationRecipient"></a>
+<a id="tocSoperationrecipient"></a>
+<a id="tocsoperationrecipient"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект получатель перевода</p>
+<h4 id='properties-315'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>Получатель перевода</td>
+</tr>
+<tr>
+<td>bankBik</td>
+<td>string</td>
+<td>false</td>
+<td>БИК банка получателя</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>false</td>
+<td>Название банка получателя</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер телефона получателя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationHistoryItem">OperationHistoryItem</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationhistoryitem"></a>
+<a id="schema_OperationHistoryItem"></a>
+<a id="tocSoperationhistoryitem"></a>
+<a id="tocsoperationhistoryitem"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mcc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"terminal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maskedCardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isAnotherClient"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cashout"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект с информацией по операции</p>
+<h4 id='properties-316'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор операции</td>
+</tr>
+<tr>
+<td>dateTime</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>Дата и время операции</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>true</td>
+<td>Заголовок операции</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>any</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>false</td>
+<td>Комментарий к операции</td>
+</tr>
+<tr>
+<td>mcc</td>
+<td>string</td>
+<td>false</td>
+<td>MCC код операции</td>
+</tr>
+<tr>
+<td>category</td>
+<td><a href="#schemaoperationcategory">OperationCategory</a></td>
+<td>false</td>
+<td>Категория операции</td>
+</tr>
+<tr>
+<td>direction</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>true</td>
+<td>Направление движения денежных средств: <code>INCOME</code> - приход/пополнение, <code>EXPENSE</code> - расход/списание</td>
+</tr>
+<tr>
+<td>loyalty</td>
+<td><a href="#schemaoperationloyalty">OperationLoyalty</a></td>
+<td>false</td>
+<td>Программа лояльности</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#schemaoperationstatus">OperationStatus</a></td>
+<td>false</td>
+<td>Статус операции: <code>null</code> - входящая операция или статус не определен; <code>SUCCESS</code> - операция выполнена успешна; <code>HOLD</code> - операция в обработке; <code>FAILED</code> - операция не выполнена</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>Тип операции</td>
+</tr>
+<tr>
+<td>terminal</td>
+<td><a href="#schemasellingpointterminal">SellingPointTerminal</a></td>
+<td>false</td>
+<td>Номер терминала точки продаж</td>
+</tr>
+<tr>
+<td>sender</td>
+<td><a href="#schemaoperationsender">OperationSender</a></td>
+<td>false</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemaoperationrecipient">OperationRecipient</a></td>
+<td>false</td>
+<td>Получатель</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>number</td>
+<td>true</td>
+<td>Комиссия по операции</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>string</td>
+<td>false</td>
+<td>Поле для связки сопоставления поля умной шины NIMB и сервиса LOYALTY STATEMENT API</td>
+</tr>
+<tr>
+<td>isAnotherClient</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак того, что операция выполнена другим клиентом</td>
+</tr>
+<tr>
+<td>cashout</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак снятия наличности в банкомате</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationsHistory">OperationsHistory</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationshistory"></a>
+<a id="schema_OperationsHistory"></a>
+<a id="tocSoperationshistory"></a>
+<a id="tocsoperationshistory"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>История операций</p>
+<h4 id='properties-317'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>operations</td>
+<td>[<a href="#schemaoperationhistoryitem">OperationHistoryItem</a>]</td>
+<td>true</td>
+<td>Массив операций</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationDetails">OperationDetails</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdetails"></a>
+<a id="schema_OperationDetails"></a>
+<a id="tocSoperationdetails"></a>
+<a id="tocsoperationdetails"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mcc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"terminal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maskedCardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isAnotherClient"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cashout"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект с информацией по операции</p>
+<h4 id='properties-318'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор операции</td>
+</tr>
+<tr>
+<td>dateTime</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>Дата и время операции</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>true</td>
+<td>Заголовок операции</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>any</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>false</td>
+<td>Комментарий к операции</td>
+</tr>
+<tr>
+<td>mcc</td>
+<td>string</td>
+<td>false</td>
+<td>MCC код операции</td>
+</tr>
+<tr>
+<td>category</td>
+<td><a href="#schemaoperationcategory">OperationCategory</a></td>
+<td>false</td>
+<td>Категория</td>
+</tr>
+<tr>
+<td>direction</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>true</td>
+<td>Направление движения денежных средств: <code>INCOME</code> - приход/пополнение, <code>EXPENSE</code> - расход/списание</td>
+</tr>
+<tr>
+<td>loyalty</td>
+<td><a href="#schemaoperationloyalty">OperationLoyalty</a></td>
+<td>false</td>
+<td>Программа лояльности</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#schemaoperationstatus">OperationStatus</a></td>
+<td>false</td>
+<td>Статус операции: <code>null</code> - входящая операция или статус не определен; <code>SUCCESS</code> - операция выполнена успешна; <code>HOLD</code> - операция в обработке; <code>FAILED</code> - операция не выполнена</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>Тип операции</td>
+</tr>
+<tr>
+<td>terminal</td>
+<td><a href="#schemasellingpointterminal">SellingPointTerminal</a></td>
+<td>false</td>
+<td>Номер терминала</td>
+</tr>
+<tr>
+<td>sender</td>
+<td><a href="#schemaoperationsender">OperationSender</a></td>
+<td>false</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemaoperationrecipient">OperationRecipient</a></td>
+<td>false</td>
+<td>Получатель</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>number</td>
+<td>true</td>
+<td>Комиссия по операции</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>string</td>
+<td>false</td>
+<td>Поле для связки сопоставления поля умной шины NIMB и сервиса LOYALTY STATEMENT API</td>
+</tr>
+<tr>
+<td>isAnotherClient</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак того, что операция выполнена другим клиентом</td>
+</tr>
+<tr>
+<td>cashout</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак снятия наличности в банкомате</td>
+</tr>
+</tbody></table>
+<h3 id='path'>Получение информации об операции по идентификатору операции, переданной в path-параметре</h3>
+<p>Метод позволяет получить информацию об операции по идентификатору операции, переданной в path-параметре.</p>
+
+<p>Для получения информации об операции по идентификатору операции, переданной в path-параметре необходимо отправить запрос GET operations/{id} с access_token, полученным в Alfa ID со scope = history, и параметрами запроса.</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET operations/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+
+</code></pre></div><h4 id='header-parameters-23'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<h4 id="getoperationdetails-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор операции</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Access token</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1220117MOCOIBSR 04461"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-17T14:47:49.65Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МТС 9166666666"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Перевод за услуги IPTV"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mcc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4899"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00012"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Телефон, интернет, ТВ"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Компенсация за аплату услуг Альфа картой"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"terminal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МТС online"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Moscow"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RU"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Сидоров Сидор Сидорович"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40817810810210032401"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"044525593"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Альфа Банк"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+79201112222"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maskedCardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111XXXXXXXX2222"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"МТС"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"044525500"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ООО МТС Банк"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+12223334455"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isAnotherClient"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cashout"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="getoperationdetails-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Code response</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 (OK)</td>
+<td>OK</td>
+<td>Успешный результат</td>
+<td><a href="#schemaoperationdetails">OperationDetails</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Authorization отсутствует в заголовках запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h4 id='schemas-23'>Schemas</h4>
+<h4 id="tocS_Amount">Amount</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaamount"></a>
+<a id="schema_Amount"></a>
+<a id="tocSamount"></a>
+<a id="tocsamount"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект с суммой</p>
+<h4 id='properties-319'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>Сумма (значение)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>true</td>
+<td>Валюта</td>
+</tr>
+<tr>
+<td>minorUnits</td>
+<td>integer</td>
+<td>true</td>
+<td>Минорные единицы</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationDirection">OperationDirection</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdirection"></a>
+<a id="schema_OperationDirection"></a>
+<a id="tocSoperationdirection"></a>
+<a id="tocsoperationdirection"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"EXPENSE"</span><span class="w">
+
+</span></code></pre></div>
+<p>Направление движения денежных средств</p>
+<h4 id='properties-320'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Направление движения денежных средств</td>
+<td>string</td>
+<td>false</td>
+<td>Направление движения денежных средств: <code>INCOME</code> - приход/пополнение, <code>EXPENSE</code> - расход/списание</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Направление движения денежных средств</td>
+<td>EXPENSE</td>
+<td>Расход/списание</td>
+</tr>
+<tr>
+<td>Направление движения денежных средств</td>
+<td>INCOME</td>
+<td>Приход/пополнение</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationsHistoryCriteria">OperationsHistoryCriteria</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationshistorycriteria"></a>
+<a id="schema_OperationsHistoryCriteria"></a>
+<a id="tocSoperationshistorycriteria"></a>
+<a id="tocsoperationshistorycriteria"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dateFrom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"operationDirection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pageNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pageSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект с критериями для выборки истории операций</p>
+<h4 id='properties-321'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dateFrom</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата начала запроса истории операций (включительно)</td>
+</tr>
+<tr>
+<td>dateTo</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата окончания запроса истории операций (включительно)</td>
+</tr>
+<tr>
+<td>accounts</td>
+<td>[string]</td>
+<td>false</td>
+<td>Фильтрация по счетам</td>
+</tr>
+<tr>
+<td>cards</td>
+<td>[string]</td>
+<td>false</td>
+<td>Фильтрация по номерам карт</td>
+</tr>
+<tr>
+<td>operationDirection</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>false</td>
+<td>Направление движения денежных средств: <code>INCOME</code> - приход/пополнение, <code>EXPENSE</code> - расход/списание</td>
+</tr>
+<tr>
+<td>pageNumber</td>
+<td>integer</td>
+<td>false</td>
+<td>Пагинация (номер страницы)</td>
+</tr>
+<tr>
+<td>pageSize</td>
+<td>integer</td>
+<td>false</td>
+<td>Пагинация (размер)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationCategory">OperationCategory</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationcategory"></a>
+<a id="schema_OperationCategory"></a>
+<a id="tocSoperationcategory"></a>
+<a id="tocsoperationcategory"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект программы лояльности</p>
+<h4 id='properties-322'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор категории</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Наименование категории</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationLoyalty">OperationLoyalty</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationloyalty"></a>
+<a id="schema_OperationLoyalty"></a>
+<a id="tocSoperationloyalty"></a>
+<a id="tocsoperationloyalty"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект программы лояльности</p>
+<h4 id='properties-323'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>false</td>
+<td>Заголовок бонусной программы / программы лояльности</td>
+</tr>
+<tr>
+<td>percent</td>
+<td>number</td>
+<td>false</td>
+<td>Процент от суммы</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>any</td>
+<td>false</td>
+<td>Сумма начисленного кэшбека (бонуса)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationStatus">OperationStatus</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationstatus"></a>
+<a id="schema_OperationStatus"></a>
+<a id="tocSoperationstatus"></a>
+<a id="tocsoperationstatus"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"HOLD"</span><span class="w">
+
+</span></code></pre></div>
+<p>Статус операции</p>
+<h4 id='properties-324'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Статус операции</td>
+<td>string</td>
+<td>false</td>
+<td>Статус операции: <code>null</code> - входящая операция или статус не определен; <code>SUCCESS</code> - операция выполнена успешна; <code>HOLD</code> - операция в обработке; <code>FAILED</code> - операция не выполнена</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-38'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Статус операции</td>
+<td>HOLD</td>
+<td>Операция в обработке</td>
+</tr>
+<tr>
+<td>Статус операции</td>
+<td>SUCCESS</td>
+<td>Операция выполнена успешна</td>
+</tr>
+<tr>
+<td>Статус операции</td>
+<td>FAILED</td>
+<td>Операция не выполнена</td>
+</tr>
+<tr>
+<td>Статус операции</td>
+<td>null</td>
+<td>Входящая операция или статус не определен</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_SellingPointTerminal">SellingPointTerminal</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasellingpointterminal"></a>
+<a id="schema_SellingPointTerminal"></a>
+<a id="tocSsellingpointterminal"></a>
+<a id="tocssellingpointterminal"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект терминал точки продаж</p>
+<h4 id='properties-325'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>false</td>
+<td>Номер терминала точки продаж</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>Имя точки продаж</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>false</td>
+<td>Город точки продаж (код)</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>string</td>
+<td>false</td>
+<td>Страна точки продаж (код)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationSender">OperationSender</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationsender"></a>
+<a id="schema_OperationSender"></a>
+<a id="tocSoperationsender"></a>
+<a id="tocsoperationsender"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maskedCardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект отправитель перевода</p>
+<h4 id='properties-326'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>Отправитель перевода</td>
+</tr>
+<tr>
+<td>accountNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер счёта отправителя перевода / клиента</td>
+</tr>
+<tr>
+<td>bankBik</td>
+<td>string</td>
+<td>false</td>
+<td>БИК банка отправителя</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>false</td>
+<td>Название банка отправителя</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер телефона отправителя</td>
+</tr>
+<tr>
+<td>maskedCardNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер карты (маскированный) отправителя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationRecipient">OperationRecipient</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationrecipient"></a>
+<a id="schema_OperationRecipient"></a>
+<a id="tocSoperationrecipient"></a>
+<a id="tocsoperationrecipient"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект получатель перевода</p>
+<h4 id='properties-327'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>Получатель перевода</td>
+</tr>
+<tr>
+<td>bankBik</td>
+<td>string</td>
+<td>false</td>
+<td>БИК банка получателя</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>false</td>
+<td>Название банка получателя</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер телефона получателя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationHistoryItem">OperationHistoryItem</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationhistoryitem"></a>
+<a id="schema_OperationHistoryItem"></a>
+<a id="tocSoperationhistoryitem"></a>
+<a id="tocsoperationhistoryitem"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mcc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"terminal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maskedCardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isAnotherClient"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cashout"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект с информацией по операции</p>
+<h4 id='properties-328'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор операции</td>
+</tr>
+<tr>
+<td>dateTime</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>Дата и время операции</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>true</td>
+<td>Заголовок операции</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>any</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>false</td>
+<td>Комментарий к операции</td>
+</tr>
+<tr>
+<td>mcc</td>
+<td>string</td>
+<td>false</td>
+<td>MCC код операции</td>
+</tr>
+<tr>
+<td>category</td>
+<td><a href="#schemaoperationcategory">OperationCategory</a></td>
+<td>false</td>
+<td>Категория операции</td>
+</tr>
+<tr>
+<td>direction</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>true</td>
+<td>Направление движения денежных средств: INCOME - приход/пополнение, EXPENSE - расход/списание</td>
+</tr>
+<tr>
+<td>loyalty</td>
+<td><a href="#schemaoperationloyalty">OperationLoyalty</a></td>
+<td>false</td>
+<td>Программа лояльности</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#schemaoperationstatus">OperationStatus</a></td>
+<td>false</td>
+<td>Статус операции: null - входящая операция или статус не определен SUCCESS - операция выполнена успешна HOLD - операция в обработке FAILED - операция не выполнена</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>Тип операции</td>
+</tr>
+<tr>
+<td>terminal</td>
+<td><a href="#schemasellingpointterminal">SellingPointTerminal</a></td>
+<td>false</td>
+<td>Номер терминала</td>
+</tr>
+<tr>
+<td>sender</td>
+<td><a href="#schemaoperationsender">OperationSender</a></td>
+<td>false</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemaoperationrecipient">OperationRecipient</a></td>
+<td>false</td>
+<td>Получатель</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>number</td>
+<td>true</td>
+<td>Комиссия по операции</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>string</td>
+<td>false</td>
+<td>Поле для связки сопоставления поля умной шины NIMB и сервиса LOYALTY STATEMENT API</td>
+</tr>
+<tr>
+<td>isAnotherClient</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак того, что операция выполнена другим клиентом</td>
+</tr>
+<tr>
+<td>cashout</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак снятия наличности в банкомате</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationsHistory">OperationsHistory</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationshistory"></a>
+<a id="schema_OperationsHistory"></a>
+<a id="tocSoperationshistory"></a>
+<a id="tocsoperationshistory"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>История операций</p>
+<h4 id='properties-329'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>operations</td>
+<td>[<a href="#schemaoperationhistoryitem">OperationHistoryItem</a>]</td>
+<td>true</td>
+<td>Массив операций</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationDetails">OperationDetails</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdetails"></a>
+<a id="schema_OperationDetails"></a>
+<a id="tocSoperationdetails"></a>
+<a id="tocsoperationdetails"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mcc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXPENSE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"loyalty"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUB"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HOLD"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"terminal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"maskedCardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankBik"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isAnotherClient"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cashout"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект с информацией по операции</p>
+<h4 id='properties-330'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор операции</td>
+</tr>
+<tr>
+<td>dateTime</td>
+<td>string(date-time)</td>
+<td>true</td>
+<td>Дата и время операции</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>true</td>
+<td>Заголовок операции</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>any</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td>false</td>
+<td>Комментарий к операции</td>
+</tr>
+<tr>
+<td>mcc</td>
+<td>string</td>
+<td>false</td>
+<td>MCC код операции</td>
+</tr>
+<tr>
+<td>category</td>
+<td><a href="#schemaoperationcategory">OperationCategory</a></td>
+<td>false</td>
+<td>Категория</td>
+</tr>
+<tr>
+<td>direction</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>true</td>
+<td>Направление движения денежных средств: INCOME - приход/пополнение, EXPENSE - расход/списание</td>
+</tr>
+<tr>
+<td>loyalty</td>
+<td><a href="#schemaoperationloyalty">OperationLoyalty</a></td>
+<td>false</td>
+<td>Программа лояльности</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="#schemaoperationstatus">OperationStatus</a></td>
+<td>false</td>
+<td>Статус операции: null - входящая операция или статус не определен SUCCESS - операция выполнена успешна HOLD - операция в обработке FAILED - операция не выполнена</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>Тип операции</td>
+</tr>
+<tr>
+<td>terminal</td>
+<td><a href="#schemasellingpointterminal">SellingPointTerminal</a></td>
+<td>false</td>
+<td>Номер терминала</td>
+</tr>
+<tr>
+<td>sender</td>
+<td><a href="#schemaoperationsender">OperationSender</a></td>
+<td>false</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemaoperationrecipient">OperationRecipient</a></td>
+<td>false</td>
+<td>Получатель</td>
+</tr>
+<tr>
+<td>fee</td>
+<td>number</td>
+<td>true</td>
+<td>Комиссия по операции</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>string</td>
+<td>false</td>
+<td>Поле для связки сопоставления поля умной шины NIMB и сервиса LOYALTY STATEMENT API</td>
+</tr>
+<tr>
+<td>isAnotherClient</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак того, что операция выполнена другим клиентом</td>
+</tr>
+<tr>
+<td>cashout</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак снятия наличности в банкомате</td>
 </tr>
 </tbody></table>
 <h2 id='42fc51aa44'>Пагинация</h2>
