@@ -331,7 +331,7 @@
                     <a href="#968778f49f-2" class="toc-h2 toc-link" data-title="Электронная подпись">Электронная подпись</a>
                   </li>
                   <li>
-                    <a href="#cbc5776a56" class="toc-h2 toc-link" data-title="Методы для Физических лиц">Методы для Физических лиц</a>
+                    <a href="#0fc92021a0" class="toc-h2 toc-link" data-title="Дебетовые карты">Дебетовые карты</a>
                   </li>
                   <li>
                     <a href="#42fc51aa44" class="toc-h2 toc-link" data-title="Пагинация">Пагинация</a>
@@ -698,7 +698,7 @@ This operation does not require authentication
 
 <p><ul>
   <li><a href="#auth-code-flow">Authorization Code Flow</a></li>
-  <li><a href="#client-cred-flow">Client Credentials Flow (в разработке)</a></li>
+  <li><a href="#client-cred-flow">Client Credentials Flow</a></li>
   </ul></p>
 <h4 id='cee7849d23'>Как использовать сценарии:</h4>
 <p>Токен доступа, полученный по <strong>Client Credentials Flow</strong> может быть использован только в H2H интеграциях для вызова системных API без привязки к данным пользователя (например, получение сводных отчетов, создание черновика заявки и т.д.).</p>
@@ -2317,7 +2317,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<h3 id="client-cred-flow">Client Credentials Flow (в разработке)</h3>
+<h3 id="client-cred-flow">Client Credentials Flow</h3>
 
 <p>Данный тип гранта используется, когда система Партнера API хочет получать информацию и выполнять действия в ALfa API без участия пользователя. Аутентификация и авторизация происходит с использованием Client Credentials Flow.</p>
 
@@ -12094,10 +12094,10 @@ error_description: Endpoint is not found or not active"</span><span class="w">
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
-<h2 id='cbc5776a56'>Методы для Физических лиц</h2><h3 id='ec6a6ef8f9'>Получение условий обслуживания по дебетовой карте</h3>
+<h2 id='0fc92021a0'>Дебетовые карты</h2><h3 id='ec6a6ef8f9'>Получение условий обслуживания по дебетовой карте</h3>
 <p>Метод позволяет получить условия обслуживания по дебетовой карте.</p>
 
-<p>Для получения условий обслуживания по дебетовой карте необходимо отправить запрос GET cards/{cardId}/tariffs с access_token, полученным в Alfa ID со scope = products, и параметрами запроса.</p>
+<p>Для получения условий обслуживания по дебетовой карте необходимо отправить запрос GET cards/{cardId}/tariffs с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -12106,7 +12106,21 @@ error_description: Endpoint is not found or not active"</span><span class="w">
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div>
+</code></pre></div><h4 id='header-parameters-14'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
 <h4 id="gettariffs-parameters">Parameters</h4>
 
 <table><thead>
@@ -12124,27 +12138,6 @@ error_description: Endpoint is not found or not active"</span><span class="w">
 <td>string</td>
 <td>true</td>
 <td>Параметр идентификатора карты</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Access token</td>
-</tr>
-</tbody></table>
-<h4 id='header-parameters-14'>Header parameters</h4>
-<table><thead>
-<tr>
-<th style="text-align: left">Наименование поля</th>
-<th style="text-align: left">Тип</th>
-<th style="text-align: left">Предопределенное значение</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Authorization</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Bearer {access_token}</td>
 </tr>
 </tbody></table>
 
@@ -12271,7 +12264,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>string</td>
 <td>false</td>
 <td>Статус счёта</td>
@@ -13507,7 +13500,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
+<td>SubscriptionTariff</td>
 <td>[<a href="#schemasubscriptiontariff">SubscriptionTariff</a>]</td>
 <td>false</td>
 <td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
@@ -13557,7 +13550,7 @@ This operation does not require authentication
 <h3 id='f8fcff9402'>Получение информации о подключенных уведомлениях</h3>
 <p>Метод позволяет информацию о подключенных уведомлениях по дебетовой карте.</p>
 
-<p>Для получения информации о подключенных уведомлениях необходимо отправить запрос GET cards/{cardId}/subscriptions с access_token, полученным в Alfa ID со scope = products, и параметрами запроса.</p>
+<p>Для получения информации о подключенных уведомлениях необходимо отправить запрос GET cards/{cardId}/subscriptions с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -13567,7 +13560,21 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
 
-</code></pre></div>
+</code></pre></div><h4 id='header-parameters-15'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
 <h4 id="getsubscriptions-parameters">Parameters</h4>
 
 <table><thead>
@@ -13592,20 +13599,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Access token</td>
-</tr>
-</tbody></table>
-<h4 id='header-parameters-15'>Header parameters</h4>
-<table><thead>
-<tr>
-<th style="text-align: left">Наименование поля</th>
-<th style="text-align: left">Тип</th>
-<th style="text-align: left">Предопределенное значение</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Authorization</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Bearer {access_token}</td>
 </tr>
 </tbody></table>
 
@@ -13726,7 +13719,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>string</td>
 <td>false</td>
 <td>Статус счёта</td>
@@ -14962,7 +14955,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
+<td>SubscriptionTariff</td>
 <td>[<a href="#schemasubscriptiontariff">SubscriptionTariff</a>]</td>
 <td>false</td>
 <td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
@@ -15012,7 +15005,7 @@ This operation does not require authentication
 <h3 id='44ab7bd282'>Получение списка карт клиента</h3>
 <p>Метод позволяет получить список карт клиента.</p>
 
-<p>Для получения списка карт клиента необходимо отправить запрос GET cards с access_token, полученным в Alfa ID со scope = products, и параметрами запроса.</p>
+<p>Для получения списка карт клиента необходимо отправить запрос GET cards с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -15021,7 +15014,21 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div>
+</code></pre></div><h4 id='header-parameters-16'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
 <h4 id="getcards-parameters">Parameters</h4>
 
 <table><thead>
@@ -15046,20 +15053,6 @@ This operation does not require authentication
 <td><a href="#schemacardfilter">CardFilter</a></td>
 <td>false</td>
 <td>Фильтр карт</td>
-</tr>
-</tbody></table>
-<h4 id='header-parameters-16'>Header parameters</h4>
-<table><thead>
-<tr>
-<th style="text-align: left">Наименование поля</th>
-<th style="text-align: left">Тип</th>
-<th style="text-align: left">Предопределенное значение</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Authorization</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Bearer {access_token}</td>
 </tr>
 </tbody></table>
 
@@ -15190,7 +15183,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>string</td>
 <td>false</td>
 <td>Статус счёта</td>
@@ -15205,12 +15198,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>ACTIVE</td>
 <td>Статус счета: активен</td>
 </tr>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>INACTIVE</td>
 <td>Статус счета: неактивен</td>
 </tr>
@@ -16426,7 +16419,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
+<td>SubscriptionTariff</td>
 <td>[<a href="#schemasubscriptiontariff">SubscriptionTariff</a>]</td>
 <td>false</td>
 <td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
@@ -16476,7 +16469,7 @@ This operation does not require authentication
 <h3 id='70cbddc1b3'>Получение реквизитов счёта</h3>
 <p>Метод позволяет получить реквизиты счёта.</p>
 
-<p>Для получения реквизитов счёта  необходимо отправить запрос GET accounts/{accountNumber}/requisites с access_token, полученным в Alfa ID со scope = products, и параметрами запроса.</p>
+<p>Для получения реквизитов счёта  необходимо отправить запрос GET accounts/{accountNumber}/requisites с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -16485,7 +16478,21 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div>
+</code></pre></div><h4 id='header-parameters-17'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
 <h4 id="getaccountrequisites-parameters">Parameters</h4>
 
 <table><thead>
@@ -16503,27 +16510,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Параметр номера счёта</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Access token</td>
-</tr>
-</tbody></table>
-<h4 id='header-parameters-17'>Header parameters</h4>
-<table><thead>
-<tr>
-<th style="text-align: left">Наименование поля</th>
-<th style="text-align: left">Тип</th>
-<th style="text-align: left">Предопределенное значение</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Authorization</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Bearer {access_token}</td>
 </tr>
 </tbody></table>
 
@@ -16657,7 +16643,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>string</td>
 <td>false</td>
 <td>Статус счёт</td>
@@ -16672,12 +16658,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>ACTIVE</td>
 <td>Статус счета: активен</td>
 </tr>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>INACTIVE</td>
 <td>Статус счета: неактивен</td>
 </tr>
@@ -17893,7 +17879,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
+<td>SubscriptionTariff</td>
 <td>[<a href="#schemasubscriptiontariff">SubscriptionTariff</a>]</td>
 <td>false</td>
 <td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
@@ -17943,7 +17929,7 @@ This operation does not require authentication
 <h3 id='ee012f805f'>Получение счетов клиента</h3>
 <p>Метод позволяет получить счета клиента.</p>
 
-<p>Для получения счетов клиента необходимо отправить запрос GET accounts с access_token, полученным в Alfa ID со scope = products, и параметрами запроса.</p>
+<p>Для получения счетов клиента необходимо отправить запрос GET accounts с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -17952,27 +17938,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div>
-<h4 id="getaccounts-parameters">Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorization</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Access token</td>
-</tr>
-</tbody></table>
-<h4 id='header-parameters-18'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-18'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -18106,7 +18072,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>string</td>
 <td>false</td>
 <td>Статус счёта</td>
@@ -18121,12 +18087,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>ACTIVE</td>
 <td>Статус счета: активен</td>
 </tr>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>INACTIVE</td>
 <td>Статус счета: неактивен</td>
 </tr>
@@ -19342,7 +19308,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
+<td>SubscriptionTariff</td>
 <td>[<a href="#schemasubscriptiontariff">SubscriptionTariff</a>]</td>
 <td>false</td>
 <td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
@@ -19393,7 +19359,7 @@ This operation does not require authentication
 <p>Метод позволяет получить список prepaid-карт клиента.</p>
 
 <p>Для получения списка prepaid-карт клиента
- необходимо отправить запрос GET prepaid-cards с access_token, полученным в Alfa ID со scope = products, и параметрами запроса.</p>
+ необходимо отправить запрос GET prepaid-cards с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -19402,27 +19368,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div>
-<h4 id="getprepaids-parameters">Parameters</h4>
-
-<table><thead>
-<tr>
-<th>Name</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Authorization</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Access token</td>
-</tr>
-</tbody></table>
-<h4 id='header-parameters-19'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-19'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -19551,7 +19497,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>string</td>
 <td>false</td>
 <td>Статус счёта</td>
@@ -19566,12 +19512,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>ACTIVE</td>
 <td>Статус счета: активен</td>
 </tr>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>INACTIVE</td>
 <td>Статус счета: неактивен</td>
 </tr>
@@ -20787,7 +20733,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
+<td>SubscriptionTariff</td>
 <td>[<a href="#schemasubscriptiontariff">SubscriptionTariff</a>]</td>
 <td>false</td>
 <td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
@@ -20837,7 +20783,7 @@ This operation does not require authentication
 <h3 id='f10cbc29cd'>Получение информации о статусе счёта</h3>
 <p>Метод позволяет получить информации о статусе счёта клиента.</p>
 
-<p>Для получения информации о статусе счёта клиента необходимо отправить запрос GET accounts/{accountNumber}/status с access_token, полученным в Alfa ID со scope = products, и параметрами запроса.</p>
+<p>Для получения информации о статусе счёта клиента необходимо отправить запрос GET accounts/{accountNumber}/status с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -20846,7 +20792,21 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div>
+</code></pre></div><h4 id='header-parameters-20'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
 <h4 id="getaccountstatus-parameters">Parameters</h4>
 
 <table><thead>
@@ -20864,27 +20824,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Параметр номера счёта</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Access token</td>
-</tr>
-</tbody></table>
-<h4 id='header-parameters-20'>Header parameters</h4>
-<table><thead>
-<tr>
-<th style="text-align: left">Наименование поля</th>
-<th style="text-align: left">Тип</th>
-<th style="text-align: left">Предопределенное значение</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Authorization</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Bearer {access_token}</td>
 </tr>
 </tbody></table>
 
@@ -20992,7 +20931,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>string</td>
 <td>false</td>
 <td>Статус счёта</td>
@@ -21007,12 +20946,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>ACTIVE</td>
 <td>Статус счета: активен</td>
 </tr>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>INACTIVE</td>
 <td>Статус счета: неактивен</td>
 </tr>
@@ -22228,7 +22167,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
+<td>SubscriptionTariff</td>
 <td>[<a href="#schemasubscriptiontariff">SubscriptionTariff</a>]</td>
 <td>false</td>
 <td>Список тарифов на услугу Альфа-чек доступных пользователю</td>
@@ -22278,12 +22217,26 @@ This operation does not require authentication
 <h3 id='15029e4cf1'>Получение атрибутов счета по номеру</h3>
 <p>Метод позволяет получить атрибуты счета по номеру.</p>
 
-<p>Для получения атрибутов счета по номеру необходимо отправить запрос GET accounts/{accountNumber} с access_token, полученным в Alfa ID со scope = products, и параметрами запроса.</p>
+<p>Для получения атрибутов счета по номеру необходимо отправить запрос GET accounts/{accountNumber} с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET accounts/<span class="o">{</span>accountNumber<span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div>
+</code></pre></div><h4 id='header-parameters-21'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
 <h4 id="getaccountbynumber-parameters">Parameters</h4>
 
 <table><thead>
@@ -22301,27 +22254,6 @@ This operation does not require authentication
 <td>string</td>
 <td>true</td>
 <td>Параметр номера счёта</td>
-</tr>
-<tr>
-<td>Authorization</td>
-<td>header</td>
-<td>string</td>
-<td>true</td>
-<td>Access token</td>
-</tr>
-</tbody></table>
-<h4 id='header-parameters-21'>Header parameters</h4>
-<table><thead>
-<tr>
-<th style="text-align: left">Наименование поля</th>
-<th style="text-align: left">Тип</th>
-<th style="text-align: left">Предопределенное значение</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Authorization</td>
-<td style="text-align: left">String</td>
-<td style="text-align: left">Bearer {access_token}</td>
 </tr>
 </tbody></table>
 
@@ -22437,7 +22369,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>string</td>
 <td>false</td>
 <td>Статус счёта</td>
@@ -22452,12 +22384,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>ACTIVE</td>
 <td>Статус счета: активен</td>
 </tr>
 <tr>
-<td>Статус счёта</td>
+<td>status</td>
 <td>INACTIVE</td>
 <td>Статус счета: неактивен</td>
 </tr>
@@ -23723,7 +23655,7 @@ This operation does not require authentication
 <h3 id='44b14afbab'>Получение списка истории операций по набору критериев</h3>
 <p>Метод позволяет получить историю операций по набору критериев.</p>
 
-<p>Для получения истории операций по набору критериев необходимо отправить запрос POST operations с access_token, полученным в Alfa ID со scope = history, и параметрами запроса.</p>
+<p>Для получения истории операций по набору критериев необходимо отправить запрос POST operations с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -24819,7 +24751,7 @@ This operation does not require authentication
 <h3 id='path'>Получение информации об операции по идентификатору операции, переданной в path-параметре</h3>
 <p>Метод позволяет получить информацию об операции по идентификатору операции, переданной в path-параметре.</p>
 
-<p>Для получения информации об операции по идентификатору операции, переданной в path-параметре необходимо отправить запрос GET operations/{id} с access_token, полученным в Alfa ID со scope = history, и параметрами запроса.</p>
+<p>Для получения информации об операции по идентификатору операции, переданной в path-параметре необходимо отправить запрос GET operations/{id} с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
@@ -25890,6 +25822,3903 @@ This operation does not require authentication
 <td>boolean</td>
 <td>true</td>
 <td>Признак снятия наличности в банкомате</td>
+</tr>
+</tbody></table>
+<h3 id='73cd14f608'>Получение списка карт для перевода</h3>
+<p>Метод позволяет получить список карт для перевода.</p>
+
+<p>Для получения списка карт для перевода необходимо отправить запрос GET accounts/{accountNumber} с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET transfer/c2c/cards <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+
+</code></pre></div><h4 id='header-parameters-24'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"135608210"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"··0095"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555949******0095"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CashBack NEW MC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АЛЬФА БАНК"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2028-12-31"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MasterCard"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ER"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RU"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="getcards-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Code responses</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 (ОК)</td>
+<td>ОК</td>
+<td>Успешный результат</td>
+<td><a href="#schemac2ctransfergetcardsresponsebody">C2CTransferGetCardsResponseBody</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Authorization отсутствует в заголовках запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h4 id='schemas-24'>Schemas</h4>
+<h4 id="tocS_Sender">Sender</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasender"></a>
+<a id="schema_Sender"></a>
+<a id="tocSsender"></a>
+<a id="tocssender"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об отправителе перевода</p>
+<h4 id='properties-331'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cvv</td>
+<td>string</td>
+<td>false</td>
+<td>Код верификации</td>
+</tr>
+<tr>
+<td>cardId</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Card2CardPeerIdType">Card2CardPeerIdType</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacard2cardpeeridtype"></a>
+<a id="schema_Card2CardPeerIdType"></a>
+<a id="tocScard2cardpeeridtype"></a>
+<a id="tocscard2cardpeeridtype"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"CARD_ID"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип идентификатора карты получателя</p>
+<h4 id='properties-332'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>string</td>
+<td>false</td>
+<td>Тип идентификатора карты получателя</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-39'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>CARD_ID</td>
+<td>Тип идентификатора карты получателя (Идентификатор карты)</td>
+</tr>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>CARD_NUMBER</td>
+<td>Тип идентификатора карты получателя (Номер карты)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerModel">PeerModel</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeermodel"></a>
+<a id="schema_PeerModel"></a>
+<a id="tocSpeermodel"></a>
+<a id="tocspeermodel"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-333'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td><a href="#schemacard2cardpeeridtype">Card2CardPeerIdType</a></td>
+<td>true</td>
+<td>Тип идентификатора карты получателя</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateRequestBody">C2CTransferCreateRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreaterequestbody"></a>
+<a id="schema_C2CTransferCreateRequestBody"></a>
+<a id="tocSc2ctransfercreaterequestbody"></a>
+<a id="tocsc2ctransfercreaterequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-334'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма перевода, валюта и минорные единицы</td>
+</tr>
+<tr>
+<td>sender</td>
+<td><a href="#schemasender">Sender</a></td>
+<td>true</td>
+<td>Данные отправителя</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemapeermodel">PeerModel</a></td>
+<td>true</td>
+<td>Данные получателя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ConfirmationTypeThreeDs">ConfirmationTypeThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaconfirmationtypethreeds"></a>
+<a id="schema_ConfirmationTypeThreeDs"></a>
+<a id="tocSconfirmationtypethreeds"></a>
+<a id="tocsconfirmationtypethreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"THREE_DS"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип подтверждения перевода</p>
+<h4 id='properties-335'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип подтверждения перевода</td>
+<td>string</td>
+<td>false</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-40'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип подтверждения перевода</td>
+<td>THREE_DS</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ThreeDsData">ThreeDsData</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemathreedsdata"></a>
+<a id="schema_ThreeDsData"></a>
+<a id="tocSthreedsdata"></a>
+<a id="tocsthreedsdata"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Данные для подтверждения через 3DS</p>
+<h4 id='properties-336'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>md</td>
+<td>string</td>
+<td>true</td>
+<td>Данные продавца</td>
+</tr>
+<tr>
+<td>paReq</td>
+<td>string</td>
+<td>true</td>
+<td>(Payment Request) — запрос на оплату или параметр платежного запроса. Он содержит всю важную информацию о платеже</td>
+</tr>
+<tr>
+<td>accessUrl</td>
+<td>string</td>
+<td>true</td>
+<td>Адрес (URL/URI) сервера аутентификации 3-D Secure</td>
+</tr>
+<tr>
+<td>termUrl</td>
+<td>string</td>
+<td>true</td>
+<td>Ссылка для redirect на платежный шлюз банк-эмитента-карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ConfirmationInfoThreeDs">ConfirmationInfoThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaconfirmationinfothreeds"></a>
+<a id="schema_ConfirmationInfoThreeDs"></a>
+<a id="tocSconfirmationinfothreeds"></a>
+<a id="tocsconfirmationinfothreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THREE_DS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"threeDs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Данные для подтверждения перевода</p>
+<h4 id='properties-337'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td><a href="#schemaconfirmationtypethreeds">ConfirmationTypeThreeDs</a></td>
+<td>true</td>
+<td>Подтверждение перевода</td>
+</tr>
+<tr>
+<td>threeDs</td>
+<td><a href="#schemathreedsdata">ThreeDsData</a></td>
+<td>true</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateResponseBody">C2CTransferCreateResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreateresponsebody"></a>
+<a id="schema_C2CTransferCreateResponseBody"></a>
+<a id="tocSc2ctransfercreateresponsebody"></a>
+<a id="tocsc2ctransfercreateresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"transferMetaData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THREE_DS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"threeDs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Создание перевода с подтверждением через 3DS</p>
+<h4 id='properties-338'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transferMetaData</td>
+<td>string</td>
+<td>true</td>
+<td>JWT метаданные для перевода, пробрасываются фронтом на шаге подтверждения</td>
+</tr>
+<tr>
+<td>confirmationInfo</td>
+<td><a href="#schemaconfirmationinfothreeds">ConfirmationInfoThreeDs</a></td>
+<td>true</td>
+<td>Данные для подтверждения платежа</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ExecuteTransferRequestThreeDs">ExecuteTransferRequestThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaexecutetransferrequestthreeds"></a>
+<a id="schema_ExecuteTransferRequestThreeDs"></a>
+<a id="tocSexecutetransferrequestthreeds"></a>
+<a id="tocsexecutetransferrequestthreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paRes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация для подтверждения платежа</p>
+<h4 id='properties-339'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>md</td>
+<td>string</td>
+<td>true</td>
+<td>Данные продавца</td>
+</tr>
+<tr>
+<td>paRes</td>
+<td>string</td>
+<td>true</td>
+<td>Параметр информации о статусе проверки</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferExecuteRequestBody">C2CTransferExecuteRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferexecuterequestbody"></a>
+<a id="schema_C2CTransferExecuteRequestBody"></a>
+<a id="tocSc2ctransferexecuterequestbody"></a>
+<a id="tocsc2ctransferexecuterequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"transferMetaData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paRes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
+<h3 id='properties-340'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transferMetaData</td>
+<td>string</td>
+<td>true</td>
+<td>JWT метаданные для перевода, пробрасываются фронтом на шаге подтверждения</td>
+</tr>
+<tr>
+<td>confirmation</td>
+<td><a href="#schemaexecutetransferrequestthreeds">ExecuteTransferRequestThreeDs</a></td>
+<td>true</td>
+<td>Данные для подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationDirection">OperationDirection</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdirection"></a>
+<a id="schema_OperationDirection"></a>
+<a id="tocSoperationdirection"></a>
+<a id="tocsoperationdirection"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"INCOME"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип перевода (входящий/исходящий)</p>
+<h4 id='properties-341'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>string</td>
+<td>false</td>
+<td>Тип перевода</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-41'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>INCOME</td>
+<td>Входящий перевод</td>
+</tr>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>OUTCOME</td>
+<td>Исходящий перевод</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerInfo">PeerInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeerinfo"></a>
+<a id="schema_PeerInfo"></a>
+<a id="tocSpeerinfo"></a>
+<a id="tocspeerinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об отправителе/получателе перевода</p>
+<h4 id='properties-342'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Название карты отправителя/получателя</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>true</td>
+<td>Маскированный номер карты отправителя/получателя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationData">OperationData</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdata"></a>
+<a id="schema_OperationData"></a>
+<a id="tocSoperationdata"></a>
+<a id="tocsoperationdata"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INCOME"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"senderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipientInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об операции</p>
+<h4 id='properties-343'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference</td>
+<td>string</td>
+<td>true</td>
+<td>Id операции</td>
+</tr>
+<tr>
+<td>direction</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>true</td>
+<td>Тип перевода (входящий/исходящий)</td>
+</tr>
+<tr>
+<td>senderInfo</td>
+<td><a href="#schemapeerinfo">PeerInfo</a></td>
+<td>true</td>
+<td>Данные отправителя</td>
+</tr>
+<tr>
+<td>recipientInfo</td>
+<td><a href="#schemapeerinfo">PeerInfo</a></td>
+<td>true</td>
+<td>Данные получателя</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма перевода, валюты и минорных единиц</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferExecuteResponseBody">C2CTransferExecuteResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferexecuteresponsebody"></a>
+<a id="schema_C2CTransferExecuteResponseBody"></a>
+<a id="tocSc2ctransferexecuteresponsebody"></a>
+<a id="tocsc2ctransferexecuteresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"operationData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INCOME"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"senderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recipientInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Ответ на запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
+<h4 id='properties-344'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>operationData</td>
+<td><a href="#schemaoperationdata">OperationData</a></td>
+<td>true</td>
+<td>Информация о транзакции</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerModelExtended">PeerModelExtended</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeermodelextended"></a>
+<a id="schema_PeerModelExtended"></a>
+<a id="tocSpeermodelextended"></a>
+<a id="tocspeermodelextended"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<h4 id="tocS_C2CTransferFeeRequestBody">C2CTransferFeeRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferfeerequestbody"></a>
+<a id="schema_C2CTransferFeeRequestBody"></a>
+<a id="tocSc2ctransferfeerequestbody"></a>
+<a id="tocsc2ctransferfeerequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-345'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sender</td>
+<td><a href="#schemapeermodelextended">PeerModelExtended</a></td>
+<td>true</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemapeermodelextended">PeerModelExtended</a></td>
+<td>true</td>
+<td>Получатель</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferFeeResponseBody">C2CTransferFeeResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferfeeresponsebody"></a>
+<a id="schema_C2CTransferFeeResponseBody"></a>
+<a id="tocSc2ctransferfeeresponsebody"></a>
+<a id="tocsc2ctransferfeeresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeMax"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeMin"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeConstant"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-346'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fee</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Общая сумма комиссии</td>
+</tr>
+<tr>
+<td>feeMax</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Максимально допустимый размер комиссии</td>
+</tr>
+<tr>
+<td>feeMin</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Минимально допустимый размер комиссии</td>
+</tr>
+<tr>
+<td>feeConstant</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Постоянная часть комиссии</td>
+</tr>
+<tr>
+<td>feeInterest</td>
+<td>number</td>
+<td>false</td>
+<td>Процентная часть комиссии</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCardType">C2CTransferCardType</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercardtype"></a>
+<a id="schema_C2CTransferCardType"></a>
+<a id="tocSc2ctransfercardtype"></a>
+<a id="tocsc2ctransfercardtype"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"DEBIT"</span><span class="w">
+
+</span></code></pre></div>
+<p>Признак Кредитная/Дебетовая карта</p>
+<h4 id='properties-347'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>string</td>
+<td>false</td>
+<td>Признак: кредитная/дебетовая карта</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-42'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>DEBIT</td>
+<td>Дебетовая карта</td>
+</tr>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>CREDIT</td>
+<td>Кредитная карта</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCardModel">C2CTransferCardModel</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercardmodel"></a>
+<a id="schema_C2CTransferCardModel"></a>
+<a id="tocSc2ctransfercardmodel"></a>
+<a id="tocsc2ctransfercardmodel"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-348'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор карты</td>
+</tr>
+<tr>
+<td>shortNumber</td>
+<td>string</td>
+<td>true</td>
+<td>Последние 4 цифры карты</td>
+</tr>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>true</td>
+<td>Маскированный номер карты</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Имя карты</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>true</td>
+<td>Имя банка</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string(date)</td>
+<td>true</td>
+<td>Дата действия карты</td>
+</tr>
+<tr>
+<td>alfaCard</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак оформления карты в банке</td>
+</tr>
+<tr>
+<td>paymentSystem</td>
+<td>string</td>
+<td>true</td>
+<td>Платежная система</td>
+</tr>
+<tr>
+<td>own</td>
+<td>boolean</td>
+<td>true</td>
+<td>Владелец карты</td>
+</tr>
+<tr>
+<td>cvc</td>
+<td>boolean</td>
+<td>true</td>
+<td>CVC-код</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#schemac2ctransfercardtype">C2CTransferCardType</a></td>
+<td>false</td>
+<td>Дебет/кредит</td>
+</tr>
+<tr>
+<td>cardSkinType</td>
+<td>string</td>
+<td>true</td>
+<td>Тип карты для отображения на фронте</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>string</td>
+<td>true</td>
+<td>Код страны</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferGetCardsResponseBody">C2CTransferGetCardsResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfergetcardsresponsebody"></a>
+<a id="schema_C2CTransferGetCardsResponseBody"></a>
+<a id="tocSc2ctransfergetcardsresponsebody"></a>
+<a id="tocsc2ctransfergetcardsresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-349'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sender</td>
+<td>[<a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a>]</td>
+<td>true</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>[<a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a>]</td>
+<td>true</td>
+<td>Получатель</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateCardRequestBody">C2CTransferCreateCardRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreatecardrequestbody"></a>
+<a id="schema_C2CTransferCreateCardRequestBody"></a>
+<a id="tocSc2ctransfercreatecardrequestbody"></a>
+<a id="tocsc2ctransfercreatecardrequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-350'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>true</td>
+<td>Номер карты</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак сохранения карты в группу карт-получателей</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак сохранения карты в группу карт-отправителей</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string(year-month)</td>
+<td>true</td>
+<td>Дата действия карты</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>Имя карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateCardResponseBody">C2CTransferCreateCardResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreatecardresponsebody"></a>
+<a id="schema_C2CTransferCreateCardResponseBody"></a>
+<a id="tocSc2ctransfercreatecardresponsebody"></a>
+<a id="tocsc2ctransfercreatecardresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-351'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор сохраненной карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferOperationDetails">C2CTransferOperationDetails</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferoperationdetails"></a>
+<a id="schema_C2CTransferOperationDetails"></a>
+<a id="tocSc2ctransferoperationdetails"></a>
+<a id="tocsc2ctransferoperationdetails"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-352'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>true</td>
+<td>Статус перевода</td>
+</tr>
+<tr>
+<td>errorDescription</td>
+<td>string</td>
+<td>false</td>
+<td>Описание ошибки</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferOperationDetailsResponseBody">C2CTransferOperationDetailsResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferoperationdetailsresponsebody"></a>
+<a id="schema_C2CTransferOperationDetailsResponseBody"></a>
+<a id="tocSc2ctransferoperationdetailsresponsebody"></a>
+<a id="tocsc2ctransferoperationdetailsresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"senderCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipientCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-353'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+<tr>
+<td>details</td>
+<td><a href="#schemac2ctransferoperationdetails">C2CTransferOperationDetails</a></td>
+<td>true</td>
+<td>Информации о статусе перевода</td>
+</tr>
+<tr>
+<td>senderCard</td>
+<td><a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a></td>
+<td>true</td>
+<td>Данные карты отправителя</td>
+</tr>
+<tr>
+<td>recipientCard</td>
+<td><a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a></td>
+<td>true</td>
+<td>Данные карты получателя</td>
+</tr>
+</tbody></table>
+<h3 id='d45c376fb7'>Информация по операции</h3>
+<p>Метод позволяет получить информацию по операции.</p>
+
+<p>Для получения атрибутов счета по номеру необходимо отправить запрос GET accounts/{accountNumber} с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET transfer/c2c/operations/<span class="o">{</span>reference<span class="o">}</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+
+</code></pre></div><h4 id='header-parameters-25'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<p>Получение детальной информации по операции перевода Card2Card</p>
+
+<h4 id="getc2coperationdetails-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>Access token</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>Референс операции</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">300000</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXECUTED"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"senderCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95874015"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"··3631"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"479004******3631"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Visa Gold PayWave"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CZ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АЛЬФА БАНК"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-10-31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RU"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipientCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"69235482"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"··9449"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"555949******9449"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CashBack NEW MC"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ER"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"АЛЬФА БАНК"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-10-31"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VISA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RU"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="getc2coperationdetails-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Code responses</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 (ОК)</td>
+<td>ОК</td>
+<td>Успешный результат</td>
+<td><a href="#schemac2ctransferoperationdetailsresponsebody">C2CTransferOperationDetailsResponseBody</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Authorization отсутствует в заголовках запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h4 id='schemas-25'>Schemas</h4>
+<h4 id="tocS_Sender">Sender</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasender"></a>
+<a id="schema_Sender"></a>
+<a id="tocSsender"></a>
+<a id="tocssender"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об отправителе перевода</p>
+<h4 id='properties-354'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cvv</td>
+<td>string</td>
+<td>false</td>
+<td>Код верификации</td>
+</tr>
+<tr>
+<td>cardId</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Card2CardPeerIdType">Card2CardPeerIdType</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacard2cardpeeridtype"></a>
+<a id="schema_Card2CardPeerIdType"></a>
+<a id="tocScard2cardpeeridtype"></a>
+<a id="tocscard2cardpeeridtype"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"CARD_ID"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип идентификатора карты получателя</p>
+<h4 id='properties-355'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>string</td>
+<td>false</td>
+<td>Тип идентификатора карты получателя</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-43'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>CARD_ID</td>
+<td>Тип идентификатора карты получателя (Идентификатор карты)</td>
+</tr>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>CARD_NUMBER</td>
+<td>Тип идентификатора карты получателя (Номер карты)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerModel">PeerModel</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeermodel"></a>
+<a id="schema_PeerModel"></a>
+<a id="tocSpeermodel"></a>
+<a id="tocspeermodel"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-356'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td><a href="#schemacard2cardpeeridtype">Card2CardPeerIdType</a></td>
+<td>true</td>
+<td>Тип идентификатора карты получателя</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateRequestBody">C2CTransferCreateRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreaterequestbody"></a>
+<a id="schema_C2CTransferCreateRequestBody"></a>
+<a id="tocSc2ctransfercreaterequestbody"></a>
+<a id="tocsc2ctransfercreaterequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-357'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма перевода, валюта и минорные единицы</td>
+</tr>
+<tr>
+<td>sender</td>
+<td><a href="#schemasender">Sender</a></td>
+<td>true</td>
+<td>Данные отправителя</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemapeermodel">PeerModel</a></td>
+<td>true</td>
+<td>Данные получателя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ConfirmationTypeThreeDs">ConfirmationTypeThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaconfirmationtypethreeds"></a>
+<a id="schema_ConfirmationTypeThreeDs"></a>
+<a id="tocSconfirmationtypethreeds"></a>
+<a id="tocsconfirmationtypethreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"THREE_DS"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип подтверждения перевода</p>
+<h4 id='properties-358'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип подтверждения перевода</td>
+<td>string</td>
+<td>false</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-44'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип подтверждения перевода</td>
+<td>THREE_DS</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ThreeDsData">ThreeDsData</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemathreedsdata"></a>
+<a id="schema_ThreeDsData"></a>
+<a id="tocSthreedsdata"></a>
+<a id="tocsthreedsdata"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Данные для подтверждения через 3DS</p>
+<h4 id='properties-359'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>md</td>
+<td>string</td>
+<td>true</td>
+<td>Данные продавца</td>
+</tr>
+<tr>
+<td>paReq</td>
+<td>string</td>
+<td>true</td>
+<td>(Payment Request) — запрос на оплату или параметр платежного запроса. Он содержит всю важную информацию о платеже</td>
+</tr>
+<tr>
+<td>accessUrl</td>
+<td>string</td>
+<td>true</td>
+<td>Адрес (URL/URI) сервера аутентификации 3-D Secure</td>
+</tr>
+<tr>
+<td>termUrl</td>
+<td>string</td>
+<td>true</td>
+<td>Ссылка для redirect на платежный шлюз банк-эмитента-карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ConfirmationInfoThreeDs">ConfirmationInfoThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaconfirmationinfothreeds"></a>
+<a id="schema_ConfirmationInfoThreeDs"></a>
+<a id="tocSconfirmationinfothreeds"></a>
+<a id="tocsconfirmationinfothreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THREE_DS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"threeDs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Данные для подтверждения перевода</p>
+<h4 id='properties-360'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td><a href="#schemaconfirmationtypethreeds">ConfirmationTypeThreeDs</a></td>
+<td>true</td>
+<td>Подтверждение перевода</td>
+</tr>
+<tr>
+<td>threeDs</td>
+<td><a href="#schemathreedsdata">ThreeDsData</a></td>
+<td>true</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateResponseBody">C2CTransferCreateResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreateresponsebody"></a>
+<a id="schema_C2CTransferCreateResponseBody"></a>
+<a id="tocSc2ctransfercreateresponsebody"></a>
+<a id="tocsc2ctransfercreateresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"transferMetaData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THREE_DS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"threeDs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Создание перевода с подтверждением через 3DS</p>
+<h4 id='properties-361'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transferMetaData</td>
+<td>string</td>
+<td>true</td>
+<td>JWT метаданные для перевода, пробрасываются фронтом на шаге подтверждения</td>
+</tr>
+<tr>
+<td>confirmationInfo</td>
+<td><a href="#schemaconfirmationinfothreeds">ConfirmationInfoThreeDs</a></td>
+<td>true</td>
+<td>Данные для подтверждения платежа</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ExecuteTransferRequestThreeDs">ExecuteTransferRequestThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaexecutetransferrequestthreeds"></a>
+<a id="schema_ExecuteTransferRequestThreeDs"></a>
+<a id="tocSexecutetransferrequestthreeds"></a>
+<a id="tocsexecutetransferrequestthreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paRes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация для подтверждения платежа</p>
+<h4 id='properties-362'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>md</td>
+<td>string</td>
+<td>true</td>
+<td>Данные продавца</td>
+</tr>
+<tr>
+<td>paRes</td>
+<td>string</td>
+<td>true</td>
+<td>Параметр информации о статусе проверки</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferExecuteRequestBody">C2CTransferExecuteRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferexecuterequestbody"></a>
+<a id="schema_C2CTransferExecuteRequestBody"></a>
+<a id="tocSc2ctransferexecuterequestbody"></a>
+<a id="tocsc2ctransferexecuterequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"transferMetaData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paRes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
+<h4 id='properties-363'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transferMetaData</td>
+<td>string</td>
+<td>true</td>
+<td>JWT метаданные для перевода, пробрасываются фронтом на шаге подтверждения</td>
+</tr>
+<tr>
+<td>confirmation</td>
+<td><a href="#schemaexecutetransferrequestthreeds">ExecuteTransferRequestThreeDs</a></td>
+<td>true</td>
+<td>Данные для подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationDirection">OperationDirection</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdirection"></a>
+<a id="schema_OperationDirection"></a>
+<a id="tocSoperationdirection"></a>
+<a id="tocsoperationdirection"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"INCOME"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип перевода (входящий/исходящий)</p>
+<h4 id='properties-364'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>string</td>
+<td>false</td>
+<td>Тип перевода</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-45'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>INCOME</td>
+<td>Входящий перевод</td>
+</tr>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>OUTCOME</td>
+<td>Исходящий перевод</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerInfo">PeerInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeerinfo"></a>
+<a id="schema_PeerInfo"></a>
+<a id="tocSpeerinfo"></a>
+<a id="tocspeerinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об отправителе/получателе перевода</p>
+<h4 id='properties-365'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Название карты отправителя/получателя</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>true</td>
+<td>Маскированный номер карты отправителя/получателя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationData">OperationData</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdata"></a>
+<a id="schema_OperationData"></a>
+<a id="tocSoperationdata"></a>
+<a id="tocsoperationdata"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INCOME"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"senderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipientInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об операции</p>
+<h4 id='properties-366'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference</td>
+<td>string</td>
+<td>true</td>
+<td>Id операции</td>
+</tr>
+<tr>
+<td>direction</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>true</td>
+<td>Тип перевода (входящий/исходящий)</td>
+</tr>
+<tr>
+<td>senderInfo</td>
+<td><a href="#schemapeerinfo">PeerInfo</a></td>
+<td>true</td>
+<td>Данные отправителя</td>
+</tr>
+<tr>
+<td>recipientInfo</td>
+<td><a href="#schemapeerinfo">PeerInfo</a></td>
+<td>true</td>
+<td>Данные получателя</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма перевода, валюты и минорных единиц</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferExecuteResponseBody">C2CTransferExecuteResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferexecuteresponsebody"></a>
+<a id="schema_C2CTransferExecuteResponseBody"></a>
+<a id="tocSc2ctransferexecuteresponsebody"></a>
+<a id="tocsc2ctransferexecuteresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"operationData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INCOME"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"senderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recipientInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Ответ на запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
+<h4 id='properties-367'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>operationData</td>
+<td><a href="#schemaoperationdata">OperationData</a></td>
+<td>true</td>
+<td>Информация о транзакции</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerModelExtended">PeerModelExtended</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeermodelextended"></a>
+<a id="schema_PeerModelExtended"></a>
+<a id="tocSpeermodelextended"></a>
+<a id="tocspeermodelextended"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<h4 id="tocS_C2CTransferFeeRequestBody">C2CTransferFeeRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferfeerequestbody"></a>
+<a id="schema_C2CTransferFeeRequestBody"></a>
+<a id="tocSc2ctransferfeerequestbody"></a>
+<a id="tocsc2ctransferfeerequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-368'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sender</td>
+<td><a href="#schemapeermodelextended">PeerModelExtended</a></td>
+<td>true</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemapeermodelextended">PeerModelExtended</a></td>
+<td>true</td>
+<td>Получатель</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferFeeResponseBody">C2CTransferFeeResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferfeeresponsebody"></a>
+<a id="schema_C2CTransferFeeResponseBody"></a>
+<a id="tocSc2ctransferfeeresponsebody"></a>
+<a id="tocsc2ctransferfeeresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeMax"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeMin"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeConstant"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-369'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fee</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Общая сумма комиссии</td>
+</tr>
+<tr>
+<td>feeMax</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Максимально допустимый размер комиссии</td>
+</tr>
+<tr>
+<td>feeMin</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Минимально допустимый размер комиссии</td>
+</tr>
+<tr>
+<td>feeConstant</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Постоянная часть комиссии</td>
+</tr>
+<tr>
+<td>feeInterest</td>
+<td>number</td>
+<td>false</td>
+<td>Процентная часть комиссии</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCardType">C2CTransferCardType</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercardtype"></a>
+<a id="schema_C2CTransferCardType"></a>
+<a id="tocSc2ctransfercardtype"></a>
+<a id="tocsc2ctransfercardtype"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"DEBIT"</span><span class="w">
+
+</span></code></pre></div>
+<p>Признак Кредитная/Дебетовая карта</p>
+<h4 id='properties-370'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>string</td>
+<td>false</td>
+<td>Признак: кредитная/дебетовая карта</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-46'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>DEBIT</td>
+<td>Дебетовая карта</td>
+</tr>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>CREDIT</td>
+<td>Кредитная карта</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCardModel">C2CTransferCardModel</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercardmodel"></a>
+<a id="schema_C2CTransferCardModel"></a>
+<a id="tocSc2ctransfercardmodel"></a>
+<a id="tocsc2ctransfercardmodel"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-371'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор карты</td>
+</tr>
+<tr>
+<td>shortNumber</td>
+<td>string</td>
+<td>true</td>
+<td>Последние 4 цифры карты</td>
+</tr>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>true</td>
+<td>Маскированный номер карты</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Имя карты</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>true</td>
+<td>Имя банка</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string(date)</td>
+<td>true</td>
+<td>Дата действия карты</td>
+</tr>
+<tr>
+<td>alfaCard</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак оформления карты в банке</td>
+</tr>
+<tr>
+<td>paymentSystem</td>
+<td>string</td>
+<td>true</td>
+<td>Платежная система</td>
+</tr>
+<tr>
+<td>own</td>
+<td>boolean</td>
+<td>true</td>
+<td>Владелец карты</td>
+</tr>
+<tr>
+<td>cvc</td>
+<td>boolean</td>
+<td>true</td>
+<td>CVC-код</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#schemac2ctransfercardtype">C2CTransferCardType</a></td>
+<td>false</td>
+<td>Дебет/кредит</td>
+</tr>
+<tr>
+<td>cardSkinType</td>
+<td>string</td>
+<td>true</td>
+<td>Тип карты для отображения на фронте</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>string</td>
+<td>true</td>
+<td>Код страны</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferGetCardsResponseBody">C2CTransferGetCardsResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfergetcardsresponsebody"></a>
+<a id="schema_C2CTransferGetCardsResponseBody"></a>
+<a id="tocSc2ctransfergetcardsresponsebody"></a>
+<a id="tocsc2ctransfergetcardsresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-372'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sender</td>
+<td>[<a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a>]</td>
+<td>true</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>[<a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a>]</td>
+<td>true</td>
+<td>Получатель</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateCardRequestBody">C2CTransferCreateCardRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreatecardrequestbody"></a>
+<a id="schema_C2CTransferCreateCardRequestBody"></a>
+<a id="tocSc2ctransfercreatecardrequestbody"></a>
+<a id="tocsc2ctransfercreatecardrequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-373'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>true</td>
+<td>Номер карты</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак сохранения карты в группу карт-получателей</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак сохранения карты в группу карт-отправителей</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string(year-month)</td>
+<td>true</td>
+<td>Дата действия карты</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>Имя карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateCardResponseBody">C2CTransferCreateCardResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreatecardresponsebody"></a>
+<a id="schema_C2CTransferCreateCardResponseBody"></a>
+<a id="tocSc2ctransfercreatecardresponsebody"></a>
+<a id="tocsc2ctransfercreatecardresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-374'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор сохраненной карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferOperationDetails">C2CTransferOperationDetails</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferoperationdetails"></a>
+<a id="schema_C2CTransferOperationDetails"></a>
+<a id="tocSc2ctransferoperationdetails"></a>
+<a id="tocsc2ctransferoperationdetails"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-375'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>true</td>
+<td>Статус перевода</td>
+</tr>
+<tr>
+<td>errorDescription</td>
+<td>string</td>
+<td>false</td>
+<td>Описание ошибки</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferOperationDetailsResponseBody">C2CTransferOperationDetailsResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferoperationdetailsresponsebody"></a>
+<a id="schema_C2CTransferOperationDetailsResponseBody"></a>
+<a id="tocSc2ctransferoperationdetailsresponsebody"></a>
+<a id="tocsc2ctransferoperationdetailsresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"senderCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipientCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-376'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+<tr>
+<td>details</td>
+<td><a href="#schemac2ctransferoperationdetails">C2CTransferOperationDetails</a></td>
+<td>true</td>
+<td>Информации о статусе перевода</td>
+</tr>
+<tr>
+<td>senderCard</td>
+<td><a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a></td>
+<td>true</td>
+<td>Данные карты отправителя</td>
+</tr>
+<tr>
+<td>recipientCard</td>
+<td><a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a></td>
+<td>true</td>
+<td>Данные карты получателя</td>
+</tr>
+</tbody></table>
+<h3 id='card2card-3ds'>Исполнение перевода Card2Card (3DS)</h3>
+<p>Метод предназначен для исполнения перевода с карты на карту с подтверждением через 3DS.</p>
+
+<p>Для исполнения перевода Card2Card (3DS) необходимо отправить запрос POST transfer/c2c/execute с access_token, полученным в Alfa ID со scope = debetcards, и параметрами запроса.</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST transfer/c2c/execute <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+
+</code></pre></div><h4 id='header-parameters-26'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"transferMetaData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paRes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="executecard2cardtransfer-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemac2ctransferexecuterequestbody">C2CTransferExecuteRequestBody</a></td>
+<td>true</td>
+<td>Тело запроса</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"operationData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z033103200000006"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OUTCOME"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"minorUnits"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"senderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Альфа-карта МИР"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"**6130"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recipientInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"null"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"**3007"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="executecard2cardtransfer-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Code responses</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 (ОК)</td>
+<td>ОК</td>
+<td>Успешный результат</td>
+<td><a href="#schemac2ctransferexecuteresponsebody">C2CTransferExecuteResponseBody</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Authorization отсутствует в заголовках запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h4 id='schemas-26'>Schemas</h4>
+<h4 id="tocS_Sender">Sender</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasender"></a>
+<a id="schema_Sender"></a>
+<a id="tocSsender"></a>
+<a id="tocssender"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об отправителе перевода</p>
+<h4 id='properties-377'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cvv</td>
+<td>string</td>
+<td>false</td>
+<td>Код верификации</td>
+</tr>
+<tr>
+<td>cardId</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Card2CardPeerIdType">Card2CardPeerIdType</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacard2cardpeeridtype"></a>
+<a id="schema_Card2CardPeerIdType"></a>
+<a id="tocScard2cardpeeridtype"></a>
+<a id="tocscard2cardpeeridtype"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"CARD_ID"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип идентификатора карты получателя</p>
+<h4 id='properties-378'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>string</td>
+<td>false</td>
+<td>Тип идентификатора карты получателя</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-47'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>CARD_ID</td>
+<td>Тип идентификатора карты получателя (Идентификатор карты)</td>
+</tr>
+<tr>
+<td>Тип идентификатора карты получателя</td>
+<td>CARD_NUMBER</td>
+<td>Тип идентификатора карты получателя (Номер карты)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerModel">PeerModel</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeermodel"></a>
+<a id="schema_PeerModel"></a>
+<a id="tocSpeermodel"></a>
+<a id="tocspeermodel"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-379'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td><a href="#schemacard2cardpeeridtype">Card2CardPeerIdType</a></td>
+<td>true</td>
+<td>Тип идентификатора карты получателя</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateRequestBody">C2CTransferCreateRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreaterequestbody"></a>
+<a id="schema_C2CTransferCreateRequestBody"></a>
+<a id="tocSc2ctransfercreaterequestbody"></a>
+<a id="tocsc2ctransfercreaterequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-380'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма перевода, валюта и минорные единицы</td>
+</tr>
+<tr>
+<td>sender</td>
+<td><a href="#schemasender">Sender</a></td>
+<td>true</td>
+<td>Данные отправителя</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemapeermodel">PeerModel</a></td>
+<td>true</td>
+<td>Данные получателя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ConfirmationTypeThreeDs">ConfirmationTypeThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaconfirmationtypethreeds"></a>
+<a id="schema_ConfirmationTypeThreeDs"></a>
+<a id="tocSconfirmationtypethreeds"></a>
+<a id="tocsconfirmationtypethreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"THREE_DS"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип подтверждения перевода</p>
+<h4 id='properties-381'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип подтверждения перевода</td>
+<td>string</td>
+<td>false</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-48'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип подтверждения перевода</td>
+<td>THREE_DS</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ThreeDsData">ThreeDsData</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemathreedsdata"></a>
+<a id="schema_ThreeDsData"></a>
+<a id="tocSthreedsdata"></a>
+<a id="tocsthreedsdata"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Данные для подтверждения через 3DS</p>
+<h4 id='properties-382'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>md</td>
+<td>string</td>
+<td>true</td>
+<td>Данные продавца</td>
+</tr>
+<tr>
+<td>paReq</td>
+<td>string</td>
+<td>true</td>
+<td>(Payment Request) — запрос на оплату или параметр платежного запроса. Он содержит всю важную информацию о платеже</td>
+</tr>
+<tr>
+<td>accessUrl</td>
+<td>string</td>
+<td>true</td>
+<td>Адрес (URL/URI) сервера аутентификации 3-D Secure</td>
+</tr>
+<tr>
+<td>termUrl</td>
+<td>string</td>
+<td>true</td>
+<td>Ссылка для redirect на платежный шлюз банк-эмитента-карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ConfirmationInfoThreeDs">ConfirmationInfoThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaconfirmationinfothreeds"></a>
+<a id="schema_ConfirmationInfoThreeDs"></a>
+<a id="tocSconfirmationinfothreeds"></a>
+<a id="tocsconfirmationinfothreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THREE_DS"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"threeDs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Данные для подтверждения перевода</p>
+<h4 id='properties-383'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td><a href="#schemaconfirmationtypethreeds">ConfirmationTypeThreeDs</a></td>
+<td>true</td>
+<td>Подтверждение перевода</td>
+</tr>
+<tr>
+<td>threeDs</td>
+<td><a href="#schemathreedsdata">ThreeDsData</a></td>
+<td>true</td>
+<td>Тип подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateResponseBody">C2CTransferCreateResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreateresponsebody"></a>
+<a id="schema_C2CTransferCreateResponseBody"></a>
+<a id="tocSc2ctransfercreateresponsebody"></a>
+<a id="tocsc2ctransfercreateresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"transferMetaData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmationInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"THREE_DS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"threeDs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"paReq"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accessUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"termUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Создание перевода с подтверждением через 3DS</p>
+<h4 id='properties-384'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transferMetaData</td>
+<td>string</td>
+<td>true</td>
+<td>JWT метаданные для перевода, пробрасываются фронтом на шаге подтверждения</td>
+</tr>
+<tr>
+<td>confirmationInfo</td>
+<td><a href="#schemaconfirmationinfothreeds">ConfirmationInfoThreeDs</a></td>
+<td>true</td>
+<td>Данные для подтверждения платежа</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ExecuteTransferRequestThreeDs">ExecuteTransferRequestThreeDs</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaexecutetransferrequestthreeds"></a>
+<a id="schema_ExecuteTransferRequestThreeDs"></a>
+<a id="tocSexecutetransferrequestthreeds"></a>
+<a id="tocsexecutetransferrequestthreeds"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paRes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация для подтверждения платежа</p>
+<h4 id='properties-385'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>md</td>
+<td>string</td>
+<td>true</td>
+<td>Данные продавца</td>
+</tr>
+<tr>
+<td>paRes</td>
+<td>string</td>
+<td>true</td>
+<td>Параметр информации о статусе проверки</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferExecuteRequestBody">C2CTransferExecuteRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferexecuterequestbody"></a>
+<a id="schema_C2CTransferExecuteRequestBody"></a>
+<a id="tocSc2ctransferexecuterequestbody"></a>
+<a id="tocsc2ctransferexecuterequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"transferMetaData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"confirmation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"md"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paRes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
+<h4 id='properties-386'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transferMetaData</td>
+<td>string</td>
+<td>true</td>
+<td>JWT метаданные для перевода, пробрасываются фронтом на шаге подтверждения</td>
+</tr>
+<tr>
+<td>confirmation</td>
+<td><a href="#schemaexecutetransferrequestthreeds">ExecuteTransferRequestThreeDs</a></td>
+<td>true</td>
+<td>Данные для подтверждения перевода</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationDirection">OperationDirection</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdirection"></a>
+<a id="schema_OperationDirection"></a>
+<a id="tocSoperationdirection"></a>
+<a id="tocsoperationdirection"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"INCOME"</span><span class="w">
+
+</span></code></pre></div>
+<p>Тип перевода (входящий/исходящий)</p>
+<h4 id='properties-387'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>string</td>
+<td>false</td>
+<td>Тип перевода</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-49'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>INCOME</td>
+<td>Входящий перевод</td>
+</tr>
+<tr>
+<td>Тип перевода (входящий/исходящий)</td>
+<td>OUTCOME</td>
+<td>Исходящий перевод</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerInfo">PeerInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeerinfo"></a>
+<a id="schema_PeerInfo"></a>
+<a id="tocSpeerinfo"></a>
+<a id="tocspeerinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об отправителе/получателе перевода</p>
+<h4 id='properties-388'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Название карты отправителя/получателя</td>
+</tr>
+<tr>
+<td>value</td>
+<td>string</td>
+<td>true</td>
+<td>Маскированный номер карты отправителя/получателя</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationData">OperationData</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationdata"></a>
+<a id="schema_OperationData"></a>
+<a id="tocSoperationdata"></a>
+<a id="tocsoperationdata"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INCOME"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"senderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipientInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об операции</p>
+<h4 id='properties-389'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reference</td>
+<td>string</td>
+<td>true</td>
+<td>Id операции</td>
+</tr>
+<tr>
+<td>direction</td>
+<td><a href="#schemaoperationdirection">OperationDirection</a></td>
+<td>true</td>
+<td>Тип перевода (входящий/исходящий)</td>
+</tr>
+<tr>
+<td>senderInfo</td>
+<td><a href="#schemapeerinfo">PeerInfo</a></td>
+<td>true</td>
+<td>Данные отправителя</td>
+</tr>
+<tr>
+<td>recipientInfo</td>
+<td><a href="#schemapeerinfo">PeerInfo</a></td>
+<td>true</td>
+<td>Данные получателя</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма перевода, валюты и минорных единиц</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferExecuteResponseBody">C2CTransferExecuteResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferexecuteresponsebody"></a>
+<a id="schema_C2CTransferExecuteResponseBody"></a>
+<a id="tocSc2ctransferexecuteresponsebody"></a>
+<a id="tocsc2ctransferexecuteresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"operationData"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INCOME"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"senderInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recipientInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Ответ на запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
+<h4 id='properties-390'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>operationData</td>
+<td><a href="#schemaoperationdata">OperationData</a></td>
+<td>true</td>
+<td>Информация о транзакции</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PeerModelExtended">PeerModelExtended</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapeermodelextended"></a>
+<a id="schema_PeerModelExtended"></a>
+<a id="tocSpeermodelextended"></a>
+<a id="tocspeermodelextended"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<h4 id="tocS_C2CTransferFeeRequestBody">C2CTransferFeeRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferfeerequestbody"></a>
+<a id="schema_C2CTransferFeeRequestBody"></a>
+<a id="tocSc2ctransferfeerequestbody"></a>
+<a id="tocsc2ctransferfeerequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CARD_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"isAlfa"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-391'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sender</td>
+<td><a href="#schemapeermodelextended">PeerModelExtended</a></td>
+<td>true</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td><a href="#schemapeermodelextended">PeerModelExtended</a></td>
+<td>true</td>
+<td>Получатель</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferFeeResponseBody">C2CTransferFeeResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferfeeresponsebody"></a>
+<a id="schema_C2CTransferFeeResponseBody"></a>
+<a id="tocSc2ctransferfeeresponsebody"></a>
+<a id="tocsc2ctransferfeeresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeMax"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeMin"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeConstant"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"feeInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-392'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fee</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Общая сумма комиссии</td>
+</tr>
+<tr>
+<td>feeMax</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Максимально допустимый размер комиссии</td>
+</tr>
+<tr>
+<td>feeMin</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Минимально допустимый размер комиссии</td>
+</tr>
+<tr>
+<td>feeConstant</td>
+<td>object(commons-AmountDto)</td>
+<td>false</td>
+<td>Постоянная часть комиссии</td>
+</tr>
+<tr>
+<td>feeInterest</td>
+<td>number</td>
+<td>false</td>
+<td>Процентная часть комиссии</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCardType">C2CTransferCardType</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercardtype"></a>
+<a id="schema_C2CTransferCardType"></a>
+<a id="tocSc2ctransfercardtype"></a>
+<a id="tocsc2ctransfercardtype"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"DEBIT"</span><span class="w">
+
+</span></code></pre></div>
+<p>Признак Кредитная/Дебетовая карта</p>
+<h4 id='properties-393'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>string</td>
+<td>false</td>
+<td>Признак: кредитная/дебетовая карта</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-50'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>DEBIT</td>
+<td>Дебетовая карта</td>
+</tr>
+<tr>
+<td>Признак Кредитная/Дебетовая карта</td>
+<td>CREDIT</td>
+<td>Кредитная карта</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCardModel">C2CTransferCardModel</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercardmodel"></a>
+<a id="schema_C2CTransferCardModel"></a>
+<a id="tocSc2ctransfercardmodel"></a>
+<a id="tocsc2ctransfercardmodel"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-394'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор карты</td>
+</tr>
+<tr>
+<td>shortNumber</td>
+<td>string</td>
+<td>true</td>
+<td>Последние 4 цифры карты</td>
+</tr>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>true</td>
+<td>Маскированный номер карты</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>true</td>
+<td>Имя карты</td>
+</tr>
+<tr>
+<td>bankName</td>
+<td>string</td>
+<td>true</td>
+<td>Имя банка</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string(date)</td>
+<td>true</td>
+<td>Дата действия карты</td>
+</tr>
+<tr>
+<td>alfaCard</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак оформления карты в банке</td>
+</tr>
+<tr>
+<td>paymentSystem</td>
+<td>string</td>
+<td>true</td>
+<td>Платежная система</td>
+</tr>
+<tr>
+<td>own</td>
+<td>boolean</td>
+<td>true</td>
+<td>Владелец карты</td>
+</tr>
+<tr>
+<td>cvc</td>
+<td>boolean</td>
+<td>true</td>
+<td>CVC-код</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="#schemac2ctransfercardtype">C2CTransferCardType</a></td>
+<td>false</td>
+<td>Дебет/кредит</td>
+</tr>
+<tr>
+<td>cardSkinType</td>
+<td>string</td>
+<td>true</td>
+<td>Тип карты для отображения на фронте</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>string</td>
+<td>true</td>
+<td>Код страны</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferGetCardsResponseBody">C2CTransferGetCardsResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfergetcardsresponsebody"></a>
+<a id="schema_C2CTransferGetCardsResponseBody"></a>
+<a id="tocSc2ctransfergetcardsresponsebody"></a>
+<a id="tocsc2ctransfergetcardsresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-395'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sender</td>
+<td>[<a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a>]</td>
+<td>true</td>
+<td>Отправитель</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>[<a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a>]</td>
+<td>true</td>
+<td>Получатель</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateCardRequestBody">C2CTransferCreateCardRequestBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreatecardrequestbody"></a>
+<a id="schema_C2CTransferCreateCardRequestBody"></a>
+<a id="tocSc2ctransfercreatecardrequestbody"></a>
+<a id="tocsc2ctransfercreatecardrequestbody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sender"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-396'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>true</td>
+<td>Номер карты</td>
+</tr>
+<tr>
+<td>recipient</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак сохранения карты в группу карт-получателей</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>boolean</td>
+<td>true</td>
+<td>Признак сохранения карты в группу карт-отправителей</td>
+</tr>
+<tr>
+<td>expirationDate</td>
+<td>string(year-month)</td>
+<td>true</td>
+<td>Дата действия карты</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>false</td>
+<td>Имя карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferCreateCardResponseBody">C2CTransferCreateCardResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransfercreatecardresponsebody"></a>
+<a id="schema_C2CTransferCreateCardResponseBody"></a>
+<a id="tocSc2ctransfercreatecardresponsebody"></a>
+<a id="tocsc2ctransfercreatecardresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-397'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор сохраненной карты</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferOperationDetails">C2CTransferOperationDetails</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferoperationdetails"></a>
+<a id="schema_C2CTransferOperationDetails"></a>
+<a id="tocSc2ctransferoperationdetails"></a>
+<a id="tocsc2ctransferoperationdetails"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-398'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>true</td>
+<td>Статус перевода</td>
+</tr>
+<tr>
+<td>errorDescription</td>
+<td>string</td>
+<td>false</td>
+<td>Описание ошибки</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_C2CTransferOperationDetailsResponseBody">C2CTransferOperationDetailsResponseBody</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemac2ctransferoperationdetailsresponsebody"></a>
+<a id="schema_C2CTransferOperationDetailsResponseBody"></a>
+<a id="tocSc2ctransferoperationdetailsresponsebody"></a>
+<a id="tocsc2ctransferoperationdetailsresponsebody"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"senderCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"recipientCard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"shortNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bankName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alfaCard"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"paymentSystem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"own"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cvc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEBIT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cardSkinType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-399'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>object(commons-AmountDto)</td>
+<td>true</td>
+<td>Сумма операции, валюта и минорные единицы</td>
+</tr>
+<tr>
+<td>details</td>
+<td><a href="#schemac2ctransferoperationdetails">C2CTransferOperationDetails</a></td>
+<td>true</td>
+<td>Информации о статусе перевода</td>
+</tr>
+<tr>
+<td>senderCard</td>
+<td><a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a></td>
+<td>true</td>
+<td>Данные карты отправителя</td>
+</tr>
+<tr>
+<td>recipientCard</td>
+<td><a href="#schemac2ctransfercardmodel">C2CTransferCardModel</a></td>
+<td>true</td>
+<td>Данные карты получателя</td>
 </tr>
 </tbody></table>
 <h2 id='42fc51aa44'>Пагинация</h2>
