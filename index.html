@@ -328,6 +328,9 @@
                     <a href="#d2568efd70" class="toc-h2 toc-link" data-title="Профиль организации">Профиль организации</a>
                   </li>
                   <li>
+                    <a href="#214" class="toc-h2 toc-link" data-title="Счета эскроу 214-ФЗ">Счета эскроу 214-ФЗ</a>
+                  </li>
+                  <li>
                     <a href="#968778f49f-2" class="toc-h2 toc-link" data-title="Электронная подпись">Электронная подпись</a>
                   </li>
                   <li>
@@ -9479,6 +9482,1427 @@ bearerAuth ( Scopes: customer_info )
 <td>Сообщение об ошибке</td>
 </tr>
 </tbody></table>
+<h2 id='214'>Счета эскроу 214-ФЗ</h2>
+<p>Список методов: 
+  <ul>
+  <li><a href="#get-build-projects">Получение списка объектов строительства застройщика</a></li>
+  <li><a href="#post-escrow-orders">Создание заявки на резервирование счета эскроу</a></li>
+  </ul></p>
+
+<h3 id="auth-code-flow">Получение списка объектов строительства застройщика</h3>
+
+<p>Метод позволяет получить список объектов строительства застройщика.</p>
+
+<p>Для создания заявки на резервирование счета эскроу необходимо отправить запрос GET build-projects с access_token, полученным в Alfa ID со scope = escrow, и параметрами запроса.</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET build-projects <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div><h4 id='header-parameters-6'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"buildingPermitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61-310-998601-2022"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"054"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"projectNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"162"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Новосибирск"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"commercialName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ЖК ЗАПАДНЫЕ АЛЛЕИ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Новосибирск"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ОКТЯБРЬСКИЙ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RU"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buildingPermitDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"поз. 4.1 - 9-этажный 4-х секц дом"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-4 на земельном участке с к.н. 61:44:0073012:390"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"termEscrowOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-22"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<h4 id="get__build-projects-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>ОК</td>
+<td><a href="#schemabp">BuildProjects</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Неверные входные параметры запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<h3 id='response-headers-13'>Response Headers</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-traceid</td>
+<td>string</td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearerAuth
+</aside>
+<h4 id='schemas-13'>Schemas</h4>
+<h4 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorunauthorized"></a>
+<a id="schema_ErrorUnauthorized"></a>
+<a id="tocSerrorunauthorized"></a>
+<a id="tocserrorunauthorized"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-84'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorInternal">ErrorInternal</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorinternal"></a>
+<a id="schema_ErrorInternal"></a>
+<a id="tocSerrorinternal"></a>
+<a id="tocserrorinternal"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal_error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-85'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorBadRequest">ErrorBadRequest</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorbadrequest"></a>
+<a id="schema_ErrorBadRequest"></a>
+<a id="tocSerrorbadrequest"></a>
+<a id="tocserrorbadrequest"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-86'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorScope">ErrorScope</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorscope"></a>
+<a id="schema_ErrorScope"></a>
+<a id="tocSerrorscope"></a>
+<a id="tocserrorscope"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insufficient_scope"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-87'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorNotFound">ErrorNotFound</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrornotfound"></a>
+<a id="schema_ErrorNotFound"></a>
+<a id="tocSerrornotfound"></a>
+<a id="tocserrornotfound"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown_endpoint"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Endpoint is not found or not active"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-88'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_BP">BuildProjects</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemabp"></a>
+<a id="schema_BP"></a>
+<a id="tocSbp"></a>
+<a id="tocsbp"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"buildingPermitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61-310-998601-2022"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"054"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"projectNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"162"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Новосибирск"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"commercialName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ЖК ЗАПАДНЫЕ АЛЛЕИ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Новосибирск"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ОКТЯБРЬСКИЙ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RU"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buildingPermitDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"поз. 4.1 - 9-этажный 4-х секц дом"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-4 на земельном участке с к.н. 61:44:0073012:390"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"termEscrowOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-22"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<p>Проекты строительства</p>
+<h4 id='properties-89'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BuildProjects</td>
+<td>[<a href="#schemabuildproject">BuildProject</a>]</td>
+<td>false</td>
+<td>Проекты строительства</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_BuildProject">BuildProject</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemabuildproject"></a>
+<a id="schema_BuildProject"></a>
+<a id="tocSbuildproject"></a>
+<a id="tocsbuildproject"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"buildingPermitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61-310-998601-2022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"regionCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"054"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"projectNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"162"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"settlement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Новосибирск"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"commercialName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ЖК ЗАПАДНЫЕ АЛЛЕИ"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Новосибирск"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"area"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ОКТЯБРЬСКИЙ"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RU"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"buildingPermitDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-10-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"поз. 4.1 - 9-этажный 4-х секц дом"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-4 на земельном участке с к.н. 61:44:0073012:390"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"termEscrowOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-22"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Проект строительства</p>
+<h4 id='properties-90'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>buildingPermitNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер РНС (разрешение на строительство)</td>
+</tr>
+<tr>
+<td>regionCode</td>
+<td>string</td>
+<td>false</td>
+<td>Код региона</td>
+</tr>
+<tr>
+<td>projectNumber</td>
+<td>string</td>
+<td>false</td>
+<td>Номер проекта строительства</td>
+</tr>
+<tr>
+<td>settlement</td>
+<td>string</td>
+<td>false</td>
+<td>Наименование населенного пункта</td>
+</tr>
+<tr>
+<td>commercialName</td>
+<td>string</td>
+<td>false</td>
+<td>Коммерческое обозначение объекта</td>
+</tr>
+<tr>
+<td>city</td>
+<td>string</td>
+<td>false</td>
+<td>Город</td>
+</tr>
+<tr>
+<td>area</td>
+<td>string</td>
+<td>false</td>
+<td>Наименование района</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>false</td>
+<td>Код страны</td>
+</tr>
+<tr>
+<td>buildingPermitDate</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата РНС</td>
+</tr>
+<tr>
+<td>phases</td>
+<td>[<a href="#schemabuildprojectphase">BuildProjectPhase</a>]</td>
+<td>false</td>
+<td>Этапы строительства</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_BuildProjectPhase">BuildProjectPhase</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemabuildprojectphase"></a>
+<a id="schema_BuildProjectPhase"></a>
+<a id="tocSbuildprojectphase"></a>
+<a id="tocsbuildprojectphase"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"поз. 4.1 - 9-этажный 4-х секц дом"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"street"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-4 на земельном участке с к.н. 61:44:0073012:390"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"house"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4.1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"building"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"termEscrowOrder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-22"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Фазы строительства</p>
+<h4 id='properties-91'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index</td>
+<td>integer</td>
+<td>false</td>
+<td>Порядковый номер этапа строительства в пределах проекта</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>Краткое имя этапа строительства</td>
+</tr>
+<tr>
+<td>street</td>
+<td>string</td>
+<td>false</td>
+<td>Улица объекта недвижимости</td>
+</tr>
+<tr>
+<td>house</td>
+<td>string</td>
+<td>false</td>
+<td>Номер дома объекта недвижимости</td>
+</tr>
+<tr>
+<td>building</td>
+<td>string</td>
+<td>false</td>
+<td>Номер строения\корпуса</td>
+</tr>
+<tr>
+<td>termEscrowOrder</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Срок учета и блокирования депонированной суммы на счете эскроу по ДДУ</td>
+</tr>
+</tbody></table>
+
+<h3 id="post-escrow-orders">Создание заявки на резервирование счета эскроу</h3>
+
+<p>Метод позволяет создать заявку на резервирование счета эскроу.</p>
+
+<p>Для создания заявки на резервирование счета эскроу необходимо отправить запрос POST escrow-orders с access_token, полученным в Alfa ID со scope = escrow, и параметрами запроса.</p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST escrow-orders <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div><h4 id='header-parameters-7'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"depositor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Федькин"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ратибор"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Васильевич"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990-08-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identityDocumentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identityDocumentSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5516"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identityDocumentNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"197343"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dateIssuedId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75453333435"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"escrowAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">112500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"estateObject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buildProject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"buildingPermitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61-310-998601-2022"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phases"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"equalityAgreement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="post__escrow-orders-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemacreateorderrequest">CreateOrderRequest</a></td>
+<td>true</td>
+<td>Тело запроса</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example responses</p>
+
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"referenceID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EA10509220000013"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="post__escrow-orders-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Code meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 (OK)</td>
+<td>ОК</td>
+<td>Успешный результат. Заявка на резервирование счета эскроу успешно создана</td>
+<td><a href="#schemacreateorderresponse">CreateOrderResponse</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Неверные входные параметры запроса</td>
+<td><a href="#schemaerrorbadrequest">ErrorBadRequest</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Предоставленный токен просрочен, отозван, имеет неправильный формат или недействителен по другим причинам</td>
+<td><a href="#schemaerrorunauthorized">ErrorUnauthorized</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_endpoint</td>
+<td>Эндпоинт не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
+</tr>
+<tr>
+<td>409 (Conflict)</td>
+<td>conflict</td>
+<td>Конфликт</td>
+<td><a href="#schemaerrorconflict">ErrorConflict</a></td>
+</tr>
+<tr>
+<td>429 (Too Many Requests)</td>
+<td>too many requests</td>
+<td>Cлишком много запросов в заданный период времени</td>
+<td>None</td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервиса при выполнении обработки запроса</td>
+<td><a href="#schemaerrorinternal">ErrorInternal</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<h4 id='response-headers-14'>Response Headers</h4>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-traceid</td>
+<td>string</td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearerAuth
+</aside>
+<h4 id='schemas-14'>Schemas</h4>
+<h4 id="tocS_ErrorUnauthorized">ErrorUnauthorized</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorunauthorized"></a>
+<a id="schema_ErrorUnauthorized"></a>
+<a id="tocSerrorunauthorized"></a>
+<a id="tocserrorunauthorized"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-92'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorInternal">ErrorInternal</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorinternal"></a>
+<a id="schema_ErrorInternal"></a>
+<a id="tocSerrorinternal"></a>
+<a id="tocserrorinternal"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal_error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-93'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorBadRequest">ErrorBadRequest</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorbadrequest"></a>
+<a id="schema_ErrorBadRequest"></a>
+<a id="tocSerrorbadrequest"></a>
+<a id="tocserrorbadrequest"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-94'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorScope">ErrorScope</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorscope"></a>
+<a id="schema_ErrorScope"></a>
+<a id="tocSerrorscope"></a>
+<a id="tocserrorscope"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insufficient_scope"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-95'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorNotFound">ErrorNotFound</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrornotfound"></a>
+<a id="schema_ErrorNotFound"></a>
+<a id="tocSerrornotfound"></a>
+<a id="tocserrornotfound"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown_endpoint"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Endpoint is not found or not active"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-96'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorConflict">ErrorConflict</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorconflict"></a>
+<a id="schema_ErrorConflict"></a>
+<a id="tocSerrorconflict"></a>
+<a id="tocserrorconflict"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"conflict"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The data of the depositor is not uniquely defined"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-97'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Код ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>false</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CreateOrderRequest">CreateOrderRequest</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacreateorderrequest"></a>
+<a id="schema_CreateOrderRequest"></a>
+<a id="tocScreateorderrequest"></a>
+<a id="tocscreateorderrequest"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"depositor"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Федькин"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ратибор"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Васильевич"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990-08-30"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identityDocumentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identityDocumentSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5516"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"identityDocumentNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"197343"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"dateIssuedId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75453333435"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"escrowAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">112500</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"estateObject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAT"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"buildProject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"buildingPermitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61-310-998601-2022"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phases"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"equalityAgreement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-98'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>depositor</td>
+<td><a href="#schemacreateorderdepositor">CreateOrderDepositor</a></td>
+<td>true</td>
+<td>Депонент</td>
+</tr>
+<tr>
+<td>escrowAccount</td>
+<td><a href="#schemacreateorderescrowaccount">CreateOrderEscrowAccount</a></td>
+<td>true</td>
+<td>Счет эскроу</td>
+</tr>
+<tr>
+<td>estateObject</td>
+<td><a href="#schemacreateorderestateobject">CreateOrderEstateObject</a></td>
+<td>false</td>
+<td>Объект строительства</td>
+</tr>
+<tr>
+<td>equalityAgreement</td>
+<td><a href="#schemacreateorderequalityagreement">CreateOrderEqualityAgreement</a></td>
+<td>true</td>
+<td>Договор Долевого Участия (ДДУ)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CreateOrderResponse">CreateOrderResponse</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacreateorderresponse"></a>
+<a id="schema_CreateOrderResponse"></a>
+<a id="tocScreateorderresponse"></a>
+<a id="tocscreateorderresponse"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"referenceID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EA10509220000013"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-99'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>referenceID</td>
+<td>string</td>
+<td>true</td>
+<td>Референс на заявку</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CreateOrderEstateObject">CreateOrderEstateObject</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacreateorderestateobject"></a>
+<a id="schema_CreateOrderEstateObject"></a>
+<a id="tocScreateorderestateobject"></a>
+<a id="tocscreateorderestateobject"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FLAT"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"buildProject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"buildingPermitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61-310-998601-2022"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phases"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Объект строительства</p>
+<h4 id='properties-100'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>flat</td>
+<td>string</td>
+<td>true</td>
+<td>Номер квартиры объекта недвижимости</td>
+</tr>
+<tr>
+<td>buildProject</td>
+<td><a href="#schemacreateorderbuildproject">CreateOrderBuildProject</a></td>
+<td>true</td>
+<td>Информация об объекте строительства</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>FLAT</td>
+<td>Квартира</td>
+</tr>
+<tr>
+<td>type</td>
+<td>PARKING</td>
+<td>Машиноместо</td>
+</tr>
+<tr>
+<td>type</td>
+<td>PANTRY</td>
+<td>Кладовая</td>
+</tr>
+<tr>
+<td>type</td>
+<td>NON_RESIDENTIAL_PREMISES</td>
+<td>Нежилое помещение</td>
+</tr>
+<tr>
+<td>type</td>
+<td>GARAGE</td>
+<td>Гараж</td>
+</tr>
+<tr>
+<td>type</td>
+<td>COMMERCIAL_PREMISES</td>
+<td>Коммерческое помещение</td>
+</tr>
+<tr>
+<td>type</td>
+<td>APARTMENTS</td>
+<td>Апартаменты</td>
+</tr>
+<tr>
+<td>type</td>
+<td>ROOM</td>
+<td>Комната</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CreateOrderBuildProject">CreateOrderBuildProject</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacreateorderbuildproject"></a>
+<a id="schema_CreateOrderBuildProject"></a>
+<a id="tocScreateorderbuildproject"></a>
+<a id="tocscreateorderbuildproject"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"buildingPermitNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61-310-998601-2022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phases"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация об объекте строительства</p>
+<h4 id='properties-101'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>buildingPermitNumber</td>
+<td>string</td>
+<td>true</td>
+<td>Номер РНС (разрешение на строительство)</td>
+</tr>
+<tr>
+<td>phases</td>
+<td><a href="#schemacreateorderbuildprojectphase">CreateOrderBuildProjectPhase</a></td>
+<td>true</td>
+<td>Этап строительства</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CreateOrderBuildProjectPhase">CreateOrderBuildProjectPhase</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacreateorderbuildprojectphase"></a>
+<a id="schema_CreateOrderBuildProjectPhase"></a>
+<a id="tocScreateorderbuildprojectphase"></a>
+<a id="tocscreateorderbuildprojectphase"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Этап строительства</p>
+<h4 id='properties-102'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index</td>
+<td>integer</td>
+<td>true</td>
+<td>Порядковый номер этапа строительства в пределах проекта</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CreateOrderDepositor">CreateOrderDepositor</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacreateorderdepositor"></a>
+<a id="schema_CreateOrderDepositor"></a>
+<a id="tocScreateorderdepositor"></a>
+<a id="tocscreateorderdepositor"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Федькин"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ратибор"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"middleName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Васильевич"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"birthdate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990-08-30"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"identityDocumentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"identityDocumentSeries"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5516"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"identityDocumentNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"197343"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"dateIssuedId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75453333435"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Депонент</p>
+<h4 id='properties-103'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lastName</td>
+<td>string</td>
+<td>true</td>
+<td>Фамилия депонента</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>string</td>
+<td>true</td>
+<td>Имя депонента</td>
+</tr>
+<tr>
+<td>middleName</td>
+<td>string</td>
+<td>false</td>
+<td>Отчество депонента</td>
+</tr>
+<tr>
+<td>birthdate</td>
+<td>string(date)</td>
+<td>true</td>
+<td>Дата рождения депонента</td>
+</tr>
+<tr>
+<td>identityDocumentType</td>
+<td>string</td>
+<td>true</td>
+<td>Тип ДУЛа:<br>  <code>001</code> - Паспорт гражданина РФ<br>  <code>002</code> - Загранпаспорт гражданина РФ</td>
+</tr>
+<tr>
+<td>identityDocumentSeries</td>
+<td>string</td>
+<td>true</td>
+<td>Серия ДУЛ депонента</td>
+</tr>
+<tr>
+<td>identityDocumentNumber</td>
+<td>string</td>
+<td>true</td>
+<td>Номер ДУЛ депонента</td>
+</tr>
+<tr>
+<td>dateIssuedId</td>
+<td>string(date)</td>
+<td>true</td>
+<td>Дата выдачи ДУЛ депонента</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>string</td>
+<td>true</td>
+<td>Мобильный телефон депонента</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>identityDocumentType</td>
+<td>001</td>
+<td>Паспорт гражданина РФ</td>
+</tr>
+<tr>
+<td>identityDocumentType</td>
+<td>002</td>
+<td>Загранпаспорт гражданина РФ</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CreateOrderEqualityAgreement">CreateOrderEqualityAgreement</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacreateorderequalityagreement"></a>
+<a id="schema_CreateOrderEqualityAgreement"></a>
+<a id="tocScreateorderequalityagreement"></a>
+<a id="tocscreateorderequalityagreement"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Договор Долевого Участия (ДДУ)</p>
+<h4 id='properties-104'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>true</td>
+<td>Номер ДДУ</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>true</td>
+<td>Дата подписания ДДУ</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CreateOrderEscrowAccount">CreateOrderEscrowAccount</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacreateorderescrowaccount"></a>
+<a id="schema_CreateOrderEscrowAccount"></a>
+<a id="tocScreateorderescrowaccount"></a>
+<a id="tocscreateorderescrowaccount"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">112500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RUR"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Счет эскроу</p>
+<h4 id='properties-105'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>number(float)</td>
+<td>true</td>
+<td>Депонируемая сумма</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>string</td>
+<td>true</td>
+<td>Валюта:<br>  * <code>RUR</code> - Рублевая валюта</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>RUR</td>
+<td>Рублевая валюта</td>
+</tr>
+</tbody></table>
 <h2 id='968778f49f-2'>Электронная подпись</h2>
 <!-- Generator: Widdershins v4.0.1 -->
 
@@ -9559,7 +10983,7 @@ bearerAuth ( Scopes: customer_info )
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-6'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-8'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9668,7 +11092,7 @@ bearerAuth ( Scopes: customer_info )
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-13'>Response Headers</h4>
+<h4 id='response-headers-15'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -9698,7 +11122,7 @@ bearerAuth ( Scopes: customer_info )
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-7'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-9'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9826,7 +11250,7 @@ bearerAuth ( Scopes: customer_info )
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-14'>Response Headers</h4>
+<h4 id='response-headers-16'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -9859,7 +11283,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-8'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-10'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -9991,7 +11415,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-15'>Response Headers</h4>
+<h4 id='response-headers-17'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -10024,7 +11448,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-9'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-11'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -10157,7 +11581,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-16'>Response Headers</h4>
+<h4 id='response-headers-18'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -10190,7 +11614,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-10'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-12'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -10347,7 +11771,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-17'>Response Headers</h4>
+<h4 id='response-headers-19'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -10376,7 +11800,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-11'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-13'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -10509,7 +11933,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-18'>Response Headers</h4>
+<h4 id='response-headers-20'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -10542,7 +11966,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-12'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-14'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -10662,7 +12086,7 @@ bearerAuth
 <td>None</td>
 </tr>
 </tbody></table>
-<h4 id='response-headers-19'>Response Headers</h4>
+<h4 id='response-headers-21'>Response Headers</h4>
 <table><thead>
 <tr>
 <th>Status</th>
@@ -10695,7 +12119,7 @@ bearerAuth
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
-</code></pre></div><h4 id='header-parameters-13'>Header Parameters</h4>
+</code></pre></div><h4 id='header-parameters-15'>Header Parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -10824,7 +12248,7 @@ bearerAuth
 To perform this operation, you must be authenticated by means of one of the following methods:
 bearerAuth
 </aside>
-<h4 id='schemas-13'>Schemas</h4>
+<h4 id='schemas-15'>Schemas</h4>
 <h4 id="tocS_DN">DN</h4>
 
 <!-- backwards compatibility -->
@@ -10839,7 +12263,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные DN</p>
-<h4 id='properties-84'>Properties</h4>
+<h4 id='properties-106'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10871,7 +12295,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос на создание заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-85'>Properties</h4>
+<h4 id='properties-107'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10912,7 +12336,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ на создание заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-86'>Properties</h4>
+<h4 id='properties-108'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -10952,7 +12376,7 @@ bearerAuth
 <td>Дата создания заявки</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-21'>Enumerated Values</h4>
+<h4 id='enumerated-values-24'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -10986,7 +12410,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос отправки на подпись</p>
-<h4 id='properties-87'>Properties</h4>
+<h4 id='properties-109'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11002,7 +12426,7 @@ bearerAuth
 <td>Тип заявки</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-22'>Enumerated Values</h4>
+<h4 id='enumerated-values-25'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11038,7 +12462,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ отправки заявки на подпись</p>
-<h4 id='properties-88'>Properties</h4>
+<h4 id='properties-110'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11066,7 +12490,7 @@ bearerAuth
 <td>Тип заявки</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-23'>Enumerated Values</h4>
+<h4 id='enumerated-values-26'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11100,7 +12524,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запрос на подписание заявки</p>
-<h4 id='properties-89'>Properties</h4>
+<h4 id='properties-111'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11134,7 +12558,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Ответ на подписание заявки</p>
-<h4 id='properties-90'>Properties</h4>
+<h4 id='properties-112'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11168,7 +12592,7 @@ bearerAuth
 <td>Тип заявки</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-24'>Enumerated Values</h4>
+<h4 id='enumerated-values-27'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11243,7 +12667,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки</p>
-<h4 id='properties-91'>Properties</h4>
+<h4 id='properties-113'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11303,7 +12727,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-92'>Properties</h4>
+<h4 id='properties-114'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11355,7 +12779,7 @@ bearerAuth
 <td>Результат выполнения заявки на выпуск RSA-сертификата</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-25'>Enumerated Values</h4>
+<h4 id='enumerated-values-28'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11393,7 +12817,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные заявки на активацию RSA-сертификата</p>
-<h4 id='properties-93'>Properties</h4>
+<h4 id='properties-115'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11445,7 +12869,7 @@ bearerAuth
 <td>Результат выполнения заявки на активацию RSA-сертификата</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-26'>Enumerated Values</h4>
+<h4 id='enumerated-values-29'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -11489,7 +12913,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Результат выполнения заявки на выпуск RSA-сертификата</p>
-<h4 id='properties-94'>Properties</h4>
+<h4 id='properties-116'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11575,7 +12999,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Результат выполнения заявки на активацию RSA-сертификата</p>
-<h4 id='properties-95'>Properties</h4>
+<h4 id='properties-117'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11616,7 +13040,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные о владельце сертификата</p>
-<h4 id='properties-96'>Properties</h4>
+<h4 id='properties-118'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11688,7 +13112,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>RSA-сертификат</p>
-<h4 id='properties-97'>Properties</h4>
+<h4 id='properties-119'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11739,7 +13163,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Данные сертификата</p>
-<h4 id='properties-98'>Properties</h4>
+<h4 id='properties-120'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11827,7 +13251,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Список всех возможных действий над сертификатом</p>
-<h4 id='properties-99'>Properties</h4>
+<h4 id='properties-121'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11864,7 +13288,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Тип основной подписи</p>
-<h4 id='properties-100'>Properties</h4>
+<h4 id='properties-122'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11894,7 +13318,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-101'>Properties</h4>
+</span></code></pre></div><h4 id='properties-123'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11930,7 +13354,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-102'>Properties</h4>
+</span></code></pre></div><h4 id='properties-124'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -11966,7 +13390,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authorization header is not present in request headers"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-103'>Properties</h4>
+</span></code></pre></div><h4 id='properties-125'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12002,7 +13426,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-104'>Properties</h4>
+</span></code></pre></div><h4 id='properties-126'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12038,7 +13462,7 @@ bearerAuth
   </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="err">Wrong</span><span class="w"> </span><span class="err">dn</span><span class="w"> </span><span class="p">[</span><span class="err">DN(firstName=Евстафий</span><span class="p">,</span><span class="w"> </span><span class="err">lastName=Жданов</span><span class="p">,</span><span class="w"> </span><span class="err">fullName=Жданов</span><span class="w"> </span><span class="err">Евстафий</span><span class="w"> </span><span class="err">Юльевич</span><span class="p">,</span><span class="w"> </span><span class="err">country=RU</span><span class="p">,</span><span class="w"> </span><span class="err">area=Ленинградская</span><span class="w"> </span><span class="err">обл.</span><span class="p">,</span><span class="w"> </span><span class="err">city=</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">address=</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="err">email=User</span><span class="mi">513</span><span class="err">@pochtochka.com)</span><span class="p">]</span><span class="w"> </span><span class="err">from</span><span class="w"> </span><span class="err">pkcs</span><span class="mi">10</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">user</span><span class="w"> </span><span class="p">[</span><span class="err">XBOXWG</span><span class="p">]</span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-105'>Properties</h4>
+</span></code></pre></div><h4 id='properties-127'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12072,7 +13496,7 @@ bearerAuth
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="s2">"error: unknown_endpoint
 error_description: Endpoint is not found or not active"</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-106'>Properties</h4>
+</span></code></pre></div><h4 id='properties-128'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12106,7 +13530,7 @@ error_description: Endpoint is not found or not active"</span><span class="w">
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-14'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-16'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -12241,7 +13665,7 @@ error_description: Endpoint is not found or not active"</span><span class="w">
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-14'>Schemas</h4>
+<h4 id='schemas-16'>Schemas</h4>
 <h4 id="tocS_AccountStatus">AccountStatus</h4>
 
 <!-- backwards compatibility -->
@@ -12254,7 +13678,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус счёта</p>
-<h4 id='properties-107'>Properties</h4>
+<h4 id='properties-129'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12270,7 +13694,7 @@ This operation does not require authentication
 <td>Статус счёта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-27'>Enumerated Values</h4>
+<h4 id='enumerated-values-30'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -12307,7 +13731,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Баланс счёта</p>
-<h4 id='properties-108'>Properties</h4>
+<h4 id='properties-130'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12367,7 +13791,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект счёта</p>
-<h4 id='properties-109'>Properties</h4>
+<h4 id='properties-131'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12434,7 +13858,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счета</p>
-<h4 id='properties-110'>Properties</h4>
+<h4 id='properties-132'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12463,7 +13887,7 @@ This operation does not require authentication
   </span><span class="nl">"accountStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-111'>Properties</h4>
+</span></code></pre></div><h4 id='properties-133'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12496,7 +13920,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-112'>Properties</h4>
+<h4 id='properties-134'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12544,7 +13968,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация по клиенту</p>
-<h4 id='properties-113'>Properties</h4>
+<h4 id='properties-135'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12607,7 +14031,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Банк-корреспондент</p>
-<h4 id='properties-114'>Properties</h4>
+<h4 id='properties-136'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12671,7 +14095,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Реквизиты счёта</p>
-<h4 id='properties-115'>Properties</h4>
+<h4 id='properties-137'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12749,7 +14173,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-116'>Properties</h4>
+</span></code></pre></div><h4 id='properties-138'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12786,7 +14210,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счет карты</p>
-<h4 id='properties-117'>Properties</h4>
+<h4 id='properties-139'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12818,7 +14242,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-118'>Properties</h4>
+</span></code></pre></div><h4 id='properties-140'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12887,7 +14311,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект карты</p>
-<h4 id='properties-119'>Properties</h4>
+<h4 id='properties-141'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -12996,7 +14420,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Карты</p>
-<h4 id='properties-120'>Properties</h4>
+<h4 id='properties-142'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13033,7 +14457,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект prepaid-карты</p>
-<h4 id='properties-121'>Properties</h4>
+<h4 id='properties-143'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13100,7 +14524,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Prepaid-карты</p>
-<h4 id='properties-122'>Properties</h4>
+<h4 id='properties-144'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13132,7 +14556,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статистика по счету</p>
-<h4 id='properties-123'>Properties</h4>
+<h4 id='properties-145'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13170,7 +14594,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине POS-оборота</p>
-<h4 id='properties-124'>Properties</h4>
+<h4 id='properties-146'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13208,7 +14632,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине среднемесячного остатка</p>
-<h4 id='properties-125'>Properties</h4>
+<h4 id='properties-147'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13265,7 +14689,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия обслуживания по карте</p>
-<h4 id='properties-126'>Properties</h4>
+<h4 id='properties-148'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13360,7 +14784,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тарифы по карте</p>
-<h4 id='properties-127'>Properties</h4>
+<h4 id='properties-149'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13392,7 +14816,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация о карте</p>
-<h4 id='properties-128'>Properties</h4>
+<h4 id='properties-150'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13437,7 +14861,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тариф на услугу Альфа-чек</p>
-<h4 id='properties-129'>Properties</h4>
+<h4 id='properties-151'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13490,7 +14914,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Список тарифов на услугу Альфа-чек доступных пользователю</p>
-<h4 id='properties-130'>Properties</h4>
+<h4 id='properties-152'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13525,7 +14949,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Уведомления по операциям</p>
-<h4 id='properties-131'>Properties</h4>
+<h4 id='properties-153'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13560,7 +14984,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
 
-</code></pre></div><h4 id='header-parameters-15'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-17'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -13696,7 +15120,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-15'>Schemas</h4>
+<h4 id='schemas-17'>Schemas</h4>
 <h4 id="tocS_AccountStatus">AccountStatus</h4>
 
 <!-- backwards compatibility -->
@@ -13709,7 +15133,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус счёта</p>
-<h4 id='properties-132'>Properties</h4>
+<h4 id='properties-154'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13725,7 +15149,7 @@ This operation does not require authentication
 <td>Статус счёта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-28'>Enumerated Values</h4>
+<h4 id='enumerated-values-31'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -13762,7 +15186,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Баланс счёта</p>
-<h4 id='properties-133'>Properties</h4>
+<h4 id='properties-155'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13822,7 +15246,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект счёта</p>
-<h4 id='properties-134'>Properties</h4>
+<h4 id='properties-156'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13889,7 +15313,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счета</p>
-<h4 id='properties-135'>Properties</h4>
+<h4 id='properties-157'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13918,7 +15342,7 @@ This operation does not require authentication
   </span><span class="nl">"accountStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-136'>Properties</h4>
+</span></code></pre></div><h4 id='properties-158'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13951,7 +15375,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-137'>Properties</h4>
+<h4 id='properties-159'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -13999,7 +15423,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация по клиенту</p>
-<h4 id='properties-138'>Properties</h4>
+<h4 id='properties-160'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14062,7 +15486,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Банк-корреспондент</p>
-<h4 id='properties-139'>Properties</h4>
+<h4 id='properties-161'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14126,7 +15550,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Реквизиты счёта</p>
-<h4 id='properties-140'>Properties</h4>
+<h4 id='properties-162'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14204,7 +15628,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-141'>Properties</h4>
+</span></code></pre></div><h4 id='properties-163'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14241,7 +15665,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счет карты</p>
-<h4 id='properties-142'>Properties</h4>
+<h4 id='properties-164'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14273,7 +15697,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-143'>Properties</h4>
+</span></code></pre></div><h4 id='properties-165'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14342,7 +15766,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект карты</p>
-<h4 id='properties-144'>Properties</h4>
+<h4 id='properties-166'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14451,7 +15875,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Карты</p>
-<h4 id='properties-145'>Properties</h4>
+<h4 id='properties-167'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14488,7 +15912,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект prepaid-карты</p>
-<h4 id='properties-146'>Properties</h4>
+<h4 id='properties-168'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14555,7 +15979,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Prepaid-карты</p>
-<h4 id='properties-147'>Properties</h4>
+<h4 id='properties-169'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14587,7 +16011,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статистика по счету</p>
-<h4 id='properties-148'>Properties</h4>
+<h4 id='properties-170'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14625,7 +16049,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине POS-оборота</p>
-<h4 id='properties-149'>Properties</h4>
+<h4 id='properties-171'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14663,7 +16087,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине среднемесячного остатка</p>
-<h4 id='properties-150'>Properties</h4>
+<h4 id='properties-172'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14720,7 +16144,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия обслуживания по карте</p>
-<h4 id='properties-151'>Properties</h4>
+<h4 id='properties-173'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14815,7 +16239,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тарифы по карте</p>
-<h4 id='properties-152'>Properties</h4>
+<h4 id='properties-174'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14847,7 +16271,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация о карте</p>
-<h4 id='properties-153'>Properties</h4>
+<h4 id='properties-175'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14892,7 +16316,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тариф на услугу Альфа-чек</p>
-<h4 id='properties-154'>Properties</h4>
+<h4 id='properties-176'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14945,7 +16369,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Список тарифов на услугу Альфа-чек доступных пользователю</p>
-<h4 id='properties-155'>Properties</h4>
+<h4 id='properties-177'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -14980,7 +16404,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Уведомления по операциям</p>
-<h4 id='properties-156'>Properties</h4>
+<h4 id='properties-178'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15014,7 +16438,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-16'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-18'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -15160,7 +16584,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-16'>Schemas</h4>
+<h4 id='schemas-18'>Schemas</h4>
 <h4 id="tocS_AccountStatus">AccountStatus</h4>
 
 <!-- backwards compatibility -->
@@ -15173,7 +16597,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус счёта</p>
-<h4 id='properties-157'>Properties</h4>
+<h4 id='properties-179'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15189,7 +16613,7 @@ This operation does not require authentication
 <td>Статус счёта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-29'>Enumerated Values</h4>
+<h4 id='enumerated-values-32'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -15226,7 +16650,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Баланс счёта</p>
-<h4 id='properties-158'>Properties</h4>
+<h4 id='properties-180'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15286,7 +16710,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект счёта</p>
-<h4 id='properties-159'>Properties</h4>
+<h4 id='properties-181'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15353,7 +16777,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счета</p>
-<h4 id='properties-160'>Properties</h4>
+<h4 id='properties-182'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15382,7 +16806,7 @@ This operation does not require authentication
   </span><span class="nl">"accountStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-161'>Properties</h4>
+</span></code></pre></div><h4 id='properties-183'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15415,7 +16839,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-162'>Properties</h4>
+<h4 id='properties-184'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15463,7 +16887,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация по клиенту</p>
-<h4 id='properties-163'>Properties</h4>
+<h4 id='properties-185'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15526,7 +16950,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Банк-корреспондент</p>
-<h4 id='properties-164'>Properties</h4>
+<h4 id='properties-186'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15590,7 +17014,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Реквизиты счёта</p>
-<h4 id='properties-165'>Properties</h4>
+<h4 id='properties-187'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15668,7 +17092,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-166'>Properties</h4>
+</span></code></pre></div><h4 id='properties-188'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15705,7 +17129,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счет карты</p>
-<h4 id='properties-167'>Properties</h4>
+<h4 id='properties-189'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15737,7 +17161,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-168'>Properties</h4>
+</span></code></pre></div><h4 id='properties-190'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15806,7 +17230,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект карты</p>
-<h4 id='properties-169'>Properties</h4>
+<h4 id='properties-191'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15915,7 +17339,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Карты</p>
-<h4 id='properties-170'>Properties</h4>
+<h4 id='properties-192'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -15952,7 +17376,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект prepaid-карты</p>
-<h4 id='properties-171'>Properties</h4>
+<h4 id='properties-193'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16019,7 +17443,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Prepaid-карты</p>
-<h4 id='properties-172'>Properties</h4>
+<h4 id='properties-194'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16051,7 +17475,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статистика по счету</p>
-<h4 id='properties-173'>Properties</h4>
+<h4 id='properties-195'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16089,7 +17513,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине POS-оборота</p>
-<h4 id='properties-174'>Properties</h4>
+<h4 id='properties-196'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16127,7 +17551,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине среднемесячного остатка</p>
-<h4 id='properties-175'>Properties</h4>
+<h4 id='properties-197'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16184,7 +17608,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия обслуживания по карте</p>
-<h4 id='properties-176'>Properties</h4>
+<h4 id='properties-198'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16279,7 +17703,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тарифы по карте</p>
-<h4 id='properties-177'>Properties</h4>
+<h4 id='properties-199'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16311,7 +17735,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация о карте</p>
-<h4 id='properties-178'>Properties</h4>
+<h4 id='properties-200'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16356,7 +17780,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тариф на услугу Альфа-чек</p>
-<h4 id='properties-179'>Properties</h4>
+<h4 id='properties-201'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16409,7 +17833,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Список тарифов на услугу Альфа-чек доступных пользователю</p>
-<h4 id='properties-180'>Properties</h4>
+<h4 id='properties-202'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16444,7 +17868,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Уведомления по операциям</p>
-<h4 id='properties-181'>Properties</h4>
+<h4 id='properties-203'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16478,7 +17902,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-17'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-19'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -16620,7 +18044,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-17'>Schemas</h4>
+<h4 id='schemas-19'>Schemas</h4>
 <h4 id="tocS_AccountStatus">AccountStatus</h4>
 
 <!-- backwards compatibility -->
@@ -16633,7 +18057,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус счёта</p>
-<h4 id='properties-182'>Properties</h4>
+<h4 id='properties-204'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16649,7 +18073,7 @@ This operation does not require authentication
 <td>Статус счёт</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-30'>Enumerated Values</h4>
+<h4 id='enumerated-values-33'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -16686,7 +18110,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Баланс счёта</p>
-<h4 id='properties-183'>Properties</h4>
+<h4 id='properties-205'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16746,7 +18170,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект счёта</p>
-<h4 id='properties-184'>Properties</h4>
+<h4 id='properties-206'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16813,7 +18237,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счета</p>
-<h4 id='properties-185'>Properties</h4>
+<h4 id='properties-207'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16842,7 +18266,7 @@ This operation does not require authentication
   </span><span class="nl">"accountStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-186'>Properties</h4>
+</span></code></pre></div><h4 id='properties-208'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16875,7 +18299,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-187'>Properties</h4>
+<h4 id='properties-209'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16923,7 +18347,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация по клиенту</p>
-<h4 id='properties-188'>Properties</h4>
+<h4 id='properties-210'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -16986,7 +18410,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Банк-корреспондент</p>
-<h4 id='properties-189'>Properties</h4>
+<h4 id='properties-211'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17050,7 +18474,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Реквизиты счёта</p>
-<h4 id='properties-190'>Properties</h4>
+<h4 id='properties-212'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17128,7 +18552,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-191'>Properties</h4>
+</span></code></pre></div><h4 id='properties-213'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17165,7 +18589,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счет карты</p>
-<h4 id='properties-192'>Properties</h4>
+<h4 id='properties-214'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17197,7 +18621,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-193'>Properties</h4>
+</span></code></pre></div><h4 id='properties-215'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17266,7 +18690,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект карты</p>
-<h4 id='properties-194'>Properties</h4>
+<h4 id='properties-216'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17375,7 +18799,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Карты</p>
-<h4 id='properties-195'>Properties</h4>
+<h4 id='properties-217'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17412,7 +18836,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект prepaid-карты</p>
-<h4 id='properties-196'>Properties</h4>
+<h4 id='properties-218'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17479,7 +18903,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Prepaid-карты</p>
-<h4 id='properties-197'>Properties</h4>
+<h4 id='properties-219'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17511,7 +18935,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статистика по счету</p>
-<h4 id='properties-198'>Properties</h4>
+<h4 id='properties-220'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17549,7 +18973,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине POS-оборота</p>
-<h4 id='properties-199'>Properties</h4>
+<h4 id='properties-221'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17587,7 +19011,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине среднемесячного остатка</p>
-<h4 id='properties-200'>Properties</h4>
+<h4 id='properties-222'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17644,7 +19068,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия обслуживания по карте</p>
-<h4 id='properties-201'>Properties</h4>
+<h4 id='properties-223'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17739,7 +19163,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тарифы по карте</p>
-<h4 id='properties-202'>Properties</h4>
+<h4 id='properties-224'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17771,7 +19195,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация о карте</p>
-<h4 id='properties-203'>Properties</h4>
+<h4 id='properties-225'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17816,7 +19240,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тариф на услугу Альфа-чек</p>
-<h4 id='properties-204'>Properties</h4>
+<h4 id='properties-226'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17869,7 +19293,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Список тарифов на услугу Альфа-чек доступных пользователю</p>
-<h4 id='properties-205'>Properties</h4>
+<h4 id='properties-227'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17904,7 +19328,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Уведомления по операциям</p>
-<h4 id='properties-206'>Properties</h4>
+<h4 id='properties-228'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -17938,7 +19362,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-18'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-20'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -18049,7 +19473,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-18'>Schemas</h4>
+<h4 id='schemas-20'>Schemas</h4>
 <h4 id="tocS_AccountStatus">AccountStatus</h4>
 
 <!-- backwards compatibility -->
@@ -18062,7 +19486,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус счёта</p>
-<h4 id='properties-207'>Properties</h4>
+<h4 id='properties-229'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18078,7 +19502,7 @@ This operation does not require authentication
 <td>Статус счёта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-31'>Enumerated Values</h4>
+<h4 id='enumerated-values-34'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -18115,7 +19539,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Баланс счёта</p>
-<h4 id='properties-208'>Properties</h4>
+<h4 id='properties-230'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18175,7 +19599,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект счёта</p>
-<h4 id='properties-209'>Properties</h4>
+<h4 id='properties-231'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18242,7 +19666,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счета</p>
-<h4 id='properties-210'>Properties</h4>
+<h4 id='properties-232'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18271,7 +19695,7 @@ This operation does not require authentication
   </span><span class="nl">"accountStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-211'>Properties</h4>
+</span></code></pre></div><h4 id='properties-233'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18304,7 +19728,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-212'>Properties</h4>
+<h4 id='properties-234'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18352,7 +19776,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация по клиенту</p>
-<h4 id='properties-213'>Properties</h4>
+<h4 id='properties-235'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18415,7 +19839,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Банк-корреспондент</p>
-<h4 id='properties-214'>Properties</h4>
+<h4 id='properties-236'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18479,7 +19903,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Реквизиты счёта</p>
-<h4 id='properties-215'>Properties</h4>
+<h4 id='properties-237'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18557,7 +19981,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-216'>Properties</h4>
+</span></code></pre></div><h4 id='properties-238'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18594,7 +20018,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счет карты</p>
-<h4 id='properties-217'>Properties</h4>
+<h4 id='properties-239'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18626,7 +20050,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-218'>Properties</h4>
+</span></code></pre></div><h4 id='properties-240'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18695,7 +20119,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект карты</p>
-<h4 id='properties-219'>Properties</h4>
+<h4 id='properties-241'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18804,7 +20228,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Карты</p>
-<h4 id='properties-220'>Properties</h4>
+<h4 id='properties-242'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18841,7 +20265,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект prepaid-карты</p>
-<h4 id='properties-221'>Properties</h4>
+<h4 id='properties-243'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18908,7 +20332,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Prepaid-карты</p>
-<h4 id='properties-222'>Properties</h4>
+<h4 id='properties-244'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18940,7 +20364,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статистика по счету</p>
-<h4 id='properties-223'>Properties</h4>
+<h4 id='properties-245'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -18978,7 +20402,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине POS-оборота</p>
-<h4 id='properties-224'>Properties</h4>
+<h4 id='properties-246'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19016,7 +20440,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине среднемесячного остатка</p>
-<h4 id='properties-225'>Properties</h4>
+<h4 id='properties-247'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19073,7 +20497,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия обслуживания по карте</p>
-<h4 id='properties-226'>Properties</h4>
+<h4 id='properties-248'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19168,7 +20592,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тарифы по карте</p>
-<h4 id='properties-227'>Properties</h4>
+<h4 id='properties-249'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19200,7 +20624,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация о карте</p>
-<h4 id='properties-228'>Properties</h4>
+<h4 id='properties-250'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19245,7 +20669,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тариф на услугу Альфа-чек</p>
-<h4 id='properties-229'>Properties</h4>
+<h4 id='properties-251'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19298,7 +20722,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Список тарифов на услугу Альфа-чек доступных пользователю</p>
-<h4 id='properties-230'>Properties</h4>
+<h4 id='properties-252'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19333,7 +20757,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Уведомления по операциям</p>
-<h4 id='properties-231'>Properties</h4>
+<h4 id='properties-253'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19368,7 +20792,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-19'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-21'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -19474,7 +20898,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-19'>Schemas</h4>
+<h4 id='schemas-21'>Schemas</h4>
 <h4 id="tocS_AccountStatus">AccountStatus</h4>
 
 <!-- backwards compatibility -->
@@ -19487,7 +20911,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус счёта</p>
-<h4 id='properties-232'>Properties</h4>
+<h4 id='properties-254'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19503,7 +20927,7 @@ This operation does not require authentication
 <td>Статус счёта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-32'>Enumerated Values</h4>
+<h4 id='enumerated-values-35'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -19540,7 +20964,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Баланс счёта</p>
-<h4 id='properties-233'>Properties</h4>
+<h4 id='properties-255'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19600,7 +21024,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект счёта</p>
-<h4 id='properties-234'>Properties</h4>
+<h4 id='properties-256'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19667,7 +21091,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счета</p>
-<h4 id='properties-235'>Properties</h4>
+<h4 id='properties-257'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19696,7 +21120,7 @@ This operation does not require authentication
   </span><span class="nl">"accountStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-236'>Properties</h4>
+</span></code></pre></div><h4 id='properties-258'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19729,7 +21153,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-237'>Properties</h4>
+<h4 id='properties-259'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19777,7 +21201,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация по клиенту</p>
-<h4 id='properties-238'>Properties</h4>
+<h4 id='properties-260'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19840,7 +21264,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Банк-корреспондент</p>
-<h4 id='properties-239'>Properties</h4>
+<h4 id='properties-261'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19904,7 +21328,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Реквизиты счёта</p>
-<h4 id='properties-240'>Properties</h4>
+<h4 id='properties-262'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -19982,7 +21406,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-241'>Properties</h4>
+</span></code></pre></div><h4 id='properties-263'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20019,7 +21443,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счет карты</p>
-<h4 id='properties-242'>Properties</h4>
+<h4 id='properties-264'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20051,7 +21475,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-243'>Properties</h4>
+</span></code></pre></div><h4 id='properties-265'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20120,7 +21544,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект карты</p>
-<h4 id='properties-244'>Properties</h4>
+<h4 id='properties-266'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20229,7 +21653,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Карты</p>
-<h4 id='properties-245'>Properties</h4>
+<h4 id='properties-267'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20266,7 +21690,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект prepaid-карты</p>
-<h4 id='properties-246'>Properties</h4>
+<h4 id='properties-268'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20333,7 +21757,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Prepaid-карты</p>
-<h4 id='properties-247'>Properties</h4>
+<h4 id='properties-269'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20365,7 +21789,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статистика по счету</p>
-<h4 id='properties-248'>Properties</h4>
+<h4 id='properties-270'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20403,7 +21827,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине POS-оборота</p>
-<h4 id='properties-249'>Properties</h4>
+<h4 id='properties-271'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20441,7 +21865,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине среднемесячного остатка</p>
-<h4 id='properties-250'>Properties</h4>
+<h4 id='properties-272'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20498,7 +21922,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия обслуживания по карте</p>
-<h4 id='properties-251'>Properties</h4>
+<h4 id='properties-273'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20593,7 +22017,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тарифы по карте</p>
-<h4 id='properties-252'>Properties</h4>
+<h4 id='properties-274'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20625,7 +22049,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация о карте</p>
-<h4 id='properties-253'>Properties</h4>
+<h4 id='properties-275'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20670,7 +22094,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тариф на услугу Альфа-чек</p>
-<h4 id='properties-254'>Properties</h4>
+<h4 id='properties-276'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20723,7 +22147,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Список тарифов на услугу Альфа-чек доступных пользователю</p>
-<h4 id='properties-255'>Properties</h4>
+<h4 id='properties-277'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20758,7 +22182,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Уведомления по операциям</p>
-<h4 id='properties-256'>Properties</h4>
+<h4 id='properties-278'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20792,7 +22216,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-20'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-22'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -20908,7 +22332,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-20'>Schemas</h4>
+<h4 id='schemas-22'>Schemas</h4>
 <h4 id="tocS_AccountStatus">AccountStatus</h4>
 
 <!-- backwards compatibility -->
@@ -20921,7 +22345,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус счёта</p>
-<h4 id='properties-257'>Properties</h4>
+<h4 id='properties-279'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -20937,7 +22361,7 @@ This operation does not require authentication
 <td>Статус счёта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-33'>Enumerated Values</h4>
+<h4 id='enumerated-values-36'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -20974,7 +22398,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Баланс счёта</p>
-<h4 id='properties-258'>Properties</h4>
+<h4 id='properties-280'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21034,7 +22458,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект счёта</p>
-<h4 id='properties-259'>Properties</h4>
+<h4 id='properties-281'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21101,7 +22525,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счета</p>
-<h4 id='properties-260'>Properties</h4>
+<h4 id='properties-282'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21130,7 +22554,7 @@ This operation does not require authentication
   </span><span class="nl">"accountStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-261'>Properties</h4>
+</span></code></pre></div><h4 id='properties-283'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21163,7 +22587,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-262'>Properties</h4>
+<h4 id='properties-284'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21211,7 +22635,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация по клиенту</p>
-<h4 id='properties-263'>Properties</h4>
+<h4 id='properties-285'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21274,7 +22698,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Банк-корреспондент</p>
-<h4 id='properties-264'>Properties</h4>
+<h4 id='properties-286'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21338,7 +22762,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Реквизиты счёта</p>
-<h4 id='properties-265'>Properties</h4>
+<h4 id='properties-287'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21416,7 +22840,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-266'>Properties</h4>
+</span></code></pre></div><h4 id='properties-288'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21453,7 +22877,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счет карты</p>
-<h4 id='properties-267'>Properties</h4>
+<h4 id='properties-289'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21485,7 +22909,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-268'>Properties</h4>
+</span></code></pre></div><h4 id='properties-290'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21554,7 +22978,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект карты</p>
-<h4 id='properties-269'>Properties</h4>
+<h4 id='properties-291'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21663,7 +23087,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Карты</p>
-<h4 id='properties-270'>Properties</h4>
+<h4 id='properties-292'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21700,7 +23124,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект prepaid-карты</p>
-<h4 id='properties-271'>Properties</h4>
+<h4 id='properties-293'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21767,7 +23191,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Prepaid-карты</p>
-<h4 id='properties-272'>Properties</h4>
+<h4 id='properties-294'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21799,7 +23223,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статистика по счету</p>
-<h4 id='properties-273'>Properties</h4>
+<h4 id='properties-295'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21837,7 +23261,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине POS-оборота</p>
-<h4 id='properties-274'>Properties</h4>
+<h4 id='properties-296'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21875,7 +23299,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине среднемесячного остатка</p>
-<h4 id='properties-275'>Properties</h4>
+<h4 id='properties-297'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -21932,7 +23356,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия обслуживания по карте</p>
-<h4 id='properties-276'>Properties</h4>
+<h4 id='properties-298'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22027,7 +23451,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тарифы по карте</p>
-<h4 id='properties-277'>Properties</h4>
+<h4 id='properties-299'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22059,7 +23483,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация о карте</p>
-<h4 id='properties-278'>Properties</h4>
+<h4 id='properties-300'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22104,7 +23528,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тариф на услугу Альфа-чек</p>
-<h4 id='properties-279'>Properties</h4>
+<h4 id='properties-301'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22157,7 +23581,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Список тарифов на услугу Альфа-чек доступных пользователю</p>
-<h4 id='properties-280'>Properties</h4>
+<h4 id='properties-302'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22192,7 +23616,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Уведомления по операциям</p>
-<h4 id='properties-281'>Properties</h4>
+<h4 id='properties-303'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22222,7 +23646,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-21'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-23'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -22346,7 +23770,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-21'>Schemas</h4>
+<h4 id='schemas-23'>Schemas</h4>
 <h4 id="tocS_AccountStatus">AccountStatus</h4>
 
 <!-- backwards compatibility -->
@@ -22359,7 +23783,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус счёта</p>
-<h4 id='properties-282'>Properties</h4>
+<h4 id='properties-304'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22375,7 +23799,7 @@ This operation does not require authentication
 <td>Статус счёта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-34'>Enumerated Values</h4>
+<h4 id='enumerated-values-37'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -22412,7 +23836,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Баланс счёта</p>
-<h4 id='properties-283'>Properties</h4>
+<h4 id='properties-305'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22472,7 +23896,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект счёта</p>
-<h4 id='properties-284'>Properties</h4>
+<h4 id='properties-306'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22539,7 +23963,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счета</p>
-<h4 id='properties-285'>Properties</h4>
+<h4 id='properties-307'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22568,7 +23992,7 @@ This operation does not require authentication
   </span><span class="nl">"accountStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-286'>Properties</h4>
+</span></code></pre></div><h4 id='properties-308'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22601,7 +24025,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-287'>Properties</h4>
+<h4 id='properties-309'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22649,7 +24073,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация по клиенту</p>
-<h4 id='properties-288'>Properties</h4>
+<h4 id='properties-310'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22712,7 +24136,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Банк-корреспондент</p>
-<h4 id='properties-289'>Properties</h4>
+<h4 id='properties-311'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22776,7 +24200,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Реквизиты счёта</p>
-<h4 id='properties-290'>Properties</h4>
+<h4 id='properties-312'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22854,7 +24278,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-291'>Properties</h4>
+</span></code></pre></div><h4 id='properties-313'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22891,7 +24315,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Счет карты</p>
-<h4 id='properties-292'>Properties</h4>
+<h4 id='properties-314'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22923,7 +24347,7 @@ This operation does not require authentication
   </span><span class="nl">"isPinInstalled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-293'>Properties</h4>
+</span></code></pre></div><h4 id='properties-315'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -22992,7 +24416,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект карты</p>
-<h4 id='properties-294'>Properties</h4>
+<h4 id='properties-316'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23101,7 +24525,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Карты</p>
-<h4 id='properties-295'>Properties</h4>
+<h4 id='properties-317'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23138,7 +24562,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект prepaid-карты</p>
-<h4 id='properties-296'>Properties</h4>
+<h4 id='properties-318'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23205,7 +24629,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Prepaid-карты</p>
-<h4 id='properties-297'>Properties</h4>
+<h4 id='properties-319'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23237,7 +24661,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статистика по счету</p>
-<h4 id='properties-298'>Properties</h4>
+<h4 id='properties-320'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23275,7 +24699,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине POS-оборота</p>
-<h4 id='properties-299'>Properties</h4>
+<h4 id='properties-321'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23313,7 +24737,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия по величине среднемесячного остатка</p>
-<h4 id='properties-300'>Properties</h4>
+<h4 id='properties-322'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23370,7 +24794,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Условия обслуживания по карте</p>
-<h4 id='properties-301'>Properties</h4>
+<h4 id='properties-323'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23465,7 +24889,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тарифы по карте</p>
-<h4 id='properties-302'>Properties</h4>
+<h4 id='properties-324'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23497,7 +24921,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация о карте</p>
-<h4 id='properties-303'>Properties</h4>
+<h4 id='properties-325'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23542,7 +24966,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тариф на услугу Альфа-чек</p>
-<h4 id='properties-304'>Properties</h4>
+<h4 id='properties-326'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23595,7 +25019,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Список тарифов на услугу Альфа-чек доступных пользователю</p>
-<h4 id='properties-305'>Properties</h4>
+<h4 id='properties-327'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23630,7 +25054,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Уведомления по операциям</p>
-<h4 id='properties-306'>Properties</h4>
+<h4 id='properties-328'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23664,7 +25088,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-22'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-24'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -23852,7 +25276,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-22'>Schemas</h4>
+<h4 id='schemas-24'>Schemas</h4>
 <h4 id="tocS_Amount">Amount</h4>
 
 <!-- backwards compatibility -->
@@ -23869,7 +25293,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-307'>Properties</h4>
+<h4 id='properties-329'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23910,7 +25334,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Направление движения денежных средств</p>
-<h4 id='properties-308'>Properties</h4>
+<h4 id='properties-330'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -23926,7 +25350,7 @@ This operation does not require authentication
 <td>Направление движения денежных средств: <code>INCOME</code> - приход/пополнение, <code>EXPENSE</code> - расход/списание</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-35'>Enumerated Values</h4>
+<h4 id='enumerated-values-38'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -23966,7 +25390,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с критериями для выборки истории операций</p>
-<h4 id='properties-309'>Properties</h4>
+<h4 id='properties-331'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24034,7 +25458,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект программы лояльности</p>
-<h4 id='properties-310'>Properties</h4>
+<h4 id='properties-332'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24077,7 +25501,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект программы лояльности</p>
-<h4 id='properties-311'>Properties</h4>
+<h4 id='properties-333'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24118,7 +25542,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус операции</p>
-<h4 id='properties-312'>Properties</h4>
+<h4 id='properties-334'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24134,7 +25558,7 @@ This operation does not require authentication
 <td>Статус операции: <code>null</code> - входящая операция или статус не определен; <code>SUCCESS</code> - операция выполнена успешна; <code>HOLD</code> - операция в обработке; <code>FAILED</code> - операция не выполнена</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-36'>Enumerated Values</h4>
+<h4 id='enumerated-values-39'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -24181,7 +25605,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект терминал точки продаж</p>
-<h4 id='properties-313'>Properties</h4>
+<h4 id='properties-335'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24235,7 +25659,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект отправитель перевода</p>
-<h4 id='properties-314'>Properties</h4>
+<h4 id='properties-336'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24299,7 +25723,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект получатель перевода</p>
-<h4 id='properties-315'>Properties</h4>
+<h4 id='properties-337'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24397,7 +25821,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с информацией по операции</p>
-<h4 id='properties-316'>Properties</h4>
+<h4 id='properties-338'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24540,7 +25964,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>История операций</p>
-<h4 id='properties-317'>Properties</h4>
+<h4 id='properties-339'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24620,7 +26044,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с информацией по операции</p>
-<h4 id='properties-318'>Properties</h4>
+<h4 id='properties-340'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24760,7 +26184,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-23'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-25'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -24928,7 +26352,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-23'>Schemas</h4>
+<h4 id='schemas-25'>Schemas</h4>
 <h4 id="tocS_Amount">Amount</h4>
 
 <!-- backwards compatibility -->
@@ -24945,7 +26369,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с суммой</p>
-<h4 id='properties-319'>Properties</h4>
+<h4 id='properties-341'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -24986,7 +26410,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Направление движения денежных средств</p>
-<h4 id='properties-320'>Properties</h4>
+<h4 id='properties-342'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25002,7 +26426,7 @@ This operation does not require authentication
 <td>Направление движения денежных средств: <code>INCOME</code> - приход/пополнение, <code>EXPENSE</code> - расход/списание</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-37'>Enumerated Values</h4>
+<h4 id='enumerated-values-40'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -25042,7 +26466,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с критериями для выборки истории операций</p>
-<h4 id='properties-321'>Properties</h4>
+<h4 id='properties-343'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25110,7 +26534,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект программы лояльности</p>
-<h4 id='properties-322'>Properties</h4>
+<h4 id='properties-344'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25153,7 +26577,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект программы лояльности</p>
-<h4 id='properties-323'>Properties</h4>
+<h4 id='properties-345'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25194,7 +26618,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Статус операции</p>
-<h4 id='properties-324'>Properties</h4>
+<h4 id='properties-346'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25210,7 +26634,7 @@ This operation does not require authentication
 <td>Статус операции: <code>null</code> - входящая операция или статус не определен; <code>SUCCESS</code> - операция выполнена успешна; <code>HOLD</code> - операция в обработке; <code>FAILED</code> - операция не выполнена</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-38'>Enumerated Values</h4>
+<h4 id='enumerated-values-41'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -25257,7 +26681,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект терминал точки продаж</p>
-<h4 id='properties-325'>Properties</h4>
+<h4 id='properties-347'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25311,7 +26735,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект отправитель перевода</p>
-<h4 id='properties-326'>Properties</h4>
+<h4 id='properties-348'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25375,7 +26799,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект получатель перевода</p>
-<h4 id='properties-327'>Properties</h4>
+<h4 id='properties-349'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25473,7 +26897,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с информацией по операции</p>
-<h4 id='properties-328'>Properties</h4>
+<h4 id='properties-350'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25616,7 +27040,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>История операций</p>
-<h4 id='properties-329'>Properties</h4>
+<h4 id='properties-351'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25696,7 +27120,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Объект с информацией по операции</p>
-<h4 id='properties-330'>Properties</h4>
+<h4 id='properties-352'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25836,7 +27260,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-24'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-26'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -25946,7 +27370,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-24'>Schemas</h4>
+<h4 id='schemas-26'>Schemas</h4>
 <h4 id="tocS_Sender">Sender</h4>
 
 <!-- backwards compatibility -->
@@ -25962,7 +27386,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об отправителе перевода</p>
-<h4 id='properties-331'>Properties</h4>
+<h4 id='properties-353'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -25997,7 +27421,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип идентификатора карты получателя</p>
-<h4 id='properties-332'>Properties</h4>
+<h4 id='properties-354'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26013,7 +27437,7 @@ This operation does not require authentication
 <td>Тип идентификатора карты получателя</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-39'>Enumerated Values</h4>
+<h4 id='enumerated-values-42'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -26046,7 +27470,7 @@ This operation does not require authentication
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-333'>Properties</h4>
+</span></code></pre></div><h4 id='properties-355'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26089,7 +27513,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-334'>Properties</h4>
+</span></code></pre></div><h4 id='properties-356'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26130,7 +27554,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип подтверждения перевода</p>
-<h4 id='properties-335'>Properties</h4>
+<h4 id='properties-357'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26146,7 +27570,7 @@ This operation does not require authentication
 <td>Тип подтверждения перевода</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-40'>Enumerated Values</h4>
+<h4 id='enumerated-values-43'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -26178,7 +27602,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Данные для подтверждения через 3DS</p>
-<h4 id='properties-336'>Properties</h4>
+<h4 id='properties-358'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26233,7 +27657,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Данные для подтверждения перевода</p>
-<h4 id='properties-337'>Properties</h4>
+<h4 id='properties-359'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26279,7 +27703,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Создание перевода с подтверждением через 3DS</p>
-<h4 id='properties-338'>Properties</h4>
+<h4 id='properties-360'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26317,7 +27741,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация для подтверждения платежа</p>
-<h4 id='properties-339'>Properties</h4>
+<h4 id='properties-361'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26358,7 +27782,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
-<h3 id='properties-340'>Properties</h3>
+<h3 id='properties-362'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26393,7 +27817,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип перевода (входящий/исходящий)</p>
-<h4 id='properties-341'>Properties</h4>
+<h4 id='properties-363'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26409,7 +27833,7 @@ This operation does not require authentication
 <td>Тип перевода</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-41'>Enumerated Values</h4>
+<h4 id='enumerated-values-44'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -26444,7 +27868,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об отправителе/получателе перевода</p>
-<h4 id='properties-342'>Properties</h4>
+<h4 id='properties-364'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26491,7 +27915,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об операции</p>
-<h4 id='properties-343'>Properties</h4>
+<h4 id='properties-365'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26558,7 +27982,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Ответ на запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
-<h4 id='properties-344'>Properties</h4>
+<h4 id='properties-366'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26612,7 +28036,7 @@ This operation does not require authentication
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-345'>Properties</h4>
+</span></code></pre></div><h4 id='properties-367'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26657,7 +28081,7 @@ This operation does not require authentication
   </span><span class="nl">"feeInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-346'>Properties</h4>
+</span></code></pre></div><h4 id='properties-368'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26710,7 +28134,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Признак Кредитная/Дебетовая карта</p>
-<h4 id='properties-347'>Properties</h4>
+<h4 id='properties-369'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26726,7 +28150,7 @@ This operation does not require authentication
 <td>Признак: кредитная/дебетовая карта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-42'>Enumerated Values</h4>
+<h4 id='enumerated-values-45'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -26770,7 +28194,7 @@ This operation does not require authentication
   </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-348'>Properties</h4>
+</span></code></pre></div><h4 id='properties-370'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26872,7 +28296,7 @@ This operation does not require authentication
   </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-349'>Properties</h4>
+</span></code></pre></div><h4 id='properties-371'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26911,7 +28335,7 @@ This operation does not require authentication
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-350'>Properties</h4>
+</span></code></pre></div><h4 id='properties-372'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26964,7 +28388,7 @@ This operation does not require authentication
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-351'>Properties</h4>
+</span></code></pre></div><h4 id='properties-373'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -26994,7 +28418,7 @@ This operation does not require authentication
   </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-352'>Properties</h4>
+</span></code></pre></div><h4 id='properties-374'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27063,7 +28487,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-353'>Properties</h4>
+</span></code></pre></div><h4 id='properties-375'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27109,7 +28533,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-25'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-27'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -27267,7 +28691,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-25'>Schemas</h4>
+<h4 id='schemas-27'>Schemas</h4>
 <h4 id="tocS_Sender">Sender</h4>
 
 <!-- backwards compatibility -->
@@ -27283,7 +28707,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об отправителе перевода</p>
-<h4 id='properties-354'>Properties</h4>
+<h4 id='properties-376'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27318,7 +28742,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип идентификатора карты получателя</p>
-<h4 id='properties-355'>Properties</h4>
+<h4 id='properties-377'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27334,7 +28758,7 @@ This operation does not require authentication
 <td>Тип идентификатора карты получателя</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-43'>Enumerated Values</h4>
+<h4 id='enumerated-values-46'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -27367,7 +28791,7 @@ This operation does not require authentication
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-356'>Properties</h4>
+</span></code></pre></div><h4 id='properties-378'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27410,7 +28834,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-357'>Properties</h4>
+</span></code></pre></div><h4 id='properties-379'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27451,7 +28875,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип подтверждения перевода</p>
-<h4 id='properties-358'>Properties</h4>
+<h4 id='properties-380'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27467,7 +28891,7 @@ This operation does not require authentication
 <td>Тип подтверждения перевода</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-44'>Enumerated Values</h4>
+<h4 id='enumerated-values-47'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -27499,7 +28923,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Данные для подтверждения через 3DS</p>
-<h4 id='properties-359'>Properties</h4>
+<h4 id='properties-381'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27554,7 +28978,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Данные для подтверждения перевода</p>
-<h4 id='properties-360'>Properties</h4>
+<h4 id='properties-382'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27600,7 +29024,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Создание перевода с подтверждением через 3DS</p>
-<h4 id='properties-361'>Properties</h4>
+<h4 id='properties-383'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27638,7 +29062,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация для подтверждения платежа</p>
-<h4 id='properties-362'>Properties</h4>
+<h4 id='properties-384'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27679,7 +29103,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
-<h4 id='properties-363'>Properties</h4>
+<h4 id='properties-385'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27714,7 +29138,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип перевода (входящий/исходящий)</p>
-<h4 id='properties-364'>Properties</h4>
+<h4 id='properties-386'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27730,7 +29154,7 @@ This operation does not require authentication
 <td>Тип перевода</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-45'>Enumerated Values</h4>
+<h4 id='enumerated-values-48'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -27765,7 +29189,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об отправителе/получателе перевода</p>
-<h4 id='properties-365'>Properties</h4>
+<h4 id='properties-387'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27812,7 +29236,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об операции</p>
-<h4 id='properties-366'>Properties</h4>
+<h4 id='properties-388'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27879,7 +29303,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Ответ на запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
-<h4 id='properties-367'>Properties</h4>
+<h4 id='properties-389'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27933,7 +29357,7 @@ This operation does not require authentication
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-368'>Properties</h4>
+</span></code></pre></div><h4 id='properties-390'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -27978,7 +29402,7 @@ This operation does not require authentication
   </span><span class="nl">"feeInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-369'>Properties</h4>
+</span></code></pre></div><h4 id='properties-391'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28031,7 +29455,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Признак Кредитная/Дебетовая карта</p>
-<h4 id='properties-370'>Properties</h4>
+<h4 id='properties-392'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28047,7 +29471,7 @@ This operation does not require authentication
 <td>Признак: кредитная/дебетовая карта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-46'>Enumerated Values</h4>
+<h4 id='enumerated-values-49'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -28091,7 +29515,7 @@ This operation does not require authentication
   </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-371'>Properties</h4>
+</span></code></pre></div><h4 id='properties-393'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28193,7 +29617,7 @@ This operation does not require authentication
   </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-372'>Properties</h4>
+</span></code></pre></div><h4 id='properties-394'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28232,7 +29656,7 @@ This operation does not require authentication
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-373'>Properties</h4>
+</span></code></pre></div><h4 id='properties-395'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28285,7 +29709,7 @@ This operation does not require authentication
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-374'>Properties</h4>
+</span></code></pre></div><h4 id='properties-396'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28315,7 +29739,7 @@ This operation does not require authentication
   </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-375'>Properties</h4>
+</span></code></pre></div><h4 id='properties-397'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28384,7 +29808,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-376'>Properties</h4>
+</span></code></pre></div><h4 id='properties-398'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28430,7 +29854,7 @@ This operation does not require authentication
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
 
-</code></pre></div><h4 id='header-parameters-26'>Header parameters</h4>
+</code></pre></div><h4 id='header-parameters-28'>Header parameters</h4>
 <table><thead>
 <tr>
 <th style="text-align: left">Наименование поля</th>
@@ -28570,7 +29994,7 @@ This operation does not require authentication
 <aside class="success">
 This operation does not require authentication
 </aside>
-<h4 id='schemas-26'>Schemas</h4>
+<h4 id='schemas-28'>Schemas</h4>
 <h4 id="tocS_Sender">Sender</h4>
 
 <!-- backwards compatibility -->
@@ -28586,7 +30010,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об отправителе перевода</p>
-<h4 id='properties-377'>Properties</h4>
+<h4 id='properties-399'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28621,7 +30045,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип идентификатора карты получателя</p>
-<h4 id='properties-378'>Properties</h4>
+<h4 id='properties-400'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28637,7 +30061,7 @@ This operation does not require authentication
 <td>Тип идентификатора карты получателя</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-47'>Enumerated Values</h4>
+<h4 id='enumerated-values-50'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -28670,7 +30094,7 @@ This operation does not require authentication
   </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-379'>Properties</h4>
+</span></code></pre></div><h4 id='properties-401'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28713,7 +30137,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-380'>Properties</h4>
+</span></code></pre></div><h4 id='properties-402'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28754,7 +30178,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип подтверждения перевода</p>
-<h4 id='properties-381'>Properties</h4>
+<h4 id='properties-403'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28770,7 +30194,7 @@ This operation does not require authentication
 <td>Тип подтверждения перевода</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-48'>Enumerated Values</h4>
+<h4 id='enumerated-values-51'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -28802,7 +30226,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Данные для подтверждения через 3DS</p>
-<h4 id='properties-382'>Properties</h4>
+<h4 id='properties-404'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28857,7 +30281,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Данные для подтверждения перевода</p>
-<h4 id='properties-383'>Properties</h4>
+<h4 id='properties-405'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28903,7 +30327,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Создание перевода с подтверждением через 3DS</p>
-<h4 id='properties-384'>Properties</h4>
+<h4 id='properties-406'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28941,7 +30365,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация для подтверждения платежа</p>
-<h4 id='properties-385'>Properties</h4>
+<h4 id='properties-407'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -28982,7 +30406,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
-<h4 id='properties-386'>Properties</h4>
+<h4 id='properties-408'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29017,7 +30441,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Тип перевода (входящий/исходящий)</p>
-<h4 id='properties-387'>Properties</h4>
+<h4 id='properties-409'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29033,7 +30457,7 @@ This operation does not require authentication
 <td>Тип перевода</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-49'>Enumerated Values</h4>
+<h4 id='enumerated-values-52'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -29068,7 +30492,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об отправителе/получателе перевода</p>
-<h4 id='properties-388'>Properties</h4>
+<h4 id='properties-410'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29115,7 +30539,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Информация об операции</p>
-<h4 id='properties-389'>Properties</h4>
+<h4 id='properties-411'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29182,7 +30606,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Ответ на запрос на исполнение платежа Card2Card (подтверждение 3DS)</p>
-<h4 id='properties-390'>Properties</h4>
+<h4 id='properties-412'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29236,7 +30660,7 @@ This operation does not require authentication
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-391'>Properties</h4>
+</span></code></pre></div><h4 id='properties-413'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29281,7 +30705,7 @@ This operation does not require authentication
   </span><span class="nl">"feeInterest"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-392'>Properties</h4>
+</span></code></pre></div><h4 id='properties-414'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29334,7 +30758,7 @@ This operation does not require authentication
 
 </span></code></pre></div>
 <p>Признак Кредитная/Дебетовая карта</p>
-<h4 id='properties-393'>Properties</h4>
+<h4 id='properties-415'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29350,7 +30774,7 @@ This operation does not require authentication
 <td>Признак: кредитная/дебетовая карта</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-50'>Enumerated Values</h4>
+<h4 id='enumerated-values-53'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -29394,7 +30818,7 @@ This operation does not require authentication
   </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-394'>Properties</h4>
+</span></code></pre></div><h4 id='properties-416'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29496,7 +30920,7 @@ This operation does not require authentication
   </span><span class="nl">"recipient"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-395'>Properties</h4>
+</span></code></pre></div><h4 id='properties-417'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29535,7 +30959,7 @@ This operation does not require authentication
   </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-396'>Properties</h4>
+</span></code></pre></div><h4 id='properties-418'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29588,7 +31012,7 @@ This operation does not require authentication
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-397'>Properties</h4>
+</span></code></pre></div><h4 id='properties-419'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29618,7 +31042,7 @@ This operation does not require authentication
   </span><span class="nl">"errorDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-398'>Properties</h4>
+</span></code></pre></div><h4 id='properties-420'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -29687,7 +31111,7 @@ This operation does not require authentication
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-399'>Properties</h4>
+</span></code></pre></div><h4 id='properties-421'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
