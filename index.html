@@ -1647,6 +1647,26 @@ bearerAuth
 <td style="text-align: left">Роль конечного пользователя в организации (для физических лиц не заполняется)</td>
 <td style="text-align: left">role</td>
 </tr>
+<tr>
+<td style="text-align: left">actual_address</td>
+<td style="text-align: left">Фактический адрес конечного пользователя (для юридических лиц не заполняется)</td>
+<td style="text-align: left">address_fl</td>
+</tr>
+<tr>
+<td style="text-align: left">reg_address</td>
+<td style="text-align: left">Адрес регистрации конечного пользователя (для юридических лиц не заполняется)</td>
+<td style="text-align: left">address_fl</td>
+</tr>
+<tr>
+<td style="text-align: left">birth_place</td>
+<td style="text-align: left">Место рождения конечного пользователя (для юридических лиц не заполняется)</td>
+<td style="text-align: left">birthplace</td>
+</tr>
+<tr>
+<td style="text-align: left">snils</td>
+<td style="text-align: left">СНИЛС конечного пользователя (для юридических лиц не заполняется)</td>
+<td style="text-align: left">snils</td>
+</tr>
 </tbody></table>
 
 <h4 id="check-sign">Шаг 4. Проверка подписи</h4>
@@ -2082,11 +2102,13 @@ This operation does not require authentication
 <tr>
 <th>Property</th>
 <th>Value</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>token_type</td>
 <td>Bearer</td>
+<td>Тип токена</td>
 </tr>
 </tbody></table>
 
@@ -2965,6 +2987,20 @@ This operation does not require authentication
 <p>One-Time Password: 111111</p>
 
 <p>Подробнее в разделе <a href="#alfa-id">&quot;Аутентификация в Alfa ID&quot;.</a></p>
+<h3 id='alfa-id-3'>Рекомендации по тестированию Alfa ID ФЛ:</h3>
+<p>1) Для <em>прохождения процедуры аутентификации</em> используйте тестовые логин и пароль, ОТР.</p>
+
+<p>Login: любая комбинация символов</p>
+
+<p>Password: любая комбинация символов</p>
+
+<p>One-Time Password: 000000</p>
+
+<p>2) Для <em>подписания формы согласия</em> используйте:</p>
+
+<p>One-Time Password: 000000</p>
+
+<p>Подробнее в разделе <a href="#alfa-id">&quot;Аутентификация в Alfa ID&quot;.</a></p>
 <h3 id='api-2'>Рекомендации по тестированию методов API:</h3><h4 id='bd90cedb51'>Операции по счетам</h4>
 <p>Для получения операций по счетам использовать расчетные счета, полученные в <a href="#d2568efd70">&quot;Профиле организации&quot;.</a></p>
 
@@ -2984,6 +3020,7 @@ This operation does not require authentication
 <ul>
 <li><a href="#bd90cedb51">&quot;Операции по счетам&quot;</a></li>
 <li><a href="#d2568efd70">&quot;Профиль организации&quot;</a></li>
+<li><a href="#214">&quot;Счета эскроу 214-ФЗ&quot;</a></li>
 <li><a href="#968778f49f-2">&quot;Электронная подпись&quot;</a></li>
 </ul>
 <h2 id='bd90cedb51-2'>Операции по счетам</h2>
@@ -27431,7 +27468,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>string</td>
 <td>false</td>
 <td>Тип идентификатора карты получателя</td>
@@ -27446,12 +27483,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_ID</td>
 <td>Тип идентификатора карты получателя (Идентификатор карты)</td>
 </tr>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_NUMBER</td>
 <td>Тип идентификатора карты получателя (Номер карты)</td>
 </tr>
@@ -27564,7 +27601,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>string</td>
 <td>false</td>
 <td>Тип подтверждения перевода</td>
@@ -27579,7 +27616,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>THREE_DS</td>
 <td>Тип подтверждения перевода</td>
 </tr>
@@ -27827,7 +27864,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>string</td>
 <td>false</td>
 <td>Тип перевода</td>
@@ -27842,12 +27879,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>INCOME</td>
 <td>Входящий перевод</td>
 </tr>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>OUTCOME</td>
 <td>Исходящий перевод</td>
 </tr>
@@ -28144,7 +28181,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>string</td>
 <td>false</td>
 <td>Признак: кредитная/дебетовая карта</td>
@@ -28159,12 +28196,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>DEBIT</td>
 <td>Дебетовая карта</td>
 </tr>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>CREDIT</td>
 <td>Кредитная карта</td>
 </tr>
@@ -28752,7 +28789,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>string</td>
 <td>false</td>
 <td>Тип идентификатора карты получателя</td>
@@ -28767,12 +28804,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_ID</td>
 <td>Тип идентификатора карты получателя (Идентификатор карты)</td>
 </tr>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_NUMBER</td>
 <td>Тип идентификатора карты получателя (Номер карты)</td>
 </tr>
@@ -28885,7 +28922,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>string</td>
 <td>false</td>
 <td>Тип подтверждения перевода</td>
@@ -28900,7 +28937,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>THREE_DS</td>
 <td>Тип подтверждения перевода</td>
 </tr>
@@ -29148,7 +29185,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>string</td>
 <td>false</td>
 <td>Тип перевода</td>
@@ -29163,12 +29200,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>INCOME</td>
 <td>Входящий перевод</td>
 </tr>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>OUTCOME</td>
 <td>Исходящий перевод</td>
 </tr>
@@ -29465,7 +29502,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>string</td>
 <td>false</td>
 <td>Признак: кредитная/дебетовая карта</td>
@@ -29480,12 +29517,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>DEBIT</td>
 <td>Дебетовая карта</td>
 </tr>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>CREDIT</td>
 <td>Кредитная карта</td>
 </tr>
@@ -30055,7 +30092,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>string</td>
 <td>false</td>
 <td>Тип идентификатора карты получателя</td>
@@ -30070,12 +30107,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_ID</td>
 <td>Тип идентификатора карты получателя (Идентификатор карты)</td>
 </tr>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_NUMBER</td>
 <td>Тип идентификатора карты получателя (Номер карты)</td>
 </tr>
@@ -30188,7 +30225,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>string</td>
 <td>false</td>
 <td>Тип подтверждения перевода</td>
@@ -30203,7 +30240,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>THREE_DS</td>
 <td>Тип подтверждения перевода</td>
 </tr>
@@ -30451,7 +30488,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>string</td>
 <td>false</td>
 <td>Тип перевода</td>
@@ -30466,12 +30503,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>INCOME</td>
 <td>Входящий перевод</td>
 </tr>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>OUTCOME</td>
 <td>Исходящий перевод</td>
 </tr>
@@ -30768,7 +30805,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>string</td>
 <td>false</td>
 <td>Признак: кредитная/дебетовая карта</td>
@@ -30783,12 +30820,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>DEBIT</td>
 <td>Дебетовая карта</td>
 </tr>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>CREDIT</td>
 <td>Кредитная карта</td>
 </tr>
@@ -31355,7 +31392,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>string</td>
 <td>false</td>
 <td>Тип идентификатора карты получателя</td>
@@ -31370,12 +31407,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_ID</td>
 <td>Тип идентификатора карты получателя (Идентификатор карты)</td>
 </tr>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_NUMBER</td>
 <td>Тип идентификатора карты получателя (Номер карты)</td>
 </tr>
@@ -31488,7 +31525,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>string</td>
 <td>false</td>
 <td>Тип подтверждения перевода</td>
@@ -31503,7 +31540,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>THREE_DS</td>
 <td>Тип подтверждения перевода</td>
 </tr>
@@ -31751,7 +31788,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>string</td>
 <td>false</td>
 <td>Тип перевода</td>
@@ -31766,12 +31803,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>INCOME</td>
 <td>Входящий перевод</td>
 </tr>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>OUTCOME</td>
 <td>Исходящий перевод</td>
 </tr>
@@ -32068,7 +32105,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>string</td>
 <td>false</td>
 <td>Признак: кредитная/дебетовая карта</td>
@@ -32083,12 +32120,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>DEBIT</td>
 <td>Дебетовая карта</td>
 </tr>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>CREDIT</td>
 <td>Кредитная карта</td>
 </tr>
@@ -32668,7 +32705,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>string</td>
 <td>false</td>
 <td>Тип идентификатора карты получателя</td>
@@ -32683,12 +32720,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_ID</td>
 <td>Тип идентификатора карты получателя (Идентификатор карты)</td>
 </tr>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_NUMBER</td>
 <td>Тип идентификатора карты получателя (Номер карты)</td>
 </tr>
@@ -32801,7 +32838,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>string</td>
 <td>false</td>
 <td>Тип подтверждения перевода</td>
@@ -32816,7 +32853,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>THREE_DS</td>
 <td>Тип подтверждения перевода</td>
 </tr>
@@ -33064,7 +33101,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>string</td>
 <td>false</td>
 <td>Тип перевода</td>
@@ -33079,12 +33116,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>INCOME</td>
 <td>Входящий перевод</td>
 </tr>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>OUTCOME</td>
 <td>Исходящий перевод</td>
 </tr>
@@ -33381,7 +33418,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>string</td>
 <td>false</td>
 <td>Признак: кредитная/дебетовая карта</td>
@@ -33396,12 +33433,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>DEBIT</td>
 <td>Дебетовая карта</td>
 </tr>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>CREDIT</td>
 <td>Кредитная карта</td>
 </tr>
@@ -33955,7 +33992,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>string</td>
 <td>false</td>
 <td>Тип идентификатора карты получателя</td>
@@ -33970,12 +34007,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_ID</td>
 <td>Тип идентификатора карты получателя (Идентификатор карты)</td>
 </tr>
 <tr>
-<td>Тип идентификатора карты получателя</td>
+<td>recipient.type</td>
 <td>CARD_NUMBER</td>
 <td>Тип идентификатора карты получателя (Номер карты)</td>
 </tr>
@@ -34088,7 +34125,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>string</td>
 <td>false</td>
 <td>Тип подтверждения перевода</td>
@@ -34103,7 +34140,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип подтверждения перевода</td>
+<td>transferType</td>
 <td>THREE_DS</td>
 <td>Тип подтверждения перевода</td>
 </tr>
@@ -34351,7 +34388,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>string</td>
 <td>false</td>
 <td>Тип перевода</td>
@@ -34366,12 +34403,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>INCOME</td>
 <td>Входящий перевод</td>
 </tr>
 <tr>
-<td>Тип перевода (входящий/исходящий)</td>
+<td>direction</td>
 <td>OUTCOME</td>
 <td>Исходящий перевод</td>
 </tr>
@@ -34668,7 +34705,7 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>string</td>
 <td>false</td>
 <td>Признак: кредитная/дебетовая карта</td>
@@ -34683,12 +34720,12 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>DEBIT</td>
 <td>Дебетовая карта</td>
 </tr>
 <tr>
-<td>Признак Кредитная/Дебетовая карта</td>
+<td>type</td>
 <td>CREDIT</td>
 <td>Кредитная карта</td>
 </tr>
@@ -35134,6 +35171,11 @@ This operation does not require authentication
 </tr>
 </thead><tbody>
 <tr>
+<td>escrow</td>
+<td>Счета эскроу 214-ФЗ</td>
+<td><ol class="table-cell__list"><li><span class="custom__cmd-command-text">GET build-projects</span></li><br> <li><span class="custom__cmd-command-text">POST escrow-orders</span></li></ol></td>
+</tr>
+<tr>
 <td>customer</td>
 <td>Все данные об организации и её счетах</td>
 <td><span class="custom__cmd-command-text">GET customer-info</span></td>
@@ -35181,6 +35223,15 @@ This operation does not require authentication
 <p><strong>2 сентярбря 2022</strong></p>
 
 <p>Добавлен новый метод &quot;Получение DN&quot; сервиса &quot;Электронная подпись&quot;.</p>
+
+<p><strong>7 октября 2022</strong></p>
+
+<p>Добавлен новый сервис &quot;Счета эскроу 214-ФЗ&quot;. Методы API:
+* <strong>GET build-projects</strong> Получение списка объектов строительства застройщика</p>
+
+<ul>
+<li><strong>POST escrow-orders</strong> Создание заявки на резервирование счета эскроу</li>
+</ul>
 <h1 id='faq'>FAQ. Часто задаваемые вопросы</h1><h4 id='quot-error_description-quot-quot-client-was-not-found-quot'>Что означает &quot;error_description&quot;: &quot;Client was not found&quot;?</h4>
 <p>В запросе клиента на получение токена авторизации (api/token) указан неверный client_id/client_secret. </p>
 <h4 id='quot-error_description-quot-quot-the-request-requires-higher-privileges-than-provided-by-the-access-token-quot'>Почему возникает &quot;error_description&quot;: &quot;The request requires higher privileges than provided by the access token&quot;?</h4>
