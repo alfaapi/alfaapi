@@ -35532,6 +35532,12 @@ This operation does not require authentication
 <td>Идентификатор трассировки запроса</td>
 </tr>
 <tr>
+<td>403</td>
+<td>x-traceid</td>
+<td>string</td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+<tr>
 <td>500</td>
 <td>x-traceid</td>
 <td>string</td>
@@ -36473,7 +36479,9 @@ bearerAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-498'>Properties</h4>
+</span></code></pre></div>
+<p>Информация о работе заёмщика с партнёром</p>
+<h4 id='properties-498'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -36595,7 +36603,9 @@ bearerAuth
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-499'>Properties</h4>
+</span></code></pre></div>
+<p>Информация о заёмщике-ИП</p>
+<h4 id='properties-499'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -36606,7 +36616,7 @@ bearerAuth
 </thead><tbody>
 <tr>
 <td>legalInfo</td>
-<td><a href="#schemalegalinfo">LegalInfo</a></td>
+<td><a href="#schemaindividualinfo">IndividualInfo</a></td>
 <td>false</td>
 <td>Информация о заёмщике</td>
 </tr>
@@ -36653,11 +36663,13 @@ bearerAuth
 <a id="tocSlegalinfo"></a>
 <a id="tocslegalinfo"></a></p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">7707786590</span><span class="p">,</span><span class="w">
   </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-501'>Properties</h4>
+</span></code></pre></div>
+<p>Информация о заёмщике</p>
+<h4 id='properties-501'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -36670,13 +36682,51 @@ bearerAuth
 <td>inn</td>
 <td>string</td>
 <td>true</td>
-<td>ИНН ИП</td>
+<td>ИНН юридического лица. Использовать только 10 цифр</td>
 </tr>
 <tr>
 <td>contactPhone</td>
 <td>string</td>
 <td>false</td>
-<td>Контактный номер телефон ИП</td>
+<td>Контактный номер телефон юридического лица</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_IndividualInfo">IndividualInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaindividualinfo"></a>
+<a id="schema_IndividualInfo"></a>
+<a id="tocSindividualinfo"></a>
+<a id="tocsindividualinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(495)545-00-10"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация о заёмщике</p>
+<h4 id='properties-502'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>inn</td>
+<td>string</td>
+<td>true</td>
+<td>ИНН ИП. Использовать только 12 цифр</td>
+</tr>
+<tr>
+<td>contactPhone</td>
+<td>string</td>
+<td>false</td>
+<td>Контактный номер телефона ИП</td>
 </tr>
 </tbody></table>
 
@@ -36723,7 +36773,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Транзакции продавца с партнёром</p>
-<h4 id='properties-502'>Properties</h4>
+<h4 id='properties-503'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -36777,7 +36827,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-503'>Properties</h4>
+</span></code></pre></div><h4 id='properties-504'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -36813,7 +36863,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-504'>Properties</h4>
+</span></code></pre></div><h4 id='properties-505'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -36856,7 +36906,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Запасы МСБ продавца</p>
-<h4 id='properties-505'>Properties</h4>
+<h4 id='properties-506'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -36887,7 +36937,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-506'>Properties</h4>
+</span></code></pre></div><h4 id='properties-507'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -36954,7 +37004,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Качество торговли МСБ продавца</p>
-<h4 id='properties-507'>Properties</h4>
+<h4 id='properties-508'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37002,7 +37052,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-508'>Properties</h4>
+</span></code></pre></div><h4 id='properties-509'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37038,7 +37088,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-509'>Properties</h4>
+</span></code></pre></div><h4 id='properties-510'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37074,7 +37124,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-510'>Properties</h4>
+</span></code></pre></div><h4 id='properties-511'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37111,7 +37161,7 @@ bearerAuth
   </span><span class="nl">"nameOfGood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Товар называется так"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-511'>Properties</h4>
+</span></code></pre></div><h4 id='properties-512'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37154,7 +37204,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Информация о премиальном аккаунте</p>
-<h4 id='properties-512'>Properties</h4>
+<h4 id='properties-513'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37198,7 +37248,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Просочка по рассрочке, кредитам, прочим финансовым продуктам МСБ с партнёром и/или по оплате за купленные товары, логистические услуги МСБ партнёру</p>
-<h4 id='properties-513'>Properties</h4>
+<h4 id='properties-514'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37235,7 +37285,7 @@ bearerAuth
   </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-514'>Properties</h4>
+</span></code></pre></div><h4 id='properties-515'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37281,7 +37331,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Закупаемые товары</p>
-<h4 id='properties-515'>Properties</h4>
+<h4 id='properties-516'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37311,7 +37361,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-516'>Properties</h4>
+</span></code></pre></div><h4 id='properties-517'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37358,7 +37408,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Информация о перевозимых грузах</p>
-<h4 id='properties-517'>Properties</h4>
+<h4 id='properties-518'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37393,7 +37443,7 @@ bearerAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-518'>Properties</h4>
+</span></code></pre></div><h4 id='properties-519'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37429,7 +37479,7 @@ bearerAuth
   </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория груза"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-519'>Properties</h4>
+</span></code></pre></div><h4 id='properties-520'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37495,7 +37545,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Информация о НДС, поквартально</p>
-<h4 id='properties-520'>Properties</h4>
+<h4 id='properties-521'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37537,7 +37587,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-521'>Properties</h4>
+</span></code></pre></div><h4 id='properties-522'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37585,7 +37635,7 @@ bearerAuth
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-522'>Properties</h4>
+</span></code></pre></div><h4 id='properties-523'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37633,7 +37683,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-523'>Properties</h4>
+</span></code></pre></div><h4 id='properties-524'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37699,7 +37749,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Расчёт по страховым взносам</p>
-<h4 id='properties-524'>Properties</h4>
+<h4 id='properties-525'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37753,7 +37803,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-525'>Properties</h4>
+</span></code></pre></div><h4 id='properties-526'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37807,7 +37857,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Налог на прибыль</p>
-<h4 id='properties-526'>Properties</h4>
+<h4 id='properties-527'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37849,7 +37899,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-527'>Properties</h4>
+</span></code></pre></div><h4 id='properties-528'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37909,7 +37959,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>2-НДФЛ</p>
-<h4 id='properties-528'>Properties</h4>
+<h4 id='properties-529'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37957,7 +38007,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-529'>Properties</h4>
+</span></code></pre></div><h4 id='properties-530'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -37993,7 +38043,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-530'>Properties</h4>
+</span></code></pre></div><h4 id='properties-531'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38079,7 +38129,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>6-НДФЛ</p>
-<h4 id='properties-531'>Properties</h4>
+<h4 id='properties-532'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38152,7 +38202,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-532'>Properties</h4>
+</span></code></pre></div><h4 id='properties-533'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38194,7 +38244,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-533'>Properties</h4>
+</span></code></pre></div><h4 id='properties-534'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38230,7 +38280,7 @@ bearerAuth
   </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-534'>Properties</h4>
+</span></code></pre></div><h4 id='properties-535'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38280,7 +38330,7 @@ bearerAuth
 
 </span></code></pre></div>
 <p>Справка о состоянии расчётов</p>
-<h4 id='properties-535'>Properties</h4>
+<h4 id='properties-536'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -38328,7 +38378,7 @@ bearerAuth
   </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre></div><h4 id='properties-536'>Properties</h4>
+</span></code></pre></div><h4 id='properties-537'>Properties</h4>
 <table><thead>
 <tr>
 <th>Name</th>
