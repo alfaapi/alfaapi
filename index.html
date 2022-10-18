@@ -337,6 +337,9 @@
                     <a href="#0fc92021a0" class="toc-h2 toc-link" data-title="Дебетовые карты">Дебетовые карты</a>
                   </li>
                   <li>
+                    <a href="#b2b" class="toc-h2 toc-link" data-title="B2B-кредиты">B2B-кредиты</a>
+                  </li>
+                  <li>
                     <a href="#42fc51aa44" class="toc-h2 toc-link" data-title="Пагинация">Пагинация</a>
                   </li>
                   <li>
@@ -3022,6 +3025,8 @@ This operation does not require authentication
 <li><a href="#d2568efd70">&quot;Профиль организации&quot;</a></li>
 <li><a href="#214">&quot;Счета эскроу 214-ФЗ&quot;</a></li>
 <li><a href="#968778f49f-2">&quot;Электронная подпись&quot;</a></li>
+<li><a href="#?">&quot;Дебетовые карты&quot;</a></li>
+<li><a href="#b2b">&quot;B2B-кредиты&quot;</a></li>
 </ul>
 <h2 id='bd90cedb51-2'>Операции по счетам</h2>
 <p>Методы позволяют получить список операций по одному счету за один день. Дата/время совершения операции по UTC+3 часовому поясу (Московское время). Получение выписок доступно как для рублёвых, так и валютных счетов. Операции по счетам: </p>
@@ -35082,6 +35087,3269 @@ This operation does not require authentication
 <td>Данные карты получателя</td>
 </tr>
 </tbody></table>
+<h2 id='b2b'>B2B-кредиты</h2><h3 id='5878437fca'>Отправка данных для скоринга и создание черновика заявки</h3>
+<p>Метод предназначен для отправки информации на предварительный скоринг и создания черновика заявки на кредит (проект Smart-контракты).</p>
+
+<p>Для создания черновика заявки на кредит необходимо отправить запрос POST loan-applications с access_token, полученным в Alfa ID (<a href="https://alfaapi.github.io/specification/#client-cred-flow" target="_blank" ><strong>CCF</strong></a>) со scope = loan-applications, и параметрами запроса. </p>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST loan-applications <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
+
+</code></pre></div><h4 id='header-parameters-32'>Header parameters</h4>
+<table><thead>
+<tr>
+<th style="text-align: left">Наименование поля</th>
+<th style="text-align: left">Тип</th>
+<th style="text-align: left">Предопределенное значение</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">Authorization</td>
+<td style="text-align: left">String</td>
+<td style="text-align: left">Bearer {access_token}</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dealId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5f72949-0e9a-41bf-a16d-a34b938f41ef"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"borrower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"individual"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"legalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"legal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"legalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"partner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"numberOfInteractionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">149</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startDateOfInteraction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transactionsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"transactionsMSBSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"transactionsMSBQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"transactionsMSBAvgSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"minSumTransactionMSB"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"transactionsMSBMaxSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sellerInventory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inventorySumAndQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9000.25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sellerQuality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sellerRatings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.98</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"returnedQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"reasonForRefundList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Какая-то причина возврата или не выполнения заказа"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"goodsConcentrationLevels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"concentrationLevelOfSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.5</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"concentrationLevelOfQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">53.2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"nameOfGood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Товар называется так"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"premiumAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"hasPremiumAccount"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"delay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"loans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"goods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"procuredGoodsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Категория 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Категория 2"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"feeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">3000000.76</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"transportedGoodsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"deliveries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"transportedGoodsVolumeAndCategoryList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">3456.65</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория груза"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"vat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"totalTaxBaseList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"counterparts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">346</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"purchases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"purchaseAndSaleOperations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">554000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"insurancePremiumsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mandatoryPensionInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"mandatoryMedicalInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"mandatoryPensionInsuranceSurchargeSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"supplementarySocialSupportSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"mandatorySocialInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"profitTax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"totalProfits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"twoPersonalIncomeTaxesInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"fullCostSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"retentionSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"paidSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"employeesQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">134</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sixPersonalIncomeTaxesInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"factIncomes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"retentionPITDateAndSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"imposedKBKTaxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"imposedInterests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"imposedFines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"paidKBKTaxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"paidKBKInterests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"paidKBKFines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"calculationsInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"currentInterestsSum"</span><span class="p">:</span><span class="w"> </span><span class="mi">110687</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currentInterestsAndCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"currentTaxesSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">5016161.68</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currentFinesAndCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<h4 id="post__loan-applications-parameters">Parameters</h4>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemascoringany">ScoringAny</a></td>
+<td>true</td>
+<td>Тело запроса</td>
+</tr>
+</tbody></table>
+
+<h4 id="post__loan-applications-responses">Responses</h4>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Code responses</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200 (ОК)</td>
+<td>ОК</td>
+<td>Успешное создание черновика заявки</td>
+<td><a href="#schema200ok">200ok</a></td>
+</tr>
+<tr>
+<td>400 (Bad Request)</td>
+<td>invalid_request</td>
+<td>Отсутствие обязательных параметров</td>
+<td><a href="#schemaerrorresponse400">ErrorResponse400</a></td>
+</tr>
+<tr>
+<td>401 (Unauthorized)</td>
+<td>invalid_token</td>
+<td>Ошибка в JWT (просрочен, отозван и т.д.)</td>
+<td><a href="#schemaerrorresponse401">ErrorResponse401</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>insufficient_scope</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+<td><a href="#schemaerrorresponse403">ErrorResponse403</a></td>
+</tr>
+<tr>
+<td>403 (Forbidden)</td>
+<td>access_denied</td>
+<td>Доступ к счету запрещен</td>
+<td><a href="#schemaerrorresponse403">ErrorResponse403</a></td>
+</tr>
+<tr>
+<td>500 (Internal Server Error)</td>
+<td>internal_error</td>
+<td>Внутренняя ошибка сервера</td>
+<td><a href="#schemaerrorresponse">ErrorResponse</a></td>
+</tr>
+<tr>
+<td>503 (Service Unavailable)</td>
+<td>service unavailable</td>
+<td>Сервер временно недоступен</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+<h4 id="post__loan-applications-responseschema">Response Schema</h4>
+<h4 id='response-headers-22'>Response Headers</h4>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>x-traceid</td>
+<td>string</td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+<tr>
+<td>400</td>
+<td>x-traceid</td>
+<td>string</td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+<tr>
+<td>401</td>
+<td>x-traceid</td>
+<td>string</td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+<tr>
+<td>500</td>
+<td>x-traceid</td>
+<td>string</td>
+<td>Идентификатор трассировки запроса</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+bearerAuth
+</aside>
+<h4 id='schemas-32'>Schemas</h4>
+<h4 id="tocS_200ok">200ok</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schema200ok"></a>
+<a id="schema_200ok"></a>
+<a id="tocS200ok"></a>
+<a id="tocs200ok"></a></p>
+
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dealId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5f72949-0e9a-41bf-a16d-a34b938f41ef"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-491'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dealId</td>
+<td>string</td>
+<td>true</td>
+<td>Идентификатор черновика заявки (UUID, 128-битный)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorResponse400">ErrorResponse400</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorresponse400"></a>
+<a id="schema_ErrorResponse400"></a>
+<a id="tocSerrorresponse400"></a>
+<a id="tocserrorresponse400"></a></p>
+
+<blockquote>
+<p>400 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_descriptions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Значение атрибута transactions.sumTransactionsMSB[5].sum отсутствует; Партнеру ХХХХХХ недоступно оформление онлайн-кредита"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-492'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Значение ошибки</td>
+</tr>
+<tr>
+<td>error_descriptions</td>
+<td>string</td>
+<td>true</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorResponse401">ErrorResponse401</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorresponse401"></a>
+<a id="schema_ErrorResponse401"></a>
+<a id="tocSerrorresponse401"></a>
+<a id="tocserrorresponse401"></a></p>
+
+<blockquote>
+<p>401 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The access token provided is expired, revoked, malformed, or invalid for other reasons."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-493'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Значение ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>true</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorResponse403">ErrorResponse403</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorresponse403"></a>
+<a id="schema_ErrorResponse403"></a>
+<a id="tocSerrorresponse403"></a>
+<a id="tocserrorresponse403"></a></p>
+
+<blockquote>
+<p>403 Response </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"insufficient_scope"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided by the access token"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<blockquote>
+<p>403 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"access_denied"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request requires higher privileges than provided"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h4 id='properties-494'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Значение ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>true</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-66'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>insufficient_scope</td>
+<td>Недостаточно прав</td>
+</tr>
+<tr>
+<td>error</td>
+<td>access_denied</td>
+<td>Доступ запрещен</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>The request requires higher privileges than provided by the access token</td>
+<td>У пользователя нет прав на использование запрашиваемого сервиса, доступ к которому не предусмотрен настройками scope</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>The request requires higher privileges than provided</td>
+<td>Доступ к счету запрещен</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ErrorResponse">ErrorResponse</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerrorresponse"></a>
+<a id="schema_ErrorResponse"></a>
+<a id="tocSerrorresponse"></a>
+<a id="tocserrorresponse"></a></p>
+
+<blockquote>
+<p>500 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal_error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal server error"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-495'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>error</td>
+<td>string</td>
+<td>true</td>
+<td>Значение ошибки</td>
+</tr>
+<tr>
+<td>error_description</td>
+<td>string</td>
+<td>true</td>
+<td>Сообщение об ошибке</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ScoringAny">ScoringAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemascoringany"></a>
+<a id="schema_ScoringAny"></a>
+<a id="tocSscoringany"></a>
+<a id="tocsscoringany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"dealId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c5f72949-0e9a-41bf-a16d-a34b938f41ef"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"borrower"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"individual"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"legalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"legal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"legalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"partner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"numberOfInteractionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">149</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"startDateOfInteraction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transactionsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"transactionsMSBSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"transactionsMSBQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"transactionsMSBAvgSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"minSumTransactionMSB"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"transactionsMSBMaxSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sellerInventory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inventorySumAndQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9000.25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sellerQuality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sellerRatings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.98</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"returnedQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"reasonForRefundList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Какая-то причина возврата или не выполнения заказа"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"goodsConcentrationLevels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"concentrationLevelOfSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.5</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"concentrationLevelOfQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">53.2</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"nameOfGood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Товар называется так"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"premiumAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"hasPremiumAccount"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"delay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"loans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"goods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"procuredGoodsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Категория 1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Категория 2"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"feeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">3000000.76</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"transportedGoodsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"deliveries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"transportedGoodsVolumeAndCategoryList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">3456.65</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория груза"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"vat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"totalTaxBaseList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"counterparts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">346</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"purchases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"purchaseAndSaleOperations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">554000</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"insurancePremiumsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mandatoryPensionInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"mandatoryMedicalInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"mandatoryPensionInsuranceSurchargeSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"supplementarySocialSupportSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"mandatorySocialInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"profitTax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"totalProfits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"twoPersonalIncomeTaxesInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"fullCostSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"retentionSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"paidSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"employeesQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">134</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sixPersonalIncomeTaxesInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"factIncomes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"retentionPITDateAndSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"imposedKBKTaxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"imposedInterests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"imposedFines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"paidKBKTaxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"paidKBKInterests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"paidKBKFines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"calculationsInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"currentInterestsSum"</span><span class="p">:</span><span class="w"> </span><span class="mi">110687</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currentInterestsAndCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"currentTaxesSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">5016161.68</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currentFinesAndCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-496'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>dealId</td>
+<td>string(uuid)</td>
+<td>true</td>
+<td>Идентификатор черновика заявки (UUID, 128-битный)</td>
+</tr>
+<tr>
+<td>borrower</td>
+<td><a href="#schemaborrower">Borrower</a></td>
+<td>true</td>
+<td>Информация о заёмщике</td>
+</tr>
+<tr>
+<td>partner</td>
+<td><a href="#schemapartner">Partner</a></td>
+<td>true</td>
+<td>Информация о работе заёмщика с партнёром</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Borrower">Borrower</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaborrower"></a>
+<a id="schema_Borrower"></a>
+<a id="tocSborrower"></a>
+<a id="tocsborrower"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"individual"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"legalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"legal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"legalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-497'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>individual</td>
+<td><a href="#schemaindividual">Individual</a></td>
+<td>false</td>
+<td>Информация о заёмщике-ИП</td>
+</tr>
+<tr>
+<td>legal</td>
+<td><a href="#schemalegal">Legal</a></td>
+<td>false</td>
+<td>Информация о заёмщике-юридическом лице</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Partner">Partner</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapartner"></a>
+<a id="schema_Partner"></a>
+<a id="tocSpartner"></a>
+<a id="tocspartner"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"numberOfInteractionDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">149</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"startDateOfInteraction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transactionsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"transactionsMSBSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"transactionsMSBQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"transactionsMSBAvgSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"minSumTransactionMSB"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"transactionsMSBMaxSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sellerInventory"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"inventorySumAndQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9000.25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sellerQuality"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sellerRatings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.98</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"returnedQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"reasonForRefundList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Какая-то причина возврата или не выполнения заказа"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"goodsConcentrationLevels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"concentrationLevelOfSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.5</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"concentrationLevelOfQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">53.2</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nameOfGood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Товар называется так"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"premiumAccount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"hasPremiumAccount"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"delay"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"loans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"goods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"procuredGoodsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"Категория 1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Категория 2"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"feeList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">3000000.76</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"transportedGoodsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deliveries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transportedGoodsVolumeAndCategoryList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">3456.65</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория груза"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"vat"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalTaxBaseList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"counterparts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">346</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"purchases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"purchaseAndSaleOperations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">554000</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"insurancePremiumsInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"mandatoryPensionInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"mandatoryMedicalInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"mandatoryPensionInsuranceSurchargeSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"supplementarySocialSupportSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"mandatorySocialInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"profitTax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"totalProfits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"twoPersonalIncomeTaxesInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"fullCostSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"retentionSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"paidSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"employeesQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">134</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sixPersonalIncomeTaxesInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"factIncomes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"retentionPITDateAndSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"imposedKBKTaxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"imposedInterests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"imposedFines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"paidKBKTaxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"paidKBKInterests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"paidKBKFines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"calculationsInformation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"currentInterestsSum"</span><span class="p">:</span><span class="w"> </span><span class="mi">110687</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currentInterestsAndCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"currentTaxesSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">5016161.68</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currentFinesAndCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-498'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>numberOfInteractionDays</td>
+<td>number(integer)</td>
+<td>false</td>
+<td>Количество дней с даты начала работы с партнёром</td>
+</tr>
+<tr>
+<td>startDateOfInteraction</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата начала работы с партнёром</td>
+</tr>
+<tr>
+<td>transactionsInfo</td>
+<td><a href="#schematransactionsinfo">TransactionsInfo</a></td>
+<td>false</td>
+<td>Транзакции продавца с партнёром</td>
+</tr>
+<tr>
+<td>sellerInventory</td>
+<td><a href="#schemasellerinventory">SellerInventory</a></td>
+<td>false</td>
+<td>Запасы МСБ продавца</td>
+</tr>
+<tr>
+<td>sellerQuality</td>
+<td><a href="#schemasellerquality">SellerQuality</a></td>
+<td>false</td>
+<td>Качество торговли МСБ продавца</td>
+</tr>
+<tr>
+<td>premiumAccount</td>
+<td><a href="#schemapremiumaccount">PremiumAccount</a></td>
+<td>false</td>
+<td>Информация о премиальном аккаунте</td>
+</tr>
+<tr>
+<td>delay</td>
+<td><a href="#schemadelay">Delay</a></td>
+<td>false</td>
+<td>Просочка по рассрочке, кредитам, прочим финансовым продуктам МСБ с партнёром и/или по оплате за купленные товары, логистические услуги МСБ партнёру</td>
+</tr>
+<tr>
+<td>procuredGoodsInfo</td>
+<td><a href="#schemaprocuredgoodsinfo">ProcuredGoodsInfo</a></td>
+<td>false</td>
+<td>Закупаемые товары</td>
+</tr>
+<tr>
+<td>feeList</td>
+<td>[<a href="#schemafee">Fee</a>]</td>
+<td>false</td>
+<td>Оплата услуг партнёра</td>
+</tr>
+<tr>
+<td>transportedGoodsInfo</td>
+<td><a href="#schematransportedgoodsinfo">TransportedGoodsInfo</a></td>
+<td>false</td>
+<td>Информация о перевозимых грузах</td>
+</tr>
+<tr>
+<td>vat</td>
+<td><a href="#schemavat">Vat</a></td>
+<td>false</td>
+<td>Информация о НДС, поквартально</td>
+</tr>
+<tr>
+<td>insurancePremiumsInfo</td>
+<td><a href="#schemainsurancepremiumsinfo">InsurancePremiumsInfo</a></td>
+<td>false</td>
+<td>Расчёт по страховым взносам</td>
+</tr>
+<tr>
+<td>profitTax</td>
+<td><a href="#schemaprofittax">ProfitTax</a></td>
+<td>false</td>
+<td>Налог на прибыль</td>
+</tr>
+<tr>
+<td>twoPersonalIncomeTaxesInfo</td>
+<td><a href="#schematwopersonalincometaxesinfo">TwoPersonalIncomeTaxesInfo</a></td>
+<td>false</td>
+<td>2-НДФЛ</td>
+</tr>
+<tr>
+<td>sixPersonalIncomeTaxesInfo</td>
+<td><a href="#schemasixpersonalincometaxesinfo">SixPersonalIncomeTaxesInfo</a></td>
+<td>false</td>
+<td>6-НДФЛ</td>
+</tr>
+<tr>
+<td>calculationsInformation</td>
+<td><a href="#schemacalculationsinformation">CalculationsInformation</a></td>
+<td>false</td>
+<td>Справка о состоянии расчётов</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Individual">Individual</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaindividual"></a>
+<a id="schema_Individual"></a>
+<a id="tocSindividual"></a>
+<a id="tocsindividual"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"legalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-499'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>legalInfo</td>
+<td><a href="#schemalegalinfo">LegalInfo</a></td>
+<td>false</td>
+<td>Информация о заёмщике</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Legal">Legal</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemalegal"></a>
+<a id="schema_Legal"></a>
+<a id="tocSlegal"></a>
+<a id="tocslegal"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"legalInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-500'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>legalInfo</td>
+<td><a href="#schemalegalinfo">LegalInfo</a></td>
+<td>false</td>
+<td>Информация о заёмщике</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_LegalInfo">LegalInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemalegalinfo"></a>
+<a id="schema_LegalInfo"></a>
+<a id="tocSlegalinfo"></a>
+<a id="tocslegalinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"inn"</span><span class="p">:</span><span class="w"> </span><span class="mi">770778659011</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"contactPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+7(916)545-00-00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-501'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>inn</td>
+<td>string</td>
+<td>true</td>
+<td>ИНН ИП</td>
+</tr>
+<tr>
+<td>contactPhone</td>
+<td>string</td>
+<td>false</td>
+<td>Контактный номер телефон ИП</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_TransactionsInfo">TransactionsInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schematransactionsinfo"></a>
+<a id="schema_TransactionsInfo"></a>
+<a id="tocStransactionsinfo"></a>
+<a id="tocstransactionsinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"transactionsMSBSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"transactionsMSBQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"transactionsMSBAvgSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"minSumTransactionMSB"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"transactionsMSBMaxSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Транзакции продавца с партнёром</p>
+<h4 id='properties-502'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>transactionsMSBSumList</td>
+<td>[<a href="#schematransactionsany">TransactionsAny</a>]</td>
+<td>false</td>
+<td>Сумма транзакций МСБ продавца с партнёром  помесячно за последние 2-3 года</td>
+</tr>
+<tr>
+<td>transactionsMSBQuantityList</td>
+<td>[<a href="#schemaquantitytransactions">QuantityTransactions</a>]</td>
+<td>false</td>
+<td>Кол-во транзакций МСБ продавца с партнёром  помесячно за последние 2-3 года</td>
+</tr>
+<tr>
+<td>transactionsMSBAvgSumList</td>
+<td>[<a href="#schematransactionsany">TransactionsAny</a>]</td>
+<td>false</td>
+<td>Средние суммы транзакций МСБ продавца с партнёром помесячно за последние 2-3 года</td>
+</tr>
+<tr>
+<td>minSumTransactionMSB</td>
+<td>[<a href="#schematransactionsany">TransactionsAny</a>]</td>
+<td>false</td>
+<td>Минимальная сумма одной транзакции МСБ продавца с партнёром помесячно за последние 2-3 года</td>
+</tr>
+<tr>
+<td>transactionsMSBMaxSumList</td>
+<td>[<a href="#schematransactionsany">TransactionsAny</a>]</td>
+<td>false</td>
+<td>Максимальная сумма одной транзакции МСБ продавца с партнёром помесячно за последние 2-3 года</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_TransactionsAny">TransactionsAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schematransactionsany"></a>
+<a id="schema_TransactionsAny"></a>
+<a id="tocStransactionsany"></a>
+<a id="tocstransactionsany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">1000.15</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-503'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Суммы (sum - общая, avgSum - средняя, minSum - минимальная, maxSum - максимальная) транзакций МСБ продавца с партнёром за месяц в рублях</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата выполнения транзакции</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_QuantityTransactions">QuantityTransactions</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaquantitytransactions"></a>
+<a id="schema_QuantityTransactions"></a>
+<a id="tocSquantitytransactions"></a>
+<a id="tocsquantitytransactions"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-504'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quantity</td>
+<td>number(integer)</td>
+<td>false</td>
+<td>Кол-во транзакций МСБ продавца с партнёром за месяц</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая n кол-ву транзакций с партнёром</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_SellerInventory">SellerInventory</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasellerinventory"></a>
+<a id="schema_SellerInventory"></a>
+<a id="tocSsellerinventory"></a>
+<a id="tocssellerinventory"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"inventorySumAndQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9000.25</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Запасы МСБ продавца</p>
+<h4 id='properties-505'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>inventorySumAndQuantityList</td>
+<td>[<a href="#schemainventorysumandquantitylist">InventorySumAndQuantityList</a>]</td>
+<td>false</td>
+<td>Объём запасов МСБ продавца на маркетплейсе в рублях помесячно за последние 2-3 года</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_InventorySumAndQuantityList">InventorySumAndQuantityList</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemainventorysumandquantitylist"></a>
+<a id="schema_InventorySumAndQuantityList"></a>
+<a id="tocSinventorysumandquantitylist"></a>
+<a id="tocsinventorysumandquantitylist"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9000.25</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-506'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Объём запасов МСБ продавца на маркетплейсе за месяц в рублях</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>number(integer)</td>
+<td>false</td>
+<td>Объём запасов МСБ продавца на маркетплейсе в штуках за месяц</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанному объёму запасов МСБ</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_SellerQuality">SellerQuality</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasellerquality"></a>
+<a id="schema_SellerQuality"></a>
+<a id="tocSsellerquality"></a>
+<a id="tocssellerquality"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sellerRatings"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.98</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"returnedQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"reasonForRefundList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Какая-то причина возврата или не выполнения заказа"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"goodsConcentrationLevels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"concentrationLevelOfSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.5</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"concentrationLevelOfQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">53.2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nameOfGood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Товар называется так"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Качество торговли МСБ продавца</p>
+<h4 id='properties-507'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sellerRatings</td>
+<td>[<a href="#schemasellerrating">SellerRating</a>]</td>
+<td>false</td>
+<td>Рейтинг продавца на маркетплейсе помесячно за последние 2-3 года</td>
+</tr>
+<tr>
+<td>returnedQuantityList</td>
+<td>[<a href="#schemareturnquantity">ReturnQuantity</a>]</td>
+<td>false</td>
+<td>Количество возвратов, не выполненных заказов помесячно за последние 2-3 года</td>
+</tr>
+<tr>
+<td>reasonForRefundList</td>
+<td>[<a href="#schemareturnreasons">ReturnReasons</a>]</td>
+<td>false</td>
+<td>Причины возвратов, не выполненных заказов помесячно за последние 2-3 года</td>
+</tr>
+<tr>
+<td>goodsConcentrationLevels</td>
+<td>[<a href="#schemaconcentrationlevelgoods">ConcentrationLevelGoods</a>]</td>
+<td>false</td>
+<td>Уровень концентрации продаваемых товаров – доля каждого товара в общем объёме продаж МСБ продавца (в рублях)/(в единицах товара)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_SellerRating">SellerRating</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasellerrating"></a>
+<a id="schema_SellerRating"></a>
+<a id="tocSsellerrating"></a>
+<a id="tocssellerrating"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.98</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-508'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rating</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Рейтинг продавца на маркетплейсе за месяц в единицах оценивания</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанному рейтингу</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ReturnQuantity">ReturnQuantity</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemareturnquantity"></a>
+<a id="schema_ReturnQuantity"></a>
+<a id="tocSreturnquantity"></a>
+<a id="tocsreturnquantity"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-509'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quantity</td>
+<td>number(integer)</td>
+<td>false</td>
+<td>Количество возвратов / не выполненных заказов за месяц</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанному количеству возвратов / не выполненных заказов</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ReturnReasons">ReturnReasons</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemareturnreasons"></a>
+<a id="schema_ReturnReasons"></a>
+<a id="tocSreturnreasons"></a>
+<a id="tocsreturnreasons"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Какая-то причина возврата или не выполнения заказа"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-510'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>reason</td>
+<td>string</td>
+<td>false</td>
+<td>Причины возвратов/не выполненных заказов за месяц</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанным причинам возвратов</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ConcentrationLevelGoods">ConcentrationLevelGoods</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaconcentrationlevelgoods"></a>
+<a id="schema_ConcentrationLevelGoods"></a>
+<a id="tocSconcentrationlevelgoods"></a>
+<a id="tocsconcentrationlevelgoods"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"concentrationLevelOfSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">23.5</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"concentrationLevelOfQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">53.2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nameOfGood"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Товар называется так"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-511'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>concentrationLevelOfSum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Доля товара в общем объеме продаж (в рублях) МСБ продавца на дату запроса в %</td>
+</tr>
+<tr>
+<td>concentrationLevelOfQuantity</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Доля товара в общем объеме продаж (в количестве) МСБ продавца на дату запроса в %</td>
+</tr>
+<tr>
+<td>nameOfGood</td>
+<td>string</td>
+<td>false</td>
+<td>Наименование товара</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PremiumAccount">PremiumAccount</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapremiumaccount"></a>
+<a id="schema_PremiumAccount"></a>
+<a id="tocSpremiumaccount"></a>
+<a id="tocspremiumaccount"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"hasPremiumAccount"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация о премиальном аккаунте</p>
+<h4 id='properties-512'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>hasPremiumAccount</td>
+<td>boolean</td>
+<td>false</td>
+<td>Наличие премиального аккаунта МСБ продавца на маркетплейсе на дату запроса</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Delay">Delay</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemadelay"></a>
+<a id="schema_Delay"></a>
+<a id="tocSdelay"></a>
+<a id="tocsdelay"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"loans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"goods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Просочка по рассрочке, кредитам, прочим финансовым продуктам МСБ с партнёром и/или по оплате за купленные товары, логистические услуги МСБ партнёру</p>
+<h4 id='properties-513'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>loans</td>
+<td>[<a href="#schemadelayany">DelayAny</a>]</td>
+<td>false</td>
+<td>Рассрочка, кредиты, прочие финансовые продукты</td>
+</tr>
+<tr>
+<td>goods</td>
+<td>[<a href="#schemadelayany">DelayAny</a>]</td>
+<td>false</td>
+<td>Купленные товары, логистические услуги</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_DelayAny">DelayAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemadelayany"></a>
+<a id="schema_DelayAny"></a>
+<a id="tocSdelayany"></a>
+<a id="tocsdelayany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"overDueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-514'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>overDueDate</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата выхода в просрочку по рассрочке, кредитам, прочим финансовым продуктам МСБ с партнёром и/или по оплате за купленные товары, логистические услуги МСБ партнёру за месяц за последние 2-3 года</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>number(integer)</td>
+<td>false</td>
+<td>Количество дней просрочки по рассрочке, кредитам, прочим финансовым продуктам МСБ с партнёром и/или по оплате за купленные товары, логистические услуги МСБ партнёру за месяц за последние 2-3 года</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Сумма просрочки по рассрочке, кредитам, прочим финансовым продуктам МСБ с партнёром и/или по оплате за купленные товары, логистические услуги МСБ партнёру за месяц за последние 2-3 года</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ProcuredGoodsInfo">ProcuredGoodsInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaprocuredgoodsinfo"></a>
+<a id="schema_ProcuredGoodsInfo"></a>
+<a id="tocSprocuredgoodsinfo"></a>
+<a id="tocsprocuredgoodsinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Категория 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Категория 2"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Закупаемые товары</p>
+<h4 id='properties-515'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>categories</td>
+<td>[string]</td>
+<td>false</td>
+<td>Категории товаров, которые МСБ закупает у партнёра</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Fee">Fee</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemafee"></a>
+<a id="schema_Fee"></a>
+<a id="tocSfee"></a>
+<a id="tocsfee"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">3000000.76</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-516'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Объёмы оплаты за логистические услуги МСБ через партнёра за месяц за последние 2-3 года в рублях</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, согласно указанному объёму</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_TransportedGoodsInfo">TransportedGoodsInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schematransportedgoodsinfo"></a>
+<a id="schema_TransportedGoodsInfo"></a>
+<a id="tocStransportedgoodsinfo"></a>
+<a id="tocstransportedgoodsinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"deliveries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transportedGoodsVolumeAndCategoryList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">3456.65</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория груза"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация о перевозимых грузах</p>
+<h4 id='properties-517'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>deliveries</td>
+<td>[<a href="#schemadeliveries">Deliveries</a>]</td>
+<td>false</td>
+<td>Информация о перевозимых грузах</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Deliveries">Deliveries</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemadeliveries"></a>
+<a id="schema_Deliveries"></a>
+<a id="tocSdeliveries"></a>
+<a id="tocsdeliveries"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transportedGoodsVolumeAndCategoryList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">3456.65</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория груза"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-518'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, согласно указанному объёму перевозимых грузов</td>
+</tr>
+<tr>
+<td>transportedGoodsVolumeAndCategoryList</td>
+<td>[<a href="#schematransportedgoods">TransportedGoods</a>]</td>
+<td>false</td>
+<td>Информация по объёму и номенклатуре перевозимых грузов</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_TransportedGoods">TransportedGoods</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schematransportedgoods"></a>
+<a id="schema_TransportedGoods"></a>
+<a id="tocStransportedgoods"></a>
+<a id="tocstransportedgoods"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mf">3456.65</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория груза"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-519'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>volume</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Объёмы перевозимых грузов через партнёра за месяц в тонно-километрах</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>false</td>
+<td>Наименование категории перевозимых грузов за месяц</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Vat">Vat</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemavat"></a>
+<a id="schema_Vat"></a>
+<a id="tocSvat"></a>
+<a id="tocsvat"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"totalTaxBaseList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"counterparts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">346</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"purchases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"purchaseAndSaleOperations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">554000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Информация о НДС, поквартально</p>
+<h4 id='properties-520'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>totalTaxBaseList</td>
+<td>[<a href="#schemataxpurchasessalesany">TaxPurchasesSalesAny</a>]</td>
+<td>false</td>
+<td>Общая налоговая база по НДС поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>counterparts</td>
+<td>[<a href="#schemacounterparts">Counterparts</a>]</td>
+<td>false</td>
+<td>Количество контрагентов МСБ клиента поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>purchaseAndSaleOperations</td>
+<td>[<a href="#schemaoperationspurchaseandsale">OperationsPurchaseAndSale</a>]</td>
+<td>false</td>
+<td>Количество операций по книгам покупок и продаж</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_TaxPurchasesSalesAny">TaxPurchasesSalesAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemataxpurchasessalesany"></a>
+<a id="schema_TaxPurchasesSalesAny"></a>
+<a id="tocStaxpurchasessalesany"></a>
+<a id="tocstaxpurchasessalesany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-521'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Сумма (tax - общей налоговой базы по НДС, purchases - покупок, sales - продаж) за квартал в рублях</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанной сумме</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_Counterparts">Counterparts</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacounterparts"></a>
+<a id="schema_Counterparts"></a>
+<a id="tocScounterparts"></a>
+<a id="tocscounterparts"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">346</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"purchases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">554000.55</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-522'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quantity</td>
+<td>number(integer)</td>
+<td>false</td>
+<td>Количество контрагентов МСБ клиента за квартал</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанному количеству контрагентов</td>
+</tr>
+<tr>
+<td>purchases</td>
+<td>[<a href="#schemataxpurchasessalesany">TaxPurchasesSalesAny</a>]</td>
+<td>false</td>
+<td>Сумма покупок по каждому контрагенту поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>sales</td>
+<td>[<a href="#schemataxpurchasessalesany">TaxPurchasesSalesAny</a>]</td>
+<td>false</td>
+<td>Сумма продаж по каждому контрагенту поквартально за последние 2-3 года</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_OperationsPurchaseAndSale">OperationsPurchaseAndSale</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaoperationspurchaseandsale"></a>
+<a id="schema_OperationsPurchaseAndSale"></a>
+<a id="tocSoperationspurchaseandsale"></a>
+<a id="tocsoperationspurchaseandsale"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">554000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-523'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quantity</td>
+<td>number(integer)</td>
+<td>false</td>
+<td>Количество операций по книгам покупок и продаж за квартал в штуках</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанному количеству операций</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_InsurancePremiumsInfo">InsurancePremiumsInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemainsurancepremiumsinfo"></a>
+<a id="schema_InsurancePremiumsInfo"></a>
+<a id="tocSinsurancepremiumsinfo"></a>
+<a id="tocsinsurancepremiumsinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"mandatoryPensionInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"mandatoryMedicalInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"mandatoryPensionInsuranceSurchargeSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"supplementarySocialSupportSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"mandatorySocialInsuranceSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Расчёт по страховым взносам</p>
+<h4 id='properties-524'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mandatoryPensionInsuranceSumList</td>
+<td>[<a href="#schemainsuranceany">InsuranceAny</a>]</td>
+<td>false</td>
+<td>Сумма страховых взносов на обязательное пенсионное страхование, подлежащая уплате поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>mandatoryMedicalInsuranceSumList</td>
+<td>[<a href="#schemainsuranceany">InsuranceAny</a>]</td>
+<td>false</td>
+<td>Сумма страховых взносов на обязательное медицинское страхование, подлежащая уплате поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>mandatoryPensionInsuranceSurchargeSumList</td>
+<td>[<a href="#schemainsuranceany">InsuranceAny</a>]</td>
+<td>false</td>
+<td>Сумма страховых взносов на обязательное пенсионное страхование по дополнительному тарифу, подлежащая уплате (может быть несколько КБК) поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>supplementarySocialSupportSumList</td>
+<td>[<a href="#schemainsuranceany">InsuranceAny</a>]</td>
+<td>false</td>
+<td>Сумма страховых взносов на дополнительное социальное обеспечение, подлежащая уплате за расчётный (отчётный) период (может быть несколько КБК) поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>mandatorySocialInsuranceSumList</td>
+<td>[<a href="#schemainsuranceany">InsuranceAny</a>]</td>
+<td>false</td>
+<td>Сумма страховых взносов на обязательное социальное страхование на случай временной нетрудоспособности и в связи с материнством поквартально за последние 2-3 года</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_InsuranceAny">InsuranceAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemainsuranceany"></a>
+<a id="schema_InsuranceAny"></a>
+<a id="tocSinsuranceany"></a>
+<a id="tocsinsuranceany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">7579815.57</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-525'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Сумма страховых взносов (pension - обязательное пенсионное, medical - обязательное медицинское, surcharge - доп.тариф обязательного пенсионного, support - доп.социальное, social - обязательное социальное), подлежащая уплате за квартал в рублях</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанной сумме</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ProfitTax">ProfitTax</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaprofittax"></a>
+<a id="schema_ProfitTax"></a>
+<a id="tocSprofittax"></a>
+<a id="tocsprofittax"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"incomes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"costs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"totalProfits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Налог на прибыль</p>
+<h4 id='properties-526'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>incomes</td>
+<td>[<a href="#schemaprofittaxany">ProfitTaxAny</a>]</td>
+<td>false</td>
+<td>Доходы от реализации поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>costs</td>
+<td>[<a href="#schemaprofittaxany">ProfitTaxAny</a>]</td>
+<td>false</td>
+<td>Убытки (расходы) поквартально за последние 2-3 года</td>
+</tr>
+<tr>
+<td>totalProfits</td>
+<td>[<a href="#schemaprofittaxany">ProfitTaxAny</a>]</td>
+<td>false</td>
+<td>Итого прибыль (убыток) поквартально за последние 2-3 года</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ProfitTaxAny">ProfitTaxAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaprofittaxany"></a>
+<a id="schema_ProfitTaxAny"></a>
+<a id="tocSprofittaxany"></a>
+<a id="tocsprofittaxany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">87770039.19</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-527'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Сумма (income - дохода, costs - убытков/расходов, total - итого) поквартально за квартал в рублях</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанной сумме</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_TwoPersonalIncomeTaxesInfo">TwoPersonalIncomeTaxesInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schematwopersonalincometaxesinfo"></a>
+<a id="schema_TwoPersonalIncomeTaxesInfo"></a>
+<a id="tocStwopersonalincometaxesinfo"></a>
+<a id="tocstwopersonalincometaxesinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"fullCostSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"retentionSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"paidSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"employeesQuantityList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">134</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>2-НДФЛ</p>
+<h4 id='properties-528'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>fullCostSumList</td>
+<td>[<a href="#schemasumpitany">SumPITAny</a>]</td>
+<td>false</td>
+<td>Сумма НДФЛ, исчисленная по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>retentionSumList</td>
+<td>[<a href="#schemasumpitany">SumPITAny</a>]</td>
+<td>false</td>
+<td>Сумма НДФЛ, удержанная по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>paidSumList</td>
+<td>[<a href="#schemasumpitany">SumPITAny</a>]</td>
+<td>false</td>
+<td>Сумма НДФЛ, перечисленная по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>employeesQuantityList</td>
+<td>[<a href="#schemaquantityemployees">QuantityEmployees</a>]</td>
+<td>false</td>
+<td>Численность сотрудников по годам за последние 2-3 года</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_SumPITAny">SumPITAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasumpitany"></a>
+<a id="schema_SumPITAny"></a>
+<a id="tocSsumpitany"></a>
+<a id="tocssumpitany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">58552.25</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-529'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Сумма НДФЛ (cost - исчисленная, retention - удержанная, paid - перечисленная) за год в рублях</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанной сумме</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_QuantityEmployees">QuantityEmployees</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaquantityemployees"></a>
+<a id="schema_QuantityEmployees"></a>
+<a id="tocSquantityemployees"></a>
+<a id="tocsquantityemployees"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">134</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-530'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>quantity</td>
+<td>number(integer)</td>
+<td>false</td>
+<td>Численность сотрудников по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанному количеству</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_SixPersonalIncomeTaxesInfo">SixPersonalIncomeTaxesInfo</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemasixpersonalincometaxesinfo"></a>
+<a id="schema_SixPersonalIncomeTaxesInfo"></a>
+<a id="tocSsixpersonalincometaxesinfo"></a>
+<a id="tocssixpersonalincometaxesinfo"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"factIncomes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"retentionPITDateAndSumList"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"imposedKBKTaxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"imposedInterests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"imposedFines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"paidKBKTaxes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"paidKBKInterests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"paidKBKFines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>6-НДФЛ</p>
+<h4 id='properties-531'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>factIncomes</td>
+<td>[<a href="#schemaincomeretentionany">IncomeRetentionAny</a>]</td>
+<td>false</td>
+<td>Дата фактически полученного дохода по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>retentionPITDateAndSumList</td>
+<td>[<a href="#schemaincomeretentionany">IncomeRetentionAny</a>]</td>
+<td>false</td>
+<td>Дата и сумма удержанного НДФЛ по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>imposedKBKTaxes</td>
+<td>[<a href="#schemaimposedany">ImposedAny</a>]</td>
+<td>false</td>
+<td>Начисленные налоги по КБК за год по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>imposedInterests</td>
+<td>[<a href="#schemaimposedany">ImposedAny</a>]</td>
+<td>false</td>
+<td>Начисленные пени по КБК за год по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>imposedFines</td>
+<td>[<a href="#schemaimposedany">ImposedAny</a>]</td>
+<td>false</td>
+<td>Начисленные штрафы по КБК за год по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>paidKBKTaxes</td>
+<td>[<a href="#schemapaidany">PaidAny</a>]</td>
+<td>false</td>
+<td>Уплаченные налоги по КБК за год по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>paidKBKInterests</td>
+<td>[<a href="#schemapaidany">PaidAny</a>]</td>
+<td>false</td>
+<td>Уплаченные пени по КБК за год по годам за последние 2-3 года</td>
+</tr>
+<tr>
+<td>paidKBKFines</td>
+<td>[<a href="#schemapaidany">PaidAny</a>]</td>
+<td>false</td>
+<td>Уплаченные штрафы по КБК за год по годам за последние 2-3 года</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_IncomeRetentionAny">IncomeRetentionAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaincomeretentionany"></a>
+<a id="schema_IncomeRetentionAny"></a>
+<a id="tocSincomeretentionany"></a>
+<a id="tocsincomeretentionany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"factDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-28"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">247912.19</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-532'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>factDate</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Фактическая дата (factIncome - получения дохода, dateAndSumRetentionPIT - удержания НДФЛ)</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Сумма (factIncome - фактически полученного дохода, dateAndSumRetentionPIT - удержанного НДФЛ) за год в рублях</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанной фактической дате</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_ImposedAny">ImposedAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaimposedany"></a>
+<a id="schema_ImposedAny"></a>
+<a id="tocSimposedany"></a>
+<a id="tocsimposedany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">33346.47</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-533'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Начисленные (taxes - налоги, interests - пени, fines - штрафы) по КБК за год в рублях</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанной фактической дате</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_PaidAny">PaidAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemapaidany"></a>
+<a id="schema_PaidAny"></a>
+<a id="tocSpaidany"></a>
+<a id="tocspaidany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">9110687.53</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-05-01"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-534'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Уплаченные (taxes - налоги, interests - пени, fines - штрафы) по КБК за год в руб.</td>
+</tr>
+<tr>
+<td>date</td>
+<td>string(date)</td>
+<td>false</td>
+<td>Дата, соответствующая указанной фактической дате</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_CalculationsInformation">CalculationsInformation</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacalculationsinformation"></a>
+<a id="schema_CalculationsInformation"></a>
+<a id="tocScalculationsinformation"></a>
+<a id="tocscalculationsinformation"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"currentInterestsSum"</span><span class="p">:</span><span class="w"> </span><span class="mi">110687</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currentInterestsAndCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"currentTaxesSum"</span><span class="p">:</span><span class="w"> </span><span class="mf">5016161.68</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currentFinesAndCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>Справка о состоянии расчётов</p>
+<h4 id='properties-535'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currentInterestsSum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Текущие пени на дату запроса в рублях</td>
+</tr>
+<tr>
+<td>currentInterestsAndCategories</td>
+<td>[<a href="#schemainterestsfinesany">InterestsFinesAny</a>]</td>
+<td>false</td>
+<td>Текущие пени (в разбивке по категориям)</td>
+</tr>
+<tr>
+<td>currentTaxesSum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Текущие штрафы на дату запроса в рублях</td>
+</tr>
+<tr>
+<td>currentFinesAndCategories</td>
+<td>[<a href="#schemainterestsfinesany">InterestsFinesAny</a>]</td>
+<td>false</td>
+<td>Текущие штрафы (в разбивке по категориям)</td>
+</tr>
+</tbody></table>
+
+<h4 id="tocS_InterestsFinesAny">InterestsFinesAny</h4>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemainterestsfinesany"></a>
+<a id="schema_InterestsFinesAny"></a>
+<a id="tocSinterestsfinesany"></a>
+<a id="tocsinterestsfinesany"></a></p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"sum"</span><span class="p">:</span><span class="w"> </span><span class="mf">20299.1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Категория пени/штрафа"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div><h4 id='properties-536'>Properties</h4>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sum</td>
+<td>number(float)</td>
+<td>false</td>
+<td>Текущие (interests - пени, fines - штрафы) в разбивке по категориям на дату запроса в рублях</td>
+</tr>
+<tr>
+<td>category</td>
+<td>string</td>
+<td>false</td>
+<td>Категория текущих пени/штрафа</td>
+</tr>
+</tbody></table>
 <h2 id='42fc51aa44'>Пагинация</h2>
 <p>Пагинация - разделение ответа на несколько страниц. Механизм пагинации может быть использован в REST-запросах GET. </p>
 <h4 id='a035a415f2'>Параметры и пример запроса</h4>
@@ -35181,6 +38449,11 @@ This operation does not require authentication
 <td><span class="custom__cmd-command-text">GET customer-info</span></td>
 </tr>
 <tr>
+<td>loan-applications</td>
+<td>Smart-контракты</td>
+<td><span class="custom__cmd-command-text">POST loan-applications </span></td>
+</tr>
+<tr>
 <td>transactions</td>
 <td>Все данные о счетах организации</td>
 <td><ol class="table-cell__list"><li><span class="custom__cmd-command-text">GET statement/transactions</span></li> <br> <li><span class="custom__cmd-command-text">GET accounts/{accountNumber}statement/transactions</span></li> <br> <li><span class="custom__cmd-command-text">GET statement/summary</span></li></ol></td>
@@ -35232,6 +38505,10 @@ This operation does not require authentication
 <ul>
 <li><strong>POST escrow-orders</strong> Создание заявки на резервирование счета эскроу</li>
 </ul>
+
+<p><strong>18 октября 2022</strong></p>
+
+<p>Добавлен новый сервис &quot;B2B-кредиты&quot;. Метод API  <strong>POST loan-applications</strong>  Отправка данных для скоринга и создание черновика заявки.</p>
 <h1 id='faq'>FAQ. Часто задаваемые вопросы</h1><h4 id='quot-error_description-quot-quot-client-was-not-found-quot'>Что означает &quot;error_description&quot;: &quot;Client was not found&quot;?</h4>
 <p>В запросе клиента на получение токена авторизации (api/token) указан неверный client_id/client_secret. </p>
 <h4 id='quot-error_description-quot-quot-the-request-requires-higher-privileges-than-provided-by-the-access-token-quot'>Почему возникает &quot;error_description&quot;: &quot;The request requires higher privileges than provided by the access token&quot;?</h4>
