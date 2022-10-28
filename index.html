@@ -1873,7 +1873,7 @@ your-256-bit-secret
 <p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
 
 <p>Сертификат для проверки электронной подписи
- <a download="example.crs.cer" href="https://alfaapi.github.io/specification/certificates/example.crs.cer">example.crs.cer</a></p>
+ <a download="example1.crs.cer" href="https://alfaapi.github.io/specification/certificates/example1.crs.cer">example1.crs.cer</a></p>
 <h4 id='6d2a6c5279'>Опционально:</h4>
 <h4 id="post-refresh-token">Обновление токена POST /token</h4>
 
@@ -2821,7 +2821,7 @@ your-256-bit-secret
 <p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
 
 <p>Сертификат для проверки электронной подписи
- <a download="example.crs.cer" href="https://alfaapi.github.io/specification/certificates/example.crs.cer">example.crs.cer</a></p>
+ <a download="example1.crs.cer" href="https://alfaapi.github.io/specification/certificates/example.crs.cer">example1.crs.cer</a></p>
 <h4 id='6d2a6c5279-2'>Опционально:</h4>
 <p><h4 id="post-system-token-ccf">Отзыв токена</h4></p>
 
@@ -3107,7 +3107,11 @@ This operation does not require authentication
 
 <h2 id="transactions">Операции по счетам</h2>
 
-<p>Методы позволяют получить список операций по одному счету за один день. Дата/время совершения операции по UTC+3 часовому поясу (Московское время). Получение выписок доступно как для рублёвых, так и валютных счетов. Операции по счетам: </p>
+<p>Методы позволяют получить список операций по одному счету за один день. Дата/время совершения операции по UTC+3 часовому поясу (Московское время). Получение выписок доступно как для рублёвых, так и валютных счетов. </p>
+
+<p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#auth-code-flow" target="_blank" ><strong>Authorization Code Flow</strong></a>. </p>
+
+<p>Операции по счетам: </p>
 
 <p><ul>
   <li><a href="#statement">Получение выписки</a></li>
@@ -8431,6 +8435,8 @@ bearerAuth
 </tbody></table>
 
 <h2 id="reports">Отчеты для внешних потребителей по СБП</h2>
+
+<p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#client-cred-flow" target="_blank" ><strong>Client Credentials Flow</strong></a>.</p>
 <h3 id='df29c038a8'>Создание заявки на отчет по переводу средств через СБП</h3>
 <p>Метод предназначен для создания заявки на отчет по переводу средств. Метод инициирует асинхронный процесс формирования отчета.</p>
 
@@ -8734,6 +8740,8 @@ bearerAuth
 <p>Метод позволяет получить информацию об организации и ее счетах. Все суммы указаны в рублях.</p>
 
 <p>Для получения информации о профиле организации необходимо отправить запрос GET v1/customer-info с access_token, полученным в Alfa ID со scope = customer, и параметрами запроса.</p>
+
+<p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#auth-code-flow" target="_blank" ><strong>Authorization Code Flow</strong></a>. </p>
 
 <p>Адрес <a href="https://baas.alfabank.ru/api/v1/customer-info">https://baas.alfabank.ru/api/v1/customer-info</a></p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET v1/customer-info <span class="se">\</span>
@@ -9905,6 +9913,8 @@ bearerAuth ( Scopes: customer_info )
 </tbody></table>
 
 <h2 id="214">Счета эскроу 214-ФЗ</h2> 
+
+<p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#auth-code-flow" target="_blank" ><strong>Authorization Code Flow</strong></a>.</p>
 
 <p>Список методов: 
   <ul>
@@ -11332,6 +11342,8 @@ bearerAuth
 <!-- Generator: Widdershins v4.0.1 -->
 
 <p>Методы позволяют клиенту выпустить и активировать RSA-сертификат и в дальнейшем использовать его для подписания документов.</p>
+
+<p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#auth-code-flow" target="_blank" ><strong>Authorization Code Flow</strong></a>.</p>
 
 <p>Список методов:</p>
 
@@ -13945,6 +13957,8 @@ error_description: Endpoint is not found or not active"</span><span class="w">
 </tbody></table>
 
 <h2 id="debetcards">Дебетовые карты</h2>
+
+<p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#auth-code-flow" target="_blank" ><strong>Authorization Code Flow</strong></a>.</p>
 <h3 id='ec6a6ef8f9'>Получение условий обслуживания по дебетовой карте</h3>
 <p>Метод позволяет получить условия обслуживания по дебетовой карте.</p>
 
@@ -35474,10 +35488,12 @@ This operation does not require authentication
 </tbody></table>
 
 <h2 id="b2b">B2B-кредиты</h2>
+
+<p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#client-cred-flow" target="_blank" ><strong>Client Credentials Flow</strong></a>.</p>
 <h3 id='5878437fca'>Отправка данных для скоринга и создание черновика заявки</h3>
 <p>Метод предназначен для отправки информации на предварительный скоринг и создания черновика заявки на кредит (проект Smart-контракты).</p>
 
-<p>Для создания черновика заявки на кредит необходимо отправить запрос POST loan-applications с access_token, полученным в Alfa ID (<a href="https://alfaapi.github.io/specification/#client-cred-flow" target="_blank" ><strong>CCF</strong></a>) со scope = loan-applications, и параметрами запроса. </p>
+<p>Для создания черновика заявки на кредит необходимо отправить запрос POST loan-applications с access_token, полученным в Alfa ID со scope = loan-applications, и параметрами запроса. </p>
 
 <blockquote>
 <p>Code samples</p>
