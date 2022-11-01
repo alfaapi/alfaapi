@@ -1873,7 +1873,7 @@ your-256-bit-secret
 <p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
 
 <p>Сертификат для проверки электронной подписи
- <a download="example1.crs.cer" href="https://alfaapi.github.io/specification/certificates/example1.crs.cer">example1.crs.cer</a></p>
+ <a download="example1.crs.cer" href="https://alfaapi.github.io/specification/blob/main/certificates/example1.crs.cer">example1.crs.cer</a></p>
 <h4 id='6d2a6c5279'>Опционально:</h4>
 <h4 id="post-refresh-token">Обновление токена POST /token</h4>
 
@@ -2821,7 +2821,7 @@ your-256-bit-secret
 <p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
 
 <p>Сертификат для проверки электронной подписи
- <a download="example1.crs.cer" href="https://alfaapi.github.io/specification/certificates/example1.crs.cer">example1.crs.cer</a></p>
+ <a download="example1.crs.cer" href="https://alfaapi.github.io/specification/blob/main/certificates/example1.crs.cer">example1.crs.cer</a></p>
 <h4 id='6d2a6c5279-2'>Опционально:</h4>
 <p><h4 id="post-system-token-ccf">Отзыв токена</h4></p>
 
@@ -8546,8 +8546,8 @@ bearerAuth
 <p>409 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"conflict"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request to generate a report with this parameters already exists"</span><span class="w">
+</span><span class="err">    </span><span class="nl">"error"</span><span class="p">:</span><span class="s2">"report_already_exist"</span><span class="p">,</span><span class="w">
+</span><span class="err">   </span><span class="w"> </span><span class="nl">"error_description"</span><span class="p">:</span><span class="s2">"Incomplete report preparation process found"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -8599,8 +8599,8 @@ bearerAuth
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
 </tr>
 <tr>
-<td>409 (Conflict)</td>
-<td>conflict</td>
+<td>409 (Report Already Exist)</td>
+<td>report_already_exist</td>
 <td>Возвращается в случае повторного запроса на генерацию того же отчета (в рамках одного и того же дня)</td>
 <td><a href="#schemabasebaasresponse">BaseBaasResponse</a></td>
 </tr>
@@ -11391,7 +11391,7 @@ bearerAuth
 
 <p>Шаг 2. Первый метод, который необходимо вызывать для создания RSA-сертификата, - это метод <strong>Заявка на RSA-выпуск сертификата</strong>.</p>
 
-<p>Шаг 3. Далее вызывается метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 2. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
+<p>Шаг 3. Далее вызывается метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 2, а в теле запроса requestType = issueRsaCertificate. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
 
 <p>Шаг 4. Затем клиент вызывает метод <strong>Подписание заявки с помощью кода из СМС</strong>, передав в него идентификатор операции, полученный в ответе на шаге 3, тип заявки = issueRsaCertificate и полученный по СМС OTP.</p>
 
@@ -11399,7 +11399,7 @@ bearerAuth
 
 <p>Шаг 6. После выполнения заявки необходимо активировать RSA-сертификат, вызвав метод <strong>Заявка на активацию RSA-сертификата</strong> и передав в него идентификатор сертификата, полученный на шаге 5.</p>
 
-<p>Шаг 7. Далее повторно отправить заявку на подпись, вызвав метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 6. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
+<p>Шаг 7. Далее повторно отправить заявку на подпись, вызвав метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 6, а в теле запроса requestType = activationRsaCertificate. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
 
 <p>Шаг 8. Затем снова подписать заявку, вызвав метод <strong>Подписание заявки с помощью кода из СМС</strong>, передав в него идентификатор операции, полученный в ответе на шаге 7, тип заявки = activationRsaCertificate и полученный по СМС OTP.</p>
 
@@ -11407,7 +11407,7 @@ bearerAuth
 
 <p>Шаг 10. После выполнения заявки изменить основной способ подписи на RSA. Для этого необходимо вызывать метод <strong>Заявка на изменение текущего способа подписи</strong>, передав currentSignType = rsa-certificates.</p>
 
-<p>Шаг 11. Далее вызвать метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 10. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
+<p>Шаг 11. Далее вызвать метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 10, а в теле запроса requestType = currentSignTypeRsa. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
 
 <p>Шаг 12. Вызвать метод <strong>Подписание заявки с помощью кода из СМС</strong>, передав в него идентификатор операции, полученный в ответе на шаге 3, тип заявки = currentSignTypeRsa и полученный по СМС OTP. </p>
 
