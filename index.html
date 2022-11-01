@@ -2821,7 +2821,7 @@ your-256-bit-secret
 <p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
 
 <p>Сертификат для проверки электронной подписи
- <a download="example1.crs.cer" href="https://alfaapi.github.io/specification/certificates/example.crs.cer">example1.crs.cer</a></p>
+ <a download="example1.crs.cer" href="https://alfaapi.github.io/specification/certificates/example1.crs.cer">example1.crs.cer</a></p>
 <h4 id='6d2a6c5279-2'>Опционально:</h4>
 <p><h4 id="post-system-token-ccf">Отзыв токена</h4></p>
 
@@ -3100,7 +3100,7 @@ This operation does not require authentication
 <li><a href="#reports">&quot;Отчеты для внешних потребителей по СБП&quot;</a></li>
 <li><a href="#customers">&quot;Профиль организации&quot;</a></li>
 <li><a href="#214">&quot;Счета эскроу 214-ФЗ&quot;</a></li>
-<li><a href="#968778f49f-2">&quot;Электронная подпись&quot;</a></li>
+<li><a href="#signature">&quot;Электронная подпись&quot;</a></li>
 <li><a href="#debetcards">&quot;Дебетовые карты&quot;</a></li>
 <li><a href="#b2b">&quot;B2B-кредиты&quot;</a></li>
 </ul>
@@ -11355,7 +11355,7 @@ bearerAuth
 <li><a href="#get-request">Получение данных заявки</a></li>
 <li><a href="#get-rsa">Получение RSA-сертификата</a></li>
 <li><a href="#activation-rsa">Заявка на активацию RSA-сертификата</a></li>
-<li><a href="#change-sign-method">Изменение основного способа подписи</a></li>
+<li><a href="#change-sign-method">Заявка на изменение текущего способа подписи </a></li>
   </ul></p>
 
 <p>Для получения RSA-сертификата необходимо отправить заявку на подпись, подписать заявку с помощью СМС-кода и получить данные заявки. Далее произвести активацию RSA-сертификата.</p>
@@ -11405,9 +11405,15 @@ bearerAuth
 
 <p>Шаг 9. Дождаться выполнения заявки: вызвать метод <strong>Получение данных заявки</strong>, передав в него идентификатор заявки, полученный в ответе на шаге 6 и проверить статус заявки, пока он не перейдет в статус FINISHED.</p>
 
-<p>Шаг 10. После выполнения заявки изменить основной способ подписи на RSA. Для этого необходимо вызвать метод <strong>Изменение основного способа подписи</strong>, передав currentSignType = rsa-certificates.</p>
+<p>Шаг 10. После выполнения заявки изменить основной способ подписи на RSA. Для этого необходимо вызывать метод <strong>Заявка на изменение текущего способа подписи</strong>, передав currentSignType = rsa-certificates.</p>
 
-<p>Шаг 11. После успешного ответа на шаге 10 выпущенным RSA-сертифкатом можно подписывать документы.</p>
+<p>Шаг 11. Далее вызвать метод <strong>Отправка заявки на подпись</strong>, где входным параметром передается идентификатор заявки, полученный в ответе на шаге 10. В рамках данного метода система отправляет пользователю на телефон OTP.</p>
+
+<p>Шаг 12. Вызвать метод <strong>Подписание заявки с помощью кода из СМС</strong>, передав в него идентификатор операции, полученный в ответе на шаге 3, тип заявки = currentSignTypeRsa и полученный по СМС OTP. </p>
+
+<p>Шаг 13. Затем необходимо дождаться выполнения заявки путем вызова метода <strong>Получение данных заявки</strong>, передав в него идентификатор заявки, полученный в ответе на шаге 2, и проверить статус заявки, пока он не перейдет в статус FINISHED. </p>
+
+<p>Шаг 14. После успешного ответа на шаге 13 выпущенным RSA-сертифкатом можно подписывать документы. </p>
 
 <h3 id="get-dn">Получение DN</h3>
 
@@ -12140,8 +12146,23 @@ bearerAuth
         </span><span class="nl">"userSignMethodStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENABLED"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w"> 
+    </span><span class="nl">"requestCurrentSignTypeRsa"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"requestIssueRsaCertificate"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"requestActivateRsaCertificate"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"requestCurrentSignTypeRsa"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"632c3a574441931c3de70996"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"currentSignTypeRsa"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FINISHED"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Павлов Ким Николаевич"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-22T10:35:03.304Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"finishedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-22T10:35:39.967Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 </span></code></pre></div>
 <h4 id="get__signature_users_{sub}_rsa-certificates_requests_{id}-responses">Responses</h4>
 
@@ -12545,7 +12566,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 
-<h3 id="change-sign-method">Изменение основного способа подписи</h3>
+<h3 id="change-sign-method">Заявка на изменение текущего способа подписи</h3>
 
 <p>Для изменения основного способ необходимо вызвать PUT signature/users/{sub}/sign-settings с access_token, полученным в Alfa ID со scope = signature, и параметрами запроса.</p>
 
@@ -12881,6 +12902,11 @@ bearerAuth
 <td>activationRsaCertificate</td>
 <td>Тип заявки на активацию RSA-сертификата</td>
 </tr>
+<tr>
+<td>requestType</td>
+<td>currentSignTypeRsa</td>
+<td>Тип заявки на изменение основного способа подписи на RSA</td>
+</tr>
 </tbody></table>
 
 <h4 id="tocS_ResponsePostOperations">ResponsePostOperations</h4>
@@ -12944,6 +12970,11 @@ bearerAuth
 <td>requestType</td>
 <td>activationRsaCertificate</td>
 <td>Тип заявки на активацию RSA-сертификата</td>
+</tr>
+<tr>
+<td>requestType</td>
+<td>currentSignTypeRsa</td>
+<td>Тип заявки на изменение основного способа подписи на RSA</td>
 </tr>
 </tbody></table>
 
@@ -13047,6 +13078,11 @@ bearerAuth
 <td>activationRsaCertificate</td>
 <td>Тип заявки на активацию RSA-сертификата</td>
 </tr>
+<tr>
+<td>requestType</td>
+<td>currentSignTypeRsa</td>
+<td>Тип заявки  на изменение основного способа подписи на RSA</td>
+</tr>
 </tbody></table>
 
 <h4 id="tocS_RequestData">RequestData</h4>
@@ -13099,8 +13135,19 @@ bearerAuth
         </span><span class="nl">"userSignMethodStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENABLED"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"requestCurrentSignTypeRsa"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"632c3a574441931c3de70996"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"currentSignTypeRsa"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FINISHED"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"creator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Павлов Ким Николаевич"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-22T10:35:03.304Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"finishedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-09-22T10:35:39.967Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
 
 </span></code></pre></div>
 <p>Данные заявки</p>
@@ -13124,6 +13171,12 @@ bearerAuth
 <td>[<a href="#schemadatarequestactivatersacertificate">DataRequestActivateRsaCertificate</a>]</td>
 <td>false</td>
 <td>Заявка на активацию RSA-сертификата</td>
+</tr>
+<tr>
+<td>requestCurrentSignTypeRsa</td>
+<td>[<a href="#schemadatarequestactivatersacertificate">DataRequestActivateRsaCertificate</a>]</td>
+<td>false</td>
+<td>Заявка на изменение основного способа подписи на RSA</td>
 </tr>
 </tbody></table>
 
@@ -13253,7 +13306,7 @@ bearerAuth
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>Данные заявки на активацию RSA-сертификата</p>
+<p>Данные заявки на активацию RSA-сертификата/на изменение основного способа подписи на RSA</p>
 <h4 id='properties-117'>Properties</h4>
 <table><thead>
 <tr>
@@ -38934,7 +38987,7 @@ bearerAuth
 <li><p><strong>POST signature/users/{sub}/rsa-certificates/{id}/requests/activation</strong>
 Заявка на активацию RSA-сертификата</p></li>
 <li><p><strong>PUT signature/users/{sub}/sign-settings</strong> 
-Изменение основного способа подписи </p></li>
+Заявка на изменение текущего способа подписи </p></li>
 </ul>
 
 <p><strong>30 июня 2022</strong></p>
