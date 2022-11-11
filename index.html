@@ -337,7 +337,7 @@
                     <a href="#signature" class="toc-h2 toc-link" data-title="Электронная подпись">Электронная подпись</a>
                   </li>
                   <li>
-                    <a href="#debetcards" class="toc-h2 toc-link" data-title="Дебетовые карты">Дебетовые карты</a>
+                    <a href="#debetcards" class="toc-h2 toc-link" data-title="Дебетовые карты (для физических лиц)">Дебетовые карты (для физических лиц)</a>
                   </li>
                   <li>
                     <a href="#b2b" class="toc-h2 toc-link" data-title="B2B-кредиты">B2B-кредиты</a>
@@ -1873,7 +1873,7 @@ your-256-bit-secret
 <p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
 
 <p>Сертификат для проверки электронной подписи
- <a download="example1_crs.zip" href="https://alfaapi.github.io/specification/certificates/example1_crs.zip">example1_crs.zip</a></p>
+ <a download="example1_crs.zip" href="https://github.com/alfaapi/specification/blob/main/certificates/example1_csr.zip?raw=true">example1_crs.zip</a></p>
 <h4 id='6d2a6c5279'>Опционально:</h4>
 <h4 id="post-refresh-token">Обновление токена POST /token</h4>
 
@@ -2821,7 +2821,7 @@ your-256-bit-secret
 <p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, значит подпись верна.</p>
 
 <p>Сертификат для проверки электронной подписи
- <a download="example1_crs.zip" href="https://alfaapi.github.io/specification/certificates/example1_crs.zip">example1_crs.zip</a></p>
+ <a download="example1_crs.zip" href="https://github.com/alfaapi/specification/blob/main/certificates/example1_csr.zip?raw=true">example1_crs.zip</a></p>
 <h4 id='6d2a6c5279-2'>Опционально:</h4>
 <p><h4 id="post-system-token-ccf">Отзыв токена</h4></p>
 
@@ -3068,9 +3068,9 @@ This operation does not require authentication
 <h3 id='alfa-id-3'>Рекомендации по тестированию Alfa ID ФЛ:</h3>
 <p>1) Для <em>прохождения процедуры аутентификации</em> используйте тестовые логин и пароль, ОТР.</p>
 
-<p>Login: любая комбинация символов</p>
+<p>Login: SomeDifficultLogin</p>
 
-<p>Password: любая комбинация символов</p>
+<p>Password: 1qaz!QAZ</p>
 
 <p>One-Time Password: 000000</p>
 
@@ -8440,12 +8440,12 @@ bearerAuth
 <h3 id='df29c038a8'>Создание заявки на отчет по переводу средств через СБП</h3>
 <p>Метод предназначен для создания заявки на отчет по переводу средств. Метод инициирует асинхронный процесс формирования отчета.</p>
 
-<p>Для создания заявки на отчет по переводу средств необходимо отправить запрос POST reports с access_token, полученным в Alfa ID со scope = report-sbp, и параметрами запроса.</p>
+<p>Для создания заявки на отчет по переводу средств необходимо отправить запрос POST /reports/payments-sbp с access_token, полученным в Alfa ID со scope = report-sbp, и параметрами запроса.</p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST reports <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST /reports/payments-sbp <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -11359,7 +11359,9 @@ bearerAuth
   </ul></p>
 
 <p>Для получения RSA-сертификата необходимо отправить заявку на подпись, подписать заявку с помощью СМС-кода и получить данные заявки. Далее произвести активацию RSA-сертификата.</p>
-<h4 id='ec70afa7e7'><strong>Инструкция пользователя</strong></h4>
+
+<h4 id="rsa-instruction">Инструкция пользователя</h4>
+
 <p>Шаг 1. Для получения сертификата необходимо создать <em>запрос на сертификат</em>.</p>
 
 <p>Создание запроса на сертификат: </p>
@@ -14009,7 +14011,7 @@ error_description: Endpoint is not found or not active"</span><span class="w">
 </tr>
 </tbody></table>
 
-<h2 id="debetcards">Дебетовые карты</h2>
+<h2 id="debetcards">Дебетовые карты (для физических лиц)</h2>
 
 <p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#auth-code-flow" target="_blank" ><strong>Authorization Code Flow</strong></a>.</p>
 <h3 id='ec6a6ef8f9'>Получение условий обслуживания по дебетовой карте</h3>
