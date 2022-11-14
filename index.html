@@ -8543,6 +8543,16 @@ bearerAuth
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
+<p>404 Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+</span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown_route"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Route is not found or not active"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>409 Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -8597,6 +8607,12 @@ bearerAuth
 <td>access_denied</td>
 <td>Доступ к счету запрещен</td>
 <td><a href="#schemaerrorscope">ErrorScope</a></td>
+</tr>
+<tr>
+<td>404 (Not Found)</td>
+<td>unknown_route</td>
+<td>Маршрут не найден или неактивен</td>
+<td><a href="#schemaerrorendpoint">ErrorEndpoint</a></td>
 </tr>
 <tr>
 <td>409 (Report Already Exist)</td>
