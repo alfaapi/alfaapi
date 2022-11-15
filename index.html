@@ -316,6 +316,9 @@
                   <li>
                     <a href="#sandbox" class="toc-h2 toc-link" data-title="Песочница (Sandbox)">Песочница (Sandbox)</a>
                   </li>
+                  <li>
+                    <a href="#jws-format" class="toc-h2 toc-link" data-title="Защита канала">Защита канала</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -3092,6 +3095,156 @@ This operation does not require authentication
 <p>При запросе на создание заявки на выпуск RSA-сертификата в песочнице поле &quot;pkcs10Content&quot; статично и должно быть равно. Пример заполнения поля &quot;pkcs10Content&quot; указан справа (code sample). </p>
 
 <p>One-Time Password для заявки на выпуск/ активацию RSA-сертификата: 11111111</p>
+
+<h2 id="jws-format">Защита канала</h2>
+
+<p>Выбор того или иного метода шифрования канала определяется критичностью данных:</p>
+
+<ul>
+<li><p>если персональные данные не передаются, то TLS RSA будет самым простым, дешевым и гибким инструментом интеграции;</p></li>
+<li><p>если персональные данные передаются, то обязателен ГОСТ. Партнер API может выбирать, что использовать - TLS ГОСТ или вариант с ФПСУ ГОСТ.  </p></li>
+</ul>
+
+<p>Содержание: 
+  <ul>
+  <li><a href="#jws-format">Формат JWS</a></li>
+  </ul></p>
+
+<h3 id="jws-format">Формат JWS</h3>
+
+<p>Защитить информацию можно с помощью формата JWS. JWS - это транспортная подпись данных запроса/данных ответа. Использование JWS гарантирует подлинность запросов и ответов. Партнер API может быть уверен, что запрос не преобразован, а также нет подмены данных от систем-посредников и в ответе от Банка.</p>
+
+<p>Формат JWS поддерживается Банком в запросах (проверка подписанного запроса) и ответах (формирование подписанного Банком ответа). При настройке интеграции необходимо указать, что Партнер API хочет использовать JWS.</p>
+
+<p>! <strong>Использовать JWS можно только в ответах, только в запросах, и в запросах и в ответах или вообще не использовать. Управляется это заголовками Content-Type и Accept</strong>.</p>
+<h4 id='jws-3'>Как отправить запрос в формате JWS:</h4>
+<ol>
+<li><p>Выпустить сертификат в банке с помощью сервиса Электронной подписи<br>
+(см. шаг 1 в разделе  <a href="https://alfaapi.github.io/specification/#rsa-instruction" target="_blank" ><strong>Инструкция пользователя</strong></a>).</p></li>
+<li><p>Тело запроса сформировать в виде компактной сериализации   в соответствии с  <a href="https://www.rfc-editor.org/rfc/rfc7515#section-3.1" target="_blank" ><strong>JSON Web Signature</strong></a> и  подписать тело запроса закрытым ключом сертификата из шага 1.</p></li>
+</ol>
+
+<p>Пример тела запроса в формате JWS (токен):</p>
+
+<p><span class="custom__cmd-command-text">eyJhbGciOiJSUzI1NiIsImtpZCI6IjYxMDAwMzYzY2NiNzU5Y2I0NDg2MDc4NjVkMDAwMTAwMDM2M2NjIn0.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTY1Nzg4MjY4OSwiZXhwIjoxNjU3ODg2Mjg5fQ.ApKNzZ9kLMtBY3LzReSHQ7_AyDnzocGo9GTQFRmxTiRS7Lj7a55Kr4ziwZAmmwloF1063JJMOaU0lS947q6_hSct9pxzPdZ9tTmpIDGnQL-ks0oB7zz9vUSUd3G00UZXSYnuhI9BBRXvmmTaue5Y2j5zVZofLdO2dqPWCnsQULyLn_vYf8PeABhnAQ29z1Bq42uxfRFTM35cF40Tp4VBSqXDI1vxfleLusQlOZM-5Sk7O3Vy4Sf-UB03RrRGSBerZjdoMRh7dgEyoYAXS6c4MejCm2vmXKqSd7pu2V2TxOM9UTchkCS16DL-RIJtnfMjznmznU5SoMCpncvs6gRNeQ</span></p>
+
+<p>Для тестовой проверки можно использовать <a href="https://token.dev/">https://token.dev/</a>.</p>
+
+<ol>
+<li>Добавить заголовок Content-Type = &quot;application/jose&quot; и отправить запрос.</li>
+</ol>
+
+<p>Далее Банк проверяет подпись. Если подпись валидна - запрос обрабатывается, если не валидна - Банк определяет запрос как неподлинный и возвращает ошибку.</p>
+<h4 id='jws-4'>Как получить ответ в формате JWS:</h4>
+<ol>
+<li><p>Загрузить сертификат проверки электронной подписи
+<a download="example1_crs.zip" href="https://github.com/alfaapi/specification/blob/main/certificates/example1_csr.zip?raw=true">example1_crs.zip</a></p></li>
+<li><p>Добавить заголовок Accept = &quot;application/jose&quot; и отправить запрос.</p></li>
+<li><p>Полученный ответ (в том числе ошибки) будет представлен в виде JWS-контейнера в компактной сериализации. Для проверки подлинности необходимо использовать открытый ключ, полученный на шаге 1. </p></li>
+</ol>
+
+<p>После успешной или неуспешной обработки запроса Банк подписывает ответ закрытым ключом и возвращает его в формате JWS.</p>
+<h4 id='e7620f0eea'>Как проверить подпись</h4>
+<p>Партнер API получает зашифрованный ответ в формате сформированного токена JWS, который состоит из:</p>
+
+<ul>
+<li>Заголовка (<strong>Header</strong>), содержащего алгоритм подписи, идентификатор ключа и тип токена;</li>
+<li>JSON-объекта (<strong>Payload</strong>), в котором перечислены клэймы полезной нагрузки;</li>
+<li>Электронной подписи (<strong>Signature</strong>), содержащей подпись данных секретным ключом, парным открытому ключу, выпущенному для Alfa ID.</li>
+</ul>
+
+<p><strong>Декодирование компактной сериализации JWS</strong></p>
+
+<p>JWS формируется из трех составляющих и представляет структуру вида: </p>
+
+<ul>
+<li>Base64URL(Header).</li>
+<li>Base64URL(Payload).</li>
+<li>Base64URL(Signature).</li>
+</ul>
+
+<p>Пример токена</p>
+
+<div class="custom__jwt-container">
+    <div class="custom__jwt-column token">
+    <h3>Закодированный</h3>
+    <span class="token-text">
+      <span class="token-text__header">eyJraWQiOiJhbGZhLXRlc3Qtand0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ</span>
+      .<span class="token-text__payload">eyJkZWJpdFR1cm5vdmVyIjp7ImFtb3VudCI6MCwiY3VycmVuY3lOYW1lIjoiUlVSIn0sIm9wZW5pbmdCYWxhbmNlUnViIjp7ImFtb3VudCI6MTU2NTguMTUsImN1cnJlbmN5TmFtZSI6IlJVUiJ9LCJjbG9zaW5nQmFsYW5jZSI6eyJhbW91bnQiOjE1NjU4LjE1LCJjdXJyZW5jeU5hbWUiOiJSVVIifSwiY3JlZGl0VHVybm92ZXJSdWIiOnsiYW1vdW50IjowLCJjdXJyZW5jeU5hbWUiOiJSVVIifSwiZGViaXRUcmFuc2FjdGlvbnNOdW1iZXIiOjAsImNvbXBvc2VkRGF0ZVRpbWUiOiIyMDIyLTExLTEwVDA5OjM2OjI4LjU3MjY4MTI3NiIsImNyZWRpdFR1cm5vdmVyIjp7ImFtb3VudCI6MCwiY3VycmVuY3lOYW1lIjoiUlVSIn0sImRlYml0VHVybm92ZXJSdWIiOnsiYW1vdW50IjowLCJjdXJyZW5jeU5hbWUiOiJSVVIifSwib3BlbmluZ0JhbGFuY2UiOnsiYW1vdW50IjoxNTY1OC4xNSwiY3VycmVuY3lOYW1lIjoiUlVSIn0sImNsb3NpbmdCYWxhbmNlUnViIjp7ImFtb3VudCI6MTU2NTguMTUsImN1cnJlbmN5TmFtZSI6IlJVUiJ9LCJjcmVkaXRUcmFuc2FjdGlvbnNOdW1iZXIiOjAsImxhc3RNb3ZlbWVudERhdGUiOiIyMDIyLTA3LTEyIn0</span>
+      .<span class="token-text__signature">YMumPZUQUnMle_oTHJ-rTyJu1-h6yK3KSm1NNLd2uGplYwoIofhmlJu6C-atDja8taHn3QEJhf0QatD7BdGManIjHGMth2eA139_SD7G6w7i4rZFFrwhUjazSeSPPGIigQn6nNm7GuJdESm6xdFd8UFUdoM7yM34Aoy03YvB56UWJiJrLGKHna9HIwwJeQObFQ809WiJw_GrM_3QxNUJpeNxsg8KbDWY5FOwjLMEwS4GhB_TDQ152bUpXiCjUffIeNHw6XXJvIbyHhlJg1AunemPSpRpgIvAUun-BmMZSW15MQoTaICHe9MuEQTqc33CVgHACFon0mUEFI97LW1Tvw</span>
+    </span>
+  </div>
+  <div class="custom__jwt-column">
+    <h3>Расшифрованный</h3>
+    <strong>header:</strong>
+    <pre class="custom__jwt-header">
+{
+  "kid": "alfa-test-jwt",
+  "typ": "JWT",
+  "alg": "RS256"
+}
+    </pre>
+    <strong>payload:</strong>
+    <pre class="custom__jwt-payload">
+{
+  "debitTurnover": {
+    "amount": 0,
+    "currencyName": "RUR"
+  },
+  "openingBalanceRub": {
+    "amount": 15658.15,
+    "currencyName": "RUR"
+  },
+  "closingBalance": {
+    "amount": 15658.15,
+    "currencyName": "RUR"
+  },
+  "creditTurnoverRub": {
+    "amount": 0,
+    "currencyName": "RUR"
+  },
+  "debitTransactionsNumber": 0,
+  "composedDateTime": "2022-11-10T09:36:28.572681276",
+  "creditTurnover": {
+    "amount": 0,
+    "currencyName": "RUR"
+  },
+  "debitTurnoverRub": {
+    "amount": 0,
+    "currencyName": "RUR"
+  },
+  "openingBalance": {
+    "amount": 15658.15,
+    "currencyName": "RUR"
+  },
+  "closingBalanceRub": {
+    "amount": 15658.15,
+    "currencyName": "RUR"
+  },
+  "creditTransactionsNumber": 0,
+  "lastMovementDate": "2022-07-12"
+}
+    </pre>
+    <strong>verify signature:</strong>
+    <pre class="custom__jwt-signature">
+    
+   RSASHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+
+) secret base64 encoded
+    </pre>
+  </div>
+</div>
+<h4 id='9385ea9db2-3'>Проверка подписи:</h4>
+<p>1) Вычисляем хэш-функцию SHA256 от данных Base64URL(Header).Base64URL(Payload).</p>
+
+<p>2) Дешифруем данные Base64URL(Signature), используя алгоритм RS256 и открытый ключ с идентификатором, переданным в Заголовке (Header) в клэйме kid (в приведенном выше примере это alfa-test-jwt).</p>
+
+<p>3) Сравниваем вычисленный хэш из 1 шага и дешифрованные данные из 2 шага. Если значения равны, то подпись верна.</p>
+
+<p>Сертификат для проверки электронной подписи
+ <a download="example1_crs.zip" href="https://github.com/alfaapi/specification/blob/main/certificates/example1_csr.zip?raw=true">example1_crs.zip</a></p>
 <h1 id='api-3'>Методы API</h1>
 <p>Список методов для работы с данными Alfa API:</p>
 
