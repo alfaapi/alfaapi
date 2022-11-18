@@ -282,7 +282,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-2ef34074.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-f0aceefa.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all_nosearch-18c3ed8e.js"></script>
 
@@ -3107,11 +3107,11 @@ This operation does not require authentication
 
 <p>Содержание: 
   <ul>
-    <li><a href="#encryption">Методы шифрования</a></li>
-  <li><a href="#jws-format">Формат JWS</a></li>
+    <li><a href="#encryption">Шифрование канала</a></li>
+  <li><a href="#jws-format-sign">Транспортная подпись</a></li>
   </ul></p>
 
-<h3 id="encryption">Методы шифрования</h3>
+<h3 id="encryption">Шифрование канала</h3>
 
 <p>Выбор того или иного метода шифрования канала определяется критичностью данных:</p>
 
@@ -3120,7 +3120,7 @@ This operation does not require authentication
 <li><p>если персональные данные передаются, то обязателен ГОСТ. Партнер API может выбирать, что использовать - TLS ГОСТ или вариант с ФПСУ ГОСТ.  </p></li>
 </ul>
 
-<h3 id="jws-format">Формат JWS</h3>
+<h3 id="jws-format-sign">Транспортная подпись</h3>
 
 <p>Защитить информацию можно с помощью формата JWS. JWS - это транспортная подпись данных запроса/данных ответа. Использование JWS гарантирует подлинность запросов и ответов. Партнер API может быть уверен, что запрос не преобразован, а также нет подмены данных от систем-посредников и в ответе от Банка.</p>
 
