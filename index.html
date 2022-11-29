@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Documentation</title>
 
+    <script>
+      window.location.replace('https://developers.alfabank.ru/old')
+    </script>
+
     <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -447,7 +451,7 @@ client_id</span> при реализации интеграции. </p>
 
 <p>Шаг 4. <strong>Реализовать интеграцию</strong>. </p>
 
-<p>Реализовать и протестировать сценарий аутентификации в Alfa ID. 
+<p>Реализовать и протестировать сценарий аутентификации в Alfa ID.
 Реализовать и протестировать сценарии вызовов методов Alfa API. Подробнее в разделе <a href="#sandbox">&quot;Песочница&quot;</a>.</p>
 
 <p>Шаг 5. <strong>Сообщить об успешном тестировании</strong>.</p>
@@ -515,9 +519,9 @@ client_id</span> при реализации интеграции. </p>
 <p>Подготовьте файл конфигурации, в котором будут указаны все обязательные атрибуты в subject.</p>
 
 <ul>
-<li><p>если вы используйте Mac OS, пример заполненного файла: 
+<li><p>если вы используйте Mac OS, пример заполненного файла:
 <a download="openssl.cnf" href="https://alfaapi.github.io/specification/config/openssl.cnf">Конфиг Mac openssl.cnf</a> </p></li>
-<li><p>если вы используете Windows, пример заполненного файла: 
+<li><p>если вы используете Windows, пример заполненного файла:
 <a download="openssl.cnf" href="https://alfaapi.github.io/specification/config/openssl_win.config">Конфиг Windows openssl.cnf</a> </p></li>
 </ul>
 
@@ -550,7 +554,7 @@ openssl req -noout -text -in name.csr</span></p>
 
 <p>{POST clients/{clienID}client-secret}.</p>
 
-<p>Для получения client_secret, необходимо <strong>вызвать метод</strong>: 
+<p>Для получения client_secret, необходимо <strong>вызвать метод</strong>:
 <a href="https://baas.alfabank.ru/oidc/clients/%7BclientId%7D/client-secret">https://baas.alfabank.ru/oidc/clients/{clientId}/client-secret</a></p>
 
 <!-- Generator: Widdershins v4.0.1 -->
@@ -953,7 +957,7 @@ This operation does not require authentication
 </tr>
 </tbody></table>
 
-<p>Пример успешного ответа для заголовка Location: 
+<p>Пример успешного ответа для заголовка Location:
 <a href="https://wwww.partner.ru/code?code=8962c304-89b1-11ec-a8a3-0242ac120002&state=abcdef">https://wwww.partner.ru/code?code=8962c304-89b1-11ec-a8a3-0242ac120002&amp;state=abcdef</a></p>
 
 <p>Пример неуспеха для заголовка Location:
@@ -1432,7 +1436,7 @@ This operation does not require authentication
 
 <p>Для идентификации пользователя выполняется запрос на получение информации о профиле представителя ЮЛ/ФЛ.</p>
 
-<p>Входящие параметры: access_token. 
+<p>Входящие параметры: access_token.
 Исходящие параметры: данные пользователя, на передачу которых от пользователя есть разрешение.</p>
 
 <p>Для каждого Партнера API перечень допустимых клэймов настраивается индивидуально.</p>
@@ -2363,7 +2367,7 @@ This operation does not require authentication
 </tbody></table>
 
 <h4 id="auth-code-flow-h2h">Authorization code flow для H2H интеграций</h4>
- 
+
 
 <p><strong>Прямая интеграция (H2H, host-2-host)</strong> - это канал прямой интеграции автоматизированных систем клиента и Банка.</p>
 
@@ -2371,7 +2375,7 @@ This operation does not require authentication
 
 <p>Партнер API, использующий прямую интеграцию, может оĸазывать сервис тольĸо пользователям своей организации.</p>
 
-<p>Для обращения ERP-системы Партнера API к Alfa API  необходимо получить тоĸен доступа (<strong>access_token</strong>). 
+<p>Для обращения ERP-системы Партнера API к Alfa API  необходимо получить тоĸен доступа (<strong>access_token</strong>).
 Для получения тоĸена доступа необходимо получить ĸод авторизации (
 <strong>code</strong>) и обменять его на тоĸен доступа.</p>
 
@@ -3107,7 +3111,7 @@ This operation does not require authentication
 
 <p>Защита данных с применением криптографических преобразований - одно из решений проблем информационной безопасности. Механизмы шифрования и дешифрования канала обеспечивает надежность передачи информации. Защитить канал можно, используя ассиметричные алгоритмы шифрования данных (RSA-сертификат) и транспортную подпись.</p>
 
-<p>Содержание: 
+<p>Содержание:
   <ul>
 <li><a href="#encryption">Шифрование канала</a></li>
 <li><a href="#jws-format">Транспортная подпись (формат JWS)</a></li>
@@ -3260,7 +3264,7 @@ BASE64URL(JWS Signature)</p>
     </pre>
     <strong>verify signature:</strong>
     <pre class="custom__jwt-signature">
-    
+
    RSASHA256(
   base64UrlEncode(header) + "." +
   base64UrlEncode(payload),
@@ -9793,11 +9797,11 @@ bearerAuth ( Scopes: customer_info )
 </tr>
 </tbody></table>
 
-<h2 id="214">Счета эскроу 214-ФЗ</h2> 
+<h2 id="214">Счета эскроу 214-ФЗ</h2>
 
 <p>Используется токен доступа, полученный по <a href="https://alfaapi.github.io/specification/#auth-code-flow" target="_blank" ><strong>Authorization Code Flow</strong></a>.</p>
 
-<p>Список методов: 
+<p>Список методов:
   <ul>
   <li><a href="#get-build-projects">Получение списка объектов строительства застройщика</a></li>
   <li><a href="#post-escrow-orders">Создание заявки на резервирование счета эскроу</a></li>
@@ -11265,7 +11269,7 @@ bearerAuth
 
 <ul>
 <li><p>После этого будет создан запрос на сертификат nameTest.csr, который можно отрыть в текстовом редакторе.</p></li>
-<li><p>Далее заменить переносы строк на \n для получения следующей строки: 
+<li><p>Далее заменить переносы строк на \n для получения следующей строки:
 <span class="custom__cmd-command-text">-----BEGIN CERTIFICATE REQUEST-----\nMIIDFzCCAf8CAQAwgZkxCzAJBgNVBAYTAlJVMRcwFQYDVQQEDA7QodCw0YTQvtC9\n0L7QsjETMBEGA1UEKgwK0KLQuNGF0L7QvTE1MDMGA1UEAwws0KHQsNGE0L7QvdC+\n0LIg0KLQuNGF0L7QvSDQldGA0L7RhNC10LXQstC40YcxJTAjBgkqhkiG9w0BCQEW\nFlVzZXI4MzdAcG9jaHRvY2hrYS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw\nggEKAoIBAQDticUMw9slOsSU8sGtXjFndVudvwLjq/+FgX5C52p4qkPAXOYVUE1k\nruAqvkTWEhzGaprWRK5LAyEWSCludDBKGThiyipr1ewj+IQQngRGJ2oD++vJht5S\nPGQRNJtoHzAVgGq2Di1nehweR0uA3sdNFiD60QDEtsPombBAE7+FBqe78vvfsrZF\nfeITpboiqIaw+7DqI9yO9eGptsdWlY1GbOvESic5a1mXU9KFLJPD/OBAJ6Vkmf54\n+ra49hKu3tSZvPVR1KAT2yZKI26H3Ye4v6Mazr2NGH9mC+bPUf6JD+6U1kr5tCJb\nn8Tu/d3gSH+ZkaykxFneZAflhoudhc4NAgMBAAGgODA2BgkqhkiG9w0BCQ4xKTAn\nMCUGA1UdEQQeMByCC2V4YW1wbGUuY29tgg0qLmV4YW1wbGUuY29tMA0GCSqGSIb3\nDQEBCwUAA4IBAQBW8Kk2PoTlO/jLdFSHv31Dw4HrshS4mv5G7mIkULyX+NoW1+6n\n7VHVcqa5OBizKjIxE55ASRoqpVs7IakMfGVLmkUHCO9HL1Vav8Tpj5H9BeZ4FEbx\n0HqHAF7Rs89neNGEDqp8HQqsa1ojiDBppeQ44q1zzYyDkTGgfO87GtNG/mIyZZQ6\ni3WtnECVuSFWuf+hpeDGMJYo3jUyRZEhziPDm2YqqYf2vQF5iJLg7mXvWwvv/OGN\nnsD9JWu7DaP8aswQGpVgCkxlfQNyiEQgIDJBAmMbbh+34Hu5bzo8Yr5khty8EtO8\n2PpiRH1ez7adpV87Bj7xq00gpInldFiWQM19\n-----END CERTIFICATE REQUEST-----</span></p></li>
 <li><p>Полученную выше строку передать в pkcs10Content при вызове метода <strong>Заявка на RSA-выпуск сертификата</strong>.</p></li>
 </ul>
@@ -11303,7 +11307,7 @@ bearerAuth
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET signature/users/<span class="o">{</span>sub<span class="o">}</span>/dn 
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET signature/users/<span class="o">{</span>sub<span class="o">}</span>/dn
   <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {access-token}'</span>
 
@@ -12027,7 +12031,7 @@ bearerAuth
         </span><span class="nl">"userSignMethodStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENABLED"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w"> 
+  </span><span class="p">],</span><span class="w">
     </span><span class="nl">"requestCurrentSignTypeRsa"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
   </span><span class="nl">"requestIssueRsaCertificate"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
@@ -12132,7 +12136,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 bearerAuth
 </aside>
 
-<h3 id="get-rsa">Получение RSA-сертификата</h3> 
+<h3 id="get-rsa">Получение RSA-сертификата</h3>
 
 <p>Для получения RSA-сертификата необходимо отправить GET  signature/users/{sub}/rsa-certificates/{id} с access_token, полученным в Alfa ID, со scope = signature, и параметрами запроса.</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET signature/users/<span class="o">{</span>sub<span class="o">}</span>/rsa-certificates/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>
@@ -39888,7 +39892,7 @@ bearerAuth
 <ul>
 <li><p><strong>POST signature/users/{sub}/rsa-certificates/requests/issue</strong>
 Заявка на выпуск RSA-сертификата</p></li>
-<li><p><strong>POST signature/users/{sub}/rsa-certificates/requests/{id}/operations</strong> 
+<li><p><strong>POST signature/users/{sub}/rsa-certificates/requests/{id}/operations</strong>
 Отправка заявки а на подпись</p></li>
 <li><p><strong>PUT signature/users/{sub}/rsa-certificates/requests/operations/{id}</strong> Подписание заявки с помощью кода из СМС </p></li>
 <li><p><strong>GET signature/users/{sub}/rsa-certificates/requests/{id}</strong> Получение данных заявки</p></li>
@@ -39896,7 +39900,7 @@ bearerAuth
 Получение RSA-сертификата</p></li>
 <li><p><strong>POST signature/users/{sub}/rsa-certificates/{id}/requests/activation</strong>
 Заявка на активацию RSA-сертификата</p></li>
-<li><p><strong>PUT signature/users/{sub}/sign-settings</strong> 
+<li><p><strong>PUT signature/users/{sub}/sign-settings</strong>
 Заявка на изменение текущего способа подписи </p></li>
 </ul>
 
@@ -39942,13 +39946,13 @@ bearerAuth
 <br>
 • При внешней интеграции происходит попытка аутентификации через пользователя своей организации.</p>
 <h4 id='b3f31b6b8b'>Какой срок жизни токена?</h4>
-<p>Значения по умолчанию: 
+<p>Значения по умолчанию:
 <br>
-• access_token: 1 час (60 минут); 
+• access_token: 1 час (60 минут);
 <br>
 • refresh_token: 180 дней (259200 минут).</p>
 
-<p>Значения могут быть изменены. 
+<p>Значения могут быть изменены.
 Срок жизни токенов можно посмотреть в запросе POST token.</p>
 <h4 id='9224ebc941'>Какой срок жизни кода авторизации?</h4>
 <p>Значение по умолчанию: 120 секунд. Срок жизни кода авторизации может быть настроен индивидуально.</p>
@@ -39972,16 +39976,16 @@ bearerAuth
 
 <p>Получение кода авторизации - <a href="https://id.alfabank.ru/oidc/authorize">https://id.alfabank.ru/oidc/authorize</a></p>
 
-<p>Получение токена доступа - 
+<p>Получение токена доступа -
 <a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a></p>
 
-<p>Получение информации о профиле представителя ЮЛ/физического лица - 
+<p>Получение информации о профиле представителя ЮЛ/физического лица -
 <a href="https://baas.alfabank.ru/oidc/userinfo">https://baas.alfabank.ru/oidc/userinfo</a></p>
 
 <p>Обновление токена -
 <a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a></p>
 
-<p>Получение client_secret - 
+<p>Получение client_secret -
 <a href="https://baas.alfabank.ru/oidc/clients/%7BclientId%7D/client-secret">https://baas.alfabank.ru/oidc/clients/{clientId}/client-secret</a></p>
 
 <p>Получение системного токена доступа - <a href="https://baas.alfabank.ru/oidc/token">https://baas.alfabank.ru/oidc/token</a></p>
